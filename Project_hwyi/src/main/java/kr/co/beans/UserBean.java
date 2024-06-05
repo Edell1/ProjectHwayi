@@ -23,6 +23,16 @@ public class UserBean {
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String user_pw2;
 	
+	private boolean userIdExist;
+	
+	public boolean isUserIdExist() {
+		return userIdExist;
+	}
+
+	public void setUserIdExist(boolean userIdExist) {
+		this.userIdExist = userIdExist;
+	}
+	
 	public int getUser_idx() {
 		return user_idx;
 	}
