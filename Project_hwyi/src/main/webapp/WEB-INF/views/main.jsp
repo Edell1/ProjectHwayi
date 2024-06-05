@@ -1,210 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var='root' value="${pageContext.request.contextPath }/"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath }/" />
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>πÃ¥œ «¡∑Œ¡ß∆Æ</title>
+<title>HiF ÏáºÌïëÎ™∞</title>
 <!-- Bootstrap CDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<c:url value='/css/main.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
+<script src="js/main.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/4cd100a941.js"
+	crossorigin="anonymous"></script>
 </head>
 <body>
-	
-<c:import url="/WEB-INF/views/include/top_menu.jsp"/>
 
-<!-- ∞‘Ω√∆« πÃ∏Æ∫∏±‚ ∫Œ∫– -->
-<div class="container" style="margin-top:100px">
-	<div class="row">
-		<div class="col-lg-6" style="margin-top:20px">
-			<div class="card shadow">
-				<div class="card-body">
-					<h4 class="card-title">¿⁄¿Ø∞‘Ω√∆«</h4>
-					<table class="table table-hover" id='board_list'>
-						<thead>
-							<tr>
-								<th class="text-center w-25">±€π¯»£</th>
-								<th>¡¶∏Ò</th>
-								<th class="text-center w-25 d-none d-xl-table-cell">¿€º∫≥Ø¬•</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root}board/read'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root}board/read'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root}board/read'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root}board/read'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root}board/read'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-						</tbody>
-					</table>
-					
-					<a href="${root}board/main" class="btn btn-primary">¥ı∫∏±‚</a>
-				</div>
-			</div>
+	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+
+	<div class="slide_wrap">
+		<div class="slider_box">
+			<ul class="slider">
+				<li><img src="./image/img1.avif" alt="Î∞∞ÎÑà1" /></li>
+				<li><img src="./image/img2.avif" alt="Î∞∞ÎÑà2" /></li>
+				<li><img src="./image/img3.avif" alt="Î∞∞ÎÑà3" /></li>
+				<li><img src="./image/img4.avif" alt="Î∞∞ÎÑà4" /></li>
+			</ul>
 		</div>
-		<div class="col-lg-6" style="margin-top:20px">
-			<div class="card shadow">
-				<div class="card-body">
-					<h4 class="card-title">¿Ø∏”∞‘Ω√∆«</h4>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th class="text-center w-25">±€π¯»£</th>
-								<th>¡¶∏Ò</th>
-								<th class="text-center w-25 d-none d-xl-table-cell">¿€º∫≥Ø¬•</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-						</tbody>
-					</table>
-					
-					<a href="board_main.html" class="btn btn-primary">¥ı∫∏±‚</a>
-				</div>
-			</div>
-		
-		</div>
-		<div class="col-lg-6" style="margin-top:20px">
-			<div class="card shadow">
-				<div class="card-body">
-					<h4 class="card-title">¡§ƒ°∞‘Ω√∆«</h4>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th class="text-center w-25">±€π¯»£</th>
-								<th>¡¶∏Ò</th>
-								<th class="text-center w-25 d-none d-xl-table-cell">¿€º∫≥Ø¬•</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-						</tbody>
-					</table>
-					
-					<a href="board_main.html" class="btn btn-primary">¥ı∫∏±‚</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-6" style="margin-top:20px">
-			<div class="card shadow">
-				<div class="card-body">
-					<h4 class="card-title">Ω∫∆˜√˜∞‘Ω√∆«</h4>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th class="text-center w-25">±€π¯»£</th>
-								<th>¡¶∏Ò</th>
-								<th class="text-center w-25 d-none d-xl-table-cell">¿€º∫≥Ø¬•</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='board_read.html'>¡¶∏Ò¿‘¥œ¥Ÿ</a></th>
-								<td class="text-center d-none d-xl-table-cell">2018-12-12</td>
-							</tr>
-						</tbody>
-					</table>
-					
-					<a href="board_main.html" class="btn btn-primary">¥ı∫∏±‚</a>
-				</div>
-			</div>
+
+		<div class="arrow">
+			<a href="#" class="prev"><i class="fa-solid fa-arrow-left fa-3x"></i></a>
+			<a href="#" class="next"><i class="fa-solid fa-arrow-right fa-3x"></i></a>
 		</div>
 	</div>
-</div>
-	
-<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+
+	<div class="content_Box"></div>
+
+	<button id="topBtn" class="top-button" title="Go to top">Top</button>
+
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
 
 </body>
 </html>

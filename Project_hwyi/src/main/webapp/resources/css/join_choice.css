@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: 'Free-B';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2')
+		format('woff2');
+	font-weight: 900;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Free-M';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Black.woff2')
+		format('woff2');
+	font-weight: 900;
+	font-style: normal;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Free-B';
+}
+
+a {
+	text-decoration: none;
+}
+a:visited {
+	color: #000;
+}
+
+li {
+	list-style: none;
+}
+
+.join_container .top_box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 240px;
+	margin-top: 20px;
+	background-image: url(../image/joinImg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+.join_container .top_box .tit {
+	font-size: 34px;
+	margin-bottom: 40px;
+}
+
+.join_box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100%;
+}
+.join_box .join_box_inner {
+	display: flex;
+	flex-flow: column;
+	top: -40px;
+	position: absolute;
+	width: 70%;
+	height: 600px;
+	background-color: #fff;
+}
+.join_box .join_box_inner .top_var {
+	height: 40px;
+}
+.join_box .join_box_inner .top_var a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 100%;
+	color: #000;
+}
+
+.join_box .join_box_inner .choice_box {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 85%;
+	padding-top: 40px;
+}
+
+.cho_txt {
+	font-size: 24px;
+	text-align: center;
+}
+.cho_txt p {
+	margin-top: 10px;
+	font-size: 18px;
+	font-family: 'Free-M';
+}
+
+.choice {
+	display: flex;
+	justify-content: space-around;
+	width: 70%;
+	height: 280px;
+	text-align: center;
+}
+
+.choice li {
+	width: 260px;
+	padding: 20px;
+	border: 1px solid #bebebe;
+}
+
+.choice li a {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	color: #000;
+	font-size: 22px;
+}
+.choice li a p {
+	font-family: 'Free-M';
+	font-size: 16px;
+}
