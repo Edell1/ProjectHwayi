@@ -21,8 +21,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import kr.co.interceptor.TopMenuInterceptor;
 import kr.co.mapper.BoardMapper;
+import kr.co.mapper.BuyerMapper;
 import kr.co.mapper.TopMenuMapper;
-import kr.co.mapper.UserMapper;
+import kr.co.mapper.SellerMapper;
 import kr.co.service.TopMenuService;
 
 @Configuration // Spring MVC 프로젝트 설정
@@ -99,11 +100,19 @@ public class ServletAppContext implements WebMvcConfigurer {
 	}
 
 	@Bean
-	public MapperFactoryBean<UserMapper> getUserMapper(SqlSessionFactory factory) throws Exception {
-		MapperFactoryBean<UserMapper> factoryBean = new MapperFactoryBean<UserMapper>(UserMapper.class);
+	public MapperFactoryBean<SellerMapper> getSellerMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<SellerMapper> factoryBean = new MapperFactoryBean<SellerMapper>(SellerMapper.class);
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
+	
+	@Bean
+	public MapperFactoryBean<BuyerMapper> getBuyerMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<BuyerMapper> factoryBean = new MapperFactoryBean<BuyerMapper>(BuyerMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

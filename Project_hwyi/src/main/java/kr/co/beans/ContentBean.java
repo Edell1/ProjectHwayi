@@ -1,10 +1,5 @@
 package kr.co.beans;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class ContentBean {
 	
 	private int content_idx;

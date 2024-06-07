@@ -53,12 +53,12 @@
 <body>
 
 <div class="container" style="margin-top:100px">
-   <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-6">
+      <div class="row">
+         <div class="col-sm-3"></div>
+         <div class="col-sm-6">
             <div class="card shadow">
                <div class="card-body">
-                  <form:form action="${root}user/join_pro2" method="post"
+                  <form:form action="${root}user/join_pro1" method="post"
                      modelAttribute="joinUserBean">
                      <form:hidden path="userIdExist" />
                      <div class="form-group">
@@ -91,32 +91,30 @@
                            placeholder='비밀번호 확인' />
                         <form:errors path='user_pw2' style='color:red' />
                      </div>
-                     
                      <div class="form-group">
-                        <form:label path="seller_num">사업자등록번호</form:label>
-                        <form:input path="seller_num" class='form-control'
-                           placeholder='사업자 등록번호 입력' />
-                           <%-- <form:errors path='seller_num' style='color:red' /> --%>
-                     </div>
-                     <div class="form-group">
-                        <form:label path="seller_add1">사업장 주소</form:label>
-                        <form:input path="seller_add1" class='form-control'
-                           placeholder='우편번호 입력' />
-                        <%-- <form:errors path='seller_add1' style='color:red' /> --%>
+                        <form:label path="user_email">이메일</form:label>
+                        <form:input path="user_email" class='form-control'
+                           placeholder='이메일' />
+                           <form:errors path='user_email' style='color:red' />
                            
                      </div>
+
                      <div class="form-group">
-                        <form:label path="seller_add2">상세주소</form:label>
-                        <form:input path="seller_add2" class='form-control'
-                           placeholder='상세주소 입력' />
-                        <%-- <form:errors path='seller_add2' style='color:red' /> --%>
+                        <form:label path="user_tel">휴대폰 번호</form:label>
+                        <form:input path="user_tel" class='form-control'
+                           placeholder='휴대폰 번호' />
+                        <form:errors path='user_tel' style='color:red' />
                      </div>
-                     
+
                      <div class="form-group">
-                        <form:label path="seller_tel">매장 전화번호</form:label>
-                        <form:input path="seller_tel" class='form-control'
-                           placeholder='매장 전화번호' />
-                       <%--  <form:errors path='seller_tel' style='color:red' /> --%>
+                        <form:label path="user_add1">주소</form:label>
+                        <form:input path="user_add1" class='form-control' placeholder='우편번호 입력' />
+                        <form:errors path='user_add1' style='color:red' />
+                        </div>
+                        <div class="form-group">
+                        <form:label path="user_add2">상세주소</form:label>
+                        <form:input path="user_add2" class='form-control' placeholder='상세주소 입력' />
+                        <form:errors path='user_add2' style='color:red' />
                      </div>
 
                      <div class="form-group">
@@ -128,11 +126,19 @@
                </div>
             </div>
          </div>
-      <div class="col-sm-3"></div>
+         <div class="col-sm-3"></div>
+      </div>
    </div>
-</div>
 
 <c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
 
 </body>
 </html>
+
+
+
+
+
+
+
+

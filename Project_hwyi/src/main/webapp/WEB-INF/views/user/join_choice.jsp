@@ -41,7 +41,7 @@
 					</div>
 
 					<ul class="choice">
-						<li><a href="${root }user/join" id="buyer"> <i
+						<li><a href="${root }user/join_buyer" id="buyer"> <i
 								class="fa-regular fa-face-smile fa-5x"></i> <b>구매자</b>
 								<p>구매자인 경우 가입이 가능합니다.</p>
 						</a></li>

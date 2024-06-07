@@ -1,11 +1,13 @@
 package kr.co.beans;
 
+import java.util.List;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class UserBean {
 
-	private int user_idx;
+	private String user_code;
 
 	@Size(min = 2, max = 4)
 	@Pattern(regexp = "[°¡-ÆR]*")
@@ -23,7 +25,69 @@ public class UserBean {
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String user_pw2;
 
-	
+	private String user_email;
+
+	private String user_tel;
+
+	private String user_add1;
+	private String user_add2;
+
+	private String seller_num;
+
+	private String seller_tel;
+
+	private String seller_add1;
+
+	private String seller_add2;
+
+	public String getSeller_tel() {
+		return seller_tel;
+	}
+
+	public void setSeller_tel(String seller_tel) {
+		this.seller_tel = seller_tel;
+	}
+
+	public String getSeller_num() {
+		return seller_num;
+	}
+
+	public void setSeller_num(String seller_num) {
+		this.seller_num = seller_num;
+	}
+
+	public String getUser_add1() {
+		return user_add1;
+	}
+
+	public void setUser_add1(String user_add1) {
+		this.user_add1 = user_add1;
+	}
+
+	public String getUser_add2() {
+		return user_add2;
+	}
+
+	public void setUser_add2(String user_add2) {
+		this.user_add2 = user_add2;
+	}
+
+	public String getUser_email() {
+		return user_email;
+	}
+
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+
+	public String getUser_tel() {
+		return user_tel;
+	}
+
+	public void setUser_tel(String user_tel) {
+		this.user_tel = user_tel;
+	}
+
 	private boolean userIdExist;
 
 	public boolean isUserIdExist() {
@@ -34,12 +98,12 @@ public class UserBean {
 		this.userIdExist = userIdExist;
 	}
 
-	public int getUser_idx() {
-		return user_idx;
+	public String getUser_code() {
+		return user_code;
 	}
 
-	public void setUser_idx(int user_idx) {
-		this.user_idx = user_idx;
+	public void setUser_code(String user_code) {
+		this.user_code = user_code;
 	}
 
 	public String getUser_name() {
@@ -72,6 +136,22 @@ public class UserBean {
 
 	public void setUser_pw2(String user_pw2) {
 		this.user_pw2 = user_pw2;
+	}
+
+	public String getSeller_add1() {
+		return seller_add1;
+	}
+
+	public void setSeller_add1(String seller_add1) {
+		this.seller_add1 = seller_add1;
+	}
+
+	public String getSeller_add2() {
+		return seller_add2;
+	}
+
+	public void setSeller_add2(String seller_add2) {
+		this.seller_add2 = seller_add2;
 	}
 
 }

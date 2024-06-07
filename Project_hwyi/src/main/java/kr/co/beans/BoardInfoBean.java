@@ -1,8 +1,5 @@
 package kr.co.beans;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class BoardInfoBean {
 
 	private int board_info_idx;
