@@ -10,11 +10,11 @@ import kr.co.dao.UserDao;
 public class UsersellerService {
 	
 	@Autowired
-	private UserDao userdao;
+	private UserDao userDao;
 	
 	// 넘겨받은 해당 아이디를 사용하여 반환받은 이름이 사용가능한지 판단 여부
 	public boolean checkUserExist(String user_id) {
-		String user_name = userdao.sellercheckUserExist(user_id);
+		String user_name = userDao.sellercheckUserExist(user_id);
 		
 		if(user_name == null) {
 			return true; // 사용가능
@@ -23,7 +23,7 @@ public class UsersellerService {
 	}
 	
 	public void addUserInfo(UserBean joinUserBean) {
-		userdao.selleraddUserInfo(joinUserBean);
+		userDao.selleraddUserInfo(joinUserBean);
 		
 	}
 	
