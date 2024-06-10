@@ -27,7 +27,7 @@
       
       $.ajax({
          //요청할 주소
-         url: '${root}user/checkUserIdExist/' + user_id,
+         url: '${root}user/checkBuyerExist/' + user_id,
          //요청타입
          type: 'get',
          //응답결과
@@ -96,7 +96,6 @@
                         <form:input path="user_email" class='form-control'
                            placeholder='이메일' />
                            <form:errors path='user_email' style='color:red' />
-                           
                      </div>
 
                      <div class="form-group">
