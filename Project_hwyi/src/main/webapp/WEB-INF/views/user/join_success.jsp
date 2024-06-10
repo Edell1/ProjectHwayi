@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }/"/>    
 <script>
-	alert('╟║ютюл ©о╥А╣г╬З╫ю╢о╢ы')
+	alert('Й╟─Л·┘Л²╢ Л≥└Кё▄К░≤Л≈┬Л┼╣К▀┬К▀╓')
 	location.href = "${root}user/login"
 </script>

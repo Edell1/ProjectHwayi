@@ -2,6 +2,8 @@ package kr.co.beans;
 
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -25,20 +27,56 @@ public class UserBean {
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String user_pw2;
 
+	@Size(min = 1)
+	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
 	private String user_email;
 
+	@Size(min = 1)
+	@Pattern(regexp = "^[0-9]+$")
 	private String user_tel;
 
+	@Size(min = 1)
 	private String user_add1;
+
+	@Size(min = 1)
 	private String user_add2;
 
+	@Size(min = 1)
 	private String seller_num;
 
+	@Size(min = 1)
+	@Pattern(regexp = "^[0-9]+$")
 	private String seller_tel;
 
+	@Size(min = 1)
 	private String seller_add1;
 
+	@Size(min = 1)
 	private String seller_add2;
+
+	public String getUser_code() {
+		return user_code;
+	}
+
+	public void setUser_code(String user_code) {
+		this.user_code = user_code;
+	}
+
+	public String getSeller_add1() {
+		return seller_add1;
+	}
+
+	public void setSeller_add1(String seller_add1) {
+		this.seller_add1 = seller_add1;
+	}
+
+	public String getSeller_add2() {
+		return seller_add2;
+	}
+
+	public void setSeller_add2(String seller_add2) {
+		this.seller_add2 = seller_add2;
+	}
 
 	public String getSeller_tel() {
 		return seller_tel;
@@ -98,14 +136,6 @@ public class UserBean {
 		this.userIdExist = userIdExist;
 	}
 
-	public String getUser_code() {
-		return user_code;
-	}
-
-	public void setUser_code(String user_code) {
-		this.user_code = user_code;
-	}
-
 	public String getUser_name() {
 		return user_name;
 	}
@@ -136,22 +166,6 @@ public class UserBean {
 
 	public void setUser_pw2(String user_pw2) {
 		this.user_pw2 = user_pw2;
-	}
-
-	public String getSeller_add1() {
-		return seller_add1;
-	}
-
-	public void setSeller_add1(String seller_add1) {
-		this.seller_add1 = seller_add1;
-	}
-
-	public String getSeller_add2() {
-		return seller_add2;
-	}
-
-	public void setSeller_add2(String seller_add2) {
-		this.seller_add2 = seller_add2;
 	}
 
 }
