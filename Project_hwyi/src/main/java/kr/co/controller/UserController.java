@@ -89,5 +89,11 @@ public class UserController {
 		binder.addValidators(validator1);
 
 	}
+	
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "user/mypage";
+	}
+	
 
 }

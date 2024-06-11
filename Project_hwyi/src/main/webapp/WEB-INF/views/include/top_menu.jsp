@@ -15,7 +15,7 @@
 		</form>
 
 		<ul class="user_menu">
-			<li><a href="${root}user/cart" class="cart">장바구니</a></li>
+			<li><a href="${root}shopping/cart" class="cart">장바구니</a></li>
 			<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
 			<li><a href="#" class="login">로그인</a></li>
 			<li><a href="${root}user/join_choice" class="join">회원가입</a></li>
@@ -25,7 +25,7 @@
 
 	<nav class="nav_bar">
 		<ul class="nav_menu">
-			<li><a href="#" class="home">홈</a></li>
+			<li><a href="${root }main" class="home">홈</a></li>
 			<li><a href="#" class="home">추천</a></li>
 			<li><a href="#" class="home">가구</a></li>
 			<li><a href="#" class="home">인테리어</a></li>
