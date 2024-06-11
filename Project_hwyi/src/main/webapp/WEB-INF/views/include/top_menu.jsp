@@ -25,7 +25,7 @@
 
 	<nav class="nav_bar">
 		<ul class="nav_menu">
-			<li><a href="#" class="home">홈</a></li>
+			<li><a href="${root }main" class="home">홈</a></li>
 			<li><a href="#" class="home">추천</a></li>
 			<li><a href="#" class="home">가구</a></li>
 			<li><a href="#" class="home">인테리어</a></li>

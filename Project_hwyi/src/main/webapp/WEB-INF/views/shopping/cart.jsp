@@ -30,7 +30,7 @@
 
 			<div class="top_box">
 				<div>
-					<input type="checkbox" id="allChk" checked /> <label for="allChk">
+					<input type="checkbox" id="allChk" /> <label for="allChk">
 						<span>전체</span>
 					</label>
 				</div>
@@ -77,7 +77,7 @@
 							class="cart_delete_btn">&nbsp;삭제</a></td>
 					</tr> --%>
 					<tr>
-						<td><input type="checkbox" class="chk" checked /></td>
+						<td><input type="checkbox" class="chk"/></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -96,7 +96,7 @@
 					</tr>
 				</table>
 
-				<a href="./books.jsp" class="cartBtn back_btn">쇼핑 계속하기</a>
+				<a href="${root }main" class="cartBtn back_btn">쇼핑 계속하기</a>
 			</div>
 		</div>
 	</div>

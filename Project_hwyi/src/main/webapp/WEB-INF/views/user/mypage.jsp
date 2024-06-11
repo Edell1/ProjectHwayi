@@ -29,7 +29,7 @@
 			<div class="top_box">
 				<div class="profile">
 					<div class="memberPhoto">
-						<img src="../img/memberPhoto.png" />
+						<img src="../image/memberPhoto.png" />
 						<button class="change">변경</button>
 					</div>
 					<div class="nickName">두바이코디맵</div>
@@ -38,7 +38,7 @@
 				<div class="couponBox">
 					<div class="half-container left">
 						<div class="icon_box">
-							<img src="../img/reserve.png" class="reserve" />
+							<img src="../image/reserve.png" class="reserve" />
 							<div>
 								<p>적립금</p>
 								<p>3000원</p>
@@ -48,7 +48,7 @@
 					<div class="vertical-line"></div>
 					<div class="half-container right">
 						<div class="icon_box">
-							<img src="../img/coupon.png" class="coupon" />
+							<img src="../image/coupon.png" class="coupon" />
 							<div>
 								<p>쿠폰</p>
 								<p>3장</p>
