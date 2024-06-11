@@ -6,7 +6,7 @@
 <!-- 상단 메뉴 부분 -->
 <div class="top">
 	<div class="gnb_bar">
-		<a href="#" class="logo">HiF</a>
+		<a href="${root }main" class="logo">HiF</a>
 
 		<form action="#" class="search">
 			<input type="text" class="sch_txt" id="sch_str"
