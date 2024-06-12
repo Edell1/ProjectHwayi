@@ -1,0 +1,77 @@
+@charset "EUC-KR";
+
+/* .customer_center {
+	
+	background-color: green;	
+	position: absoulte;
+	left: 50%;
+	top: 50%;
+	
+	transform: translate(-50%,-50%);
+}
+
+.frequently_question{
+	width:500px;
+	height: 500px;
+
+	background-color: gray;
+}
+.qna{
+	width:500px;
+	height: 500px;
+
+	background-color: blue;
+} */
+
+/* 자주묻는질문 css */
+.customer_center_FAQ1{
+	margin-top: 30px;
+}
+
+input[id*="answer"]{
+	display:none;
+}
+
+input[id*="answer"] + label {
+	width: 400px;
+	display:block;
+	padding:5px;
+	cursor:pointer;
+	position:relative;
+}
+input[id*="answer"] + label em{
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	width:30px;
+	height:30px;
+	margin-top:-15px;
+	display:inline-block;
+	background:url('../image/customer_center/arrowdown.png') 0 0 no-repeat;
+	
+}
+input[id*="answer"] + label + div{
+	max-height:0;
+	width: 400px;
+	transition: all .35s;
+	overflow:hidden;
+	font-size: 11px;
+}
+input[id*="answer"] + label + div p{
+	display:inline-block;
+	padding:20px;
+}
+input[id*="answer"]:checked + label + div{
+	max-height:200px;
+}
+input[id*="answer"]:checked + label em{
+		position: absolute;
+	top: 50%;
+	right: 10px;
+	width:30px;
+	height:30px;
+	margin-top:-15px;
+	display:inline-block;
+	background:url('../image/customer_center/arrowup.png') 0 0 no-repeat;
+	
+} 

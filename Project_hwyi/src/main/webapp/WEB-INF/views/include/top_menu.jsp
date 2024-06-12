@@ -19,13 +19,13 @@
 			<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
 			<li><a href="#" class="login">로그인</a></li>
 			<li><a href="${root}user/join_choice" class="join">회원가입</a></li>
-			<li><a href="#" class="customer">고객센터</a></li>
+			<li><a href="${root}customer_center/customer_center_main" class="customer">고객센터</a></li>
 		</ul>
 	</div>
 
 	<nav class="nav_bar">
 		<ul class="nav_menu">
-			<li><a href="${root }main" class="home">홈</a></li>
+			<li><a href="${root}main" class="home">홈</a></li>
 			<li><a href="#" class="home">추천</a></li>
 			<li><a href="#" class="home">가구</a></li>
 			<li><a href="#" class="home">인테리어</a></li>
