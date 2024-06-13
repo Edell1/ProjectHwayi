@@ -17,17 +17,17 @@
 </head>
 <script>
    function checkUserIdExist(){
-      var user_id=$("#user_id").val()
+      var ID=$("#ID").val()
       
       //아이디를 입력하지 않았을 경우 예외처리
-      if(user_id.length == 0){
+      if(ID.length == 0){
          alert('아이디를 입력해주세요')
          return 
       }
       
       $.ajax({
          //요청할 주소
-         url: '${root}user/checkBuyerExist/' + user_id,
+         url: '${root}user/checkBuyerExist/' + ID,
          //요청타입
          type: 'get',
          //응답결과
@@ -62,58 +62,58 @@
                      modelAttribute="joinUserBean">
                      <form:hidden path="userIdExist" />
                      <div class="form-group">
-                        <form:label path="user_name">이름</form:label>
-                        <form:input path="user_name" class='form-control'
+                        <form:label path="Name">이름</form:label>
+                        <form:input path="Name" class='form-control'
                            placeholder='이름' />
-                        <form:errors path="user_name" style='color:red' />
+                        <form:errors path="Name" style='color:red' />
                      </div>
                      <div class="form-group">
-                        <form:label path="user_id">아이디</form:label>
+                        <form:label path="ID">아이디</form:label>
                         <div class="input-group">
-                           <form:input path="user_id" class='form-control'
+                           <form:input path="ID" class='form-control'
                               placeholder='아이디' onkeypress="resetUserIdExist()" />
                            <div class="input-group-append">
                               <button type="button" class="btn btn-primary"
                                  onclick="checkUserIdExist()">중복확인</button>
                            </div>
                         </div>
-                        <form:errors path="user_id" style='color:red' />
+                        <form:errors path="ID" style='color:red' />
                      </div>
                      <div class="form-group">
-                        <form:label path="user_pw">비밀번호</form:label>
-                        <form:password path="user_pw" class='form-control'
+                        <form:label path="PW">비밀번호</form:label>
+                        <form:password path="PW" class='form-control'
                            placeholder='비밀번호' />
-                        <form:errors path='user_pw' style='color:red' />
+                        <form:errors path='PW' style='color:red' />
                      </div>
                      <div class="form-group">
-                        <form:label path="user_pw2">비밀번호 확인</form:label>
-                        <form:password path="user_pw2" class='form-control'
+                        <form:label path="PW2">비밀번호 확인</form:label>
+                        <form:password path="PW2" class='form-control'
                            placeholder='비밀번호 확인' />
-                        <form:errors path='user_pw2' style='color:red' />
+                        <form:errors path='PW2' style='color:red' />
                      </div>
                      <div class="form-group">
-                        <form:label path="user_email">이메일</form:label>
-                        <form:input path="user_email" class='form-control'
+                        <form:label path="Mail">이메일</form:label>
+                        <form:input path="Mail" class='form-control'
                            placeholder='이메일' />
-                           <form:errors path='user_email' style='color:red' />
+                           <form:errors path='Mail' style='color:red' />
                      </div>
 
                      <div class="form-group">
-                        <form:label path="user_tel">휴대폰 번호</form:label>
-                        <form:input path="user_tel" class='form-control'
+                        <form:label path="Phone">휴대폰 번호</form:label>
+                        <form:input path="Phone" class='form-control'
                            placeholder='휴대폰 번호' />
-                        <form:errors path='user_tel' style='color:red' />
+                        <form:errors path='Phone' style='color:red' />
                      </div>
 
                      <div class="form-group">
-                        <form:label path="user_add1">주소</form:label>
-                        <form:input path="user_add1" class='form-control' placeholder='우편번호 입력' />
-                        <form:errors path='user_add1' style='color:red' />
+                        <form:label path="Address">주소</form:label>
+                        <form:input path="Address" class='form-control' placeholder='우편번호 입력' />
+                        <form:errors path='Address' style='color:red' />
                         </div>
                         <div class="form-group">
-                        <form:label path="user_add2">상세주소</form:label>
-                        <form:input path="user_add2" class='form-control' placeholder='상세주소 입력' />
-                        <form:errors path='user_add2' style='color:red' />
+                        <form:label path="Address2">상세주소</form:label>
+                        <form:input path="Address2" class='form-control' placeholder='상세주소 입력' />
+                        <form:errors path='Address2' style='color:red' />
                      </div>
 
                      <div class="form-group">
