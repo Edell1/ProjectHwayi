@@ -1,4 +1,3 @@
-
 package kr.co.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -25,6 +24,7 @@ import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
 import kr.co.mapper.TopMenuMapper;
 import kr.co.mapper.SellerMapper;
+import kr.co.service.BoardService;
 import kr.co.service.TopMenuService;
 
 @Configuration // Spring MVC 프로젝트 설정
@@ -46,6 +46,9 @@ public class ServletAppContext implements WebMvcConfigurer {
 
 	@Value("${db.password}")
 	private String db_password;
+	
+	@Autowired
+	private BoardService boardService;
 
 	@Autowired
 	private TopMenuService topMenuService;

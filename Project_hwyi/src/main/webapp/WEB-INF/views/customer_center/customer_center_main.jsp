@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>고객센터</title>
 <!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/faq2.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/faq1.css' />" />
@@ -81,7 +82,9 @@
 			</div>
 		</div>
 	</div>  
-	<div class="QNA"></div>
+	<div class="QNA">
+		<a href="${root}customer_center/main" class="btn btn-primary">QnA</a>
+	</div>
 	
 	<div class="bott_box">
 	<div class="">

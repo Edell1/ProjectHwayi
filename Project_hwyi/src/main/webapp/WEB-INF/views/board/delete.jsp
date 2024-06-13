@@ -3,5 +3,5 @@
 <c:set var="root" value="${pageContext.request.contextPath }/"/>
 <script>
 	alert('삭제되었습니다')
-	location.href='${root}board/main'
+	location.href='${root}customer_center/main?board_info_idx=${board_iunfo_idx}'
 </script>

@@ -19,16 +19,6 @@ public class TopMenuInterceptor implements HandlerInterceptor{
 	//DI
 	public TopMenuInterceptor(TopMenuService topMenuService) {
 		this.topMenuService=topMenuService;
-	}
-
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		List<BoardInfoBean> topMenuList=topMenuService.getTopMenuList(); //4개 게시판
-		request.setAttribute("topMenuList", topMenuList);
-		return true;
-	}
-	
-	
+	}	
 
 }

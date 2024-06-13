@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 public class UserBean {
 
 	private String user_code;
+	
+	private int user_idx;
 
 	@Size(min = 2, max = 4)
 	@Pattern(regexp = "[°¡-ÆR]*")
@@ -53,6 +55,29 @@ public class UserBean {
 
 	@Size(min = 1)
 	private String seller_add2;
+	
+	
+	private boolean userLogin;
+	
+	private boolean userIdExist;
+
+	
+	
+	public int getUser_idx() {
+		return user_idx;
+	}
+
+	public void setUser_idx(int user_idx) {
+		this.user_idx = user_idx;
+	}
+
+	public boolean isUserLogin() {
+		return userLogin;
+	}
+
+	public void setUserLogin(boolean userLogin) {
+		this.userLogin = userLogin;
+	}
 
 	public String getUser_code() {
 		return user_code;
@@ -126,7 +151,7 @@ public class UserBean {
 		this.user_tel = user_tel;
 	}
 
-	private boolean userIdExist;
+
 
 	public boolean isUserIdExist() {
 		return userIdExist;
