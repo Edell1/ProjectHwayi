@@ -20,6 +20,7 @@
 			<li><a href="#" class="login">로그인</a></li>
 			<li><a href="${root}user/join_choice" class="join">회원가입</a></li>
 			<li><a href="${root}customer_center/customer_center_main" class="customer">고객센터</a></li>
+			<li><a href="${root}admin/main" class="admin">관리자</a></li>
 		</ul>
 	</div>
 

@@ -40,7 +40,7 @@ public class UserController {
 	}
 
 	// @ModelAttribute("joinUserBean") : UserBean joinUserBean=new UserBean()
-	// joinUserBeanÀÌ getter setterÀ» º¸À¯ÇÏ°í ÀÖÀ½
+	// joinUserBeanì´ getter setterë¥¼ ì†Œìœ í•˜ê³  ìˆìŒ
 	@GetMapping("/join_buyer")
 	public String join_buyer(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
 		return "user/join_buyer";
@@ -53,7 +53,7 @@ public class UserController {
 
 	@PostMapping("join_pro1")
 	public String join_pro1(@Valid @ModelAttribute("joinUserBean") UserBean joinUserBean, BindingResult result) {
-		// hasErrors() : ¿¡·¯ÄÚµå°¡ ÀÖ³Ä? À¯È¿¼º°Ë»ç¿¡ °É·È´Ï?
+		// hasErrors() : ï¿½ï¿½ï¿½ï¿½ï¿½Úµå°¡ ï¿½Ö³ï¿½? ï¿½ï¿½È¿ï¿½ï¿½ï¿½Ë»ç¿¡ ï¿½É·È´ï¿½?
 		if (result.hasErrors()) {
 			return "user/join_buyer";
 		}
@@ -64,7 +64,7 @@ public class UserController {
 
 	@PostMapping("join_pro2")
 	public String join_pro2(@Valid @ModelAttribute("joinUserBean") UserBean joinUserBean, BindingResult result) {
-		// hasErrors() : ¿¡·¯ÄÚµå°¡ ÀÖ³Ä? À¯È¿¼º°Ë»ç¿¡ °É·È´Ï?
+		// hasErrors() : ï¿½ï¿½ï¿½ï¿½ï¿½Úµå°¡ ï¿½Ö³ï¿½? ï¿½ï¿½È¿ï¿½ï¿½ï¿½Ë»ç¿¡ ï¿½É·È´ï¿½?
 		if (result.hasErrors()) {
 			return "user/join_seller";
 		}
