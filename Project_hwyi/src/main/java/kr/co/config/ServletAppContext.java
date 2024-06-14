@@ -3,6 +3,7 @@ package kr.co.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,13 +23,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import kr.co.interceptor.TopMenuInterceptor;
 import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
-import kr.co.mapper.TopMenuMapper;
+import kr.co.mapper.FurnitureMapper;
 import kr.co.mapper.SellerMapper;
+import kr.co.mapper.TopMenuMapper;
 import kr.co.service.BoardService;
 import kr.co.service.TopMenuService;
 
 @Configuration // Spring MVC 프로젝트 설정
 @EnableWebMvc // 어노테이션 셋팅 선언
+@ComponentScan(basePackages = "kr.co")
 @ComponentScan("kr.co.dao")
 @ComponentScan("kr.co.service")
 @ComponentScan("kr.co.controller")
@@ -117,7 +120,14 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 
-
+	@Bean
+	public MapperFactoryBean<FurnitureMapper> getFurnitureMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<FurnitureMapper> factoryBean = new MapperFactoryBean<FurnitureMapper>(FurnitureMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		WebMvcConfigurer.super.addInterceptors(registry);

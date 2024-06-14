@@ -30,8 +30,6 @@ public class BoardController {
    @Resource(name="loginUserBean")
    private UserBean loginUserBean;
    
-   
-   
    @GetMapping("/read")
    public String read(@RequestParam("board_info_idx") int board_info_idx, 
 		              @RequestParam("content_idx") int content_idx,
