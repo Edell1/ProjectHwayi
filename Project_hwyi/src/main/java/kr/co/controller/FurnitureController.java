@@ -32,4 +32,12 @@ public class FurnitureController {
 		System.out.println("Controller" + furniturelist);
 		return "/furniture/furniture_main";
 	}
+	@GetMapping("/furniture_list")
+	public String furniture_list(Model model) {
+		List<FurnitureBean> furniturelist= furnitureService.getFurnitureList();
+		model.addAttribute("furniturelist",furniturelist);
+		
+		System.out.println("Controller" + furniturelist);
+		return "/furniture/furniture_list";
+	}
 }

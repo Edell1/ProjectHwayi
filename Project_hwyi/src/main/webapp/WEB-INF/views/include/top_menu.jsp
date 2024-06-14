@@ -28,7 +28,8 @@
 		<ul class="nav_menu">
 			<li><a href="${root}main" class="home">홈</a></li>
 			<li><a href="#" class="home">추천</a></li>
-			<li><a href="${root}furniture/furniture_main" class="furniture">가구</a></li>
+			<li><a href="${root}furniture/furniture_main" class="furniture">가구초안</a></li>
+			<li><a href="${root}furniture/furniture_list" class="furniture">가구</a></li>
 			<li><a href="#" class="home">인테리어</a></li>
 			<li><a href="#" class="home">브랜드관</a></li>
 		</ul>

@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+/* 가구 페이지 */
+
+.furniture_list {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.furniture_list > div {
+	width: 80%;
+	padding: 10px;
+}
+
+.furniture_list .furni_nav {
+	width: 90%;
+	padding: 20px 0;
+}
+.furniture_list .furni_nav ul {
+	display: flex;
+	justify-content: space-between;
+}
+.furniture_list .furni_nav ul li {
+	width: 120px;
+	height: 120px;
+}
+.furni_nav ul li a {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.furni_nav ul li a img {
+	width: auto;
+	height: 95px;
+}
+
+.filter_box > div {
+	display: flex;
+}
+.filter_box > div:nth-child(1) {
+	margin-bottom: 20px;
+}
+
+.filter_box .tit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	height: 40px;
+	margin-right: 20px;
+	border-radius: 10px;
+	background-color: #22a026;
+}
+.filter_list {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.filter_list input {
+	margin-right: 3px;
+}
+
+.furni_box {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 20px;
+}
+.furni_box .furni_cont {
+	width: 360px;
+	height: 360px;
+}
+
+.furni_cont .furni_img {
+	overflow: hidden;
+	width: 100%;
+	height: 260px;
+	border-radius: 10px;
+}
+.furni_cont .furni_img img {
+	width: auto;
+	height: 100%;
+}
+.furni_cont .furni_img:hover img {
+	scale: 1.2;
+	transition: all 0.45s;
+}
+
+.furni_cont .desc {
+	padding: 10px 10px;
+}
+.furni_cont .desc p {
+	margin-bottom: 5px;
+}
+.furni_cont .desc p:nth-child(1) {
+	color: #555;
+}
+.furni_cont .desc p:nth-child(2) {
+	font-size: 24px;
+}
+.furni_cont .desc p:nth-child(3) {
+	font-size: 20px;
+	color: #22a026;
+}

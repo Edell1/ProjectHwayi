@@ -108,7 +108,7 @@
 </body>
 
 <!-- script -->
-<script src="js/main.js"></script>
+<script src="${root }js/function.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -117,13 +117,5 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/4cd100a941.js"
 	crossorigin="anonymous"></script>
+	
 </html>
-
-
-
-
-
-
-
-
-
