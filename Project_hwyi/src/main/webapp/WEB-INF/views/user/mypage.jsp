@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HiF 쇼핑몰</title>
-<!-- Bootstrap CDN -->
+<title>마이페이지</title>
+
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/mypage.css' />" />
@@ -18,8 +18,6 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
-
-	<%-- <jsp:include page="${root}shopping/cart.jsp" /> --%>
 
 	<div class="flex_wrap">
 
@@ -115,7 +113,7 @@
 </body>
 
 <!-- script -->
-<script src="js/main.js"></script>
+<script src="${root}js/function.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script

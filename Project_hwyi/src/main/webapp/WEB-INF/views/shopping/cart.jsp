@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HiF 쇼핑몰</title>
-<!-- Bootstrap CDN -->
+<title>장바구니</title>
+
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/cart.css' />" />
@@ -108,7 +108,7 @@
 </body>
 
 <!-- script -->
-<script src="${root }js/function.js"></script>
+<script src="${root}js/function.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script

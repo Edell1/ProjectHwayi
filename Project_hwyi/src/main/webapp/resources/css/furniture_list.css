@@ -3,6 +3,7 @@
 /* 가구 페이지 */
 
 .furniture_list {
+	position: relative;
 	display: flex;
 	flex-flow: column;
 	justify-content: center;
@@ -15,16 +16,15 @@
 }
 
 .furniture_list .furni_nav {
-	width: 90%;
-	padding: 20px 0;
+	width: 80%;
+	padding: 40px 0 20px 0;
 }
 .furniture_list .furni_nav ul {
 	display: flex;
 	justify-content: space-between;
 }
 .furniture_list .furni_nav ul li {
-	width: 120px;
-	height: 120px;
+	width: 100px;
 }
 .furni_nav ul li a {
 	display: flex;
@@ -33,10 +33,11 @@
 	align-items: center;
 }
 
-.furni_nav ul li a img {
-	width: auto;
-	height: 95px;
+.furni_nav ul li a span {
+	margin-top: 10px;
 }
+
+/* filter_box */
 
 .filter_box > div {
 	display: flex;
@@ -60,18 +61,75 @@
 	align-items: center;
 	gap: 20px;
 }
-.filter_list input {
-	margin-right: 3px;
+
+.filter_color .filter_list > div {
+	display: flex;
+}
+.filter_color .filter_list .color_box + label {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	border: 1px solid rgb(210, 210, 210);
+	border-radius: 50%;
+}
+
+.filter_color .filter_list .cb1 + label {
+	background-color: #fff;
+}
+.filter_color .filter_list .cb2 + label {
+	background-color: gray;
+}
+.filter_color .filter_list .cb3 + label {
+	background-color: black;
+}
+.filter_color .filter_list .cb4 + label {
+	background-color: beige;
+}
+.filter_color .filter_list .cb5 + label {
+	background-color: brown;
+}
+.filter_color .filter_list .cb6 + label {
+	background-color: silver;
+}
+.filter_color .filter_list .cb7 + label {
+	background-color: goldenrod;
+}
+.filter_color .filter_list .cb8 + label {
+	background-color: red;
+}
+.filter_color .filter_list .cb9 + label {
+	background-color: yellow;
+}
+.filter_color .filter_list .cb10 + label {
+	background-color: green;
+}
+.filter_color .filter_list .cb11 + label {
+	background-color: orangered;
+}
+.filter_color .filter_list .cb12 + label {
+	background-color: blue;
+}
+.filter_color .filter_list .cb13 + label {
+	background-color: navy;
+}
+.filter_color .filter_list .cb14 + label {
+	background-color: pink;
+}
+.filter_color .filter_list .cb15 + label {
+	margin-left: 5px;
 }
 
 .furni_box {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
+	flex-flow: wrap;
+	width: 100%;
 	gap: 10px;
 	margin-top: 20px;
 }
 .furni_box .furni_cont {
-	width: 360px;
+	width: 24%;
 	height: 360px;
 }
 
@@ -86,7 +144,7 @@
 	height: 100%;
 }
 .furni_cont .furni_img:hover img {
-	scale: 1.2;
+	scale: 1.5;
 	transition: all 0.45s;
 }
 

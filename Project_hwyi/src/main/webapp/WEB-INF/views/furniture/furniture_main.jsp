@@ -109,6 +109,8 @@
 <c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
 
 </body>
+
+<script src="${root}js/function.js"></script>
 </html>
 
 

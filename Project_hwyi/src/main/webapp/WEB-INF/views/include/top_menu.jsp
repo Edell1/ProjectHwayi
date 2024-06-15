@@ -6,7 +6,7 @@
 <!-- 상단 메뉴 부분 -->
 <div class="top">
 	<div class="gnb_bar">
-		<a href="${root }main" class="logo">HiF</a>
+		<a href="${root}main" class="logo">HiF</a>
 
 		<form action="#" class="search">
 			<input type="text" class="sch_txt" id="sch_str"
@@ -21,6 +21,7 @@
 			<li><a href="${root}user/join_choice" class="join">회원가입</a></li>
 			<li><a href="${root}customer_center/customer_center_main" class="customer">고객센터</a></li>
 			<li><a href="${root}admin/main" class="admin">관리자</a></li>
+			<li><a href="${root}seller/main" class="admin">판매자</a></li>
 		</ul>
 	</div>
 

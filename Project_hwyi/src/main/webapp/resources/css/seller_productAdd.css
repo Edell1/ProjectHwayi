@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+/* seller_productAdd */
+
+.seller_prodAdd {
+	width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.prodAdd_inner {
+	width: 100%;
+}
+
+.prodAdd_inner .tit {
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+
+.flex_box {
+	display: flex;
+	justify-content: center;
+}
+
+.prodTable table {
+	font-size: 24px;
+}
+.prodTable table th {
+	padding: 10px;
+	width: 180px;
+	height: 40px;
+	text-align: left;
+}
+
+.prodTable table td input[type='text'] {
+	height: 34px;
+	padding-left: 10px;
+	font-size: 16px;
+	border: 2px solid rgb(210, 210, 210);
+	border-radius: 5px;
+}
+.prodTable table td input:focus {
+	outline: none;
+}
+
+.prodTable table td select {
+	width: 205px;
+	height: 40px;
+	padding: 5px;
+	font-size: 16px;
+	border: 2px solid rgb(210, 210, 210);
+	border-radius: 5px;
+}
+
+.btn_box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.btn_box button {
+	width: 120px;
+	height: 40px;
+	font-size: 18px;
+	color: #07660a;
+	border: 2px solid #22a026;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+.btn_box button:hover {
+	color: white;
+	background-color: #22a026;
+}
