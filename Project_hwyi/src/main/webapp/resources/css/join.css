@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+/* join */
+
 .join_container .top_box {
 	display: flex;
 	justify-content: center;
@@ -23,10 +25,8 @@
 	width: 100%;
 }
 .join_box .join_box_inner {
-	display: flex;
-	flex-flow: column;
-	top: -40px;
 	position: absolute;
+	top: -40px;
 	width: 70%;
 	height: 600px;
 	background-color: #fff;
@@ -43,49 +43,74 @@
 	color: #000;
 }
 
-.join_box .join_box_inner .choice_box {
+.join_cont {
 	display: flex;
-	flex-flow: column;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	height: 85%;
-	padding-top: 40px;
 }
-
-.cho_txt {
-	font-size: 24px;
-	text-align: center;
-}
-.cho_txt p {
-	margin-top: 10px;
-	font-size: 18px;
-	font-family: 'Free-M';
-}
-
-.choice {
-	display: flex;
-	justify-content: space-around;
-	width: 70%;
-	height: 280px;
-	text-align: center;
-}
-
-.choice li {
-	width: 260px;
+.cont_box {
 	padding: 20px;
-	border: 1px solid #bebebe;
+	font-size: 28px;
+	box-sizing: border-box;
 }
 
-.choice li a {
+.cont_box .form-group {
+	position: relative;
 	display: flex;
-	flex-flow: column;
-	justify-content: space-between;
 	align-items: center;
-	height: 100%;
-	color: #000;
-	font-size: 22px;
+	margin-bottom: 20px;
 }
-.choice li a p {
-	font-family: 'Free-M';
+.cont_box .form-group .form-control {
+	height: 32px;
+	margin-left: 5px;
+	padding-left: 5px;
 	font-size: 16px;
+	border: 2px solid rgb(210, 210, 210);
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+.cont_box .form-group .form-control:focus {
+	outline: none;
+}
+
+.cont_box .form-group .label_txt {
+	width: 140px;
+}
+.cont_box .form-group .err_txt {
+	position: absolute;
+	right: 10px;
+	font-size: 16px;
+	margin-left: 10px;
+}
+
+.cont_box .form-group .input-group {
+	display: flex;
+	align-items: center;
+}
+
+.cont_box .btn-primary {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+	width: 80px;
+	height: 32px;
+	padding: 5px;
+	font-size: 16px;
+	color: #07660a;
+	border: 2px solid #22a026;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+.cont_box .btn-primary:hover {
+	color: white;
+	background-color: #22a026;
+}
+
+.cont_box .joinBtn {
+	bottom: 40px;
+	width: 360px;
+	height: 50px;
+	font-size: 26px;
 }
