@@ -1,5 +1,6 @@
 package kr.co.controller;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.apache.tomcat.jni.User;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.beans.UserBean;
 import kr.co.service.UserbuyerService;
@@ -29,24 +31,75 @@ public class UserController {
 	@Autowired
 	private UsersellerService usersellerService;
 
-	@GetMapping("/login")
-	public String login() {
-		return "user/login";
+	@Resource(name = "loginUserBean")
+	private UserBean loginUserBean;
+
+	@GetMapping("/login_choice")
+	public String login_choice() {
+		return "user/login_choice";
+	}
+
+	@GetMapping("/login_buyer")
+	public String login_buyer(@ModelAttribute("tempLoginBean") UserBean tempLoginBean,
+			@RequestParam(value = "fail", defaultValue = "false") boolean fail, Model model) {
+
+		// @RequestParam(value = "fail", defaultValue = "false") => fail= false
+		// fail=fail
+		model.addAttribute("fail", fail); // fail=false => 실패아님
+
+		return "user/login_buyer";
+	}
+
+	@GetMapping("/login_seller")
+	public String login_seller(@ModelAttribute("tempLoginBean") UserBean tempLoginBean,
+			@RequestParam(value = "fail", defaultValue = "false") boolean fail, Model model) {
+
+		// @RequestParam(value = "fail", defaultValue = "false") => fail= false
+		// fail=fail
+		
+		model.addAttribute("fail", fail); // fail=false => 실패아님
+		return "user/login_seller";
+	}
+
+	@PostMapping("/login_pro1")
+	public String login_pro1(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result, Model model) {
+
+		if (result.hasErrors()) {
+			return "user/login_buyer";
+		}
+
+		// 세션영역에 있는 로그인 정보 불러오기
+		userbuyerService.getLoginUserInfo(tempLoginBean);// isUserLogin()==true
+		
+		// loginUserBean : sessionScope 에 있는 UserBean의 객체
+		if (loginUserBean.isUserLogin() == true) {
+			return "user/login_success";
+		} else {
+			return "user/login_fail_buyer";
+		}
+	}
+
+	@PostMapping("/login_pro2")
+	public String login_pro2(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "user/login_seller";
+		}
+
+		// 세션영역에 있는 로그인 정보 불러오기
+		usersellerService.getLoginUserInfo(tempLoginBean);// isUserLogin()==true
+
+		// loginUserBean : sessionScope 에 있는 UserBean의 객체
+		if (loginUserBean.isUserLogin() == true) {
+			return "user/login_success";
+		} else {
+			return "user/login_fail_seller";
+		}
 	}
 
 	@GetMapping("/join_choice")
 	public String join_choice() {
 		return "user/join_choice";
-	}
-	
-	@GetMapping("/login_buyer")
-	public String login_buyer(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
-		return "user/login_buyer";
-	}
-
-	@GetMapping("/login_seller")
-	public String login_seller(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
-		return "user/login_seller";
 	}
 
 	// @ModelAttribute("joinUserBean") : UserBean joinUserBean=new UserBean()
@@ -90,6 +143,7 @@ public class UserController {
 
 	@GetMapping("/logout")
 	public String logout() {
+		loginUserBean.setUserLogin(false);
 		return "user/logout";
 	}
 
@@ -99,11 +153,10 @@ public class UserController {
 		binder.addValidators(validator1);
 
 	}
-	
+
 	@GetMapping("/mypage")
 	public String mypage() {
 		return "user/mypage";
 	}
-	
 
 }

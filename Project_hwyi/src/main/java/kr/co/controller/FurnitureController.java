@@ -19,9 +19,6 @@ import kr.co.service.FurnitureService;
 public class FurnitureController {
 	
 	@Autowired
-	private FurnitureDao furnitureDao;
-
-	@Autowired
 	private FurnitureService furnitureService;
 	
 	@GetMapping("/furniture_main")

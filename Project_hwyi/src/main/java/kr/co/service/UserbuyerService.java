@@ -2,6 +2,8 @@ package kr.co.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,9 @@ public class UserbuyerService {
 	@Autowired
 	private UserDao userDao;
 
+	@Resource(name = "loginUserBean")
+	private UserBean loginUserBean;
+
 	// 넘겨받은 해당 아이디를 사용하여 반환받은 이름이 사용가능한지 판단 여부
 	public boolean checkUserExist(String id) {
 		String name = userDao.checkBuyerIdExist(id);
@@ -30,6 +35,18 @@ public class UserbuyerService {
 	public void addUserInfo(UserBean joinUserBean) {
 		userDao.addBuyerInfo(joinUserBean);
 
+	}
+
+	public void getLoginUserInfo(UserBean tempLoginUserBean) {
+
+		UserBean tempLoginUserBean2 = userDao.getLoginBuyerInfo(tempLoginUserBean);
+		// 가져온 데이터가 있다면
+		if (tempLoginUserBean2 != null) {
+			loginUserBean.setCode(tempLoginUserBean2.getCode());
+			loginUserBean.setName(tempLoginUserBean2.getName());
+			loginUserBean.setUserLogin(true); // 로그인 상태
+		}
+		System.out.println(loginUserBean.isUserLogin());
 	}
 
 	public List<UserBean> getBuyerList() {

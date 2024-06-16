@@ -27,12 +27,12 @@ public class AdminController {
 	private UserbuyerService userbuyerService;
 
 	@RequestMapping("/main")
-	public String main(HttpServletRequest request, Model model) {
+	public String main(Model model) {
 		List<UserBean> buyerlist = userbuyerService.getBuyerList();
 		List<UserBean> sellerlist = usersellerService.getSellerList();
 
-		request.setAttribute("buyerlist", buyerlist);
-		request.setAttribute("sellerlist", sellerlist);
+		model.addAttribute("buyerlist", buyerlist);
+		model.addAttribute("sellerlist", sellerlist);
 
 		return "admin/main";
 	}

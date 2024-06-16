@@ -37,6 +37,16 @@ public class UserDao {
 		sellerMapper.addSellerInfo(joinUserBean);
 
 	}
+	
+	public UserBean getLoginBuyerInfo(UserBean tempLoginUserBean) {
+		return buyerMapper.getLoginBuyerInfo(tempLoginUserBean);
+		
+	}
+	
+	public UserBean getLoginSellerInfo(UserBean tempLoginUserBean) {
+		return sellerMapper.getLoginSellerInfo(tempLoginUserBean);
+		
+	}
 
 	public List<UserBean> getBuyerList() {
 		return buyerMapper.getBuyerList();

@@ -46,9 +46,9 @@
 
 						<c:forEach var="buyer" items="${buyerlist}">
 							<tr>
-								<td>${buyer.user_name}</td>
-								<td>${buyer.user_id}</td>
-								<td>${buyer.user_add1}</td>
+								<td>${buyer.name}</td>
+								<td>${buyer.id}</td>
+								<td>${buyer.address}</td>
 								<td>${buyer.favarite}</td>
 							</tr>
 						</c:forEach>
@@ -72,12 +72,12 @@
 
 						<c:forEach var="seller" items="${sellerlist}">
 							<tr>
-								<td>${seller.user_name}</td>
-								<td>${seller.user_id}</td>
-								<td>${seller.user_add1}</td>
-								<td>${seller.seller_num}</td>
-								<td>${seller.seller_add1}</td>
-								<td>${seller.seller_tel}</td>
+								<td>${seller.name}</td>
+								<td>${seller.id}</td>
+								<td>${seller.address}</td>
+								<td>${seller.strcode}</td>
+								<td>${seller.straddress}</td>
+								<td>${seller.strtel}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
