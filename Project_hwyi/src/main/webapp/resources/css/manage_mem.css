@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+.manage_member {
+	width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.mgMem_inner {
+	width: 84%;
+}
+
+.mgMem_inner .tit {
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+
+input[type='radio'] {
+	display: none;
+}
+
+label[for*='tab'] {
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 5px 5px 0 0;
+}
+
+input[id='tab01']:checked ~ .cont_wrap .con1, input[id='tab02']:checked 
+	~ .cont_wrap .con2 {
+	display: block;
+}
+
+input[id='tab01']:checked+label[for='tab01'], input[id='tab02']:checked+label[for='tab02']
+	{
+	color: #fff;
+	background: green;
+}
+
+label[for='tab01'] {
+	margin-right: 5px;
+}
+
+.conbox {
+	display: none;
+	max-height: 1000px;
+	padding: 20px;
+	background: rgb(232, 232, 232);
+}
+
+.conbox h1 {
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+}
+
+table th, td {
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	border-bottom: 1px solid #22a026;
+}
+
+.btn_box {
+	display: flex;
+	justify-content: right;
+	margin-top: 10px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.btn_box .updateBtn {
+	padding: 10px 20px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #22a026;
+}
+
+.btn_box .updateBtn:hover {
+	background-color: #18651a;
+}

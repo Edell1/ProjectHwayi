@@ -1,3 +1,4 @@
+
 @charset "utf-8";
 
 .customer_center_top {
@@ -6,8 +7,7 @@
 	gap: 10px;
 	padding: 10px 20px;
 }
-.customer_center_top .FAQ_box,
-.customer_center_top .QNA_box {
+.customer_center_top .FAQ_box {
 	width: 30%;
 	padding: 10px;
 }
@@ -58,7 +58,53 @@ input[id*='answer'] + label + div p {
 	line-height: 1.4em;
 }
 
-/* FAQ2 css */
+/* QNA  */
+
+.QNA_box {
+	width: 23%;
+	padding: 10px;
+}
+
+.QNA_box .qna_txt {
+	height: 200px;
+}
+
+.QNA_box .qna_txt h3 {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+.QNA_box .qna_txt h3 span {
+	color: #22a026;
+}
+
+.QNA_box .qna_txt ul {
+	margin-bottom: 10px;
+}
+.QNA_box .qna_txt ul li {
+	margin-bottom: 5px;
+}
+
+.QNA_box .call_box {
+	font-size: 26px;
+	color: #22a026;
+	margin-bottom: 20px;
+}
+
+.QNA_box .qnaBtn button {
+	width: 280px;
+	height: 40px;
+	color: #fff;
+	font-size: 21px;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #22a026;
+	border: none;
+}
+.QNA_box .qnaBtn button:hover {
+	background-color: #156a18;
+}
+
+/* FAQ2 */
 
 .bott_box {
 	display: flex;

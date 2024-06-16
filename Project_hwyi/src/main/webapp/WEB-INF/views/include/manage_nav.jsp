@@ -11,25 +11,25 @@
 
 	<div class="left_gnb">
 		<ul>
-			<li><a href="#">고객정보</li>
+			<li>고객정보</li>
 			<li class="border"></li>
 			<li><a href="#">구매자 관리</a></li>
 			<li><a href="#">판매자 관리</a></li>
 		</ul>
 		<ul>
-			<li><a href="#">등록관리</li>
+			<li>등록관리</li>
 			<li class="border"></li>
-			<li><a href="#">가구점 등록</a></li>
-			<li><a href="#">상품 등록</a></li>
-			<li><a href="#">배너 등록</a></li>
+			<li><a href="#">가구점 등록 관리</a></li>
+			<li><a href="#">상품 등록 관리</a></li>
+			<li><a href="#">배너 등록 관리</a></li>
 		</ul>
 		<ul>
-			<li><a href="#">판매통계</li>
+			<li>판매통계</li>
 			<li class="border"></li>
 			<li><a href="#">판매 통계</a></li>
 		</ul>
 		<ul>
-			<li><a href="#">공지등록/답변</li>
+			<li>공지등록/답변</li>
 			<li class="border"></li>
 			<li><a href="#">공지사항</a></li>
 			<li><a href="#">QnA 답변</a></li>

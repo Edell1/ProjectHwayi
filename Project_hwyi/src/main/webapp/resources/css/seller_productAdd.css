@@ -19,7 +19,6 @@
 
 .flex_box {
 	display: flex;
-	justify-content: center;
 }
 
 .prodTable table {

@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
-<link rel="stylesheet" href="<c:url value='/css/manage_member.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/manage_mem.css' />" />
 </head>
 <body>
 
@@ -23,66 +23,72 @@
 
 		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
 
-		<div class="container" style="margin-top: 100px">
-			<input type="radio" name="tabmenu" id="tab01" checked> <input
-				type="radio" name="tabmenu" id="tab02">
+		<div class="manage_member">
+			<div class="mgMem_inner">
+				<div class="tit">회원 정보</div>
 
-			<div class="btn">
-				<label for="tab01">구매자 목록</label> <label for="tab02">판매자 목록</label>
-			</div>
+				<input type="radio" name="tabmenu" id="tab01" checked /> <label
+					for="tab01">구매자 목록</label> <input type="radio" name="tabmenu"
+					id="tab02" /> <label for="tab02">판매자 목록</label>
 
-			<div class="conbox con1">
-				<h1>구매자 회원 목록입니다.</h1>
-				<table class="buyer_table">
-					<thead>
-						<tr>
-							<th class="th_column_1">이름</th>
-							<th class="th_column_2">아이디</th>
-							<th class="th_column_2">주소</th>
-							<th class="th_column_3">선호 태그</th>
-						</tr>
-					</thead>
-					<tbody>
+				<div class="cont_wrap">
+					<div class="conbox con1">
+						<h1>[ 구매자 회원 목록 ]</h1>
+						<table class="buyer_table">
+							<thead>
+								<tr>
+									<th class="th_column_1">이름</th>
+									<th class="th_column_2">아이디</th>
+									<th class="th_column_2">주소</th>
+									<th class="th_column_3">선호 태그</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="buyerlist" items="${buyerlist}">
+									<tr>
+										<td>${buyerlist.name}</td>
+										<td>${buyerlist.id}</td>
+										<td>${buyerlist.address}</td>
+										<td>${buyerlist.favarite}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<div class="conbox con2">
+						<h1>[ 판매자 회원 목록 ]</h1>
+						<table class="seller_table">
+							<thead>
+								<tr>
+									<th class="th_column_1">이름</th>
+									<th class="th_column_2">아이디</th>
+									<th class="th_column_2">주소</th>
+									<th class="th_column_3">사업자 번호</th>
+									<th class="th_column_3">사업자 주소</th>
+									<th class="th_column_3">사업자 전화번호</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="seller" items="${sellerlist}">
+									<tr>
+										<td>${seller.name}</td>
+										<td>${seller.id}</td>
+										<td>${seller.address}</td>
+										<td>${seller.strcode}</td>
+										<td>${seller.straddress}</td>
+										<td>${seller.strtel}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 
-						<c:forEach var="buyer" items="${buyerlist}">
-							<tr>
-								<td>${buyer.name}</td>
-								<td>${buyer.id}</td>
-								<td>${buyer.address}</td>
-								<td>${buyer.favarite}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div class="conbox con2">
-				<h1>판매자 회원 목록입니다.</h1>
-				<table class="seller_table">
-					<thead>
-						<tr>
-							<th class="th_column_1">이름</th>
-							<th class="th_column_2">아이디</th>
-							<th class="th_column_2">주소</th>
-							<th class="th_column_3">사업자 번호</th>
-							<th class="th_column_3">사업자 주소</th>
-							<th class="th_column_3">사업자 전화번호</th>
-						</tr>
-					</thead>
-					<tbody>
-
-						<c:forEach var="seller" items="${sellerlist}">
-							<tr>
-								<td>${seller.name}</td>
-								<td>${seller.id}</td>
-								<td>${seller.address}</td>
-								<td>${seller.strcode}</td>
-								<td>${seller.straddress}</td>
-								<td>${seller.strtel}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-
+					<div class="btn_box">
+						<a href="">
+							<button class="updateBtn">수정하기</button>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -90,6 +96,7 @@
 	<button id="topBtn" class="top-button" title="Go to top">Top</button>
 
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
+
 </body>
 
 <!-- script -->

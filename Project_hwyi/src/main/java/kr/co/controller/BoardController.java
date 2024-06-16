@@ -30,29 +30,43 @@ public class BoardController {
    @Resource(name="loginUserBean")
    private UserBean loginUserBean;
    
-   @GetMapping("/read")
-   public String read(@RequestParam("board_info_idx") int board_info_idx, 
-		              @RequestParam("content_idx") int content_idx,
-		              @RequestParam(value="page", defaultValue="1")int page,
-		              Model model) {
+//   @GetMapping("/read")
+//   public String read(@RequestParam("board_info_idx") int board_info_idx, 
+//		              @RequestParam("content_idx") int content_idx,
+//		              @RequestParam(value="page", defaultValue="1")int page,
+//		              Model model) {
+//
+//      model.addAttribute("board_info_idx", board_info_idx);
+//      model.addAttribute("content_idx", content_idx);
+//      model.addAttribute("loginUserBean", loginUserBean);
+//      
+//      ContentBean readContentBean=boardService.getContentInfo(content_idx);
+//      model.addAttribute("readContentBean", readContentBean);
+//      model.addAttribute("page", page);
+//
+//      return "board/read";
+//   }
+   
 
-      model.addAttribute("board_info_idx", board_info_idx);
-      model.addAttribute("content_idx", content_idx);
-      model.addAttribute("loginUserBean", loginUserBean);
-      
-      ContentBean readContentBean=boardService.getContentInfo(content_idx);
-      model.addAttribute("readContentBean", readContentBean);
-      model.addAttribute("page", page);
-
+//	 @GetMapping("/write") public String write(@ModelAttribute("writeContentBean")
+//	 ContentBean writeContentBean,
+//	 
+//	 @RequestParam("board_info_idx") int board_info_idx) {
+//	 
+//	 writeContentBean.setContent_board_idx(board_info_idx);
+//	  
+//	 return "board/write"; }
+	
+   
+   @PostMapping("/read")
+   public String read() {
+     
       return "board/read";
-   }
+      }
    
    @GetMapping("/write")
-   public String write(@ModelAttribute("writeContentBean") ContentBean writeContentBean, 
-         @RequestParam("board_info_idx") int board_info_idx) {
-   
-      writeContentBean.setContent_board_idx(board_info_idx);
-      
+   public String write() {
+     
       return "board/write";
       }
    
