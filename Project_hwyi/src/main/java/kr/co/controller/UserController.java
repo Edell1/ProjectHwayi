@@ -53,7 +53,7 @@ public class UserController {
 
 	@PostMapping("join_pro1")
 	public String join_pro1(@Valid @ModelAttribute("joinUserBean") UserBean joinUserBean, BindingResult result) {
-		// hasErrors() : �����ڵ尡 �ֳ�? ��ȿ���˻翡 �ɷȴ�?
+
 		if (result.hasErrors()) {
 			return "user/join_buyer";
 		}
@@ -64,7 +64,7 @@ public class UserController {
 
 	@PostMapping("join_pro2")
 	public String join_pro2(@Valid @ModelAttribute("joinUserBean") UserBean joinUserBean, BindingResult result) {
-		// hasErrors() : �����ڵ尡 �ֳ�? ��ȿ���˻翡 �ɷȴ�?
+
 		if (result.hasErrors()) {
 			return "user/join_seller";
 		}

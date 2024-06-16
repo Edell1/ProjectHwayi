@@ -16,39 +16,38 @@ public class UserBean {
 	private int user_idx;
 
 	@Size(min = 4, max = 20)
-	@Pattern(regexp = "[a-zA-Z0-9]*") //영어,숫자만가능
-	private String ID;
+	@Pattern(regexp = "[a-zA-Z0-9]*") // 영어,숫자만가능
+	private String id;
 
 	@Size(min = 4, max = 20)
 	@Pattern(regexp = "[a-zA-Z0-9]*")
-	private String PW;
-	
+	private String pw;
+
 	@Size(min = 4, max = 20)
 	@Pattern(regexp = "[a-zA-Z0-9]*")
-	private String PW2;
+	private String pw2;
 
 	@Size(min = 2, max = 4)
-	@Pattern(regexp = "[가-힇]*") //한글만가능
-	private String Name;
+	@Pattern(regexp = "[가-힇]*") // 한글만가능
+	private String name;
 
 	@Size(min = 1)
-	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$") //이메일형식만지원
-	private String Mail;
-	
+	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$") // 이메일형식만지원
+	private String mail;
+
+	@Size(min = 1)
+	private String phone;
+
+	@Size(min = 1)
+	private String address;
+
+	@Size(min = 1)
+	private String address2;
+
+	private String favarite;
+
 	@NotNull
-    @Min(1)
-	private int Phone;
-
-	@Size(min = 1)
-	private String Address;
-
-	@Size(min = 1)
-	private String Address2;
-
-	private String Favarite;
-
-	@NotNull
-    @Min(1)
+	@Min(1)
 	private long strcode;
 
 	@Size(min = 1)
@@ -57,21 +56,12 @@ public class UserBean {
 	@Size(min = 1)
 	private String straddress2;
 
-	@NotNull
-    @Min(1)
-	private int strtel;
+	@Size(min = 1)
+	private String strtel;
 
 	private boolean userLogin;
 
 	private boolean userIdExist;
-
-	public String getCODE() {
-		return CODE;
-	}
-
-	public void setCODE(String CODE) {
-		this.CODE = CODE;
-	}
 
 	public int getUser_idx() {
 		return user_idx;
@@ -81,76 +71,84 @@ public class UserBean {
 		this.user_idx = user_idx;
 	}
 
-	public String getID() {
-		return ID;
+	public String getCODE() {
+		return CODE;
 	}
 
-	public void setID(String ID) {
-		this.ID = ID;
+	public void setCODE(String cODE) {
+		CODE = cODE;
 	}
 
-	public String getPW() {
-		return PW;
+	public String getId() {
+		return id;
 	}
 
-	public void setPW(String PW) {
-		this.PW = PW;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getPW2() {
-		return PW2;
+	public String getPw() {
+		return pw;
 	}
 
-	public void setPW2(String PW2) {
-		this.PW2 = PW2;
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	public String getPw2() {
+		return pw2;
+	}
+
+	public void setPw2(String pw2) {
+		this.pw2 = pw2;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
-	public void setName(String Name) {
-		this.Name = Name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getMail() {
-		return Mail;
+		return mail;
 	}
 
-	public void setMail(String Mail) {
-		this.Mail = Mail;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
-	public int getPhone() {
-		return Phone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPhone(int Phone) {
-		this.Phone = Phone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
-	public void setAddress(String Address) {
-		this.Address = Address;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getAddress2() {
-		return Address2;
+		return address2;
 	}
 
-	public void setAddress2(String Address2) {
-		this.Address2 = Address2;
+	public void setAddress2(String address2) {
+		this.address2 = address2;
 	}
 
 	public String getFavarite() {
-		return Favarite;
+		return favarite;
 	}
 
-	public void setFavarite(String Favarite) {
-		this.Favarite = Favarite;
+	public void setFavarite(String favarite) {
+		this.favarite = favarite;
 	}
 
 	public long getStrcode() {
@@ -165,7 +163,7 @@ public class UserBean {
 		return straddress;
 	}
 
-	public void setstraddress(String straddress) {
+	public void setStraddress(String straddress) {
 		this.straddress = straddress;
 	}
 
@@ -173,15 +171,15 @@ public class UserBean {
 		return straddress2;
 	}
 
-	public void setstraddress2(String straddress2) {
+	public void setStraddress2(String straddress2) {
 		this.straddress2 = straddress2;
 	}
 
-	public int getStrtel() {
+	public String getStrtel() {
 		return strtel;
 	}
 
-	public void setStrtel(int strtel) {
+	public void setStrtel(String strtel) {
 		this.strtel = strtel;
 	}
 

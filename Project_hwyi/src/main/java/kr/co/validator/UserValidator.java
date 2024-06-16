@@ -16,13 +16,13 @@ public class UserValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		UserBean userBean = (UserBean) target; 
-		if (userBean.getPW().equals(userBean.getPW2()) == false) {
-			errors.rejectValue("PW", "NotEquals");
-			errors.rejectValue("PW2", "NotEquals");
+		if (userBean.getPw().equals(userBean.getPw2()) == false) {
+			errors.rejectValue("pw", "NotEquals");
+			errors.rejectValue("pw2", "NotEquals");
 		}
 
 		if (userBean.isUserIdExist() == false) {
-			errors.rejectValue("ID", "DontCheckUserIdExist");
+			errors.rejectValue("id", "DontCheckUserIdExist");
 		}
 	}
 

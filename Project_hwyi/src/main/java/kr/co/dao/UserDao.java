@@ -29,8 +29,8 @@ public class UserDao {
 
 	}
 
-	public String sellercheckUserExist(String ID) {
-		return sellerMapper.checkUserIdExist(ID);
+	public String sellercheckUserExist(String id) {
+		return sellerMapper.checkUserIdExist(id);
 	}
 
 	public void selleraddUserInfo(UserBean joinUserBean) {
