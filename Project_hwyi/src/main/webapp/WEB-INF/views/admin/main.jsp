@@ -33,7 +33,7 @@
 
 			<div class="conbox con1">
 				<h1>구매자 회원 목록입니다.</h1>
-				<table class="seller_table">
+				<table class="buyer_table">
 					<thead>
 						<tr>
 							<th class="th_column_1">이름</th>
@@ -44,12 +44,12 @@
 					</thead>
 					<tbody>
 
-						<c:forEach var="buyerlist" items="${buyerlist}">
+						<c:forEach var="buyer" items="${buyerlist}">
 							<tr>
-								<td>${buyerlist.name}</td>
-								<td>${buyerlist.ID}</td>
-								<td>${buyerlist.address}</td>
-								<td>${buyerlist.favarite}</td>
+								<td>${buyer.user_name}</td>
+								<td>${buyer.user_id}</td>
+								<td>${buyer.user_add1}</td>
+								<td>${buyer.favarite}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -72,12 +72,12 @@
 
 						<c:forEach var="seller" items="${sellerlist}">
 							<tr>
-								<td>${seller.name}</td>
-								<td>${seller.ID}</td>
-								<td>${seller.address}</td>
-								<td>${seller.strcode}</td>
-								<td>${seller.straddress}</td>
-								<td>${seller.strtel}</td>
+								<td>${seller.user_name}</td>
+								<td>${seller.user_id}</td>
+								<td>${seller.user_add1}</td>
+								<td>${seller.seller_num}</td>
+								<td>${seller.seller_add1}</td>
+								<td>${seller.seller_tel}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

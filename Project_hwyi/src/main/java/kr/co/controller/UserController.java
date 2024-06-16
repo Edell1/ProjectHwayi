@@ -38,6 +38,16 @@ public class UserController {
 	public String join_choice() {
 		return "user/join_choice";
 	}
+	
+	@GetMapping("/login_buyer")
+	public String login_buyer(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
+		return "user/login_buyer";
+	}
+
+	@GetMapping("/login_seller")
+	public String login_seller(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
+		return "user/login_seller";
+	}
 
 	// @ModelAttribute("joinUserBean") : UserBean joinUserBean=new UserBean()
 	// joinUserBean이 getter setter를 소유하고 있음
@@ -59,7 +69,7 @@ public class UserController {
 		}
 
 		userbuyerService.addUserInfo(joinUserBean);
-		return "user/join_success";
+		return "user/join_success_buyer";
 	}
 
 	@PostMapping("join_pro2")
@@ -70,7 +80,7 @@ public class UserController {
 		}
 
 		usersellerService.addUserInfo(joinUserBean);
-		return "user/join_success";
+		return "user/join_success_seller";
 	}
 
 	@GetMapping("/modify")

@@ -20,21 +20,21 @@ public class UserDao {
 	@Autowired
 	private SellerMapper sellerMapper;
 
-	public String buyercheckUserExist(String ID) {
-		return buyerMapper.buyercheckUserExist(ID);
+	public String checkBuyerIdExist(String ID) {
+		return buyerMapper.checkBuyerIdExist(ID);
 	}
 
-	public void buyeraddUserInfo(UserBean joinUserBean) {
-		buyerMapper.buyeraddUserInfo(joinUserBean);
+	public void addBuyerInfo(UserBean joinUserBean) {
+		buyerMapper.addBuyerInfo(joinUserBean);
 
 	}
 
-	public String sellercheckUserExist(String id) {
-		return sellerMapper.checkUserIdExist(id);
+	public String checkSellerIdExist(String id) {
+		return sellerMapper.checkSellerIdExist(id);
 	}
 
-	public void selleraddUserInfo(UserBean joinUserBean) {
-		sellerMapper.addUserInfo(joinUserBean);
+	public void addSellerInfo(UserBean joinUserBean) {
+		sellerMapper.addSellerInfo(joinUserBean);
 
 	}
 

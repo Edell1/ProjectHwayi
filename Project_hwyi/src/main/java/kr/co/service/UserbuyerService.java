@@ -19,7 +19,7 @@ public class UserbuyerService {
 
 	// 넘겨받은 해당 아이디를 사용하여 반환받은 이름이 사용가능한지 판단 여부
 	public boolean checkUserExist(String id) {
-		String name = userDao.buyercheckUserExist(id);
+		String name = userDao.checkBuyerIdExist(id);
 
 		if (name == null) {
 			return true; // 사용가능
@@ -28,7 +28,7 @@ public class UserbuyerService {
 	}
 
 	public void addUserInfo(UserBean joinUserBean) {
-		userDao.buyeraddUserInfo(joinUserBean);
+		userDao.addBuyerInfo(joinUserBean);
 
 	}
 
