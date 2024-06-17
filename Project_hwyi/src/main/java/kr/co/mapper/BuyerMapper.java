@@ -15,8 +15,9 @@ public interface BuyerMapper {
 
 	// 회원가입 DB 등록
 	@Insert("insert all into member (code, id, pw, name, mail, phone, address) "
-			+ "values (('Cu' || TO_CHAR(user_seq.nextval)), #{id}, #{pw}, #{name}, #{mail}, #{phone}, #{address})"
-			+ "into customer(code, favarite)" + "values(('Cu' || TO_CHAR(user_seq.nextval)), null)"
+			+ "values (('Cu' || TO_CHAR(user_seq.nextval)), #{id}, #{pw}, #{name}, #{mail}, #{phone}, #{address}) "
+			+ "into customer(code, favarite)" 
+			+ "values(('Cu' || TO_CHAR(user_seq.nextval)), null) "
 			+ "SELECT * FROM DUAL")
 	void addBuyerInfo(UserBean joinUserBean);
 

@@ -13,14 +13,13 @@
 		<ul>
 			<li>고객정보</li>
 			<li class="border"></li>
-			<li><a href="#">구매자 관리</a></li>
-			<li><a href="#">판매자 관리</a></li>
+			<li><a href="${root}admin/main">고객 관리</a></li>
 		</ul>
 		<ul>
 			<li>등록관리</li>
 			<li class="border"></li>
 			<li><a href="#">가구점 등록 관리</a></li>
-			<li><a href="#">상품 등록 관리</a></li>
+			<li><a href="${root}admin/furniture_main">상품 등록 관리</a></li>
 			<li><a href="#">배너 등록 관리</a></li>
 		</ul>
 		<ul>

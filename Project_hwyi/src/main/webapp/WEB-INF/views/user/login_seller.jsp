@@ -51,6 +51,7 @@
 							<div class="form-group text-right">
 								<form:button class='btn btn-primary'>로그인</form:button>
 								<a href="${root }user/join_seller" class="btn btn-danger">회원가입</a>
+								<a href="${root }user/searchId_seller" class="btn btn-primary">아이디찾기</a>
 							</div>
 						</form:form>
 					</div>

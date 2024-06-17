@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.beans.UserBean;
+import kr.co.service.SearchService;
 import kr.co.service.UserbuyerService;
 import kr.co.service.UsersellerService;
 import kr.co.validator.UserValidator;
@@ -30,6 +31,9 @@ public class UserController {
 
 	@Autowired
 	private UsersellerService usersellerService;
+
+	@Autowired
+	private SearchService searchService;
 
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
@@ -56,13 +60,14 @@ public class UserController {
 
 		// @RequestParam(value = "fail", defaultValue = "false") => fail= false
 		// fail=fail
-		
+
 		model.addAttribute("fail", fail); // fail=false => 실패아님
 		return "user/login_seller";
 	}
 
 	@PostMapping("/login_pro1")
-	public String login_pro1(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result, Model model) {
+	public String login_pro1(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result,
+			Model model) {
 
 		if (result.hasErrors()) {
 			return "user/login_buyer";
@@ -70,7 +75,7 @@ public class UserController {
 
 		// 세션영역에 있는 로그인 정보 불러오기
 		userbuyerService.getLoginUserInfo(tempLoginBean);// isUserLogin()==true
-		
+
 		// loginUserBean : sessionScope 에 있는 UserBean의 객체
 		if (loginUserBean.isUserLogin() == true) {
 			return "user/login_success";
@@ -134,6 +139,46 @@ public class UserController {
 
 		usersellerService.addUserInfo(joinUserBean);
 		return "user/join_success_seller";
+	}
+
+	@GetMapping("/searchId_buyer")
+	public String searchId_buyer(UserBean userBean, Model model) {
+
+		model.addAttribute("userBean", userBean);
+		return "user/searchId_buyer";
+	}
+
+	@RequestMapping("/searchBuyerIdResult")
+	public String searchBuyerIdResult(@ModelAttribute("userBean") UserBean userBean, Model model) {
+		String userId = null;
+		try {
+			userId = searchService.searchBuyerId(userBean.getName(), userBean.getPhone());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("userId", userId);
+		model.addAttribute("userName", userBean.getName());
+		return "user/searchBuyerIdResult";
+	}
+	
+	@GetMapping("/searchId_seller")
+	public String searchId_seller(UserBean userBean, Model model) {
+
+		model.addAttribute("userBean", userBean);
+		return "user/searchId_seller";
+	}
+
+	@RequestMapping("/searchSellerIdResult")
+	public String searchSellerIdResult(@ModelAttribute("userBean") UserBean userBean, Model model) {
+		String userId = null;
+		try {
+			userId = searchService.searchSellerId(userBean.getName(), userBean.getPhone());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("userId", userId);
+		model.addAttribute("userName", userBean.getName());
+		return "user/searchSellerIdResult";
 	}
 
 	@GetMapping("/modify")
