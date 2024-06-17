@@ -8,14 +8,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>고객센터</title>
-<!-- Bootstrap CDN -->
+
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet"
 	href="<c:url value='/css/customer_center_main.css' />" />
+
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+	
 	<div class="customer_center_top">
 		<div class="FAQ_box">
 			<h2>자주 묻는 질문</h2>
@@ -26,8 +28,8 @@
 				</label>
 				<div>
 					<p>
-						상품 배송 기간은 배송 유형에 따라 출고 일자 차이가 있습니다.<br />자세한 사항은 구매하신 상품의 상세
-						페이지에서 확인 가능하며,<br />배송 유형 별 기본 출고 기간은 아래와 같습니다.<br />∙ 일반 택배 /
+						상품 배송 기간은 배송 유형에 따라 출고 일자 차이가 있습니다. 자세한 사항은 구매하신 상품의 상세
+						페이지에서 확인 가능하며, 배송 유형 별 기본 출고 기간은 아래와 같습니다.<br />∙ 일반 택배 /
 						화물 택배 : 결제 후 1~3 영업일 이내 출고됩니다. <br />∙ 업체 직접 배송 : 배송 지역에 따라 배송
 						일자가 상이할 수 있으므로<br /> 상품 상세 페이지에서 확인 해주세요. <br />※ 영업일은 주말, 공휴일을
 						제외한 기간입니다. <br />※ 제조사의 사정에 따라 출고일은 지연될 수 있는 점 양해 부탁드립니다.
@@ -41,7 +43,7 @@
 					<p>
 						판매처에서 주문을 확인하기 전이라면 언제든 취소하실 수 있으며,<br /> [나의 쇼핑 > 주문배송내역 조회 >
 						주문상세보기]에서 직접 주문취소하실 수 있습니다. <br />※ 이미 판매처에서 상품을 확인해 준비 중이라면, 직접
-						취소가 어렵습니다.<br /> 상세 페이지에 확인되는 판매자 연락처 또는 오늘의집 고객센터로 문의 부탁드립니다.
+						취소가 어렵습니다.<br /> 상세 페이지에 확인되는 판매자 연락처 또는 고객센터로 문의 부탁드립니다.
 					</p>
 				</div>
 				<input type="checkbox" id="answer03" /> <label for="answer03">
@@ -65,7 +67,7 @@
 						페이지에서 원하는 주문의 상세보기 버튼을<br /> 클릭 후 교환/반품 접수 후 진행 할수 있습니다. 교환/반품 접수
 						없이 임의로 반송한 경우에는 처리가 늦어질 수 있습니다. <br />- 교환/반품 접수 시 원활한 처리를 위해 불량
 						사진이 필요하오니, 가급적 사진을 첨부하여<br /> 주시기 바랍니다. <br />단, 구매확정 이후 교환/반품을
-						원하시는 경우 판매 업체에 교환/반품 가능 여부를<br /> 먼저 문의 부탁드립니다.
+						원하시는 경우 판매 업체에 교환/반품 가능 여부를 먼저 문의 부탁드립니다.
 					</p>
 				</div>
 				<input type="checkbox" id="answer05" /> <label for="answer05">
@@ -76,18 +78,35 @@
 				<div>
 					<p>
 						휴대전화 번호를 변경하셨거나 카카오톡 계정을 탈퇴하고 새로 가입하신 경우<br /> 이런 문제가 발생할 수 있습니다.<br />이
-						경우 새로운 정보가 반영될 수 있도록 번거로우시더라도 고객센터로 문의 부탁드립니다. <br />오늘의집 고객센터
-						1670-0876 (운영 시간 : 평일 09:00~18:00)<br /> - 마이페이지 > 나의 쇼핑 > 고객센터 >
-						1:1 카톡 상담하기 - 카카오 플러스친구 '오늘의집 고객센터'로 문의
+						경우 새로운 정보가 반영될 수 있도록 번거로우시더라도 고객센터로 문의 부탁드립니다. <br />고객센터
+						02-6901-7001 (운영 시간 : 평일 09:00~18:00)
 					</p>
 				</div>
 			</div>
 		</div>
+
 		<div class="QNA_box">
 			<h2>QnA</h2>
-			<a href="${root}customer_center/main" class="btn btn-primary">QnA</a>
+			<div class="qna_txt">
+				<h3>
+					고객센터 <span>09:00 ~ 18:00</span>
+				</h3>
+				<ul>
+					<li>평일: 전체 문의 상담</li>
+					<li>공휴일: 직접배송, 이사/시공/제품설치 문의 상담</li>
+					<li>일요일: 휴무</li>
+				</ul>
+				<div class="call_box">
+					<i class="fa-solid fa-phone"></i> <span>02-6901-7001</span>
+				</div>
+
+				<a href="${root}customer_center/main" class="btn btn-primary qnaBtn">
+					<button>문의글쓰기</button>
+				</a>
+			</div>
 		</div>
 	</div>
+
 	<div class="bott_box">
 		<div class="">
 			<input type="radio" name="tabmenu" id="tab01" checked /> <input

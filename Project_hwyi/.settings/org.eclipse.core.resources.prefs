@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/kr/co/beans/PageBean.java=UTF-8
+encoding//src/main/java/kr/co/beans/UserBean.java=UTF-8
 encoding//src/main/java/kr/co/controller/UserController.java=UTF-8
 encoding//src/main/java/kr/co/interceptor/CheckLoginInterceptor.java=UTF-8
 encoding//src/main/java/kr/co/interceptor/CheckWriterInterceptor.java=UTF-8

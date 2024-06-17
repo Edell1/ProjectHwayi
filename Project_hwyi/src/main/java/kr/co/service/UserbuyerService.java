@@ -4,12 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import kr.co.beans.PageBean;
 import kr.co.beans.UserBean;
 import kr.co.dao.UserDao;
 
@@ -37,29 +34,30 @@ public class UserbuyerService {
 
 	}
 
-	public void getLoginUserInfo(UserBean tempLoginUserBean) {
-
+	public UserBean getLoginBuyerInfo(UserBean tempLoginUserBean) {
 		UserBean tempLoginUserBean2 = userDao.getLoginBuyerInfo(tempLoginUserBean);
 		// 가져온 데이터가 있다면
 		if (tempLoginUserBean2 != null) {
 			loginUserBean.setCode(tempLoginUserBean2.getCode());
 			loginUserBean.setName(tempLoginUserBean2.getName());
 			loginUserBean.setUserLogin(true); // 로그인 상태
+			System.out.println("true" + loginUserBean.isUserLogin()); // true // 로그인 성공을 나타내는 true 반환
+
 		}
-		System.out.println("service " + loginUserBean.isUserLogin());
+		return userDao.getLoginBuyerInfo(tempLoginUserBean);
 	}
-	
+
 	public UserBean selectBuyerById(String id) {
 		UserBean memberBean = userDao.selectBuyerById(id);
 		return memberBean;
 	}
-	
+
 	public void modifyBuyerInfoByAdmin(UserBean modifyBuyerBean) {
 		userDao.modifyBuyerInfoByAdmin(modifyBuyerBean);
 	}
-	
 
 	public List<UserBean> getBuyerList() {
+
 		return userDao.getBuyerList();
 	}
 

@@ -19,7 +19,7 @@
 <body>
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
-	<%-- <jsp:include page="${root}shopping/cart.jsp" /> --%>
+	<%-- <jsp:include page="${root}shop/cart.jsp" /> --%>
 
 	<div class="flex_wrap">
 	
@@ -117,5 +117,3 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/4cd100a941.js"
 	crossorigin="anonymous"></script>
-	
-</html>

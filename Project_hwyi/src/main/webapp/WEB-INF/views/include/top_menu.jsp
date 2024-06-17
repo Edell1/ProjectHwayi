@@ -16,27 +16,34 @@
 
 		<ul class="user_menu">
 			<c:choose>
-				<c:when test="${loginUserBean.isUserLogin() == true}">
+				<c:when test="${loginUserBean.userLogin}">
 					<li>${loginUserBean.name }님</li>
-					<li><a href="${root}shopping/cart" class="cart">장바구니</a></li>
-					<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
-					<li class="nav-item"><a href="${root }user/modify"
-						class="nav-link">정보수정</a></li>
-					<li class="nav-item"><a href="${root }user/logout"
+					<li class="nav-item"><a href="${root}user/logout"
 						class="nav-link">로그아웃</a></li>
+
+					<c:if test="${loginUserBean.userRole == 'admin'}">
+						<li><a href="${root}admin/main" class="admin">관리자</a></li>
+					</c:if>
+
+					<c:if test="${loginUserBean.userRole == 'seller'}">
+						<li><a href="${root}seller/main" class="admin">판매자</a></li>
+					</c:if>
 				</c:when>
 				<c:otherwise>
-					<li class="nav-item"><a href="${root }user/login_choice"
+					<li class="nav-item"><a href="${root}user/login_choice"
 						class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="${root }user/join_choice"
+					<li class="nav-item"><a href="${root}user/join_choice"
 						class="nav-link">회원가입</a></li>
 				</c:otherwise>
 			</c:choose>
+
+			<!-- 로그인 상태에 관계없이 항상 표시되는 항목들 -->
+			<li><a href="${root}shop/cart" class="cart">장바구니</a></li>
+			<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
 			<li><a href="${root}customer_center/customer_center_main"
 				class="customer">고객센터</a></li>
-			<li><a href="${root}admin/main" class="admin">관리자</a></li>
-			<li><a href="${root}seller/main" class="admin">판매자</a></li>
 		</ul>
+
 	</div>
 
 	<nav class="nav_bar">

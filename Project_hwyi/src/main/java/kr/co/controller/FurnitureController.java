@@ -17,16 +17,15 @@ import kr.co.service.FurnitureService;
 @Controller
 @RequestMapping("/furniture")
 public class FurnitureController {
-	
+
 	@Autowired
 	private FurnitureService furnitureService;
-	
-	
+
 	@GetMapping("/furniture_list")
 	public String furniture_list(Model model) {
-		List<FurnitureBean> furniturelist= furnitureService.getFurnitureList();
-		model.addAttribute("furniturelist",furniturelist);
-		
+		List<FurnitureBean> furniturelist = furnitureService.getFurnitureList();
+		model.addAttribute("furniturelist", furniturelist);
+
 		System.out.println("Controller" + furniturelist);
 		return "/furniture/furniture_list";
 	}

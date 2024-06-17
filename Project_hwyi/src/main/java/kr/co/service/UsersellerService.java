@@ -37,16 +37,17 @@ public class UsersellerService {
 
 	}
 
-	public void getLoginUserInfo(UserBean tempLoginUserBean) {
-
+	public UserBean getLoginSellerInfo(UserBean tempLoginUserBean) {
 		UserBean tempLoginUserBean2 = userDao.getLoginSellerInfo(tempLoginUserBean);
 		// 가져온 데이터가 있다면
 		if (tempLoginUserBean2 != null) {
 			loginUserBean.setCode(tempLoginUserBean2.getCode());
 			loginUserBean.setName(tempLoginUserBean2.getName());
 			loginUserBean.setUserLogin(true); // 로그인 상태
+			System.out.println("true" + loginUserBean.isUserLogin()); // true // 로그인 성공을 나타내는 true 반환
+
 		}
-		System.out.println(loginUserBean.isUserLogin());
+		return userDao.getLoginSellerInfo(tempLoginUserBean);
 	}
 
 	public UserBean selectSellerById(String id) {
@@ -59,6 +60,7 @@ public class UsersellerService {
 	}
 
 	public List<UserBean> getSellerList() {
+
 		return userDao.getSellerList();
 	}
 
