@@ -65,7 +65,7 @@ table th, td {
 
 .btn_box {
 	display: flex;
-	justify-content: right;
+	justify-content: center;
 	margin-top: 10px;
 	width: 100%;
 	box-sizing: border-box;

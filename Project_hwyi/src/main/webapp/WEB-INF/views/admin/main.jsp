@@ -25,7 +25,7 @@
 
 		<div class="manage_member">
 			<div class="mgMem_inner">
-				<div class="tit">회원 정보</div>
+				<div class="tit">회원 조회</div>
 
 				<input type="radio" name="tabmenu" id="tab01" checked /> <label
 					for="tab01">구매자 목록</label> <input type="radio" name="tabmenu"
@@ -40,16 +40,21 @@
 									<th class="th_column_1">이름</th>
 									<th class="th_column_2">아이디</th>
 									<th class="th_column_2">주소</th>
-									<th class="th_column_3">선호 태그</th>
+									<th class="th_column_3">전화번호</th>
+									<th class="th_column_4">정보 수정</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="buyerlist" items="${buyerlist}">
+								<c:forEach var="buyer" items="${buyerlist}">
 									<tr>
-										<td>${buyerlist.name}</td>
-										<td>${buyerlist.id}</td>
-										<td>${buyerlist.address}</td>
-										<td>${buyerlist.favarite}</td>
+										<td>${buyer.name}</td>
+										<td>${buyer.id}</td>
+										<td>${buyer.address}</td>
+										<td>${buyer.phone}</td>
+										<td><div class="btn_box">
+												<button class="updateBtn"
+													onclick="location.href='${root}admin/buyer_info?id=${buyer.id}'">정보수정</button>
+											</div></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -66,6 +71,7 @@
 									<th class="th_column_3">사업자 번호</th>
 									<th class="th_column_3">사업자 주소</th>
 									<th class="th_column_3">사업자 전화번호</th>
+									<th class="th_column_4">정보 수정</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -77,16 +83,14 @@
 										<td>${seller.strcode}</td>
 										<td>${seller.straddress}</td>
 										<td>${seller.strtel}</td>
+										<td><div class="btn_box">
+												<button class="updateBtn"
+													onclick="location.href='${root}admin/seller_info?id=${seller.id}'">정보수정</button>
+											</div></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-					</div>
-
-					<div class="btn_box">
-						<a href="">
-							<button class="updateBtn">수정하기</button>
-						</a>
 					</div>
 				</div>
 			</div>

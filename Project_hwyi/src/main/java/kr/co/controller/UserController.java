@@ -78,6 +78,8 @@ public class UserController {
 
 		// loginUserBean : sessionScope 에 있는 UserBean의 객체
 		if (loginUserBean.isUserLogin() == true) {
+			System.out.println("controller " + loginUserBean.isUserLogin());
+			System.out.println("controller " + loginUserBean.getName());
 			return "user/login_success";
 		} else {
 			return "user/login_fail_buyer";
@@ -160,7 +162,7 @@ public class UserController {
 		model.addAttribute("userName", userBean.getName());
 		return "user/searchBuyerIdResult";
 	}
-	
+
 	@GetMapping("/searchId_seller")
 	public String searchId_seller(UserBean userBean, Model model) {
 

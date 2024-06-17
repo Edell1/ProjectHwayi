@@ -33,7 +33,7 @@ public class SearchService {
 	private SearchService() {
 	}
 
-	public String searchBuyerId(String name, String id) throws Exception {
+	public String searchBuyerId(String name, String phone) throws Exception {
 		Connection conn = null;
 		Class.forName(db_classname);
 		try {
@@ -44,7 +44,7 @@ public class SearchService {
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			// DAO 객체를 생성 시 Connection 전달
 			SearchDao searchDao = new SearchDao(conn);
-			String userid = searchDao.searchBuyerId(name, id);
+			String userid = searchDao.searchBuyerId(name, phone);
 			System.out.println(name);
 
 			return userid;
@@ -58,7 +58,7 @@ public class SearchService {
 		}
 	}
 	
-	public String searchSellerId(String name, String id) throws Exception {
+	public String searchSellerId(String name, String phone) throws Exception {
 		Connection conn = null;
 		Class.forName(db_classname);
 		try {
@@ -69,7 +69,7 @@ public class SearchService {
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			// DAO 객체를 생성 시 Connection 전달
 			SearchDao searchDao = new SearchDao(conn);
-			String userid = searchDao.searchSellerId(name, id);
+			String userid = searchDao.searchSellerId(name, phone);
 			System.out.println(name);
 
 			return userid;

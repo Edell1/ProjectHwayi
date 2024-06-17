@@ -50,12 +50,26 @@ public class UserDao {
 
 	public List<UserBean> getBuyerList() {
 		return buyerMapper.getBuyerList();
-
 	}
 
 	public List<UserBean> getSellerList() {
 		return sellerMapper.getSellerList();
-
+	}
+	
+	public UserBean selectBuyerById(String id) {
+		return buyerMapper.selectBuyerById(id);
+	}
+	
+	public UserBean selectSellerById(String id) {
+		return sellerMapper.selectSellerById(id);
+	}
+	
+	public void modifyBuyerInfoByAdmin(UserBean modifyBuyerBean) {
+		buyerMapper.modifyBuyerInfoByAdmin(modifyBuyerBean);
+	}
+	
+	public void modifySellerInfoByAdmin(UserBean modifySellerBean) {
+		sellerMapper.modifySellerInfoByAdmin(modifySellerBean);
 	}
 
 }

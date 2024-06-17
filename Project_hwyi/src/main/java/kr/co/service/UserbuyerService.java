@@ -46,11 +46,20 @@ public class UserbuyerService {
 			loginUserBean.setName(tempLoginUserBean2.getName());
 			loginUserBean.setUserLogin(true); // 로그인 상태
 		}
-		System.out.println(loginUserBean.isUserLogin());
+		System.out.println("service " + loginUserBean.isUserLogin());
 	}
+	
+	public UserBean selectBuyerById(String id) {
+		UserBean memberBean = userDao.selectBuyerById(id);
+		return memberBean;
+	}
+	
+	public void modifyBuyerInfoByAdmin(UserBean modifyBuyerBean) {
+		userDao.modifyBuyerInfoByAdmin(modifyBuyerBean);
+	}
+	
 
 	public List<UserBean> getBuyerList() {
-
 		return userDao.getBuyerList();
 	}
 

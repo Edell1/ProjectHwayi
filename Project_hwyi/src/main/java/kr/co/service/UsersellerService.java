@@ -18,7 +18,7 @@ public class UsersellerService {
 
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 
@@ -36,7 +36,7 @@ public class UsersellerService {
 		userDao.addSellerInfo(joinUserBean);
 
 	}
-	
+
 	public void getLoginUserInfo(UserBean tempLoginUserBean) {
 
 		UserBean tempLoginUserBean2 = userDao.getLoginSellerInfo(tempLoginUserBean);
@@ -49,8 +49,16 @@ public class UsersellerService {
 		System.out.println(loginUserBean.isUserLogin());
 	}
 
-	public List<UserBean> getSellerList() {
+	public UserBean selectSellerById(String id) {
+		UserBean memberBean = userDao.selectSellerById(id);
+		return memberBean;
+	}
 
+	public void modifySellerInfoByAdmin(UserBean modifySellerBean) {
+		userDao.modifySellerInfoByAdmin(modifySellerBean);
+	}
+
+	public List<UserBean> getSellerList() {
 		return userDao.getSellerList();
 	}
 

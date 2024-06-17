@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.co.beans.UserBean;
 
@@ -26,7 +27,19 @@ public interface SellerMapper {
 	UserBean getLoginSellerInfo(UserBean tempLoginUserBean);
 
 	// 전체 Seller 목록 불러오기
-	@Select("select m.*, s.* " + "from member m, store s " + "where m.code = s.code")
+	@Select("select m.*, s.* from member m, store s where m.code = s.code")
 	List<UserBean> getSellerList();
+
+	// 아이디로 회원 정보 확인
+	@Select("SELECT m.*, s.* FROM member m, store s WHERE id = #{id} and m.code = s.code")
+	UserBean selectSellerById(String id);
+
+	// 회원 정보 수정
+	@Update("update member set name=#{name}, pw=#{pw}, mail=#{mail}, phone=#{phone} , address=#{address} where id=#{id}")
+	void modifySellerInfo(UserBean modifySellerBean);
+
+	// 관리자권한 회원 정보 수정
+	@Update("update member set name=#{name}, mail=#{mail}, phone=#{phone}, address=#{address} where id=#{id}")
+	void modifySellerInfoByAdmin(UserBean modifySellerBean);
 
 }

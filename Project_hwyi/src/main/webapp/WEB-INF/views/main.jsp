@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
 	<div class="slide_wrap">
@@ -33,7 +32,7 @@
 			<a href="#" class="next"><i class="fa-solid fa-arrow-right fa-3x"></i></a>
 		</div>
 	</div>
-	
+
 	<div class="cont1">
 		<h2>오늘의 추천 상품</h2>
 		<div class="item_box">
