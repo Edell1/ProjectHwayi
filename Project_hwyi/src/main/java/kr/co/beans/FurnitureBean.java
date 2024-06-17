@@ -1,6 +1,7 @@
 package kr.co.beans;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,19 +9,25 @@ public class FurnitureBean {
    
    private int furniture_idx;      //인덱슨
    
-   @NotBlank
+   
    private String furnitureid;    //가구 상품코드
    private String code;           //판매자코드
    private String furniture_type;  //종류
    
    @NotBlank
    private String furniture_name;      //이름
+   @NotNull
    private Integer furniture_price;    //가격
+   @NotNull
    private Integer furniture_cnt;      //수량
+   @NotNull 
    private Integer furniture_width;    //가로
+   @NotNull
    private Integer furniture_length;   //세로
+   @NotNull
    private Integer furniture_height;   //높이
-   private int furniture_color;    //색상
+   private String furniture_color;    //색상
+   private String furniture_mat;       //재질
    private String tag;   //태그
    private String brand; //브랜드
    private String furniture_date;  //등록날짜
@@ -32,10 +39,19 @@ public class FurnitureBean {
    
    
    //---------------------------------- Getter&Setter -------------------------------------------
+   
+    
+   
    public int getFurniture_idx() {
       return furniture_idx;
    }
-   public void setFurniture_idx(int furniture_idx) {
+   public String getFurniture_mat() {
+   return furniture_mat;
+}
+public void setFurniture_mat(String furniture_mat) {
+   this.furniture_mat = furniture_mat;
+}
+public void setFurniture_idx(int furniture_idx) {
       this.furniture_idx = furniture_idx;
    }
    public String getFurnitureid() {
@@ -92,10 +108,10 @@ public class FurnitureBean {
    public void setFurniture_height(Integer furniture_height) {
       this.furniture_height = furniture_height;
    }
-   public int getFurniture_color() {
+   public String getFurniture_color() {
       return furniture_color;
    }
-   public void setFurniture_color(int furniture_color) {
+   public void setFurniture_color(String furniture_color) {
       this.furniture_color = furniture_color;
    }
    public String getTag() {

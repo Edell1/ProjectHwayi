@@ -10,14 +10,19 @@ import kr.co.mapper.FurnitureMapper;
 
 @Repository
 public class FurnitureDao {
-	
-	@Autowired
-	private FurnitureMapper furnitureMapper;
+   
+   @Autowired
+   private FurnitureMapper furnitureMapper;
 
-	public List<FurnitureBean> getFurnitureList() {
-		System.out.println("DAO");
-		return furnitureMapper.getFurnitureList();
-	}
-	
+   public List<FurnitureBean> getFurnitureList() {
+      System.out.println("DAO");
+      return furnitureMapper.getFurnitureList();
+   }
+   
+   public void addFurnitureInfo(FurnitureBean addFurnitureBean) {
+      System.out.println(addFurnitureBean.getFurniture_name());
+      furnitureMapper.addFurnitureInfo(addFurnitureBean);
+   }
+   
 
 }

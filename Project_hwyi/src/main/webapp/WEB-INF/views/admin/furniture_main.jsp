@@ -41,7 +41,6 @@
 								<th class="text-center d-none d-md-table-cell">상품가격</th>
 								<th class="text-center d-none d-md-table-cell">상품개수</th>
 								<th class="text-center d-none d-md-table-cell">상품태그</th>
-								<th class="text-center d-none d-md-table-cell">상품브랜드</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -53,7 +52,6 @@
 									<td class="text-center d-none d-md-table-cell">${obj.furniture_price}</td>
 									<td class="text-center d-none d-md-table-cell">${obj.furniture_cnt}</td>
 									<td class="text-center d-none d-md-table-cell">${obj.tag}</td>
-									<td class="text-center d-none d-md-table-cell">${obj.brand}</td>
 
 								</tr>
 							</c:forEach>
