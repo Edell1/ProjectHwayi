@@ -2,6 +2,7 @@ package kr.co.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -42,3 +43,14 @@ public interface BuyerMapper {
 	void modifyBuyerInfoByAdmin(UserBean modifyBuyerBean);
 
 }
+
+
+
+
+
+
+
+
+
+
+
