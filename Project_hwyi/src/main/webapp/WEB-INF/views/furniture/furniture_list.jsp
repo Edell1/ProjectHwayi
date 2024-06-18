@@ -157,7 +157,7 @@
 		<div class="furni_box">
 			<c:forEach var='obj' items="${furniturelist}">
 				<div class="furni_cont cont1">
-					<a href="">
+					<a href="${root}furniture/furniture_detail">
 						<div class="furni_img">
 							<img src="${root}image/bs0202040101.jpg" alt="" />
 						</div>

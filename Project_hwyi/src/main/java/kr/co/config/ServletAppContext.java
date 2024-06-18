@@ -24,15 +24,18 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import kr.co.beans.UserBean;
+import kr.co.interceptor.CartInterceptor;
 import kr.co.interceptor.CheckLoginInterceptor;
 import kr.co.interceptor.CheckWriterInterceptor;
 import kr.co.interceptor.TopMenuInterceptor;
 import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
+import kr.co.mapper.CartMapper;
 import kr.co.mapper.FurnitureMapper;
 import kr.co.mapper.SellerMapper;
 import kr.co.mapper.TopMenuMapper;
 import kr.co.service.BoardService;
+import kr.co.service.CartService;
 import kr.co.service.TopMenuService;
 
 @Configuration // Spring MVC 프로젝트 설정
@@ -138,6 +141,13 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 
+	@Bean
+	public MapperFactoryBean<CartMapper> getCartMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<CartMapper> factoryBean = new MapperFactoryBean<CartMapper>(CartMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		WebMvcConfigurer.super.addInterceptors(registry);
@@ -155,6 +165,10 @@ public class ServletAppContext implements WebMvcConfigurer {
 		CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardService);
 		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
 		reg3.addPathPatterns("/board/modify", "/board/delete");
+
+		CartInterceptor cartInterceptor = new CartInterceptor(loginUserBean, cartService);
+		InterceptorRegistration cartReg = registry.addInterceptor(cartInterceptor);
+		cartReg.addPathPatterns("/cart/*");
 	}
 
 	// Properties파일을 Bean으로 등록

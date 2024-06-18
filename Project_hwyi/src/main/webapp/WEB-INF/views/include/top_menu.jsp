@@ -38,7 +38,7 @@
 			</c:choose>
 
 			<!-- 로그인 상태에 관계없이 항상 표시되는 항목들 -->
-			<li><a href="${root}shop/cart" class="cart">장바구니</a></li>
+			<li><a href="${root}cart/cart_main" class="cart">장바구니</a></li>
 			<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
 			<li><a href="${root}customer_center/customer_center_main"
 				class="customer">고객센터</a></li>
