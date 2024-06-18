@@ -41,7 +41,7 @@
 									<th class="th_column_2">아이디</th>
 									<th class="th_column_2">주소</th>
 									<th class="th_column_3">전화번호</th>
-									<th class="th_column_4">정보 수정</th>
+									<th class="th_column_4">상세정보</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -53,7 +53,7 @@
 										<td>${buyer.phone}</td>
 										<td><div class="btn_box">
 												<button class="updateBtn"
-													onclick="location.href='${root}admin/buyer_info?id=${buyer.id}'">정보수정</button>
+													onclick="location.href='${root}admin/buyer_info?id=${buyer.id}'">정보보기</button>
 											</div></td>
 									</tr>
 								</c:forEach>
@@ -68,7 +68,7 @@
 									<th class="th_column_1">이름</th>
 									<th class="th_column_2">아이디</th>
 									<th class="th_column_2">주소</th>
-									<th class="th_column_3">사업자 번호</th>
+									<th class="th_column_3">매장 이름</th>
 									<th class="th_column_3">사업자 주소</th>
 									<th class="th_column_3">사업자 전화번호</th>
 									<th class="th_column_4">정보 수정</th>
@@ -80,7 +80,7 @@
 										<td>${seller.name}</td>
 										<td>${seller.id}</td>
 										<td>${seller.address}</td>
-										<td>${seller.strcode}</td>
+										<td>${seller.brand}</td>
 										<td>${seller.straddress}</td>
 										<td>${seller.strtel}</td>
 										<td><div class="btn_box">

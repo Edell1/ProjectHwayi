@@ -193,4 +193,32 @@ public class FurnitureService {
       System.out.println("Service");
       return furnitureDao.getFurnitureList();
    }
+   
+   public FurnitureBean selectFurnitureById(String furnitureid) {
+	   FurnitureBean furnitureBean = furnitureDao.selectFurnitureById(furnitureid);
+	   return furnitureBean;
+   }
+   
+   public void modifyFurnitureInfo(FurnitureBean modifyFurnitureBean) {
+	   furnitureDao.modifyFurnitureInfo(modifyFurnitureBean);
+   }
+   
+   public void grantFurnitureInfoByAdmin(FurnitureBean modifyFurnitureBean) {
+	   furnitureDao.grantFurnitureInfoByAdmin(modifyFurnitureBean);
+   }
+   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

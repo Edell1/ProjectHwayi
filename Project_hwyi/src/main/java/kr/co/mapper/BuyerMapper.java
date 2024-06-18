@@ -15,8 +15,8 @@ public interface BuyerMapper {
 	String checkBuyerIdExist(String ID);
 
 	// 회원가입 DB 등록
-	@Insert("insert all into member (code, id, pw, name, mail, phone, address) "
-			+ "values (('Cu' || TO_CHAR(user_seq.nextval)), #{id}, #{pw}, #{name}, #{mail}, #{phone}, #{address}) "
+	@Insert("insert all into member (code, id, pw, name, mail, phone, address, address2) "
+			+ "values (('Cu' || TO_CHAR(user_seq.nextval)), #{id}, #{pw}, #{name}, #{mail}, #{phone}, #{address}, #{address2}) "
 			+ "into customer(code, favarite)" + "values(('Cu' || TO_CHAR(user_seq.nextval)), null) "
 			+ "SELECT * FROM DUAL")
 	void addBuyerInfo(UserBean joinUserBean);
@@ -38,7 +38,7 @@ public interface BuyerMapper {
 	void modifyBuyerInfo(UserBean modifyBuyerBean);
 	
 	// 관리자권한 회원 정보 수정
-	@Update("update member set name=#{name}, mail=#{mail}, phone=#{phone}, address=#{address} where id=#{id}")
+	@Update("update member set name=#{name}, mail=#{mail}, phone=#{phone}, address=#{address}, address2=#{address2} where id=#{id}")
 	void modifyBuyerInfoByAdmin(UserBean modifyBuyerBean);
 
 }

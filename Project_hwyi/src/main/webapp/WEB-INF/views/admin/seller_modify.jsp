@@ -66,13 +66,33 @@
 											value="${modifySellerBean.address2}"></td>
 									</tr>
 									<tr>
+										<th colspan="2">매장이름</th>
+										<td><input id="brand" name="brand"
+											value="${modifySellerBean.brand}" /></td>
+									</tr>
+									<tr>
+										<th colspan="2">매장 전화번호</th>
+										<td><input id="strtel" name="strtel"
+											value="${modifySellerBean.strtel}" /></td>
+									</tr>
+									<tr>
+										<th rowspan="2">매장주소</th>
+										<th>기본주소</th>
+										<td><input id="strAddrPart1" name="straddress"
+											value="${modifySellerBean.straddress}"></td>
+									</tr>
+									<tr>
+										<th>상세주소</th>
+										<td><input id="zipNo" name="straddress2"
+											value="${modifySellerBean.straddress2}"></td>
+									</tr>
+									<tr>
 										<td colspan="3">
 											<button type="submit" class="btn btn-secondary">완료</button> <a
 											href="${root}admin/seller_info?id=${id}"
 											class="btn btn-secondary">취소</a>
 										</td>
 									</tr>
-
 								</table>
 							</form:form>
 							<div class="justify-content-center text-center"></div>

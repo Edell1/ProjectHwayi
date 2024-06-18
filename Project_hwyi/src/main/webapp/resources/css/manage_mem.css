@@ -27,7 +27,7 @@ label[for*='tab'] {
 }
 
 input[id='tab01']:checked ~ .cont_wrap .con1, input[id='tab02']:checked 
-	~ .cont_wrap .con2 {
+	 ~ .cont_wrap .con2 {
 	display: block;
 }
 

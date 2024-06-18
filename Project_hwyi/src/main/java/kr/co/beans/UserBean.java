@@ -5,208 +5,220 @@ import javax.validation.constraints.Size;
 
 public class UserBean {
 
-    private int user_idx;
-    
-    private String code;
+	private int user_idx;
 
-    @Size(min = 2, max = 4)
-    @Pattern(regexp = "[가-힣]*")
-    private String name;
+	private String code;
 
-    @Size(min = 4, max = 20)
-    @Pattern(regexp = "[a-zA-Z0-9]*")
-    private String id;
+	@Size(min = 2, max = 4)
+	@Pattern(regexp = "[가-힣]*")
+	private String name;
 
-    @Size(min = 4, max = 20)
-    @Pattern(regexp = "[a-zA-Z0-9]*")
-    private String pw;
+	@Size(min = 4, max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
+	private String id;
 
-    @Size(min = 4, max = 20)
-    @Pattern(regexp = "[a-zA-Z0-9]*")
-    private String pw2;
+	@Size(min = 4, max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
+	private String pw;
 
-    @Size(min = 1)
-    @Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
-    private String mail;
+	@Size(min = 4, max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
+	private String pw2;
 
-    @Size(min = 1)
-    @Pattern(regexp = "^[0-9]+$")
-    private String phone;
+	@Size(min = 1)
+	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
+	private String mail;
 
-    @Size(min = 1)
-    private String address;
+	@Size(min = 1)
+	@Pattern(regexp = "^[0-9]+$")
+	private String phone;
 
-    @Size(min = 1)
-    private String address2;
+	@Size(min = 1)
+	private String address;
 
-    @Size(min = 1)
-    private String strcode;
+	@Size(min = 1)
+	private String address2;
 
-    @Size(min = 1)
-    @Pattern(regexp = "^[0-9]+$")
-    private String strtel;
+	@Size(min = 1)
+	private String strcode;
 
-    @Size(min = 1)
-    private String straddress;
+	@Size(min = 1)
+	@Pattern(regexp = "^[0-9]+$")
+	private String strtel;
 
-    @Size(min = 1)
-    private String straddress2;
+	@Size(min = 1)
+	private String straddress;
 
-    private String favarite;
+	@Size(min = 1)
+	private String straddress2;
 
-    private boolean userLogin;
-    private boolean userIdExist;
+	// 아직 작업 안한거
+	private String brand;
+	//
 
-    private String userRole; // »ç¿ëÀÚ ¿ªÇÒ Ãß°¡
+	private String favarite;
 
-    public UserBean() {
-    	this.userIdExist = false;
-        this.userLogin = false;
-    }
+	private boolean userLogin;
+	private boolean userIdExist;
 
-    // Getters and Setters for all fields, including userRole
+	private String userRole;
 
-    public int getUser_idx() {
-        return user_idx;
-    }
+	public UserBean() {
+		this.userIdExist = false;
+		this.userLogin = false;
+	}
 
-    public void setUser_idx(int user_idx) {
-        this.user_idx = user_idx;
-    }
+	// Getters and Setters for all fields, including userRole
 
-    public String getCode() {
-        return code;
-    }
+	public int getUser_idx() {
+		return user_idx;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setUser_idx(int user_idx) {
+		this.user_idx = user_idx;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getPw() {
-        return pw;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setPw(String pw) {
-        this.pw = pw;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getPw2() {
-        return pw2;
-    }
+	public String getPw() {
+		return pw;
+	}
 
-    public void setPw2(String pw2) {
-        this.pw2 = pw2;
-    }
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
 
-    public String getMail() {
-        return mail;
-    }
+	public String getPw2() {
+		return pw2;
+	}
 
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
+	public void setPw2(String pw2) {
+		this.pw2 = pw2;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public String getMail() {
+		return mail;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public String getAddress2() {
-        return address2;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public String getStrcode() {
-        return strcode;
-    }
+	public String getAddress2() {
+		return address2;
+	}
 
-    public void setStrcode(String strcode) {
-        this.strcode = strcode;
-    }
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
 
-    public String getStrtel() {
-        return strtel;
-    }
+	public String getStrcode() {
+		return strcode;
+	}
 
-    public void setStrtel(String strtel) {
-        this.strtel = strtel;
-    }
+	public void setStrcode(String strcode) {
+		this.strcode = strcode;
+	}
 
-    public String getStraddress() {
-        return straddress;
-    }
+	public String getStrtel() {
+		return strtel;
+	}
 
-    public void setStraddress(String straddress) {
-        this.straddress = straddress;
-    }
+	public void setStrtel(String strtel) {
+		this.strtel = strtel;
+	}
 
-    public String getStraddress2() {
-        return straddress2;
-    }
+	public String getStraddress() {
+		return straddress;
+	}
 
-    public void setStraddress2(String straddress2) {
-        this.straddress2 = straddress2;
-    }
+	public void setStraddress(String straddress) {
+		this.straddress = straddress;
+	}
 
-    public String getFavarite() {
-        return favarite;
-    }
+	public String getStraddress2() {
+		return straddress2;
+	}
 
-    public void setFavarite(String favarite) {
-        this.favarite = favarite;
-    }
+	public void setStraddress2(String straddress2) {
+		this.straddress2 = straddress2;
+	}
 
-    public boolean isUserLogin() {
-        return userLogin;
-    }
+	public String getBrand() {
+		return brand;
+	}
 
-    public void setUserLogin(boolean userLogin) {
-        this.userLogin = userLogin;
-    }
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 
-    public boolean isUserIdExist() {
-        return userIdExist;
-    }
+	public String getFavarite() {
+		return favarite;
+	}
 
-    public void setUserIdExist(boolean userIdExist) {
-        this.userIdExist = userIdExist;
-    }
+	public void setFavarite(String favarite) {
+		this.favarite = favarite;
+	}
 
-    public String getUserRole() {
-        return userRole;
-    }
+	public boolean isUserLogin() {
+		return userLogin;
+	}
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
-    }
+	public void setUserLogin(boolean userLogin) {
+		this.userLogin = userLogin;
+	}
+
+	public boolean isUserIdExist() {
+		return userIdExist;
+	}
+
+	public void setUserIdExist(boolean userIdExist) {
+		this.userIdExist = userIdExist;
+	}
+
+	public String getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
 }

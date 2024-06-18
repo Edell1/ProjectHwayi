@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
+<script
+	src="httpsa://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
@@ -59,60 +65,57 @@
 										<th>상세주소</th>
 										<td>${seller.address2}</td>
 									</tr>
-									<tr>
-										<td colspan="3" class="text-left">
-											<div class="float-start">
-												<a href="${root}admin/review?key=id&val=${seller.id}"
-													class="btn btn-secondary">리뷰</a> <a href="#"
-													class="btn btn-secondary">문의</a>
-											</div>
-											<button class="updateBtn"
-												onclick="location.href='${root}admin/buyer_modify?id=${seller.id}'">정보수정</button>
-										</td>
-									</tr>
-
 								</table>
 							</div>
-							<%-- <div class="col">
+							<div class="col">
 								<div class="m-auto mb-3">
 									<table class="table table-bordered text-center align-middle">
 										<tr>
-											<th colspan="4" class="table-active">기타 정보</th>
+											<th colspan="4" class="table-active">매장 정보</th>
 										</tr>
 										<tr>
-											<th width="25%">등급</th>
-											<td width="25%">${obj.member_grade}</td>
-											<th width="25%">관리자 여부</th>
-											<td width="25%"><c:choose>
-													<c:when test="${obj.member_ad == 1}">
-													관리자
+											<th width="25%">매장 이름</th>
+											<td width="25%">${seller.brand}</td>
+											<th width="25%">등록 여부</th>
+											<%-- <td width="25%"><c:choose>
+													<c:when test="${seller.checked == 1}">
+													미승인
 												</c:when>
 													<c:otherwise>
-													일반 회원
+													승인
 												</c:otherwise>
-												</c:choose></td>
+												</c:choose></td> --%>
 										</tr>
 										<tr>
-											<th>구독</th>
-											<td></td>
-											<th>접근</th>
-											<td><c:choose>
-													<c:when test="${obj.member_status == 1}">
-													허용
-												</c:when>
-													<c:otherwise>
-													차단
-												</c:otherwise>
-												</c:choose></td>
+											<th>사업자 번호</th>
+											<td>${seller.strcode}</td>
+											<th>매장 전화번호</th>
+											<td>${seller.strtel}</td>
 										</tr>
 										<tr>
-											<th>구매 횟수</th>
-											<td>${obj.order_count}</td>
-											<th>총구매금액</th>
-											<td>${obj.purchase_amount}</td>
+											<th rowspan="2">주소</th>
+											<th>기본주소</th>
+											<td>${seller.straddress}</td>
 										</tr>
+										<tr>
+											<th>상세주소</th>
+											<td>${seller.straddress2}</td>
+										</tr>
+										<tr>
+											<td colspan="3" class="text-left">
+												<div class="float-start">
+													<a href="${root}admin/review?key=id&val=${seller.id}"
+														class="btn btn-secondary">리뷰</a> <a href="#"
+														class="btn btn-secondary">문의</a>
+												</div>
+												<button class="updateBtn"
+													onclick="location.href='${root}admin/seller_modify?id=${seller.id}'">정보수정</button>
+											</td>
+										</tr>
+
 									</table>
 								</div>
+								<%-- 
 								<div class="m-auto mb-3">
 									<table class="table table-sm text-center align-middle">
 										<tr>
@@ -170,8 +173,104 @@
 									</c:forEach>
 								</table>
 							</div> --%>
+							</div>
 						</div>
 					</div>
+
+					<div class="card shadow">
+						<div class="card-body">
+							<h4 class="card-title">가구</h4>
+							<table class="table table-hover" id='furniture_list'>
+								<thead>
+									<tr>
+										<th class="text-center d-none d-md-table-cell">상품종류</th>
+										<th class="text-center d-none d-md-table-cell">상품명</th>
+										<th class="text-center d-none d-md-table-cell">상품가격</th>
+										<th class="text-center d-none d-md-table-cell">상품개수</th>
+										<th class="text-center d-none d-md-table-cell">상품태그</th>
+										<th class="text-center d-none d-md-table-cell">승인여부</th>
+										<th class="text-center d-none d-md-table-cell">상세정보</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var='obj' items="${furniturelist}">
+										<tr>
+											<c:if test="${obj.code == seller.code}">
+												<td class="text-center d-none d-md-table-cell">${obj.furniture_type }</td>
+												<td class="text-center d-none d-md-table-cell">${obj.furniture_name}</td>
+												<td class="text-center d-none d-md-table-cell">${obj.furniture_price}</td>
+												<td class="text-center d-none d-md-table-cell">${obj.furniture_cnt}</td>
+												<td class="text-center d-none d-md-table-cell">${obj.tag}</td>
+												<td><c:choose>
+														<c:when test="${obj.checked == 1}">
+													미승인
+													</c:when>
+														<c:otherwise>
+													승인
+													</c:otherwise>
+													</c:choose></td>
+												<td>
+													<div class="text-right">
+														<a
+															href="${root}admin/furniture_info?furnitureid=${obj.furnitureid }"
+															class="btn btn-primary">정보보기</a>
+													</div>
+												</td>
+											</c:if>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<!-- class="d-block d-md-block" (부트스트랩) -->
+							<div class="d-block d-md-block">
+								<ul class="pagination justify-content-center">
+									<c:choose>
+										<c:when test="${pageBean.prevPage <= 0}">
+											<li class="page-item disabled"><a href="#"
+												class="page-link">이전</a></li>
+										</c:when>
+
+										<c:otherwise>
+											<li class="page-item"><a
+												href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.prevPage}"
+												class="page-link">이전</a></li>
+										</c:otherwise>
+									</c:choose>
+
+									<c:forEach var="idx" begin="${pageBean.min}"
+										end="${pageBean.max}">
+										<c:choose>
+											<c:when test="${idx == pageBean.currentPage }">
+												<!--  현재페이지 색변경(active) -->
+												<li class="page-item active"><a
+													href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}"
+													class="page-link">${idx }</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a
+													href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}"
+													class="page-link">${idx }</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+
+									<!-- Max값이 전체페이지보다 크거나 같으면 비활성화 disabled(부트스트랩) -->
+									<c:choose>
+										<c:when test="${pageBean.max >= pageBean.pageCnt }">
+											<li class="page-item disabled"><a href="#"
+												class="page-link">다음</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a
+												href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.nextPage}"
+												class="page-link">다음</a></li>
+										</c:otherwise>
+									</c:choose>
+								</ul>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

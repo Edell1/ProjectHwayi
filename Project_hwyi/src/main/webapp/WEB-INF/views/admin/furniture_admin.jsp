@@ -28,31 +28,41 @@
 		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
 		<!-- 게시글 리스트 -->
 		<div class="container" style="margin-top: 100px">
-
 			<div class="card shadow">
 				<div class="card-body">
 					<h4 class="card-title">가구</h4>
 					<table class="table table-hover" id='furniture_list'>
 						<thead>
 							<tr>
-								<th class="text-center d-none d-md-table-cell">상품코드</th>
-								<th class="text-center d-none d-md-table-cell">상품이름</th>
+								<th class="text-center d-none d-md-table-cell">상품종류</th>
+								<th class="text-center d-none d-md-table-cell">상품명</th>
 								<th class="text-center d-none d-md-table-cell">판매자</th>
 								<th class="text-center d-none d-md-table-cell">상품가격</th>
 								<th class="text-center d-none d-md-table-cell">상품개수</th>
 								<th class="text-center d-none d-md-table-cell">상품태그</th>
+								<th class="text-center d-none d-md-table-cell">상세정보</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var='obj' items="${furniturelist}">
 								<tr>
-									<td class="text-center d-none d-md-table-cell">${obj.furnitureid }</td>
-									<td class="text-center d-none d-md-table-cell">${obj.furniture_name}</td>
-									<td class="text-center d-none d-md-table-cell">${obj.code}</td>
-									<td class="text-center d-none d-md-table-cell">${obj.furniture_price}</td>
-									<td class="text-center d-none d-md-table-cell">${obj.furniture_cnt}</td>
-									<td class="text-center d-none d-md-table-cell">${obj.tag}</td>
-
+									<c:choose>
+										<c:when test="${obj.checked != 0}">
+											<td class="text-center d-none d-md-table-cell">${obj.furniture_type }</td>
+											<td class="text-center d-none d-md-table-cell">${obj.furniture_name}</td>
+											<td class="text-center d-none d-md-table-cell">${obj.code}</td>
+											<td class="text-center d-none d-md-table-cell">${obj.furniture_price}</td>
+											<td class="text-center d-none d-md-table-cell">${obj.furniture_cnt}</td>
+											<td class="text-center d-none d-md-table-cell">${obj.tag}</td>
+											<td>
+												<div class="text-right">
+													<a
+														href="${root}admin/furniture_info?furnitureid=${obj.furnitureid }"
+														class="btn btn-primary">정보보기</a>
+												</div>
+											</td>
+										</c:when>
+									</c:choose>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -103,11 +113,6 @@
 								</c:otherwise>
 							</c:choose>
 						</ul>
-					</div>
-
-					<div class="text-right">
-						<a href="${root}board/write?board_info_idx=${board_info_idx}"
-							class="btn btn-primary">글쓰기</a>
 					</div>
 				</div>
 			</div>
