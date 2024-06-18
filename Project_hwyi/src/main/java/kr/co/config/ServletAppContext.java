@@ -61,7 +61,9 @@ public class ServletAppContext implements WebMvcConfigurer {
 
 	@Autowired
 	private TopMenuService topMenuService;
-	
+	@Autowired
+	private CartService cartService;
+
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 

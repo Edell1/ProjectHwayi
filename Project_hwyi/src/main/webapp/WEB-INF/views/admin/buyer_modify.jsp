@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/manage_mem.css' />" />
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />

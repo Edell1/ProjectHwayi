@@ -53,7 +53,7 @@
 										<td>${buyer.phone}</td>
 										<td><div class="btn_box">
 												<button class="updateBtn"
-													onclick="location.href='${root}admin/buyer_info?id=${buyer.id}'">정보보기</button>
+													onclick="location.href='${root}admin/buyer_info?id=${buyer.id}'">정보 보기</button>
 											</div></td>
 									</tr>
 								</c:forEach>
@@ -71,7 +71,7 @@
 									<th class="th_column_3">매장 이름</th>
 									<th class="th_column_3">사업자 주소</th>
 									<th class="th_column_3">사업자 전화번호</th>
-									<th class="th_column_4">정보 수정</th>
+									<th class="th_column_4">상세정보</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -85,7 +85,7 @@
 										<td>${seller.strtel}</td>
 										<td><div class="btn_box">
 												<button class="updateBtn"
-													onclick="location.href='${root}admin/seller_info?id=${seller.id}'">정보수정</button>
+													onclick="location.href='${root}admin/seller_info?id=${seller.id}'">정보 보기</button>
 											</div></td>
 									</tr>
 								</c:forEach>

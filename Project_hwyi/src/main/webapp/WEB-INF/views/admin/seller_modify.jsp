@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/manage_mem.css' />" />
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
@@ -87,11 +88,10 @@
 											value="${modifySellerBean.straddress2}"></td>
 									</tr>
 									<tr>
-										<td colspan="3">
-											<button type="submit" class="btn btn-secondary">완료</button> <a
-											href="${root}admin/seller_info?id=${id}"
-											class="btn btn-secondary">취소</a>
-										</td>
+										<td colspan="3"><form:button type="submit"
+												class="btn btn-secondary">완료</form:button>
+												<a href="${root}admin/seller_info?id=${id}"
+													class="btn btn-primary">취소</a></td>
 									</tr>
 								</table>
 							</form:form>
