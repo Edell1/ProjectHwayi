@@ -52,9 +52,8 @@ public class UserBean {
 	@Size(min = 1)
 	private String straddress2;
 
-	// 아직 작업 안한거
+	@Size(min = 1)
 	private String brand;
-	//
 
 	private String favarite;
 
