@@ -1,8 +1,11 @@
 package kr.co.config;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -19,16 +23,24 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import kr.co.beans.UserBean;
+import kr.co.interceptor.CartInterceptor;
+import kr.co.interceptor.CheckLoginInterceptor;
+import kr.co.interceptor.CheckWriterInterceptor;
 import kr.co.interceptor.TopMenuInterceptor;
 import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
-import kr.co.mapper.TopMenuMapper;
+import kr.co.mapper.CartMapper;
+import kr.co.mapper.FurnitureMapper;
 import kr.co.mapper.SellerMapper;
+import kr.co.mapper.TopMenuMapper;
 import kr.co.service.BoardService;
+import kr.co.service.CartService;
 import kr.co.service.TopMenuService;
 
 @Configuration // Spring MVC 프로젝트 설정
 @EnableWebMvc // 어노테이션 셋팅 선언
+@ComponentScan(basePackages = "kr.co")
 @ComponentScan("kr.co.dao")
 @ComponentScan("kr.co.service")
 @ComponentScan("kr.co.controller")
@@ -46,12 +58,17 @@ public class ServletAppContext implements WebMvcConfigurer {
 
 	@Value("${db.password}")
 	private String db_password;
-	
+
 	@Autowired
 	private BoardService boardService;
 
 	@Autowired
 	private TopMenuService topMenuService;
+	@Autowired
+	private CartService cartService;
+
+	@Resource(name = "loginUserBean")
+	private UserBean loginUserBean;
 
 	// jsp /html /css /js /jq
 	@Override
@@ -109,7 +126,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
-	
+
 	@Bean
 	public MapperFactoryBean<BuyerMapper> getBuyerMapper(SqlSessionFactory factory) throws Exception {
 		MapperFactoryBean<BuyerMapper> factoryBean = new MapperFactoryBean<BuyerMapper>(BuyerMapper.class);
@@ -117,14 +134,41 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 
+	@Bean
+	public MapperFactoryBean<FurnitureMapper> getFurnitureMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<FurnitureMapper> factoryBean = new MapperFactoryBean<FurnitureMapper>(FurnitureMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
+	@Bean
+	public MapperFactoryBean<CartMapper> getCartMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<CartMapper> factoryBean = new MapperFactoryBean<CartMapper>(CartMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		WebMvcConfigurer.super.addInterceptors(registry);
 
-		TopMenuInterceptor topMenuInterceptor = new TopMenuInterceptor(topMenuService);
+		TopMenuInterceptor topMenuInterceptor = new TopMenuInterceptor(topMenuService, loginUserBean);
 		InterceptorRegistration reg1 = registry.addInterceptor(topMenuInterceptor);
 		reg1.addPathPatterns("/**");// 모든 요청주소에 동작
+
+		CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
+		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
+
+		reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");
+		reg2.excludePathPatterns("/board/main");
+
+		CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardService);
+		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
+		reg3.addPathPatterns("/board/modify", "/board/delete");
+
+		CartInterceptor cartInterceptor = new CartInterceptor(loginUserBean, cartService);
+		InterceptorRegistration cartReg = registry.addInterceptor(cartInterceptor);
+		cartReg.addPathPatterns("/cart/*");
 	}
 
 	// Properties파일을 Bean으로 등록
@@ -139,6 +183,12 @@ public class ServletAppContext implements WebMvcConfigurer {
 		ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
 		res.setBasenames("/WEB-INF/properties/error_message");
 		return res;
+	}
+
+	// enctype="multipart/form-data" 사용하기 위한 클래스 객체 생성
+	@Bean
+	public StandardServletMultipartResolver multipartResolver() {
+		return new StandardServletMultipartResolver(); // 객체 생성하여 반환
 	}
 
 }

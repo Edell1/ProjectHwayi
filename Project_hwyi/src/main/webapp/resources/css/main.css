@@ -2,7 +2,8 @@
 
 @font-face {
 	font-family: 'Free';
-	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2')
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2')
 		format('woff2');
 	font-weight: 900;
 	font-style: normal;
@@ -15,15 +16,20 @@
 }
 
 body {
-   display: grid;
-   grid-template-rows: auto 1fr auto;
-   min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 a {
 	color: #000;
 	text-decoration: none !important;
 }
+
 a:visited {
 	color: #000;
 }
@@ -31,5 +37,3 @@ a:visited {
 li {
 	list-style: none;
 }
-
-

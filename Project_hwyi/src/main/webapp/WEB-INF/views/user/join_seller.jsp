@@ -9,30 +9,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>미니 프로젝트</title>
-<!-- Bootstrap CDN -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-</head>
+<title>판매자 회원가입</title>
+
+<link rel="stylesheet" href="<c:url value='/css/main.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/join.css' />" />
+
 <script>
    function checkUserIdExist(){
+<<<<<<< HEAD
       var ID=$("#ID").val()
+=======
+      var id=$("#id").val()
+>>>>>>> refs/remotes/origin/heumE
       
       //아이디를 입력하지 않았을 경우 예외처리
+<<<<<<< HEAD
       if(ID.length == 0){
+=======
+      if(id.length == 0){
+>>>>>>> refs/remotes/origin/heumE
          alert('아이디를 입력해주세요')
          return 
       }
       
       $.ajax({
          //요청할 주소
+<<<<<<< HEAD
          url: '${root}user/checkSellerIdExist/' + ID,
+=======
+         url: '${root}user/checkSellerIdExist/' + id,
+>>>>>>> refs/remotes/origin/heumE
          //요청타입
          type: 'get',
          //응답결과
@@ -56,72 +62,148 @@
       }
 </script>
 <body>
+	<div class="join_container">
+		<div class="top_box">
+			<h1 class="tit">판매자 회원가입</h1>
+		</div>
 
-	<div class="container" style="margin-top: 100px">
-		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-6">
-				<div class="card shadow">
-					<div class="card-body">
+		<div class="join_box">
+			<div class="join_box_inner">
+				<div class="top_var">
+					<a href="${root }main" class="home"> <i
+						class="fa-solid fa-house"></i>
+					</a>
+				</div>
+
+				<div class="join_cont">
+					<div class="cont_box">
 						<form:form action="${root}user/join_pro2" method="post"
 							modelAttribute="joinUserBean">
 							<form:hidden path="userIdExist" />
+<<<<<<< HEAD
 							<div class="form-group">	
 								<form:label path="Name">이름</form:label>
 								<form:input path="Name" class='form-control'
 									placeholder='이름' />
 								<form:errors path="Name" style='color:red' />
+=======
+							<div class="form-group">
+								<form:label class="label_txt" path="name">이름</form:label>
+								<form:input path="name" class='form-control' placeholder='이름' />
+								<form:errors class="err_txt" path="name" style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="ID">아이디</form:label>
+=======
+								<form:label class="label_txt" path="id">아이디</form:label>
+>>>>>>> refs/remotes/origin/heumE
 								<div class="input-group">
+<<<<<<< HEAD
 									<form:input path="ID" class='form-control'
 										placeholder='아이디' onkeypress="resetUserIdExist()" />
+=======
+									<form:input path="id" class='form-control' placeholder='아이디'
+										onkeypress="resetUserIdExist()" />
+>>>>>>> refs/remotes/origin/heumE
 									<div class="input-group-append">
 										<button type="button" class="btn btn-primary"
 											onclick="checkUserIdExist()">중복확인</button>
 									</div>
 								</div>
+<<<<<<< HEAD
 								<form:errors path="ID" style='color:red' />
+=======
+								<form:errors class="err_txt id_err" path="id" style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="PW">비밀번호</form:label>
 								<form:password path="PW" class='form-control'
 									placeholder='비밀번호' />
 								<form:errors path='PW' style='color:red' />
+=======
+								<form:label class="label_txt" path="pw">비밀번호</form:label>
+								<form:password path="pw" class='form-control' placeholder='비밀번호' />
+								<form:errors class="err_txt" path='pw' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="PW2">비밀번호 확인</form:label>
 								<form:password path="PW2" class='form-control'
+=======
+								<form:label class="label_txt" path="pw2">비밀번호 확인</form:label>
+								<form:password path="pw2" class='form-control'
+>>>>>>> refs/remotes/origin/heumE
 									placeholder='비밀번호 확인' />
+<<<<<<< HEAD
 								<form:errors path='PW2' style='color:red' />
+=======
+								<form:errors class="err_txt" path='pw2' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="Mail">이메일</form:label>
 								<form:input path="Mail" class='form-control'
 									placeholder='이메일' />
 								<form:errors path='Mail' style='color:red' />
+=======
+								<form:label class="label_txt" path="mail">이메일</form:label>
+								<form:input path="mail" class='form-control' placeholder='이메일' />
+								<form:errors class="err_txt" path='mail' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
+
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="Phone">휴대폰 번호</form:label>
 								<form:input path="Phone" class='form-control'
 									placeholder='-를 제외하고 입력해주세요' />
 								<form:errors path='Phone' style='color:red' />
+=======
+								<form:label class="label_txt" path="phone">휴대폰 번호</form:label>
+								<form:input path="phone" class='form-control'
+									placeholder='휴대폰 번호' />
+								<form:errors class="err_txt" path='phone' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="Address">주소</form:label>
 								<form:input path="Address" class='form-control'
+=======
+								<form:label class="label_txt" path="address">주소</form:label>
+								<form:input path="address" class='form-control'
+>>>>>>> refs/remotes/origin/heumE
 									placeholder='우편번호 입력' />
+<<<<<<< HEAD
 								<form:errors path='Address' style='color:red' />
+=======
+								<form:errors class="err_txt" path='address' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="Address2">상세주소</form:label>
 								<form:input path="Address2" class='form-control'
+=======
+								<form:label class="label_txt" path="address2">상세주소</form:label>
+								<form:input path="address2" class='form-control'
+>>>>>>> refs/remotes/origin/heumE
 									placeholder='상세주소 입력' />
+<<<<<<< HEAD
 								<form:errors path='Address2' style='color:red' />
+=======
+								<form:errors class="err_txt" path='address2' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="strcode">사업자등록번호</form:label>
 								<form:input path="strcode" class='form-control'
 									placeholder='사업자 등록번호 입력' />
@@ -134,35 +216,73 @@
 									placeholder='우편번호 입력' />
 								<form:errors path='straddress' style='color:red' />
 
+=======
+								<form:label class="label_txt" path="strcode">사업자등록번호</form:label>
+								<form:input path="strcode" class='form-control'
+									placeholder='사업자등록번호' />
+								<form:errors class="err_txt" path='strcode' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="straddress2">상세주소</form:label>
 								<form:input path="straddress2" class='form-control'
 									placeholder='상세주소 입력' />
 								<form:errors path='straddress2' style='color:red' />
+=======
+								<form:label class="label_txt" path="straddress">사업장 주소</form:label>
+								<form:input path="straddress" class='form-control'
+									placeholder='사업장 주소' />
+								<form:errors class="err_txt" path='straddress' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
-
 							<div class="form-group">
+<<<<<<< HEAD
 								<form:label path="strtel">매장 전화번호</form:label>
+=======
+								<form:label class="label_txt" path="straddress2">상세주소</form:label>
+								<form:input path="straddress2" class='form-control'
+									placeholder='상세주소' />
+								<form:errors class="err_txt" path='straddress2'
+									style='color:red' />
+							</div>
+							<div class="form-group">
+								<form:label class="label_txt" path="brand">매장명</form:label>
+								<form:input path="brand" class='form-control' placeholder='매장명' />
+								<form:errors class="err_txt" path='brand' style='color:red' />
+							</div>
+							<div class="form-group">
+								<form:label class="label_txt" path="strtel">매장 전화번호</form:label>
+>>>>>>> refs/remotes/origin/heumE
 								<form:input path="strtel" class='form-control'
 									placeholder='매장 전화번호' />
+<<<<<<< HEAD
 								<form:errors path='strtel' style='color:red' />
+=======
+								<form:errors class="err_txt" path='strtel' style='color:red' />
+>>>>>>> refs/remotes/origin/heumE
 							</div>
 
 							<div class="form-group">
-								<div class="text-right">
-									<form:button class='btn btn-primary'>회원가입</form:button>
-								</div>
+								<form:button class='btn btn-primary joinBtn'>회원가입</form:button>
 							</div>
 						</form:form>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3"></div>
+
 		</div>
 	</div>
-
-	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
-
 </body>
+
+<!-- script -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/4cd100a941.js"
+	crossorigin="anonymous"></script>
+
 </html>

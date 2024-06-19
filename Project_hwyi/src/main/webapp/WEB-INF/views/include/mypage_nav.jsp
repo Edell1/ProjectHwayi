@@ -15,7 +15,7 @@
 			<li class="border"></li>
 			<li><a href="#">주문목록/배송조회</a></li>
 			<li><a href="#">취소/반품/교환 내역</a></li>
-			<li><a href="${root}shopping/cart">장바구니</a></li>
+			<li><a href="${root}shop/cart">장바구니</a></li>
 		</ul>
 		<ul>
 			<li>혜택관리</li>

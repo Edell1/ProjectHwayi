@@ -13,10 +13,19 @@ public class RestApiSellerController {
 	@Autowired
 	private UsersellerService userService;
 	
+<<<<<<< HEAD
 	@GetMapping("/user/checkSellerIdExist/{ID}")
 	public String checkUserIdExist(@PathVariable String ID) {
+=======
+	@GetMapping("/user/checkSellerIdExist/{id}")
+	public String checkUserIdExist(@PathVariable String id) {
+>>>>>>> refs/remotes/origin/heumE
 		// @PathVariable : 주소에 데이터 붙이기
+<<<<<<< HEAD
 		Boolean chk = userService.checkUserExist(ID);
+=======
+		Boolean chk = userService.checkUserExist(id);
+>>>>>>> refs/remotes/origin/heumE
 		return chk + "";
 	}
 	
