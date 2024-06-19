@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* product */
+
+.product_box {
+	padding: 20px;
+	height: 800px;
+}
+
+.product_box h2 {
+	padding: 10px;
+}
+
+.item_box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+}
+
+.item_box .product_item {
+	display: grid;
+	gap: 10px;
+	width: 300px;
+	padding: 20px;
+}
+.item_box .product_item img {
+	width: 90%;
+	height: auto;
+}
+.item_box .product_item .ptit {
+	font-size: 24px;
+}
