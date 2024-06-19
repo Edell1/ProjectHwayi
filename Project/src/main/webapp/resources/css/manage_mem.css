@@ -6,8 +6,14 @@
 	box-sizing: border-box;
 }
 
+.manage_chart {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
 .mgMem_inner {
-	width: 84%;
+	width: 80%;
 }
 
 .mgMem_inner .tit {
@@ -27,11 +33,23 @@ label[for*='tab'] {
 }
 
 input[id='tab01']:checked ~ .cont_wrap .con1, input[id='tab02']:checked 
-	 ~ .cont_wrap .con2 {
+	 ~ .cont_wrap .con2, input[id='tab03']:checked ~ .cont_wrap .con3,
+	input[id='tab04']:checked 
+	 ~ .cont_wrap .con4, input[id='tab05']:checked ~ .cont_wrap .con5,
+	input[id='tab06']:checked 
+	 ~ .cont_wrap .con6, input[id='tab07']:checked ~ .cont_wrap .con7,
+	input[id='tab08']:checked 
+	 ~ .cont_wrap .con8, input[id='tab09']:checked ~ .cont_wrap .con9,
+	input[id='tab10']:checked 
+	 ~ .cont_wrap .con10 {
 	display: block;
 }
 
-input[id='tab01']:checked+label[for='tab01'], input[id='tab02']:checked+label[for='tab02']
+input[id='tab01']:checked+label[for='tab01'], input[id='tab02']:checked+label[for='tab02'],
+	input[id='tab03']:checked+label[for='tab03'], input[id='tab04']:checked+label[for='tab04'],
+	input[id='tab05']:checked+label[for='tab05'], input[id='tab06']:checked+label[for='tab06'],
+	input[id='tab07']:checked+label[for='tab07'], input[id='tab08']:checked+label[for='tab08'],
+	input[id='tab09']:checked+label[for='tab09'], input[id='tab10']:checked+label[for='tab10']
 	{
 	color: #fff;
 	background: green;

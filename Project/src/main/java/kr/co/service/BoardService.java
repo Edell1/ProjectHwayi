@@ -112,9 +112,7 @@ public class BoardService {
 
 	public PageBean getContentCnt(int content_board_idx, int currentPage) {
 		int content_cnt = boardDao.getContentCnt(content_board_idx);
-
 		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
-
 		return pageBean;
 
 	}
