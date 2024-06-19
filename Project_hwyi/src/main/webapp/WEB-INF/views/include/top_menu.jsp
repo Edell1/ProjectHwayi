@@ -51,7 +51,6 @@
 			<li><a href="${root}main" class="home">홈</a></li>
 			<li><a href="#" class="home">추천</a></li>
 			<li><a href="${root}furniture/furniture_list" class="furniture">가구</a></li>
-			<li><a href="#" class="home">인테리어</a></li>
 			<li><a href="#" class="home">브랜드관</a></li>
 		</ul>
 	</nav>
