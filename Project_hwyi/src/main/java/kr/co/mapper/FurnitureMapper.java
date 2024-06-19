@@ -32,5 +32,16 @@ public interface FurnitureMapper {
 	// 관리자권한 상품 승인
 	@Update("update furniture set checked=#{checked} where furnitureid=#{furnitureid}")
 	void grantFurnitureInfoByAdmin(FurnitureBean modifyFurnitureBean);
+
+	//가구 타입에 따른 가구 리스트 가져오기
+	@Select("select * from furniture where checked = 0 and furniture_type = #{furnitureType}")
+	List<FurnitureBean> getFurnitureListFromType(String furnitureType);
+	
+	
+	//관리자가 승인한 가구들 가져오기
+	@Select("select * from furniture where checked = 0 ")
+	List<FurnitureBean> getCheckedFurnitureList();
+
+
 	
 }

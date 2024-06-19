@@ -206,7 +206,20 @@ public class FurnitureService {
    public void grantFurnitureInfoByAdmin(FurnitureBean modifyFurnitureBean) {
 	   furnitureDao.grantFurnitureInfoByAdmin(modifyFurnitureBean);
    }
-   
+    //가구 타입에 따른 목록가져오기
+   public List<FurnitureBean> getFurnitureListFromType(String furnitureType) {
+ 
+   return furnitureDao.getFurnitureListFromType(furnitureType);
+}
+
+   //관리자가 승인한 가구들 가져오기
+   public List<FurnitureBean> getCheckedFurnitureList() {
+	System.out.println("CheckService");
+	return furnitureDao.getCheckedFurnitureList();
+}
+
+
+
 }
 
 
