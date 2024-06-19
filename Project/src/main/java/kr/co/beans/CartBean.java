@@ -4,7 +4,6 @@ public class CartBean {
 
     private int cart_id;
     private String code;
-    private String interiorid;
     private String furnitureid;
     private int count;
     private double price;
@@ -14,10 +13,9 @@ public class CartBean {
     }
 
     // 모든 필드를 초기화하는 생성자
-    public CartBean(int cart_id, String code, String interiorid, String furnitureid, int count, double price) {
+    public CartBean(int cart_id, String code, String furnitureid, int count, double price) {
         this.cart_id = cart_id;
         this.code = code;
-        this.interiorid = interiorid;
         this.furnitureid = furnitureid;
         this.count = count;
         this.price = price;
@@ -38,14 +36,6 @@ public class CartBean {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public String getInteriorid() {
-        return interiorid;
-    }
-
-    public void setInteriorid(String interiorid) {
-        this.interiorid = interiorid;
     }
 
     public String getFurnitureid() {
@@ -78,7 +68,6 @@ public class CartBean {
         return "CartBean{" +
                 "cart_id=" + cart_id +
                 ", code='" + code + '\'' +
-                ", interiorid='" + interiorid + '\'' +
                 ", furnitureid='" + furnitureid + '\'' +
                 ", count=" + count +
                 ", price=" + price +

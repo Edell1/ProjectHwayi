@@ -205,6 +205,10 @@ public class FurnitureService {
 		furnitureDao.grantFurnitureInfoByAdmin(modifyFurnitureBean);
 	}
 
+	public FurnitureBean getFurnitureById(String furnitureid) {
+		return furnitureDao.selectFurnitureById(furnitureid);
+	}
+
 	// 가구 타입에 따른 목록가져오기
 	public List<FurnitureBean> getFurnitureListFromType(String furnitureType) {
 

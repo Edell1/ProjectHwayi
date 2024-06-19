@@ -13,6 +13,10 @@ public class CartDao {
 	
 	@Autowired
 	private CartMapper cartMapper;
+	
+	public List<CartBean> getCartItemByMemberId(String code) {
+		return cartMapper.getCartItemByMemberId(code);
+	}
 
 	public List<CartBean> getCartBycode(String code) {
 		return cartMapper.getCartBycode(code);
@@ -26,17 +30,14 @@ public class CartDao {
 		return cartMapper.getCntCart(code);
 	}
 
-	// Ãß°¡
 	public void addCart(CartBean cartBean) {
 		cartMapper.addCart(cartBean);
 	}
 
-	// ¾÷µ¥ÀÌÆ®
 	public void updateCart(CartBean cartBean) {
 		cartMapper.updateCart(cartBean);
 	}
 	
-	// »èÁ¦
 	public int deleteCart(String code, String furnotureid) {
 		return cartMapper.deleteCart(code, furnotureid);
 

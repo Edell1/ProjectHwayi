@@ -2,14 +2,21 @@ package kr.co.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.beans.CartBean;
 import kr.co.beans.FurnitureBean;
+import kr.co.beans.UserBean;
+import kr.co.service.CartService;
 import kr.co.service.FurnitureService;
 
 @Controller
@@ -19,18 +26,24 @@ public class FurnitureController {
 	@Autowired
 	private FurnitureService furnitureService;
 
+	@Autowired
+	private CartService cartService;
+
+	@Resource(name = "loginUserBean")
+	private UserBean loginUserBean;
+
 	@GetMapping("/furniture_list")
 	public String furniture_list(@RequestParam(value = "furnitureType", required = false) String furnitureType,
 			Model model) {
 
 		List<FurnitureBean> checkedfurniturelist;
-		 //°¡±¸ Ä«Å×°í¸®¸¦ ´­·¶À»¶§ Ä«Å×°í¸®¿¡ ¸Â´Â »óÇ° °®°í¿À±â
-	      if(furnitureType != null) {
-	    	  checkedfurniturelist = furnitureService.getFurnitureListFromType(furnitureType);
-	      }else {
-		 //°¡±¸ ±âº» ÆäÀÌÁö ÀüÃ¼»óÇ° °®°í¿À±â
-	    	  checkedfurniturelist = furnitureService.getCheckedFurnitureList();
-	      }
+		// ê°€êµ¬ ì¹´í…Œê³ ë¦¬ë¥¼ ëˆŒë €ì„ë•Œ ì¹´í…Œê³ ë¦¬ì— ë§ëŠ” ìƒí’ˆ ê°–ê³ ì˜¤ê¸°
+		if (furnitureType != null) {
+			checkedfurniturelist = furnitureService.getFurnitureListFromType(furnitureType);
+		} else {
+			// ê°€êµ¬ ê¸°ë³¸ í˜ì´ì§€ ì „ì²´ìƒí’ˆ ê°–ê³ ì˜¤ê¸°
+			checkedfurniturelist = furnitureService.getCheckedFurnitureList();
+		}
 
 		model.addAttribute("checkedfurniturelist", checkedfurniturelist);
 
@@ -39,10 +52,29 @@ public class FurnitureController {
 	}
 
 	@GetMapping("/furniture_detail")
-	private String furniture_detail() {
+	public String furniture_detail(@RequestParam("furnitureid") String furnitureid, Model model) {
+		FurnitureBean furniture = furnitureService.getFurnitureById(furnitureid);
+		model.addAttribute("furnitureBean", furniture);
+		return "/furniture/furniture_detail"; // JSP Ã†Ã„Ã€Ã Ã€ÃŒÂ¸Â§
+	}
 
-		return "furniture/furniture_detail";
+	@GetMapping("/furniture_brand")
+	public String furniture_brand() {
+		return "/furniture/furniture_brand";
+	}
 
+	@PostMapping("/addToCart_pro")
+	public String addToCartPro(@ModelAttribute("addCartBean") CartBean addCartBean,
+			@RequestParam("furnitureid") String furnitureid, @RequestParam("code") String code,
+			@RequestParam("price") int price, @RequestParam("count") int count) {
+
+		addCartBean.setFurnitureid(furnitureid);
+		addCartBean.setCode(loginUserBean.getCode());
+		cartService.updateCart(addCartBean);
+
+		cartService.addCartInfo(furnitureid, code, price, count);
+
+		return "cart/add_cart_success";
 	}
 
 }

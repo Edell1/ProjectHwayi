@@ -25,16 +25,17 @@
 	<div class="furniture_wrap">
 		<div class="furniture_detail">
 			<div class="furn_img">
-				<img src="./image/가구사진.avif" alt="" />
+				<img src="${root}image/furniture1/${furnitureBean.furnitureid}.png"
+					alt="" />
 			</div>
 
 			<div class="furn_box">
 				<div class="furn_info">
 					<ul class="info_detail">
 						<li>
-							<p>${furnitrueBean.brande}</p>
-							<p>${furnitrueBean.id}</p>
-							<p>${furnitrueBean.price}</p>
+							<p>${furnitureBean.brand}</p>
+							<p>${furnitureBean.furniture_name}</p>
+							<p>${furnitureBean.furniture_price} 원</p>
 						</li>
 
 						<li>
@@ -48,37 +49,52 @@
 				<div class="furn_choice">
 					<div class="choice_tit">상품선택</div>
 					<div class="choice_box">
-						<div class="furn_name">${furnitrueBean.id}</div>
+						<div class="furn_name">${furnitureBean.furniture_name}</div>
 						<div class="btn_box">
 							<button type="button" aria-label="수량 내리기" id="down"
 								class="qtybtn" onclick="decrease()">-</button>
-							<div class="count_number" id="product_qty">1</div>
+							<div class="count_number" id="count">1</div>
 							<button type="button" aria-label="수량 올리기" id="up" class="qtybtn"
 								onclick="increase()">+</button>
 						</div>
-						<div class="furn_price">${furnitrueBean.price}원</div>
 					</div>
 				</div>
 
 				<div class="total_price">
 					<p>총 상품금액 :</p>
-					<p>${furnitrueBean.price}</p>
+					<p>${furnitureBean.furniture_price}</p>
 					<p>원</p>
 				</div>
 
 				<div class="cart_buy">
-					<button class="cart" type="button" onclick="addToCart()">
-						<span id="go-cart">장바구니 담기</span>
-					</button>
-					<form id="gobuyForm" action="${root}shop/product_buy" method="post">
-						<input type="hidden" name="productId" value="${furnitrueBean.id}" />
-						<input type="hidden" name="memberId"
-							value="${furnitrueBean.userid}" /> <input type="hidden"
-							name="productQty" id="productQtyInput" value="1" />
-					</form>
-					<button class="buy" type="button" onclick="buy_product()">
-						<span id="go-buy">상품 구매하기</span>
-					</button>
+					<form:form id="addToCartForm" action="${root}furniture/addToCart_pro"
+						method="post">
+						<input type="hidden" name="code" value="${furnitureBean.code}" />
+						<input type="hidden" name="furnitureid"
+							value="${furnitureBean.furnitureid}" />
+						<input type="hidden" name="count" id="count" value="1" />
+						<input type="hidden" name="price"
+							value="${furnitureBean.furniture_price}">
+
+						<button type='submit' class="cartBtn" onclick="addToCart()">
+							<span id="go-cart">장바구니 담기</span>
+						</button>
+					</form:form>
+
+					<form:form id="gobuyForm" action="${root}cart/product_buy"
+						method="post">
+						<input type="hidden" name="member_code"
+							value="${furnitureBean.code}" />
+						<input type="hidden" name="furnitureid"
+							value="${furnitureBean.furnitureid}" />
+						<input type="hidden" name="count" id="count" value="1" />
+						<input type="hidden" name="price"
+							value="${furnitureBean.furniture_price}">
+
+						<button class="buyBtn" type="button">
+							<span id="go-buy">상품 구매하기</span>
+						</button>
+					</form:form>
 				</div>
 			</div>
 		</div>
@@ -101,12 +117,12 @@
 		<div class="nav_detail">
 			<div class="moreInfo_img" id="moreInfoSection">
 				<img alt="상품상세정보이미지"
-					src="${root}image/furniture/detail/${furnitrueBean.id}_detail.png" />
+					src="${root}image/furniture/detail/${furnitureBean.furniture_name}_detail.png" />
 			</div>
 
 			<div class="seller_section" id="sellerSection">
 				<img alt="상품상세정보이미지"
-					src="${root}image/furniture/detail/${furnitrueBean.id}_detail.png" />
+					src="${root}image/furniture/detail/${furnitureBean.furniture_name}_detail.png" />
 			</div>
 
 			<div class="review_section" id="reviewSection">
@@ -174,7 +190,7 @@
 				</div>
 			</div>
 
-			<div class="QnA_section" id="QnASection">
+			<%-- <div class="QnA_section" id="QnASection">
 				<h3 class="sec-title">문의</h3>
 				<form:form action="${root}product/product_ask"
 					modelAttribute="productaskBean" method="post">
@@ -196,7 +212,7 @@
 						</div>
 					</div>
 				</form:form>
-			</div>
+			</div> --%>
 		</div>
 	</div>
 
@@ -218,26 +234,37 @@
 	crossorigin="anonymous"></script>
 <script>
 	function decrease() {
-		let quantityElement = document.getElementById('product_qty');
+		let quantityElement = document.getElementById('count');
 		let currentQuantity = parseInt(quantityElement.textContent);
 
 		if (currentQuantity > 1) {
 			quantityElement.textContent = currentQuantity - 1;
-			document.getElementById('productQtyInput').value = currentQuantity - 1;
+			document.getElementById('count').value = currentQuantity - 1;
+			updateTotalPrice();
 		}
 	}
 
 	function increase() {
-        let quantityElement = document.getElementById('product_qty');
-        let currentQuantity = parseInt(quantityElement.textContent);
-        
-        quantityElement.textContent = currentQuantity + 1;
-        document.getElementById('productQtyInput').value = currentQuantity + 1;
-    }
-	
-	function addToCart() {
-	    document.getElementById('addToCartForm').submit();
+		let quantityElement = document.getElementById('count');
+		let currentQuantity = parseInt(quantityElement.textContent);
+
+		quantityElement.textContent = currentQuantity + 1;
+		document.getElementById('count').value = currentQuantity + 1;
+		updateTotalPrice();
 	}
+
+	function updateTotalPrice() {
+		let unitPrice = parseInt('${furnitureBean.furniture_price}');
+		let quantity = parseInt(document.getElementById('count').textContent);
+		let totalPrice = unitPrice * quantity;
+		document.querySelector('.total_price p:nth-child(2)').textContent = totalPrice;
+	}
+
+	  function addToCart() {
+          var productQuantity = document.getElementById('count').innerText.trim();
+
+          location.href='${root}cart/cart_main?furnitureid=${furnitureBean.furnitureid}&count=' + encodeURIComponent(count);
+      }
 
 	document.addEventListener('DOMContentLoaded', function() {
 		const navLinks = document.querySelectorAll('.furn_nav ul li a');
