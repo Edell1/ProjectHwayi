@@ -10,11 +10,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>구매자 회원가입</title>
-
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/join.css' />" />
-
 </head>
+<!-- 주소 api -->
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
    function checkUserIdExist(){
       var id=$("#id").val()
@@ -50,6 +51,7 @@
          $("#userIdExist").val('false')
       }
 </script>
+<!-- 주소 api -->
 <script>
 		window.onload = function() {
 		    document.getElementById("address").addEventListener("click", function() { //주소입력칸을 클릭하면
@@ -63,7 +65,6 @@
 		    });
 		}
 </script>
-
 <body>
 	<div class="join_container">
 		<div class="top_box">
@@ -124,18 +125,23 @@
 								<form:errors class="err_txt" path='phone' style='color:red' />
 							</div>
 
+
 							<div class="form-group">
 								<form:label class="label_txt" path="address">주소</form:label>
-								<form:input path="address" class='form-control'
-									placeholder='우편번호 입력' />
+								<div class="input-group">
+									<form:input path="address" readonly="true" class="form-control"
+										placeholder='주소 입력' />
+								</div>
 								<form:errors class="err_txt" path='address' style='color:red' />
 							</div>
 							<div class="form-group">
 								<form:label class="label_txt" path="address2">상세주소</form:label>
-								<form:input path="address2" class='form-control'
-									placeholder='상세주소 입력' />
-								<form:errors class="err_txt" path='address2' style='color:red' />
+								<div class="input-group">
+									<form:input path="address2" class="form-control" placeholder='상세 주소 입력'/>
+								</div>
+								<form:errors path="address2" style="color:red" />
 							</div>
+
 
 							<div class="form-group">
 								<form:button class='btn btn-primary joinBtn'>회원가입</form:button>

@@ -10,7 +10,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>판매자 회원가입</title>
-
+<!-- 주소 api -->
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/join.css' />" />
 
@@ -48,6 +50,30 @@
    function resetUserIdExist(){
          $("#userIdExist").val('false')
       }
+</script>
+
+<!-- 주소 api -->
+<script>
+window.onload = function() {
+	document.getElementById("address").addEventListener("click", function() { //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("address").value = data.address; // 주소 넣기
+                document.querySelector("input[name=address2]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+    document.getElementById("straddress").addEventListener("click", function() { //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("straddress").value = data.address; // 주소 넣기
+                document.querySelector("input[name=straddress2]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
 </script>
 <body>
 	<div class="join_container">
@@ -109,37 +135,49 @@
 								<form:errors class="err_txt" path='phone' style='color:red' />
 							</div>
 
+
 							<div class="form-group">
 								<form:label class="label_txt" path="address">주소</form:label>
-								<form:input path="address" class='form-control'
-									placeholder='우편번호 입력' />
+								<div class="input-group">
+									<form:input path="address" readonly="true" class="form-control"
+										placeholder='주소 입력' />
+								</div>
 								<form:errors class="err_txt" path='address' style='color:red' />
 							</div>
 							<div class="form-group">
 								<form:label class="label_txt" path="address2">상세주소</form:label>
-								<form:input path="address2" class='form-control'
-									placeholder='상세주소 입력' />
-								<form:errors class="err_txt" path='address2' style='color:red' />
+								<div class="input-group">
+									<form:input path="address2" class="form-control" placeholder='상세 주소 입력'/>
+								</div>
+								<form:errors path="address2" style="color:red" />
 							</div>
+
 							<div class="form-group">
 								<form:label class="label_txt" path="strcode">사업자등록번호</form:label>
 								<form:input path="strcode" class='form-control'
 									placeholder='사업자등록번호' />
 								<form:errors class="err_txt" path='strcode' style='color:red' />
 							</div>
+
+
+
 							<div class="form-group">
 								<form:label class="label_txt" path="straddress">사업장 주소</form:label>
-								<form:input path="straddress" class='form-control'
-									placeholder='사업장 주소' />
+								<div class="input-group">
+									<form:input path="straddress" readonly="true"
+										class="form-control" placeholder='사업장 주소 입력' />
+								</div>
 								<form:errors class="err_txt" path='straddress' style='color:red' />
 							</div>
 							<div class="form-group">
 								<form:label class="label_txt" path="straddress2">상세주소</form:label>
-								<form:input path="straddress2" class='form-control'
-									placeholder='상세주소' />
-								<form:errors class="err_txt" path='straddress2'
-									style='color:red' />
+								<div class="input-group">
+									<form:input path="straddress2" class="form-control"
+										placeholder='상세주소 입력' />
+								</div>
+								<form:errors path="straddress2" style="color:red" />
 							</div>
+
 							<div class="form-group">
 								<form:label class="label_txt" path="brand">매장명</form:label>
 								<form:input path="brand" class='form-control' placeholder='매장명' />
