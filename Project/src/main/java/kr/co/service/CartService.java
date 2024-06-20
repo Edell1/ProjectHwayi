@@ -17,70 +17,37 @@ public class CartService {
 	@Autowired
 	private CartDao cartDao;
 
-	@Resource(name = "loginUserBean")
-	private UserBean loginUserBean;
-
 	public List<CartBean> getCartItemByMemberId(String code) {
 		return cartDao.getCartItemByMemberId(code);
 	}
-
-	public List<CartBean> getCartBycode(String code) {
-		return cartDao.getCartBycode(code);
-	}
-
-	public CartBean getCarByfurnitureIdAndCode(String code, String furnotureid) {
-		return cartDao.getCarByfurnitureIdAndCode(code, furnotureid);
-	}
-
-	public List<CartBean> getCntCart(String code) {
-		return cartDao.getCntCart(code);
-	}
-
+	
+	// 수량에 따른 총합 계산
 	public int calculateTotalPrice(String code) {
-		List<CartBean> cartItems = cartDao.getCartBycode(code);
+		List<CartBean> cartItems = cartDao.getCartItemByMemberId(code);
 		int totalPrice = 0;
 
 		for (CartBean cartItem : cartItems) {
-			int fruniturePrice = (int) cartItem.getPrice();
+			int productPrice = cartItem.getPrice();
 			int count = cartItem.getCount();
-			totalPrice += (fruniturePrice * count);
+			totalPrice += (productPrice * count);
 		}
-
 		return totalPrice;
 	}
 
-	public void addCart(CartBean cartBean) {
-		cartDao.addCart(cartBean);
+	public int deleteCartItem(String code, String furnitureid) {
+		return cartDao.deleteCartItem(code, furnitureid);
 	}
 
-	public void updateCart(CartBean cartBean) {
-		cartDao.updateCart(cartBean);
+	public void insertCartItem(CartBean addCartBean) {
+		cartDao.insertCartItem(addCartBean);
 	}
 
-	public int deleteCart(String code, String furnotureid) {
-		return cartDao.deleteCart(code, furnotureid);
-
+	public void updateCartItem(CartBean cartBean) {
+		cartDao.updateCartItem(cartBean);
 	}
 
-	// addCartInfo 메서드 추가
-	public void addCartInfo(String furnitureid, String code, int price, int count) {
-		CartBean existingItem = cartDao.getCarByfurnitureIdAndCode(code, furnitureid);
-
-		if (existingItem != null) {
-			// 기존에 동일한 상품이 있다면 수량과 가격을 업데이트
-			existingItem.setCount(existingItem.getCount() + count);
-			existingItem.setPrice(existingItem.getPrice() + price);
-			cartDao.updateCart(existingItem);
-		} else {
-			// 새로운 상품을 장바구니에 추가
-
-			CartBean newItem = new CartBean();
-			newItem.setCode(loginUserBean.getCode());
-			newItem.setFurnitureid(furnitureid);
-			newItem.setCount(count);
-			newItem.setPrice(price);
-			cartDao.addCart(newItem);
-		}
+	public CartBean getCartItemByProductIdAndMemberId(String code, String furnitureid) {
+		return cartDao.getCartItemByProductIdAndMemberId(code, furnitureid);
 	}
 
 }

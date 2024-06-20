@@ -7,44 +7,29 @@ import java.util.List;
 
 public interface CartMapper {
 
-	// 모든 장바구니 목록 조회
-	@Select("SELECT * FROM Cart")
-	List<CartBean> getAllCarts();
+	// 사용자 code로 카트의 상품 정보 읽기
+	@Select("select c.*, f.* from cart c join furniture f on c.furnitureid = f.furnitureid where c.code = #{code}")
+	List<CartBean> getCartItemByMemberId(String code);
 
-	@Select("select c.*, m.* from cart c, member m where c.code = m.code and m.code = #{code}")
-	List<CartBean> getCartItemByMemberId(@Param("code") String code);
+	// 사용자의 cart에서 특정 상품 삭제
+	@Delete("delete from cart where code=#{code} and furnitureid=#{furnitureid} ")
+	int deleteCartItem(@Param("code") String code, @Param("furnitureid") String furnitureid);
+
+	// 카트에 상품아이디, 수량 저장
+	@Insert("INSERT INTO cart (cart_id, code, furnitureid, count) VALUES (cart_seq.nextval, #{code}, #{furnitureid}, #{count})")
+	void insertCartItem(CartBean addCartBean);
+
+	// 수량변경
+	@Update("UPDATE cart SET count = #{count} WHERE code = #{code} AND furnitureid = #{furnitureid}")
+	void updateCartItem(CartBean cartBean);
+
+	// 특정 사용자의 카트에 특정 상품이 담겨있는지 확인
+	@Select("SELECT * FROM cart WHERE code = #{code} AND furnitureid = #{furnitureid}")
+	CartBean getCartItemByProductIdAndMemberId(@Param("code") String code,
+			@Param("furnitureid") String furnitureid);
 	
-    // 특정 회원의 장바구니 목록 조회
-    @Select("SELECT cart_id, code, furnitureid, count, price " +
-            "FROM Cart " +
-            "WHERE code = #{code}")
-    List<CartBean> getCartBycode(@Param("code") String code);
-
-    // 특정 회원의 특정 상품 장바구니 정보 조회
-    @Select("SELECT * FROM Cart WHERE code = #{code} AND furnitureid = #{furnitureid}")
-    CartBean getCarByfurnitureIdAndCode(@Param("code") String code,
-                                               @Param("furnitureid") String furnitureid);
-
-    // 특정 회원의 장바구니 수량 조회
-    @Select("SELECT * FROM Cart WHERE code = #{code}")
-    List<CartBean> getCntCart(String code);
-    
-	@Select("select count(*) from Cart")
-	int getProductCnt();
-
-    // 장바구니 항목 삭제
-    @Delete("DELETE FROM Cart WHERE code = #{code} AND furnitureid = #{furnitureid}")
-    int deleteCart(@Param("code") String code, @Param("furnitureid") String furnitureid);
-
-    // 장바구니 정보 수정
-    @Update("UPDATE Cart SET furnitureid = #{cart.furnitureid}, " +
-            "count = #{cart.count}, price = #{cart.price} " +
-            "WHERE cart_id = #{cart.cart_id}")
-    void updateCart(@Param("cart") CartBean cart);
-
-    // 장바구니에 상품 추가
-    @Insert("INSERT INTO Cart (cart_id, code, furnitureid, count, price) " +
-            "VALUES (cart_seq.NEXTVAL, #{code}, #{furnitureid}, #{count}, #{price})")
-    void addCart(CartBean cart);
+	// 사용자 카트 개수 출력
+	@Select("select * from cart where code = #{code}")
+	List<CartBean> getCntCart(String code);
 
 }

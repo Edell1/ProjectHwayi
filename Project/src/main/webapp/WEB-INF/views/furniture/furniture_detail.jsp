@@ -18,6 +18,119 @@
 	href="<c:url value='/css/furniture_detail.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 </head>
+
+<script>
+	function decrease() {
+		let quantityElement = document.getElementById('count');
+		let currentQuantity = parseInt(quantityElement.textContent);
+
+		if (currentQuantity > 1) {
+			quantityElement.textContent = currentQuantity - 1;
+			document.getElementById('count').value = currentQuantity - 1;
+
+			updateTotalPrice();
+		}
+	}
+
+	function increase() {
+        var quantityElement = document.getElementById('count');
+        quantityElement.innerText = parseInt(quantityElement.innerText) + 1;
+        updateTotalPrice();
+    }
+
+    function decrease() {
+        var quantityElement = document.getElementById('count');
+        if (parseInt(quantityElement.innerText) > 1) {
+            quantityElement.innerText = parseInt(quantityElement.innerText) - 1;
+            updateTotalPrice();
+        }
+    }
+    
+ // 총수량 계산해주기
+    function updateTotalPrice() {
+        var productQuantity = parseInt(document.getElementById('count').innerText.trim());
+        var productPrice = parseInt('${oneProductBean.product_price}');
+        var totalDisplay = document.getElementById('totalprice');
+
+        // 개수랑 가격이 null이 아닐때 계산
+        if (!isNaN(productQuantity) && !isNaN(productPrice) && totalDisplay) {
+            var totalPrice = productPrice * productQuantity;
+            totalDisplay.innerText = totalPrice.toLocaleString();
+        }
+    }
+
+    // 수량 올릴때 총상품 금액을 실시간으로 수량*가격해서 보이게 하기
+    var productPrice = ${oneProductBean.product_price};
+
+    function updateQuantity() {
+        var showQuantity = document.getElementById('count');
+        var totalDisplay = document.getElementById('totalprice');
+
+        if (showQuantity && totalDisplay) {
+            var quantity = showQuantity.innerText.trim();
+            var productQuantity = parseInt(quantity);
+
+            if (!isNaN(productQuantity)) {
+                var totalPrice = productPrice * productQuantity;
+                totalDisplay.innerText = totalPrice.toLocaleString();
+            }
+        }
+    }
+
+    //업데이트된 총수량 및 총상품 금액 보내주기
+    function addToCart() {
+        var productQuantity = document.getElementById('count').innerText.trim();
+
+        location.href='${root}product/addCart_pro?product_id=${oneProductBean.product_id}&count=' + encodeURIComponent(productQuantity);
+    }
+    
+    function bye_product(){
+    	location.href='${root}cart/cart_main?';
+    }
+
+    
+ // 총수량 계산해주기
+    function updateTotalPrice() {
+        var productQuantity = parseInt(document.getElementById('count').innerText.trim());
+        var productPrice = parseInt('${oneProductBean.product_price}');
+        var totalDisplay = document.getElementById('totalprice');
+
+        // 개수랑 가격이 null이 아닐때 계산
+        if (!isNaN(productQuantity) && !isNaN(productPrice) && totalDisplay) {
+            var totalPrice = productPrice * productQuantity;
+            totalDisplay.innerText = totalPrice.toLocaleString();
+        }
+    }
+
+    // 수량 올릴때 총상품 금액을 실시간으로 수량*가격해서 보이게 하기
+    var productPrice = ${oneProductBean.product_price};
+
+    function updateQuantity() {
+        var showQuantity = document.getElementById('count');
+        var totalDisplay = document.getElementById('totalprice');
+
+        if (showQuantity && totalDisplay) {
+            var quantity = showQuantity.innerText.trim();
+            var productQuantity = parseInt(quantity);
+
+            if (!isNaN(productQuantity)) {
+                var totalPrice = productPrice * productQuantity;
+                totalDisplay.innerText = totalPrice.toLocaleString();
+            }
+        }
+    }
+
+    //업데이트된 총수량 및 총상품 금액 보내주기
+    function addToCart() {
+        var productQuantity = document.getElementById('count').innerText.trim();
+
+        location.href='${root}product/addCart_pro?product_id=${oneProductBean.product_id}&count=' + encodeURIComponent(productQuantity);
+    }
+    
+    function bye_product(){
+    	location.href='${root}cart/cart_main?';
+    }
+</script>
 <body>
 
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
@@ -35,7 +148,7 @@
 						<li>
 							<p>${furnitureBean.brand}</p>
 							<p>${furnitureBean.furniture_name}</p>
-							<p>${furnitureBean.furniture_price} 원</p>
+							<p>${furnitureBean.furniture_price}원</p>
 						</li>
 
 						<li>
@@ -67,16 +180,17 @@
 				</div>
 
 				<div class="cart_buy">
-					<form:form id="addToCartForm" action="${root}furniture/addToCart_pro"
+					<form:form id="addToCartForm" action="${root}cart/addToCart_pro"
 						method="post">
 						<input type="hidden" name="code" value="${furnitureBean.code}" />
 						<input type="hidden" name="furnitureid"
 							value="${furnitureBean.furnitureid}" />
-						<input type="hidden" name="count" id="count" value="1" />
+						<input type="hidden" name="count" id="count"
+							value="${cart.count }" />
 						<input type="hidden" name="price"
 							value="${furnitureBean.furniture_price}">
 
-						<button type='submit' class="cartBtn" onclick="addToCart()">
+						<button type='submit' class="cartBtn">
 							<span id="go-cart">장바구니 담기</span>
 						</button>
 					</form:form>
@@ -232,55 +346,4 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/4cd100a941.js"
 	crossorigin="anonymous"></script>
-<script>
-	function decrease() {
-		let quantityElement = document.getElementById('count');
-		let currentQuantity = parseInt(quantityElement.textContent);
-
-		if (currentQuantity > 1) {
-			quantityElement.textContent = currentQuantity - 1;
-			document.getElementById('count').value = currentQuantity - 1;
-			updateTotalPrice();
-		}
-	}
-
-	function increase() {
-		let quantityElement = document.getElementById('count');
-		let currentQuantity = parseInt(quantityElement.textContent);
-
-		quantityElement.textContent = currentQuantity + 1;
-		document.getElementById('count').value = currentQuantity + 1;
-		updateTotalPrice();
-	}
-
-	function updateTotalPrice() {
-		let unitPrice = parseInt('${furnitureBean.furniture_price}');
-		let quantity = parseInt(document.getElementById('count').textContent);
-		let totalPrice = unitPrice * quantity;
-		document.querySelector('.total_price p:nth-child(2)').textContent = totalPrice;
-	}
-
-	  function addToCart() {
-          var productQuantity = document.getElementById('count').innerText.trim();
-
-          location.href='${root}cart/cart_main?furnitureid=${furnitureBean.furnitureid}&count=' + encodeURIComponent(count);
-      }
-
-	document.addEventListener('DOMContentLoaded', function() {
-		const navLinks = document.querySelectorAll('.furn_nav ul li a');
-
-		navLinks.forEach(function(link) {
-			link.addEventListener('click', function(e) {
-				e.preventDefault();
-				const sectionId = this.getAttribute('href').substring(1); // 링크의 href에서 # 제거
-				const section = document.getElementById(sectionId); // 해당 섹션 요소 가져오기
-				if (section) {
-					section.scrollIntoView({
-						behavior : 'smooth'
-					}); // 부드러운 스크롤
-				}
-			});
-		});
-	});
-</script>
 </html>

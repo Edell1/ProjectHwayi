@@ -39,7 +39,7 @@ public class CartInterceptor implements HandlerInterceptor {
 		
 		
 		String code = loginMemberBean.getCode();
-	    List<CartBean> cartItems = cartService.getCartBycode(code);
+	    List<CartBean> cartItems = cartService.getCartItemByMemberId(code);
 	    request.setAttribute("cartItems", cartItems); 
 	    
 	    return true;

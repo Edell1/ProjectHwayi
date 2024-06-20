@@ -20,7 +20,7 @@ public interface FurnitureMapper {
 	void addFurnitureInfo(FurnitureBean addFurnitureBean);
 
 	// 아이디로 상품 정보 확인
-	@Select("SELECT furniture.* FROM furniture WHERE furnitureid = #{furnitureid}")
+	@Select("SELECT f.*, s.* from furniture f join store s on f.code = s.code WHERE furnitureid = #{furnitureid}")
 	FurnitureBean selectFurnitureById(String furnitureid);
 
 	// 상품 정보 수정

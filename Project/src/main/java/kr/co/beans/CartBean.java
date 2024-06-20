@@ -6,14 +6,14 @@ public class CartBean {
     private String code;
     private String furnitureid;
     private int count;
-    private double price;
+    private int price;
 
     // 기본 생성자
     public CartBean() {
     }
 
     // 모든 필드를 초기화하는 생성자
-    public CartBean(int cart_id, String code, String furnitureid, int count, double price) {
+    public CartBean(int cart_id, String code, String furnitureid, int count, int price) {
         this.cart_id = cart_id;
         this.code = code;
         this.furnitureid = furnitureid;
@@ -54,11 +54,11 @@ public class CartBean {
         this.count = count;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

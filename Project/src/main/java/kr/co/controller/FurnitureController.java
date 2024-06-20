@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,6 +17,7 @@ import kr.co.beans.FurnitureBean;
 import kr.co.beans.UserBean;
 import kr.co.service.CartService;
 import kr.co.service.FurnitureService;
+import oracle.net.aso.f;
 
 @Controller
 @RequestMapping("/furniture")
@@ -51,28 +51,49 @@ public class FurnitureController {
 		return "/furniture/furniture_list";
 	}
 
-	@GetMapping("/furniture_detail")
-	public String furniture_detail(@RequestParam("furnitureid") String furnitureid, Model model) {
-		FurnitureBean furniture = furnitureService.getFurnitureById(furnitureid);
-		model.addAttribute("furnitureBean", furniture);
-		return "/furniture/furniture_detail"; // JSP ÆÄÀÏ ÀÌ¸§
-	}
-
 	@GetMapping("/furniture_brand")
 	public String furniture_brand() {
 		return "/furniture/furniture_brand";
 	}
 
-	@PostMapping("/addToCart_pro")
-	public String addToCartPro(@ModelAttribute("addCartBean") CartBean addCartBean,
-			@RequestParam("furnitureid") String furnitureid, @RequestParam("code") String code,
-			@RequestParam("price") int price, @RequestParam("count") int count) {
+	@GetMapping("/furniture_detail")
+	public String furniture_detail(@RequestParam("furnitureid") String furnitureid,
+			@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+		FurnitureBean oneFurnitureBean = furnitureService.getFurnitureById(furnitureid);
+		
+		CartBean furnitureCartBean = new CartBean();
+		furnitureCartBean.setCount(1);
+		
+		model.addAttribute("furnitureid", furnitureid);
+		
+		/*
+		 * List<ReviewBean> reviewList =
+		 * reviewService.getAllReviewByProductId(product_id, page);
+		 * model.addAttribute("reviewList", reviewList); AdminPageBean pageBean =
+		 * reviewService.getReviewCntByProductId(product_id, page);
+		 * model.addAttribute("pageBean", pageBean);
+		 */
+		
+		model.addAttribute("oneFurnitureBean", oneFurnitureBean);
+		model.addAttribute("furnitureCartBean", furnitureCartBean);
 
-		addCartBean.setFurnitureid(furnitureid);
-		addCartBean.setCode(loginUserBean.getCode());
-		cartService.updateCart(addCartBean);
+		return "/furniture/furniture_detail";
+	}
 
-		cartService.addCartInfo(furnitureid, code, price, count);
+	@GetMapping("/addCart_pro")
+	public String cart_add(@ModelAttribute("addCartBean") CartBean addCartBean,
+			@RequestParam("furnitureid") String furnitureid, @RequestParam("count") int count) {
+		CartBean existingCartItem = cartService.getCartItemByProductIdAndMemberId(loginUserBean.getCode(), furnitureid);
+
+		if (existingCartItem != null) {
+			existingCartItem.setCount(existingCartItem.getCount() + count);
+			cartService.updateCartItem(existingCartItem);
+		} else {
+			addCartBean.setCount(count);
+			addCartBean.setFurnitureid(furnitureid);
+			addCartBean.setCode(loginUserBean.getCode());
+			cartService.insertCartItem(addCartBean);
+		}
 
 		return "cart/add_cart_success";
 	}

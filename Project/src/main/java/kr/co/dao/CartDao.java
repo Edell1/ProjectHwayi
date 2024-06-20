@@ -14,34 +14,30 @@ public class CartDao {
 	@Autowired
 	private CartMapper cartMapper;
 	
-	public List<CartBean> getCartItemByMemberId(String code) {
-		return cartMapper.getCartItemByMemberId(code);
+	public List<CartBean> getCartItemByMemberId(String member_Id) {
+		return cartMapper.getCartItemByMemberId(member_Id);
 	}
 
-	public List<CartBean> getCartBycode(String code) {
-		return cartMapper.getCartBycode(code);
-	}
-	
-	public CartBean getCarByfurnitureIdAndCode(String code, String furnotureid) {
-		return cartMapper.getCarByfurnitureIdAndCode(code, furnotureid);
+	public int deleteCartItem(String member_Id, String product_Id) {
+		return cartMapper.deleteCartItem(member_Id, product_Id);
 	}
 
-	public List<CartBean> getCntCart(String code) {
-		return cartMapper.getCntCart(code);
+	public void insertCartItem(CartBean cartBean) {
+		cartMapper.insertCartItem(cartBean);
 	}
 
-	public void addCart(CartBean cartBean) {
-		cartMapper.addCart(cartBean);
+	public void updateCartItem(CartBean cartBean) {
+		cartMapper.updateCartItem(cartBean);
 	}
 
-	public void updateCart(CartBean cartBean) {
-		cartMapper.updateCart(cartBean);
+	public CartBean getCartItemByProductIdAndMemberId(String member_Id, String product_Id) {
+		return cartMapper.getCartItemByProductIdAndMemberId(member_Id, product_Id);
 	}
-	
-	public int deleteCart(String code, String furnotureid) {
-		return cartMapper.deleteCart(code, furnotureid);
 
+	public List<CartBean> getCntCart(String member_Id) {
+		return cartMapper.getCntCart(member_Id);
 	}
+
 
 
 }
