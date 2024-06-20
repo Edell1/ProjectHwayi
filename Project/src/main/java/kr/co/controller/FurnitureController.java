@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.beans.CartBean;
 import kr.co.beans.FurnitureBean;
 import kr.co.beans.UserBean;
+import kr.co.dao.FurnitureDao;
 import kr.co.service.CartService;
 import kr.co.service.FurnitureService;
 import oracle.net.aso.f;
@@ -29,21 +30,61 @@ public class FurnitureController {
 	@Autowired
 	private CartService cartService;
 
+	@Autowired
+	private FurnitureDao furnitureDao;
+
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 
 	@GetMapping("/furniture_list")
 	public String furniture_list(@RequestParam(value = "furnitureType", required = false) String furnitureType,
-			Model model) {
+			@RequestParam(value = "keyword", required = false) String keyword, Model model) {
 
 		List<FurnitureBean> checkedfurniturelist;
-		// 가구 카테고리를 눌렀을때 카테고리에 맞는 상품 갖고오기
-		if (furnitureType != null) {
-			checkedfurniturelist = furnitureService.getFurnitureListFromType(furnitureType);
+
+		// 상품을 검색했을때
+		if (keyword != null && !keyword.isEmpty()) {
+			List<FurnitureBean> searchResults = furnitureDao.searchProducts(keyword);
+			System.out.println("검색결과 컨트롤러: " + searchResults);
+			model.addAttribute("checkedfurniturelist", searchResults);
+			model.addAttribute("isSearchResult", true);
 		} else {
-			// 가구 기본 페이지 전체상품 갖고오기
-			checkedfurniturelist = furnitureService.getCheckedFurnitureList();
+			// 상품검색안했을때
+			// 카테고리를 선택했을때
+			if (furnitureType != null) {
+				checkedfurniturelist = furnitureService.getFurnitureListFromType(furnitureType);
+
+			} else {
+				// 가구 기본 페이지 전체상품 갖고오기
+				checkedfurniturelist = furnitureService.getCheckedFurnitureList();
+			}
+
+			model.addAttribute("checkedfurniturelist", checkedfurniturelist);
+			model.addAttribute("isSearchResult", false);
+			System.out.println("Controller" + checkedfurniturelist);
 		}
+		return "/furniture/furniture_list";
+	}
+
+	@GetMapping("/furniture_list_filter")
+	public String furniture_list(@RequestParam(value = "furnitureType", required = false) String furnitureType,
+			@RequestParam(value = "color", required = false, defaultValue = "noFilter") String color,
+			@RequestParam(value = "brand", required = false, defaultValue = "noFilter") String brand,
+			@RequestParam(value = "width", required = false, defaultValue = "1000") int width,
+			@RequestParam(value = "length", required = false, defaultValue = "1000") int length,
+			@RequestParam(value = "height", required = false, defaultValue = "1000") int height, Model model) {
+
+		List<FurnitureBean> checkedfurniturelist;
+
+		// 색상과 브랜드를 모두 선택했을때
+		if (color != null && brand != null) {
+			checkedfurniturelist = furnitureService.getFurnitureListFromFilterAll(furnitureType, color, brand, width,
+					length, height);
+
+		}
+
+		checkedfurniturelist = furnitureService.getFurnitureListFromFilterAll(furnitureType, color, brand, width,
+				length, height);
 
 		model.addAttribute("checkedfurniturelist", checkedfurniturelist);
 
@@ -60,12 +101,12 @@ public class FurnitureController {
 	public String furniture_detail(@RequestParam("furnitureid") String furnitureid,
 			@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
 		FurnitureBean oneFurnitureBean = furnitureService.getFurnitureById(furnitureid);
-		
+
 		CartBean furnitureCartBean = new CartBean();
 		furnitureCartBean.setCount(1);
-		
+
 		model.addAttribute("furnitureid", furnitureid);
-		
+
 		/*
 		 * List<ReviewBean> reviewList =
 		 * reviewService.getAllReviewByProductId(product_id, page);
@@ -73,7 +114,7 @@ public class FurnitureController {
 		 * reviewService.getReviewCntByProductId(product_id, page);
 		 * model.addAttribute("pageBean", pageBean);
 		 */
-		
+
 		model.addAttribute("oneFurnitureBean", oneFurnitureBean);
 		model.addAttribute("furnitureCartBean", furnitureCartBean);
 

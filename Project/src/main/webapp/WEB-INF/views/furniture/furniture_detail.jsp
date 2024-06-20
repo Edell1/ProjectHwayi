@@ -49,7 +49,7 @@
  // 총수량 계산해주기
     function updateTotalPrice() {
         var productQuantity = parseInt(document.getElementById('count').innerText.trim());
-        var productPrice = parseInt('${oneProductBean.product_price}');
+        var productPrice = parseInt('${oneFurnitureBean.price}');
         var totalDisplay = document.getElementById('totalprice');
 
         // 개수랑 가격이 null이 아닐때 계산
@@ -138,7 +138,7 @@
 	<div class="furniture_wrap">
 		<div class="furniture_detail">
 			<div class="furn_img">
-				<img src="${root}image/furniture1/${furnitureBean.furnitureid}.png"
+				<img src="${root}image/furniture1/${oneFurnitureBean.furnitureid}.png"
 					alt="" />
 			</div>
 
@@ -174,9 +174,9 @@
 				</div>
 
 				<div class="total_price">
-					<p>총 상품금액 :</p>
-					<p>${furnitureBean.furniture_price}</p>
-					<p>원</p>
+					<span>총 상품금액 :</span>
+					<span id = "totalprice">${furnitureBean.furniture_price}</span>
+					<span>원</span>
 				</div>
 
 				<div class="cart_buy">

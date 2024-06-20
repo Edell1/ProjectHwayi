@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -40,4 +41,34 @@ public interface FurnitureMapper {
 	@Select("select * from furniture where checked = 0 ")
 	List<FurnitureBean> getCheckedFurnitureList();
 
+	// 카테고리 및 필터했을때 가구들 가져오기
+	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
+			+ "and furniture_length < #{length} " + "and furniture_height < #{height} " + "and code like #{brand} "
+			+ "and trim(substr(tag, 1, instr(tag, ',') - 1)) like #{color}")
+	List<FurnitureBean> getFurnitureListFromFilterAll(@Param("furnitureType") String furnitureType,
+			@Param("color") String color, @Param("brand") String brand, @Param("width") int width,
+			@Param("length") int length, @Param("height") int height);
+
+	// 색상필터링
+	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
+			+ "and furniture_length < #{length} " + "and furniture_height < #{height} "
+			+ "and trim(substr(tag, 1, instr(tag, ',') - 1)) like #{color}")
+	List<FurnitureBean> getFurnitureListFromFilterColor(String furnitureType, String color, @Param("width") int width,
+			@Param("length") int length, @Param("height") int height);
+
+	// 브랜드필터링
+	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
+			+ "and furniture_length < #{length} " + "and furniture_height < #{height} " + "and code like #{brand} ")
+	List<FurnitureBean> getFurnitureListFromFilterbrand(String furnitureType, String brand, @Param("width") int width,
+			@Param("length") int length, @Param("height") int height);
+
+	// 사이즈 필터링
+	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
+			+ "and furniture_length < #{length} " + "and furniture_height < #{height} ")
+	List<FurnitureBean> getFurnitureListFromFilterSize(String furnitureType, @Param("width") int width,
+			@Param("length") int length, @Param("height") int height);
+
+	// 상품검색 결과
+	@Select("select * from furniture where " + "checked = 0 " + "and furniture_name like '%' || #{keyword} || '%'")
+	List<FurnitureBean> searchProducts(String keyword);
 }

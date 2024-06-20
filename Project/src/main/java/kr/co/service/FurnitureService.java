@@ -205,10 +205,6 @@ public class FurnitureService {
 		furnitureDao.grantFurnitureInfoByAdmin(modifyFurnitureBean);
 	}
 
-	public FurnitureBean getFurnitureById(String furnitureid) {
-		return furnitureDao.selectFurnitureById(furnitureid);
-	}
-
 	// 가구 타입에 따른 목록가져오기
 	public List<FurnitureBean> getFurnitureListFromType(String furnitureType) {
 
@@ -219,6 +215,13 @@ public class FurnitureService {
 	public List<FurnitureBean> getCheckedFurnitureList() {
 		System.out.println("CheckService");
 		return furnitureDao.getCheckedFurnitureList();
+	}
+
+	// 필터를 모두 적용했을 때 가구들 가져오기
+	public List<FurnitureBean> getFurnitureListFromFilterAll(String furnitureType, String color, String brand,
+			int width, int length, int height) {
+		System.out.println("FilterService");
+		return furnitureDao.getFurnitureListFromFilterAll(furnitureType, color, brand, width, length, height);
 	}
 
 }
