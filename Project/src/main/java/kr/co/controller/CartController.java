@@ -26,9 +26,6 @@ public class CartController {
 	@Autowired
 	private CartService cartService; // 장바구니 서비스
 
-	@Resource(name = "loginUserBean")
-	private UserBean loginUserBean;
-
 	@GetMapping("/cart_main")
 	public String cart_main() {
 		return "/cart/cart_main";
@@ -38,21 +35,22 @@ public class CartController {
 	public String cartPage(Model model, String code) {
 		List<CartBean> cartItems = cartService.getCartItemByMemberId(code);
 		model.addAttribute("cartItems", cartItems);
+
 		return "cart/cart_main";
 	}
 
 	@GetMapping("/totalPrice")
-	public String getTotalPrice(Model model, String member_id) {
-		int totalPrice = cartService.calculateTotalPrice(member_id);
+	public String getTotalPrice(Model model, String code) {
+		int totalPrice = cartService.calculateTotalPrice(code);
 		model.addAttribute("totalPrice", totalPrice);
 		return "cart/cart_main";
 	}
 
 	@PostMapping("/deleteItem")
-	public ResponseEntity<String> deleteCartItem(@RequestParam("member_id") String member_id,
-			@RequestParam("product_id") String product_id) {
+	public ResponseEntity<String> deleteCartItem(@RequestParam("member_id") String code,
+			@RequestParam("product_id") String furnitureid) {
 		try {
-			int affectedRows = cartService.deleteCartItem(member_id, product_id);
+			int affectedRows = cartService.deleteCartItem(code, furnitureid);
 			if (affectedRows > 0) {
 				return ResponseEntity.ok("");
 			} else {
@@ -60,6 +58,20 @@ public class CartController {
 			}
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("" + e.getMessage());
+		}
+	}
+
+	@PostMapping("/deleteAllItems")
+	public ResponseEntity<String> deleteAllCartItems(@RequestParam("code") String code) {
+		try {
+			int affectedRows = cartService.deleteAllCartItems(code);
+			if (affectedRows > 0) {
+				return ResponseEntity.ok("");
+			} else {
+				return ResponseEntity.badRequest().body("삭제할 항목이 없습니다.");
+			}
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("서버 오류: " + e.getMessage());
 		}
 	}
 

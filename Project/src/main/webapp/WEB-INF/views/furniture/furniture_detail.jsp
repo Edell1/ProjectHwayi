@@ -33,104 +33,60 @@
 	}
 
 	function increase() {
-        var quantityElement = document.getElementById('count');
-        quantityElement.innerText = parseInt(quantityElement.innerText) + 1;
-        updateTotalPrice();
-    }
+		var quantityElement = document.getElementById('count');
+		quantityElement.innerText = parseInt(quantityElement.innerText) + 1;
 
-    function decrease() {
-        var quantityElement = document.getElementById('count');
-        if (parseInt(quantityElement.innerText) > 1) {
-            quantityElement.innerText = parseInt(quantityElement.innerText) - 1;
-            updateTotalPrice();
-        }
-    }
-    
- // 총수량 계산해주기
-    function updateTotalPrice() {
-        var productQuantity = parseInt(document.getElementById('count').innerText.trim());
-        var productPrice = parseInt('${oneFurnitureBean.price}');
-        var totalDisplay = document.getElementById('totalprice');
+		updateTotalPrice();
+	}
 
-        // 개수랑 가격이 null이 아닐때 계산
-        if (!isNaN(productQuantity) && !isNaN(productPrice) && totalDisplay) {
-            var totalPrice = productPrice * productQuantity;
-            totalDisplay.innerText = totalPrice.toLocaleString();
-        }
-    }
+	// 총수량 계산해주기
+	function updateTotalPrice() {
+		var productQuantity = parseInt(document.getElementById('count').innerText
+				.trim());
+		var productPrice = parseInt('${oneFurnitureBean.furniture_price}');
+		var totalDisplay = document.getElementById('totalprice');
 
-    // 수량 올릴때 총상품 금액을 실시간으로 수량*가격해서 보이게 하기
-    var productPrice = ${oneProductBean.product_price};
+		// 개수랑 가격이 null이 아닐때 계산
+		if (!isNaN(productQuantity) && !isNaN(productPrice) && totalDisplay) {
+			var totalPrice = productPrice * productQuantity;
+			totalDisplay.innerText = totalPrice.toLocaleString();
+		}
+	}
 
-    function updateQuantity() {
-        var showQuantity = document.getElementById('count');
-        var totalDisplay = document.getElementById('totalprice');
+	// 수량 올릴때 총상품 금액을 실시간으로 수량*가격해서 보이게 하기
+	var productPrice = $
+	{
+		oneFurnitureBean.furniture_price
+	};
 
-        if (showQuantity && totalDisplay) {
-            var quantity = showQuantity.innerText.trim();
-            var productQuantity = parseInt(quantity);
+	function updateQuantity() {
+		var showQuantity = document.getElementById('count');
+		var totalDisplay = document.getElementById('totalprice');
 
-            if (!isNaN(productQuantity)) {
-                var totalPrice = productPrice * productQuantity;
-                totalDisplay.innerText = totalPrice.toLocaleString();
-            }
-        }
-    }
+		if (showQuantity && totalDisplay) {
+			var quantity = showQuantity.innerText.trim();
+			var productQuantity = parseInt(quantity);
 
-    //업데이트된 총수량 및 총상품 금액 보내주기
-    function addToCart() {
-        var productQuantity = document.getElementById('count').innerText.trim();
+			if (!isNaN(productQuantity)) {
+				var totalPrice = productPrice * productQuantity;
+				totalDisplay.innerText = totalPrice.toLocaleString();
+			}
+		}
+	}
 
-        location.href='${root}product/addCart_pro?product_id=${oneProductBean.product_id}&count=' + encodeURIComponent(productQuantity);
-    }
-    
-    function bye_product(){
-    	location.href='${root}cart/cart_main?';
-    }
+	//업데이트된 총수량 및 총상품 금액 보내주기
+	function addToCart() {
+		var productQuantity = document.getElementById('count').innerText.trim();
+		location.href = '${root}furniture/addCart_pro?furnitureid=${oneFurnitureBean.furnitureid}&price=${oneFurnitureBean.furniture_price}&name=${oneFurnitureBean.furniture_name}&cnt='
+				+ encodeURIComponent(productQuantity);
+	}
 
-    
- // 총수량 계산해주기
-    function updateTotalPrice() {
-        var productQuantity = parseInt(document.getElementById('count').innerText.trim());
-        var productPrice = parseInt('${oneProductBean.product_price}');
-        var totalDisplay = document.getElementById('totalprice');
-
-        // 개수랑 가격이 null이 아닐때 계산
-        if (!isNaN(productQuantity) && !isNaN(productPrice) && totalDisplay) {
-            var totalPrice = productPrice * productQuantity;
-            totalDisplay.innerText = totalPrice.toLocaleString();
-        }
-    }
-
-    // 수량 올릴때 총상품 금액을 실시간으로 수량*가격해서 보이게 하기
-    var productPrice = ${oneProductBean.product_price};
-
-    function updateQuantity() {
-        var showQuantity = document.getElementById('count');
-        var totalDisplay = document.getElementById('totalprice');
-
-        if (showQuantity && totalDisplay) {
-            var quantity = showQuantity.innerText.trim();
-            var productQuantity = parseInt(quantity);
-
-            if (!isNaN(productQuantity)) {
-                var totalPrice = productPrice * productQuantity;
-                totalDisplay.innerText = totalPrice.toLocaleString();
-            }
-        }
-    }
-
-    //업데이트된 총수량 및 총상품 금액 보내주기
-    function addToCart() {
-        var productQuantity = document.getElementById('count').innerText.trim();
-
-        location.href='${root}product/addCart_pro?product_id=${oneProductBean.product_id}&count=' + encodeURIComponent(productQuantity);
-    }
-    
-    function bye_product(){
-    	location.href='${root}cart/cart_main?';
-    }
+	function bye_product() {
+		location.href = '${root}cart/cart_main?';
+	}
 </script>
+
+
 <body>
 
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
@@ -138,7 +94,8 @@
 	<div class="furniture_wrap">
 		<div class="furniture_detail">
 			<div class="furn_img">
-				<img src="${root}image/furniture1/${oneFurnitureBean.furnitureid}.png"
+				<img
+					src="${root}image/furniture1/${oneFurnitureBean.furnitureid}.png"
 					alt="" />
 			</div>
 
@@ -146,9 +103,9 @@
 				<div class="furn_info">
 					<ul class="info_detail">
 						<li>
-							<p>${furnitureBean.brand}</p>
-							<p>${furnitureBean.furniture_name}</p>
-							<p>${furnitureBean.furniture_price}원</p>
+							<p>${oneFurnitureBean.brand}</p>
+							<p>${oneFurnitureBean.furniture_name}</p>
+							<p>${oneFurnitureBean.furniture_price}원</p>
 						</li>
 
 						<li>
@@ -162,7 +119,7 @@
 				<div class="furn_choice">
 					<div class="choice_tit">상품선택</div>
 					<div class="choice_box">
-						<div class="furn_name">${furnitureBean.furniture_name}</div>
+						<div class="furn_name">${oneFurnitureBean.furniture_name}</div>
 						<div class="btn_box">
 							<button type="button" aria-label="수량 내리기" id="down"
 								class="qtybtn" onclick="decrease()">-</button>
@@ -174,36 +131,27 @@
 				</div>
 
 				<div class="total_price">
-					<span>총 상품금액 :</span>
-					<span id = "totalprice">${furnitureBean.furniture_price}</span>
+					<span>총 상품금액 :</span> <span id="totalprice">${oneFurnitureBean.furniture_price}</span>
 					<span>원</span>
 				</div>
 
 				<div class="cart_buy">
-					<form:form id="addToCartForm" action="${root}cart/addToCart_pro"
-						method="post">
-						<input type="hidden" name="code" value="${furnitureBean.code}" />
-						<input type="hidden" name="furnitureid"
-							value="${furnitureBean.furnitureid}" />
-						<input type="hidden" name="count" id="count"
-							value="${cart.count }" />
-						<input type="hidden" name="price"
-							value="${furnitureBean.furniture_price}">
 
-						<button type='submit' class="cartBtn">
-							<span id="go-cart">장바구니 담기</span>
-						</button>
-					</form:form>
 
-					<form:form id="gobuyForm" action="${root}cart/product_buy"
+					<button type='submit' class="cartBtn" onclick="addToCart()">
+						<span id="go-cart">장바구니 담기</span>
+					</button>
+
+
+					<form:form id="gobuyForm" action="${root}cart/furniture_buy"
 						method="post">
 						<input type="hidden" name="member_code"
-							value="${furnitureBean.code}" />
+							value="${oneFurnitureBean.code}" />
 						<input type="hidden" name="furnitureid"
-							value="${furnitureBean.furnitureid}" />
+							value="${oneFurnitureBean.furnitureid}" />
 						<input type="hidden" name="count" id="count" value="1" />
 						<input type="hidden" name="price"
-							value="${furnitureBean.furniture_price}">
+							value="${oneFurnitureBean.furniture_price}">
 
 						<button class="buyBtn" type="button">
 							<span id="go-buy">상품 구매하기</span>
@@ -231,12 +179,12 @@
 		<div class="nav_detail">
 			<div class="moreInfo_img" id="moreInfoSection">
 				<img alt="상품상세정보이미지"
-					src="${root}image/furniture/detail/${furnitureBean.furniture_name}_detail.png" />
+					src="${root}image/furniture/detail/${oneFurnitureBean.furniture_name}_detail.png" />
 			</div>
 
 			<div class="seller_section" id="sellerSection">
 				<img alt="상품상세정보이미지"
-					src="${root}image/furniture/detail/${furnitureBean.furniture_name}_detail.png" />
+					src="${root}image/furniture/detail/${oneFurnitureBean.furniture_name}_detail.png" />
 			</div>
 
 			<div class="review_section" id="reviewSection">
@@ -268,7 +216,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a
-									href="${root }product/product_detail?product_id=${oneProductBean.product_id}&page=${pageBean.prevPage}#reviewSection"
+									href="${root }furniture/furniture_detfurnitureidt_id=${oneFurnitureBean.furnitureid}&page=${pageBean.prevPage}#reviewSection"
 									class="page-link">이전</a></li>
 							</c:otherwise>
 						</c:choose>
@@ -278,12 +226,12 @@
 							<c:choose>
 								<c:when test="${idx == pageBean.currentPage }">
 									<li class="page-item active"><a
-										href="${root }product/product_detail?product_id=${oneProductBean.product_id}&page=${idx}#reviewSection"
+										href="${root }furniture/furniture_detail?furnitureid=${oneFurnitureBean.furnitureid}&page=${idx}#reviewSection"
 										class="page-link">${idx }</a></li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item"><a
-										href="${root }product/product_detail?product_id=${oneProductBean.product_id}&page=${idx}#reviewSection"
+										href="${root }furniture/furniture_detail?furnitureid=${oneFurnitureBean.furnitureid}&page=${idx}#reviewSection"
 										class="page-link">${idx }</a></li>
 								</c:otherwise>
 							</c:choose>
@@ -296,7 +244,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a
-									href="${root }product/product_detail?product_id=${oneProductBean.product_id}&page=${pageBean.nextPage}#reviewSection"
+									href="${root }furniture/furniture_detail?furnitureid=${oneFurnitureBean.furnitureid}&page=${pageBean.nextPage}#reviewSection"
 									class="page-link">다음</a></li>
 							</c:otherwise>
 						</c:choose>
@@ -311,7 +259,7 @@
 					<div class="form-group">
 						<form:label path="board_title">제목</form:label>
 						<form:input type="text" path="board_title" class="form-control"
-							value="상품문의:${oneProductBean.product_name}" />
+							value="상품문의:${oneFurnitureBean.product_name}" />
 					</div>
 
 					<div class="form-group">
