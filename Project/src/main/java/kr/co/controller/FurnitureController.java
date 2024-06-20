@@ -100,7 +100,7 @@ public class FurnitureController {
 	@GetMapping("/furniture_detail")
 	public String furniture_detail(@RequestParam("furnitureid") String furnitureid,
 			@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
-		FurnitureBean oneFurnitureBean = furnitureService.getFurnitureById(furnitureid);
+		FurnitureBean oneFurnitureBean = furnitureService.selectFurnitureById(furnitureid);
 
 		CartBean furnitureCartBean = new CartBean();
 		furnitureCartBean.setCount(1);
