@@ -93,4 +93,9 @@ public class FurnitureDao {
 		return furnitureMapper.searchProducts(keyword);
 	}
 
+	public List<FurnitureBean> getFurnitureListfromSeller(String seller_code) {
+		System.out.println("판매자 상품 가져오기 서비스~");
+		return furnitureMapper.getFurnitureListfromSeller(seller_code);
+	}
+
 }

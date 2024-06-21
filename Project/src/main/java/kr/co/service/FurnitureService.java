@@ -224,4 +224,9 @@ public class FurnitureService {
 		return furnitureDao.getFurnitureListFromFilterAll(furnitureType, color, brand, width, length, height);
 	}
 
+	public List<FurnitureBean> getFurnitureListfromSeller(String seller_code) {
+		System.out.println("판매자의 상품 가져오기~서비스!");
+		return furnitureDao.getFurnitureListfromSeller(seller_code);
+	}
+
 }

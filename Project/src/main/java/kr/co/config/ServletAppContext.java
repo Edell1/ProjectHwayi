@@ -33,6 +33,7 @@ import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
 import kr.co.mapper.CartMapper;
 import kr.co.mapper.FurnitureMapper;
+import kr.co.mapper.OrderMapper;
 import kr.co.mapper.SellerMapper;
 import kr.co.mapper.TopMenuMapper;
 import kr.co.service.BoardService;
@@ -46,6 +47,7 @@ import kr.co.service.TopMenuService;
 @ComponentScan("kr.co.service")
 @ComponentScan("kr.co.controller")
 @PropertySource("/WEB-INF/properties/db.properties")
+@PropertySource("/WEB-INF/properties/application.properties")
 public class ServletAppContext implements WebMvcConfigurer {
 
 	@Value("${db.classname}")
@@ -60,11 +62,15 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Value("${db.password}")
 	private String db_password;
 
+	@Value("${openai.api.key}")
+	private String apiKey;
+
 	@Autowired
 	private BoardService boardService;
 
 	@Autowired
 	private TopMenuService topMenuService;
+	
 	@Autowired
 	private CartService cartService;
 
@@ -152,6 +158,13 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Bean
 	public MapperFactoryBean<CartMapper> getCartMapper(SqlSessionFactory factory) throws Exception {
 		MapperFactoryBean<CartMapper> factoryBean = new MapperFactoryBean<CartMapper>(CartMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	@Bean
+	public MapperFactoryBean<OrderMapper> getOrderMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<OrderMapper> factoryBean = new MapperFactoryBean<OrderMapper>(OrderMapper.class);
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}

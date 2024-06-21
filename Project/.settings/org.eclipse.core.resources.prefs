@@ -12,3 +12,4 @@ encoding//src/main/java/kr/co/mapper/BoardMapper.java=UTF-8
 encoding//src/main/java/kr/co/service/BoardService.java=UTF-8
 encoding//src/main/java/kr/co/service/CartService.java=UTF-8
 encoding//src/main/java/kr/co/validator/UserValidator.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cart/cart_main.jsp=UTF-8

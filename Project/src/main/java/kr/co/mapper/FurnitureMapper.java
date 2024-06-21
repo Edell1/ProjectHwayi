@@ -71,4 +71,19 @@ public interface FurnitureMapper {
 	// 상품검색 결과
 	@Select("select * from furniture where " + "checked = 0 " + "and furniture_name like '%' || #{keyword} || '%'")
 	List<FurnitureBean> searchProducts(String keyword);
+
+	// 판매자의 상품관리 목록 가져오기
+	@Select("select " + "furnitureid, " + "furniture_name, " + "furniture_price, "
+			+ "TO_CHAR(add_date, 'YYYY/MM/DD') as furniture_date, " + "tag, " + "furniture_cnt, "
+			+ "CASE  WHEN checked = 0 THEN 'O' Else 'X' END AS furniture_checked, "
+			+ "CASE WHEN furniture_type = 'bd' THEN '침대' " + "WHEN furniture_type = 'dk' THEN '책상/테이블' "
+			+ "WHEN furniture_type = 'sf' THEN '소파' " + "WHEN furniture_type = 'dr' THEN '서랍장' "
+			+ "WHEN furniture_type = 'ch' THEN '의자' " + "WHEN furniture_type = 'sh' THEN '선반' "
+			+ "WHEN furniture_type = 'ca' THEN 'TV장/거실장' " + "WHEN furniture_type = 'bs' THEN '책장' "
+			+ "WHEN furniture_type = 'cl' THEN '옷장' " + "WHEN furniture_type = 'hg' THEN '행거' "
+			+ "WHEN furniture_type = 'pa' THEN '파티션' " + "WHEN furniture_type = 'mi' THEN '거울' "
+			+ "ELSE '기타' END AS furniture_type_text " + "FROM furniture " + "where code like #{seller_code} "
+			+ "order by add_date desc")
+	List<FurnitureBean> getFurnitureListfromSeller(String seller_code);
+
 }

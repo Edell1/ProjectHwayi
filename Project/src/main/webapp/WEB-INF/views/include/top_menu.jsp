@@ -49,6 +49,7 @@
 			<li><a href="${root}customer_center/customer_center_main"
 				class="customer">고객센터</a></li>
 			<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
+			<li><a href="${root }chat" class="chat">AI ChatBot</a></li>
 		</ul>
 	</div>
 </div>

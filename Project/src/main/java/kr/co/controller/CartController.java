@@ -47,8 +47,8 @@ public class CartController {
 	}
 
 	@PostMapping("/deleteItem")
-	public ResponseEntity<String> deleteCartItem(@RequestParam("member_id") String code,
-			@RequestParam("product_id") String furnitureid) {
+	public ResponseEntity<String> deleteCartItem(@RequestParam("code") String code,
+			@RequestParam("furnitureid") String furnitureid) {
 		try {
 			int affectedRows = cartService.deleteCartItem(code, furnitureid);
 			if (affectedRows > 0) {

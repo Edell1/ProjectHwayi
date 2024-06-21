@@ -35,8 +35,10 @@ public class FurnitureBean {
 	private MultipartFile upload_file1; // 브라우저가 보낸 대표 사진 데이터
 	private MultipartFile upload_file2; // 브라우저가 보낸 상세페이지 사진 데이터
 
-	// 아직 작업안한거
 	private Integer checked = 1; // 승인여부
+
+	private String furniture_checked; // 승인여부o,x
+	private String furniture_type_text; // 가구종류 한글텍스트
 
 	// ---------------------------------- Getter&Setter
 	// -------------------------------------------
@@ -199,6 +201,22 @@ public class FurnitureBean {
 
 	public void setChecked(Integer checked) {
 		this.checked = checked;
+	}
+
+	public String getFurniture_checked() {
+		return furniture_checked;
+	}
+
+	public void setFurniture_checked(String furniture_checked) {
+		this.furniture_checked = furniture_checked;
+	}
+
+	public String getFurniture_type_text() {
+		return furniture_type_text;
+	}
+
+	public void setFurniture_type_text(String furniture_type_text) {
+		this.furniture_type_text = furniture_type_text;
 	}
 
 }
