@@ -42,4 +42,6 @@ public interface SellerMapper {
 	@Update("update member set name=#{name}, mail=#{mail}, phone=#{phone}, address=#{address}, address2=#{address2} where id=#{id}")
 	void modifySellerInfoByAdmin(UserBean modifySellerBean);
 
+	
+	
 }
