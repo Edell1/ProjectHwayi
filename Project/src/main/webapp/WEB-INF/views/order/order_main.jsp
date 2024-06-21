@@ -25,7 +25,8 @@
 		<c:import url="/WEB-INF/views/include/mypage_nav.jsp" />
 		<div class="cart_contain">
 			<div class="tit">주문 / 결제</div>
-			<div class="top_box">
+
+			<div class="order-details">
 
 				<table class="table-order">
 					<thead>
@@ -44,19 +45,42 @@
 							varStatus="proStatus">
 							<tr>
 								<td><img
-									src="${root}image/product/thumb/${productDetail.product_id}_thumb.png"
+									src="${root}image/furniture1/${productDetail.furnitureid}.png"
 									width="90px" height="90px" /></td>
-								<td>${productDetail.product_name}</td>
-								<td>${productDetail.quantity}개</td>
-								<td>${productDetail.product_price * productDetail.quantity}원</td>
+								<td>${productDetail.furniturename}</td>
+								<td>${productDetail.count}개</td>
+								<td>${productDetail.price * productDetail.count}원</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<div class="btnBox">
-					<a href="#" class="cartBtn delete_btn" onclick="deleteAllItems()">삭제하기</a>
-					<a href="${root }order/order_main" class="cartBtn order_btn">주문하기</a>
-				</div>
+				<form id="order-detail-form" action="${root}order/submitOrderDetail"
+					method="post">
+					<c:forEach items="${productDetails}" var="products">
+						<input type="hidden" name="furnitureid"
+							value="${products.furnitureid}" />
+						<input type="hidden" name="order_product_stock"
+							value="${products.count}" />
+					</c:forEach>
+				</form>
+				<table class="table-order">
+					<thead>
+						<tr>
+							<th colspan="2">주문자 정보</th>
+						</tr>
+					</thead>
+					<tr>
+						<th>주문자 성함</th>
+						<td>${userBean.name }</td>
+					</tr>
+					<tr>
+						<th>휴대전화</th>
+						<td>${userBean.phone}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="btnBox">
+				<a href="#" id="payButton">결제</a>
 			</div>
 		</div>
 	</div>

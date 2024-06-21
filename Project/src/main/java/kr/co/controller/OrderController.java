@@ -55,6 +55,7 @@ public class OrderController {
 		model.addAttribute("userBean", userBean);
 
 		for (int i = 0; i < productIds.size(); i++) {
+			System.out.println(productIds.get(i));
 			OrderBean productInfo = orderService.getProductInfo(productIds.get(i));
 			if (productInfo != null) {
 				productInfo.setItem_count(quantities.get(i));
