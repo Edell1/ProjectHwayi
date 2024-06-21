@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* search */
+@font-face {
+	font-family: 'Free-M';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Black.woff2')
+		format('woff2');
+	font-weight: 900;
+	font-style: normal;
+}
+
+.search_box h2 {
+	font-size: 22px;
+	font-family: 'Free-M';
+	text-align: center;
+}
+
+.search_box .cont_box .form-group {
+	width: 400px;
+}
+
+.search_box .cont_box .form-group .label_txt {
+	width: 240px;
+}
