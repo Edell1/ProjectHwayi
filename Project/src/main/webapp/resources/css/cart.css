@@ -10,20 +10,6 @@
 .cart_contain {
 	width: 80%;
 }
-.cart_contain .cartBtn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 160px;
-	height: 40px;
-	border: 1px solid #dedede;
-}
-.cart_contain .cartBtn:hover {
-	background-color: green;
-}
-.cart_contain .cartBtn.delete_btn:hover {
-	background-color: red;
-}
 
 .cart_contain .top_box {
 	display: flex;
@@ -31,6 +17,7 @@
 	align-items: center;
 	padding: 10px 26px;
 }
+
 .cart_contain .top_box div {
 	display: flex;
 	justify-content: center;
@@ -49,17 +36,19 @@
 .cart_contain .bottom_box {
 	padding: 0 20px;
 }
+
 .cart_contain .bottom_box .cart_table {
 	width: 100%;
 	margin-bottom: 10px;
 	text-align: center;
 	border-top: 1px solid #dedede;
 }
-.cart_contain .bottom_box .cart_table th,
-td {
+
+.cart_contain .bottom_box .cart_table th, td {
 	line-height: 50px;
 	border-bottom: 1px solid #dedede;
 }
+
 .cart_contain .bottom_box .cart_table td:last-child {
 	display: flex;
 	justify-content: center;
@@ -67,12 +56,29 @@ td {
 	height: 50px;
 }
 
-.cart_delete_btn {
+.cartBtn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 60px;
-	height: 35px;
+	width: 160px;
+	height: 40px;
+	border: 2px solid green;
 	border-radius: 5px;
-	background-color: #dedede;
+}
+
+.cartBtn:hover {
+	color: white;
+	background-color: green;
+}
+
+.cartBtn.delete_btn:hover {
+	background-color: red;
+	border: 2px solid red;
+}
+
+.btnBox {
+	display: flex;
+	justify-content: right;
+	gap: 10px;
+padding: 0 25px;
 }

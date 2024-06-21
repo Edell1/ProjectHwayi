@@ -65,13 +65,21 @@
 				<div class="cont">
 					<div>
 						<div class="order_img_box">
-							<div class="circle circ1"></div>
+							<div class="circle gray">
+								<i class="fa-regular fa-credit-card fa-2x"></i>
+							</div>
 							<div class="line"></div>
-							<div class="circle"></div>
+							<div class="circle">
+								<i class="fa-solid fa-cart-flatbed fa-3x"></i>
+							</div>
 							<div class="line"></div>
-							<div class="circle"></div>
+							<div class="circle gray">
+								<i class="fa-solid fa-truck fa-2x"></i>
+							</div>
 							<div class="line"></div>
-							<div class="circle"></div>
+							<div class="circle gray">
+								<i class="fa-solid fa-house-user fa-2x"></i>
+							</div>
 						</div>
 
 						<div class="delivery">

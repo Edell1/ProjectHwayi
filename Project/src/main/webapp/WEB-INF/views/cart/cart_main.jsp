@@ -16,7 +16,10 @@
 <link rel="stylesheet" href="<c:url value='/css/mypage_nav.css' />" />
 </head>
 <body>
-	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+	<div class="top">
+		<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+		<c:import url="/WEB-INF/views/include/nav_menu.jsp" />
+	</div>
 
 	<div class="flex_wrap">
 		<c:import url="/WEB-INF/views/include/mypage_nav.jsp" />
@@ -28,8 +31,8 @@
 						class="all-select-checkbox" onclick="AllCheckboxes()"> <span>전체</span></label>
 				</div>
 				<div>
-					<a href="#" class="cartBtn delete_btn" onclick="deleteAllItems()">삭제하기</a>
-					<a href="#" class="cartBtn order_btn">주문하기</a>
+					<a href="${root}furniture/furniture_list" class="cartBtn back_btn">쇼핑
+						계속하기</a>
 				</div>
 			</div>
 			<div class="bottom_box">
@@ -86,9 +89,9 @@
 					</tr>
 				</table>
 			</div>
-			<div>
-				<a href="${root}furniture/furniture_list" class="cartBtn back_btn">쇼핑
-					계속하기</a>
+			<div class="btnBox">
+				<a href="#" class="cartBtn delete_btn" onclick="deleteAllItems()">삭제하기</a>
+				<a href="#" class="cartBtn order_btn">주문하기</a>
 			</div>
 		</div>
 	</div>

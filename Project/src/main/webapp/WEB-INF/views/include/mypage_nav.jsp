@@ -6,16 +6,17 @@
 <!-- 마이페이지 왼쪽 메뉴바 -->
 <nav>
 	<div class="tit">
-		<a href="${root}user/mypage">마이페이지</a>
+		마이페이지
 	</div>
 	
 	<div class="left_gnb">
 		<ul>
 			<li>쇼핑정보</li>
 			<li class="border"></li>
-			<li><a href="#">주문목록/배송조회</a></li>
+			<li><a href="${root}user/mypage">마이페이지</a></li>
+			<li><a href="${root}shop/order_info">주문목록/배송조회</a></li>
 			<li><a href="#">취소/반품/교환 내역</a></li>
-			<li><a href="${root}shop/cart">장바구니</a></li>
+			<li><a href="${root}cart/cart_main">장바구니</a></li>
 		</ul>
 		<ul>
 			<li>혜택관리</li>

@@ -44,7 +44,7 @@
 			<div class="furni_box">
 				<div class="furni_cont cont1">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=bs1402020224">
 						<div class="furni_img">
 							<img src="${root}image/furniture1/bs1402020224.png" alt="상품이미지" />
 							<div class="overlay"></div>
@@ -59,7 +59,7 @@
 
 				<div class="furni_cont cont2">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=ch0204000520">
 						<div class="furni_img">
 							<img src="${root}image/furniture1/ch0204000520.png" alt="상품이미지" />
 							<div class="overlay"></div>
@@ -74,7 +74,7 @@
 
 				<div class="furni_cont cont3">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=bs0402020722">
 						<div class="furni_img">
 							<img src="${root}image/furniture1/bs0402020722.png" alt="상품이미지" />
 							<div class="overlay"></div>
@@ -89,7 +89,7 @@
 
 				<div class="furni_cont cont4">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=dk0102020316">
 						<div class="furni_img">
 							<img src="${root}image/furniture1/dk0102020316.png" alt="상품이미지" />
 							<div class="overlay"></div>

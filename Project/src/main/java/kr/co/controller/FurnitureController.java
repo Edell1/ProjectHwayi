@@ -117,24 +117,26 @@ public class FurnitureController {
 		model.addAttribute("oneFurnitureBean", oneFurnitureBean);
 		model.addAttribute("furnitureCartBean", furnitureCartBean);
 
-		return "/furniture/furniture_detail";
+		return "furniture/furniture_detail";
 	}
 
 	@GetMapping("/addCart_pro")
 	public String cart_add(@ModelAttribute("addCartBean") CartBean addCartBean,
-			@RequestParam("furnitureid") String furnitureid, @RequestParam("count") int count) {
+			@RequestParam("furnitureid") String furnitureid, @RequestParam("cnt") int cnt, @RequestParam("price") int price, @RequestParam("name") String name) {
 		CartBean existingCartItem = cartService.getCartItemByProductIdAndMemberId(loginUserBean.getCode(), furnitureid);
 
 		if (existingCartItem != null) {
-			existingCartItem.setCount(existingCartItem.getCount() + count);
+			existingCartItem.setCount(existingCartItem.getCount() + cnt);
 			cartService.updateCartItem(existingCartItem);
 		} else {
-			addCartBean.setCount(count);
+			addCartBean.setCount(cnt);
 			addCartBean.setFurnitureid(furnitureid);
 			addCartBean.setCode(loginUserBean.getCode());
+			addCartBean.setPrice(price);
+			addCartBean.setFurnitureName(name);
 			cartService.insertCartItem(addCartBean);
 		}
-
+			
 		return "cart/add_cart_success";
 	}
 

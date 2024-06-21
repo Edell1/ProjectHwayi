@@ -197,4 +197,9 @@ public class UserController {
     public String mypage() {
         return "user/mypage";
     }
+    
+    @GetMapping("/mypage_order_info")
+    public String mypage_order_info() {
+        return "user/mypage_order_info";
+    }
 }
