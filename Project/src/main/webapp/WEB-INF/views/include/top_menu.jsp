@@ -10,7 +10,7 @@
 
 		<form action="${root}furniture/furniture_list" method="get"
 			class="search" role="search">
-			<input type="text" class="sch_txt" id="sch_str" name="keyword"
+			<input type="text" class="sch_txt" id="sch_str"
 				placeholder="찾으시는 상품을 검색해주세요." />
 			<button type="submit" id="sch_sub">검색</button>
 		</form>
@@ -19,14 +19,20 @@
 			<c:choose>
 				<c:when test="${loginUserBean.userLogin}">
 					<li>${loginUserBean.name }님</li>
+
 					<li class="nav-item"><a href="${root}user/logout"
 						class="nav-link">로그아웃</a></li>
+
 					<c:if test="${loginUserBean.userRole == 'admin'}">
 						<li><a href="${root}admin/main" class="admin">관리자</a></li>
 					</c:if>
+
 					<c:if test="${loginUserBean.userRole == 'buyer'}">
+						<li class="nav-item"><a href="${root}user/mypage"
+							class="nav-link">마이페이지</a></li>
 						<li><a href="${root}cart/cart_main" class="cart">장바구니</a></li>
 					</c:if>
+
 					<c:if test="${loginUserBean.userRole == 'seller'}">
 						<li><a href="${root}seller/main" class="admin">판매자</a></li>
 					</c:if>
@@ -42,16 +48,7 @@
 			<!-- 로그인 상태에 관계없이 항상 표시되는 항목들 -->
 			<li><a href="${root}customer_center/customer_center_main"
 				class="customer">고객센터</a></li>
+			<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
 		</ul>
-
 	</div>
-
-	<nav class="nav_bar">
-		<ul class="nav_menu">
-			<li><a href="${root}main" class="home">홈</a></li>
-			<li><a href="#" class="home">추천</a></li>
-			<li><a href="${root}furniture/furniture_list" class="furniture">가구</a></li>
-			<li><a href="#" class="home">브랜드관</a></li>
-		</ul>
-	</nav>
 </div>

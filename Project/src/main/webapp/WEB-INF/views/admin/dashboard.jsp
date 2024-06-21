@@ -11,28 +11,27 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>대시보드</title>
-<link rel="stylesheet" href="<c:url value='/css/main.css' />" />
-<link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
-<link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
-<link rel="stylesheet" href="<c:url value='/css/manage_mem.css' />" />
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
+<title>판매통계</title>
+
 <link href="${root}css/admin_styles.css" rel="stylesheet" />
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
-<link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<c:url value='/css/dash.css' />" />
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+	rel="stylesheet" />
 </head>
 <body>
+
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
-	<div>
-		<div class="admin_wrap">
-			<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
-			<div class="row">
-				<div style="width: 700px">
+
+	<div class="admin_wrap">
+
+		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
+
+		<div class="manage_member">
+			<div class="mgMem_inner admin_furn_gp">
+				<div style="width: 650px">
 					<div class="tit">
 						<h2>종합 월간 매출 및 가구판매 비율</h2>
 					</div>
@@ -45,7 +44,10 @@
 						</div>
 					</div>
 				</div>
-				<div style="width: 700px">
+				<div style="width: 650px">
+					<div class="tit">
+						<h2>.</h2>
+					</div>
 					<div class="card mb-4">
 						<div class="card-header">
 							<i class="fas fa-chart-pie me-1"></i> 가구 별 판매비율
@@ -56,10 +58,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="manage_chart">
-				<div class="mgMem_inner">
-					<div class="tit">매장별 연간 매출 및 가구 비율</div>
+			<div class="mgMem_inner admin_furn_gp row">
+				<div class="tit">매장별 연간 매출 및 가구 비율</div>
 
+				<div>
 					<input type="radio" name="tabmenu" id="tab01" checked /> <label
 						for="tab01">찬흠가구</label> <input type="radio" name="tabmenu"
 						id="tab02" /> <label for="tab02">영민가구</label> <input type="radio"
@@ -74,7 +76,7 @@
 						for="tab09">맹구가구</label> <input type="radio" name="tabmenu"
 						id="tab10" /> <label for="tab10">수지가구</label>
 
-					<div class="cont_wrap">
+					<div class="cont_wrap admin_furn">
 						<div class="conbox con1">
 							<div class="card mb-4">
 								<div class="card-header">
@@ -260,18 +262,22 @@
 			</div>
 		</div>
 	</div>
+
 	<button id="topBtn" class="top-button" title="Go to top">Top</button>
 
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script src="${root}js/admin_scripts.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-	<script src="${root}js/admin/chart-area-demo.js"></script>
-	<script src="${root}js/admin/chart-bar-admin.js"></script>
-	<script src="${root}js/admin/chart-pie-admin.js"></script>
 </body>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+<script src="${root}js/admin_scripts.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+	crossorigin="anonymous"></script>
+<script src="${root}js/admin/chart-area-demo.js"></script>
+<script src="${root}js/admin/chart-bar-admin.js"></script>
+<script src="${root}js/admin/chart-pie-admin.js"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
 </html>

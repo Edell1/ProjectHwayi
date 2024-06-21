@@ -139,7 +139,7 @@
 								<div class="input-group">
 									<form:input path="address2" class="form-control" placeholder='상세 주소 입력'/>
 								</div>
-								<form:errors path="address2" style="color:red" />
+								<form:errors class="err_txt" path="address2" style="color:red" />
 							</div>
 
 

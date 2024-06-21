@@ -37,11 +37,11 @@
 					<ul class="choice">
 						<li><a href="${root }user/join_buyer" id="buyer"> <i
 								class="fa-regular fa-face-smile fa-5x"></i> <b>구매자</b>
-								<p>구매자인 경우 가입이 가능합니다.</p>
+								<p>구매자인 경우 가입이<br /> 가능합니다.</p>
 						</a></li>
 						<li><a href="${root }user/join_seller" id="seller"> <i
 								class="fa-solid fa-face-smile fa-5x"></i> <b>판매자</b>
-								<p>판매자인 경우 가입이 가능합니다.</p>
+								<p>판매자인 경우 가입이<br /> 가능합니다.</p>
 						</a></li>
 					</ul>
 					<p class="tail-desc">해당되는 항목을 선택하여 회원가입을 진행해 주시기 바랍니다.</p>

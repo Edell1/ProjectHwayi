@@ -14,17 +14,20 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
-<link rel="stylesheet"
-	href="<c:url value='/css/furniture_brand.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/furniture_brand.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 </head>
 <body>
 
-	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+	<div class="top">
+		<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+		<c:import url="/WEB-INF/views/include/nav_menu.jsp" />
+	</div>
 
 	<div class="brand_wrap">
 		<div class="brand_box">
-			<a class="cont cont1" href="${root}furniture/furniture_list?furnitureType=bd">
+			<a class="cont cont1"
+				href="${root}furniture/furniture_list?furnitureType=bd">
 				<div class="img_box">
 					<img src="${root}image/brand/furn1.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -37,8 +40,7 @@
 						거실, 침실 <span>신상</span> 기획전
 					</p>
 				</div>
-			</a>
-			<a class="cont cont2" href="${root}furniture/furniture_list">
+			</a> <a class="cont cont2" href="${root}furniture/furniture_list">
 				<div class="img_box">
 					<img src="${root}image/brand/furn2.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -51,8 +53,7 @@
 						새학기 <span>신상</span> 기획전
 					</p>
 				</div>
-			</a>
-			<a class="cont cont3" href="${root}furniture/furniture_list">
+			</a> <a class="cont cont3" href="${root}furniture/furniture_list">
 				<div class="img_box">
 					<img src="${root}image/brand/furn3.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -65,8 +66,7 @@
 						선반 <span>신상</span> 기획전
 					</p>
 				</div>
-			</a>
-			<a class="cont cont4" href="${root}furniture/furniture_list">
+			</a> <a class="cont cont4" href="${root}furniture/furniture_list">
 				<div class="img_box">
 					<img src="${root}image/brand/furn4.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -79,8 +79,7 @@
 						거실장, 테이블 <span>신상</span> 기획전
 					</p>
 				</div>
-			</a>
-			<a class="cont cont5" href="${root}furniture/furniture_list">
+			</a> <a class="cont cont5" href="${root}furniture/furniture_list">
 				<div class="img_box">
 					<img src="${root}image/brand/furn5.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -93,8 +92,7 @@
 						테이블 <span>신상</span> 기획전
 					</p>
 				</div>
-			</a>
-			<a class="cont cont6" href="${root}furniture/furniture_list">
+			</a> <a class="cont cont6" href="${root}furniture/furniture_list">
 				<div class="img_box">
 					<img src="${root}image/brand/furn6.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -107,8 +105,7 @@
 						여름맞이 <span>신상</span> 기획전
 					</p>
 				</div>
-			</a>
-			<a class="cont cont7" href="${root}furniture/furniture_list">
+			</a> <a class="cont cont7" href="${root}furniture/furniture_list">
 				<div class="img_box">
 					<img src="${root}image/brand/furn7.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -121,8 +118,7 @@
 						수납 <span>신상</span> 기획전
 					</p>
 				</div>
-			</a>
-			<a class="cont cont8" href="${root}furniture/furniture_list">
+			</a> <a class="cont cont8" href="${root}furniture/furniture_list">
 				<div class="img_box">
 					<img src="${root}image/brand/furn8.avif" alt="브랜드1" />
 					<div class="overlay">
@@ -195,4 +191,3 @@
 		});
 	});
 </script>
-</html>

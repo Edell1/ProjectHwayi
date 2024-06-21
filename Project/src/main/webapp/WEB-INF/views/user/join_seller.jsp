@@ -149,7 +149,7 @@ window.onload = function() {
 								<div class="input-group">
 									<form:input path="address2" class="form-control" placeholder='상세 주소 입력'/>
 								</div>
-								<form:errors path="address2" style="color:red" />
+								<form:errors class="err_txt" path="address2" style="color:red" />
 							</div>
 
 							<div class="form-group">
@@ -175,7 +175,7 @@ window.onload = function() {
 									<form:input path="straddress2" class="form-control"
 										placeholder='상세주소 입력' />
 								</div>
-								<form:errors path="straddress2" style="color:red" />
+								<form:errors class="err_txt" path="straddress2" style="color:red" />
 							</div>
 
 							<div class="form-group">

@@ -16,7 +16,10 @@
 
 </head>
 <body>
-	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+	<div class="top">
+		<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+		<c:import url="/WEB-INF/views/include/nav_menu.jsp" />
+	</div>
 	
 	<div class="customer_center_top">
 		<div class="FAQ_box">

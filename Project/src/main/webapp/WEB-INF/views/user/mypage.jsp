@@ -17,7 +17,10 @@
 <link rel="stylesheet" href="<c:url value='/css/mypage_nav.css' />" />
 </head>
 <body>
-	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+	<div class="top">
+		<c:import url="/WEB-INF/views/include/top_menu.jsp" />
+		<c:import url="/WEB-INF/views/include/nav_menu.jsp" />
+	</div>
 
 	<div class="flex_wrap">
 

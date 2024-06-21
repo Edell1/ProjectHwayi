@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/* result */
+.result_table {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.result_table tr {
+	margin-bottom: 20px;
+}
+
+.btn_table tr {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.btn-primary {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+	width: 80px;
+	height: 32px;
+	padding: 5px;
+	font-size: 16px;
+	color: #07660a;
+	border: 2px solid #22a026;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+
+.btn-primary:hover {
+	color: white;
+	background-color: #22a026;
+	border: 2px solid #22a026;
+}
+
+a:visited {
+	color: #07660a;
+}

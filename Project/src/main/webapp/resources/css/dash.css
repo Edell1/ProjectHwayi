@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+.admin_wrap {
+	display: flex;
+}
+
+.admin_wrap nav {
+	width: 240px;
+	height: 100vh;
+	margin-right: 40px;
+}
+
+.admin_wrap nav .tit {
+	font-size: 32px;
+	padding: 15px;
+}
+
+.admin_wrap nav ul {
+	padding: 5px 10px;
+	margin-bottom: 0;
+}
+
+.admin_wrap nav ul li {
+	padding: 0 10px;
+	margin-bottom: 5px;
+}
+
+.admin_wrap nav ul li:nth-child(1) {
+	font-size: 22px;
+	padding: 5px;
+}
+
+.admin_wrap nav ul li:nth-child(2) {
+	width: 10px;
+	margin-bottom: 10px;
+	border-bottom: 3px solid #000 !important;
+}
+
+.admin_wrap nav ul li:hover a {
+	color: #22a026;
+}
+
+.admin_furn_gp {
+	display: flex;
+	gap: 20px;
+}
+
+.admin_furn_gp:nth-child(1)>div:nth-child(2) h2 {
+	color: #fff;
+}
+
+.admin_furn .conbox {
+	gap: 20px;
+	padding: 0;
+}
+
+canvas {
+	padding: 10px;
+}
+
+.manage_member {
+	width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.manage_chart {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.mgMem_inner {
+    box-sizing: border-box;
+}
+
+.mgMem_inner .tit {
+	font-size: 30px;
+	padding-bottom: 10px;
+}
+
+input[type='radio'] {
+	display: none;
+}
+
+label[for*='tab'] {
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 5px 5px 0 0;
+}
+
+input[id='tab01']:checked ~ .admin_furn .con1, input[id='tab02']:checked 
+	 ~ .admin_furn .con2, input[id='tab03']:checked ~ .admin_furn .con3,
+	input[id='tab04']:checked 
+	 ~ .admin_furn .con4, input[id='tab05']:checked ~ .admin_furn .con5,
+	input[id='tab06']:checked 
+	 ~ .admin_furn .con6, input[id='tab07']:checked ~ .admin_furn .con7,
+	input[id='tab08']:checked 
+	 ~ .admin_furn .con8, input[id='tab09']:checked ~ .admin_furn .con9,
+	input[id='tab10']:checked 
+	 ~ .admin_furn .con10 {
+	display: flex;
+}
+
+input[id='tab01']:checked+label[for='tab01'], input[id='tab02']:checked+label[for='tab02'],
+	input[id='tab03']:checked+label[for='tab03'], input[id='tab04']:checked+label[for='tab04'],
+	input[id='tab05']:checked+label[for='tab05'], input[id='tab06']:checked+label[for='tab06'],
+	input[id='tab07']:checked+label[for='tab07'], input[id='tab08']:checked+label[for='tab08'],
+	input[id='tab09']:checked+label[for='tab09'], input[id='tab10']:checked+label[for='tab10']
+	{
+	color: #fff;
+	background: green;
+}
+
+label[for='tab01'] {
+	margin-right: 5px;
+}
+
+.conbox {
+	display: none;
+}
+
+
+.admin_furn .conbox .card {
+	width: 650px;
+}

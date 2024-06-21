@@ -85,13 +85,20 @@
 
 .cont_box .form-group .err_txt {
 	position: absolute;
-	right: -180px;
-	width: 245px;
+	right: -210px;
+	width: 290px;
 	font-size: 16px;
 }
 
+.cont_box .form-group .err_txt.login {
+	right: -300px;
+}
+.cont_box .form-group .err_txt.admin_login_err {
+	right: -300px;
+}
+
 .cont_box .form-group:nth-child(3) .err_txt {
-	right: -265px;
+	right: -300px;
 }
 
 .cont_box .form-group .input-group {
@@ -125,4 +132,13 @@
 	width: 360px;
 	height: 50px;
 	font-size: 26px;
+}
+
+.login_flex_box {
+	display: flex;
+	justify-content: center;
+}
+
+.admin_login {
+	justify-content: center;
 }

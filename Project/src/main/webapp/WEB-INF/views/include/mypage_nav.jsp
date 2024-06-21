@@ -31,7 +31,8 @@
 		<ul>
 			<li>고객서비스</li>
 			<li class="border"></li>
-			<li><a href="#">FAQ</a> <a href="#">공지사항</a></li>
+			<li><a href="#">FAQ</a></li>
+			<li><a href="#">공지사항</a></li>
 		</ul>
 	</div>
 </nav>

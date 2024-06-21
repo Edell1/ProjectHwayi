@@ -9,16 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>미니 프로젝트</title>
-<!-- Bootstrap CDN -->
+<title>구매자 로그인</title>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/join.css' />" />
 </head>
@@ -48,19 +42,21 @@
 							<div class="form-group">
 								<form:label class="label_txt" path="id">아이디</form:label>
 								<form:input path="id" class="form-control" />
-								<form:errors class="err_txt" path="id" style='color:red' />
+								<form:errors class="err_txt login" path="id" style='color:red' />
 							</div>
 
 							<div class="form-group">
 								<form:label class="label_txt" path="pw">비밀번호</form:label>
 								<form:password path="pw" class='form-control' />
-								<form:errors class="err_txt" path='pw' style='color:red' />
+								<form:errors class="err_txt login" path='pw' style='color:red' />
 							</div>
 
-							<div class="form-group text-right">
-								<form:button class='btn btn-primary'>로그인</form:button>
-								<a href="${root }user/join_buyer" class="btn btn-primary">회원가입</a>
-								<a href="${root }user/searchId_buyer" class="btn btn-primary">아이디찾기</a>
+							<div class="login_flex_box">
+								<div class="form-group">
+									<form:button class='btn btn-primary'>로그인</form:button>
+									<a href="${root }user/join_buyer" class="btn btn-primary">회원가입</a>
+									<a href="${root }user/searchId_buyer" class="btn btn-primary">아이디찾기</a>
+								</div>
 							</div>
 						</form:form>
 					</div>
@@ -69,6 +65,7 @@
 		</div>
 	</div>
 </body>
+
 <!-- script -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -79,7 +76,6 @@
 <script src="https://kit.fontawesome.com/4cd100a941.js"
 	crossorigin="anonymous"></script>
 </html>
-
 
 
 

@@ -93,7 +93,7 @@ public class UserController {
             // 세션에 로그인 상태 및 사용자 정보 저장
             loginUserBean.setUserRole("seller"); // 역할 설정
             loginUserBean.setId(tempLoginBean.getId()); // 예시: 로그인한 사용자의 아이디 저장
-            return "user/login_success";
+            return "seller/login_success";
         } else {
             return "user/login_seller";
         }
