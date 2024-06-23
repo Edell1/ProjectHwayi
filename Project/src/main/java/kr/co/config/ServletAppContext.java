@@ -34,6 +34,7 @@ import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
 import kr.co.mapper.CartMapper;
 import kr.co.mapper.FurnitureMapper;
+import kr.co.mapper.NoticeMapper;
 import kr.co.mapper.OrderMapper;
 import kr.co.mapper.OrdetailMapper;
 import kr.co.mapper.SellerMapper;
@@ -187,6 +188,13 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 
+	// Notice
+	@Bean
+	public MapperFactoryBean<NoticeMapper> getNoticeMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<NoticeMapper> factoryBean = new MapperFactoryBean<NoticeMapper>(NoticeMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

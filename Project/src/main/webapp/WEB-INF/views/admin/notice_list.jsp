@@ -33,90 +33,35 @@
 					<table class="table table-hover text-center align-middle">
 						<thead>
 							<tr>
-								<th>번호</th>
 								<th width="50%">제목</th>
-								<th>작성자</th>
 								<th>작성일</th>
-								<th>답변</th>
+								<th>조회수</th>
 								<th>삭제</th>
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${empty askList}">
+							<c:when test="${empty noticeList}">
 								<tr>
 									<td colspan="6" class="text-center align-middle" height="100">등록된
 										문의가 없습니다.</td>
 								</tr>
 							</c:when>
 							<c:otherwise>
-								<c:forEach items="${askList}" var="obj">
+								<c:forEach items="${noticeList}" var="obj">
 									<tr>
-										<td>${obj.rownum}</td>
 										<td><a
-											href="${root}admin/ask_read?board_id=${obj.board_id}">${obj.board_title}</a></td>
-										<td><a
-											href="${root}admin/member_info?member_id=${obj.member_id}">${obj.member_id}</a></td>
-										<td>${obj.board_date}</td>
-										<td><c:choose>
-												<c:when test="${obj.isAnswered == 0 }">
-													<a
-														href="${root}admin/answer_write?board_id=${obj.board_id}"
-														class="btn btn-secondary btn-sm">답변하기</a>
-												</c:when>
-												<c:otherwise>
-													<a href="${root}admin/ask_read?board_id=${obj.board_id}"
-														class="btn btn-success btn-sm">답변보기</a>
-												</c:otherwise>
-											</c:choose></td>
-										<td><a
-											href="${root}admin/ask_delete?board_id=${board_id}"
+											href="${root}admin/notice_read?postID=${obj.postID}">${obj.noticeTitle}</a></td>
+										<td>${obj.veiwCount}</td>
+										<td><a href="${root}admin/notice_delete?postID=${postID}"
 											class="btn btn-secondary btn-sm">삭제</a></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
 					</table>
-					<div class="d-none d-md-block">
-						<ul class="pagination justify-content-center">
-							<c:choose>
-								<c:when test="${pageBean.prevPage <= 0}">
-									<li class="page-item disabled"><a href="#"
-										class="page-link">이전</a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item"><a
-										href="${root}admin/ask?page=${pageBean.prevPage}"
-										class="page-link">이전</a></li>
-								</c:otherwise>
-							</c:choose>
-
-							<c:forEach var="idx" begin="${pageBean.min}"
-								end="${pageBean.max}">
-								<c:choose>
-									<c:when test="${idx == pageBean.currentPage}">
-										<li class="page-item active"><a
-											href="${root}admin/ask?page=${idx}" class="page-link">${idx}</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a
-											href="${root}admin/ask?page=${idx}" class="page-link">${idx}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<c:choose>
-								<c:when test="${pageBean.max >= pageBean.pageCnt }">
-									<li class="page-item disabled"><a href="#"
-										class="page-link">다음</a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item"><a
-										href="${root}admin/ask?page=${pageBean.nextPage}"
-										class="page-link">다음</a></li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
+					<div>
+						<button class="uploadBtn"
+							onclick="location.href='${root}admin/notice_write'">공지 작성</button>
 					</div>
 				</div>
 			</div>

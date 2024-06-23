@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +17,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.beans.ContentBean;
 import kr.co.beans.FurnitureBean;
+import kr.co.beans.NoticeBean;
 import kr.co.beans.PageBean;
 import kr.co.beans.UserBean;
 import kr.co.dao.UserDao;
 import kr.co.service.FurnitureService;
+import kr.co.service.NoticeService;
 import kr.co.service.UserAdminService;
 import kr.co.service.UserbuyerService;
 import kr.co.service.UsersellerService;
@@ -34,9 +38,12 @@ public class AdminController {
 
 	@Autowired
 	private UserbuyerService userbuyerService;
-	
+
 	@Autowired
 	private UserAdminService userAdminService;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@Autowired
 	private FurnitureService furnitureService;
@@ -50,25 +57,25 @@ public class AdminController {
 		model.addAttribute("fail", fail);
 		return "admin/login_admin";
 	}
-	
-    @PostMapping("/login_pro") //pro admin
-    public String login_pro(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result,
-                             Model model) {
-        if (result.hasErrors()) {
-            return "admin/login_admin";
-        }
-        // 세션 영역에 있는 로그인 정보 불러오기
-        userAdminService.getLoginAdminInfo(tempLoginBean); //true
-        
-        if (loginUserBean.isUserLogin() ==true) {
-            // 세션에 로그인 상태 및 사용자 정보 저장
-            loginUserBean.setUserRole("admin"); // 역할 설정
-            loginUserBean.setId(tempLoginBean.getId()); // 예시: 로그인한 사용자의 아이디 저장
-            return "admin/login_success";
-        } else {
-            return "admin/login_admin";
-        }
-    }
+
+	@PostMapping("/login_pro") // pro admin
+	public String login_pro(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result,
+			Model model) {
+		if (result.hasErrors()) {
+			return "admin/login_admin";
+		}
+		// 세션 영역에 있는 로그인 정보 불러오기
+		userAdminService.getLoginAdminInfo(tempLoginBean); // true
+
+		if (loginUserBean.isUserLogin() == true) {
+			// 세션에 로그인 상태 및 사용자 정보 저장
+			loginUserBean.setUserRole("admin"); // 역할 설정
+			loginUserBean.setId(tempLoginBean.getId()); // 예시: 로그인한 사용자의 아이디 저장
+			return "admin/login_success";
+		} else {
+			return "admin/login_admin";
+		}
+	}
 
 	@RequestMapping("/main")
 	public String main(Model model) {
@@ -190,7 +197,15 @@ public class AdminController {
 	}
 
 	@GetMapping("/furniture_decline")
-	public String furniture_decline() {
+	public String furniture_decline(@ModelAttribute("modifyFurnitureBean") FurnitureBean modifyFurnitureBean,
+			Model model, BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "admin/furniture_info";
+		}
+		modifyFurnitureBean.setChecked(2); // 승인 거절
+		furnitureService.grantFurnitureInfoByAdmin(modifyFurnitureBean);
+		System.out.println(modifyFurnitureBean.getChecked());
 		return "admin/furniture_decline";
 	}
 
@@ -198,10 +213,29 @@ public class AdminController {
 	public String dashboard() {
 		return "admin/dashboard";
 	}
-	
+
 	@GetMapping("/notice_list")
 	public String notice_list() {
 		return "admin/notice_list";
+	}
+
+	@GetMapping("/notice_write")
+	public String notice_write() {
+
+		return "admin/notice_write";
+	}
+
+	@PostMapping("/write_pro")
+	public String write_pro(@Valid @ModelAttribute("writeNoticeBean") NoticeBean writeNoticeBean,
+			BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "admin/notice_write";
+		}
+
+		noticeService.addNoticeInfo(writeNoticeBean);
+
+		return "admin/write_success";
 	}
 
 }

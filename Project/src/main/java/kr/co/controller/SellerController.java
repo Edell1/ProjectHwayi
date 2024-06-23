@@ -2,6 +2,7 @@ package kr.co.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.beans.FurnitureBean;
+import kr.co.beans.UserBean;
 import kr.co.service.FurnitureService;
 
 @Controller
@@ -23,10 +25,17 @@ public class SellerController {
 
 	@Autowired
 	private FurnitureService furnitureService;
+	
+	@Resource(name = "loginUserBean")
+	private UserBean loginUserBean;
 
-	@GetMapping("/main")
-	public String main() {
-		return "seller/main";
+	@GetMapping("furniture_management")
+	public String furniture_management(Model model) {
+		String seller_code = loginUserBean.getCode();
+		System.out.println("seller_code" + seller_code);
+		List<FurnitureBean> furnitueListfromSeller = furnitureService.getFurnitureListfromSeller(seller_code);
+		model.addAttribute("furnitueListfromSeller", furnitueListfromSeller);
+		return "seller/furniture_management";
 	}
 
 	@GetMapping("/seller_productAdd")
@@ -44,14 +53,6 @@ public class SellerController {
 		furnitureService.addFurnitureInfo(addFurnitureBean);
 
 		return "seller/add_furniture_success";
-	}
-
-	@GetMapping("furniture_management")
-	public String furniture_management(@RequestParam("seller_code") String seller_code, Model model) {
-		System.out.println(seller_code);
-		List<FurnitureBean> furnitueListfromSeller = furnitureService.getFurnitureListfromSeller(seller_code);
-		model.addAttribute("furnitueListfromSeller", furnitueListfromSeller);
-		return "seller/furniture_management";
 	}
 
 	@RequestMapping("product_info")

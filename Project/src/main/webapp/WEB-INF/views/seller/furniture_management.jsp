@@ -9,11 +9,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>판매자 상품관리</title>
 <!-- Bootstrap CDN -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/manage_mem.css' />" />
 <script
 	src="httpsa://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -31,86 +32,88 @@
 			<div class="card shadow">
 				<div class="card-body">
 					<h4 class="card-title">가구</h4>
-					<table class="table table-hover" id='furniture_list'>
-						<thead>
-							<tr>
-								<th class="text-center d-none d-md-table-cell">상품종류</th>
-								<th class="text-center d-none d-md-table-cell">상품명</th>
-								<th class="text-center d-none d-md-table-cell">상품가격</th>
-								<th class="text-center d-none d-md-table-cell">상품개수</th>
-								<th class="text-center d-none d-md-table-cell">상품태그</th>
-								<th class="text-center d-none d-md-table-cell">상품 승인 여부</th>
-								<th class="text-center d-none d-md-table-cell">등록일자</th>
-								<th class="text-center d-none d-md-table-cell">상세정보</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var='fun' items="${furnitueListfromSeller}">
-								<tr>
-									<td class="text-center d-none d-md-table-cell">${fun.furniture_type_text }</td>
-									<td class="text-center d-none d-md-table-cell">${fun.furniture_name}</td>
-									<td class="text-center d-none d-md-table-cell">${fun.furniture_price}</td>
-									<td class="text-center d-none d-md-table-cell">${fun.furniture_cnt}</td>
-									<td class="text-center d-none d-md-table-cell">${fun.tag}</td>
-									<td class="text-center d-none d-md-table-cell">${fun.furniture_checked}</td>
-									<td class="text-center d-none d-md-table-cell">${fun.furniture_date}</td>
-									<td>
-										<div class="text-right">
-											<a
-												href="${root}seller/product_info?furnitureid=${fun.furnitureid }"
-												class="btn btn-primary">상세보기</a>
-										</div>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					<!-- class="d-block d-md-block" (부트스트랩) -->
-					<div class="d-block d-md-block">
-						<ul class="pagination justify-content-center">
-							<c:choose>
-								<c:when test="${pageBean.prevPage <= 0}">
-									<li class="page-item disabled"><a href="#"
-										class="page-link">이전</a></li>
-								</c:when>
-
-								<c:otherwise>
-									<li class="page-item"><a
-										href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.prevPage}"
-										class="page-link">이전</a></li>
-								</c:otherwise>
-							</c:choose>
-
-							<c:forEach var="idx" begin="${pageBean.min}"
-								end="${pageBean.max}">
-								<c:choose>
-									<c:when test="${idx == pageBean.currentPage }">
-										<!--  현재페이지 색변경(active) -->
-										<li class="page-item active"><a
-											href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}"
-											class="page-link">${idx }</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a
-											href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}"
-											class="page-link">${idx }</a></li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-
-							<!-- Max값이 전체페이지보다 크거나 같으면 비활성화 disabled(부트스트랩) -->
-							<c:choose>
-								<c:when test="${pageBean.max >= pageBean.pageCnt }">
-									<li class="page-item disabled"><a href="#"
-										class="page-link">다음</a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item"><a
-										href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.nextPage}"
-										class="page-link">다음</a></li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
+					<input type="radio" name="tabmenu" id="tab01" checked /> <label
+						for="tab01">승인 완료</label> <input type="radio" name="tabmenu"
+						id="tab02" /> <label for="tab02">승인 대기 / 거절</label>
+					<div class="cont_wrap">
+						<div class="conbox con1">
+							<h3>[ 승인 완료 ]</h3>
+							<table class="table table-hover" id='furniture_list'>
+								<thead>
+									<tr>
+										<th class="text-center d-none d-md-table-cell">상품종류</th>
+										<th class="text-center d-none d-md-table-cell">상품명</th>
+										<th class="text-center d-none d-md-table-cell">상품가격</th>
+										<th class="text-center d-none d-md-table-cell">상품개수</th>
+										<th class="text-center d-none d-md-table-cell">상품태그</th>
+										<th class="text-center d-none d-md-table-cell">상품 승인 여부</th>
+										<th class="text-center d-none d-md-table-cell">등록일자</th>
+										<th class="text-center d-none d-md-table-cell">상세정보</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var='fun' items="${furnitueListfromSeller}">
+										<tr>
+											<c:if test="${fun.furniture_checked == '승인완료'}">
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_type_text }</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_name}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_price}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_cnt}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.tag}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_checked}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_date}</td>
+												<td>
+													<div class="text-right">
+														<a
+															href="${root}seller/product_info?furnitureid=${fun.furnitureid }"
+															class="btn btn-primary">상세보기</a>
+													</div>
+												</td>
+											</c:if>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<div class="conbox con2">
+							<h3>[ 승인 대기 / 거절 ]</h3>
+							<table class="table table-hover" id='furniture_list'>
+								<thead>
+									<tr>
+										<th class="text-center d-none d-md-table-cell">상품종류</th>
+										<th class="text-center d-none d-md-table-cell">상품명</th>
+										<th class="text-center d-none d-md-table-cell">상품가격</th>
+										<th class="text-center d-none d-md-table-cell">상품개수</th>
+										<th class="text-center d-none d-md-table-cell">상품태그</th>
+										<th class="text-center d-none d-md-table-cell">상품 승인 여부</th>
+										<th class="text-center d-none d-md-table-cell">등록일자</th>
+										<th class="text-center d-none d-md-table-cell">상세정보</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var='fun' items="${furnitueListfromSeller}">
+										<tr>
+											<c:if test="${fun.furniture_checked != '승인완료'}">
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_type_text }</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_name}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_price}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_cnt}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.tag}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_checked}</td>
+												<td class="text-center d-none d-md-table-cell">${fun.furniture_date}</td>
+												<td>
+													<div class="text-right">
+														<a
+															href="${root}seller/product_info?furnitureid=${fun.furnitureid }"
+															class="btn btn-primary">상세보기</a>
+													</div>
+												</td>
+											</c:if>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

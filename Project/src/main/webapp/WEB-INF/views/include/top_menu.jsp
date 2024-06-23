@@ -34,7 +34,7 @@
 					</c:if>
 
 					<c:if test="${loginUserBean.userRole == 'seller'}">
-						<li><a href="${root}seller/main" class="admin">판매자</a></li>
+						<li><a href="${root}seller/furniture_management" class="admin">판매자</a></li>
 					</c:if>
 				</c:when>
 				<c:otherwise>
