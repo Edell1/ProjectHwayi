@@ -14,6 +14,7 @@ public class NoticeDao {
 	private NoticeMapper noticeMapper;
 	
 	public void addNoticeInfo(NoticeBean writeNoticeBean) {
+		System.out.println("DAO" + writeNoticeBean.getCode());
 		noticeMapper.addNoticeInfo(writeNoticeBean);
 	}
 

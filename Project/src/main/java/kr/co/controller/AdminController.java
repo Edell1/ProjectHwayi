@@ -220,8 +220,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/notice_write")
-	public String notice_write() {
-
+	public String notice_write(Model model) {
+		model.addAttribute("writeNoticeBean", new NoticeBean());
 		return "admin/notice_write";
 	}
 
@@ -234,6 +234,7 @@ public class AdminController {
 		}
 
 		noticeService.addNoticeInfo(writeNoticeBean);
+		System.out.println("control" + writeNoticeBean.getCode());
 
 		return "admin/write_success";
 	}

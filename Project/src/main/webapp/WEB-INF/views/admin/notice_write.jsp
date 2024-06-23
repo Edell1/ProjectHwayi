@@ -32,17 +32,17 @@
                <div class="card-body">
                   <form:form action="${root}admin/write_pro" method="post"
                      modelAttribute="writeNoticeBean" enctype="multipart/form-data">
-                     <form:hidden path="content_board_idx" />
+                     <form:hidden path="postID" />
                      <div class="form-group">
                         <form:label path="noticeTitle">제목</form:label>
                         <form:input path="noticeTitle" class='form-control' />
-                        <form:errors path='noticeTitle' style='color:red' />
+                        <%-- <form:errors path='noticeTitle' style='color:red' /> --%>
                      </div>
                      <div class="form-group">
                         <form:label path="content">내용</form:label>
                         <form:textarea path="content" class="form-control"
                            rows="10" style="resize:none" />
-                        <form:errors path='content' style='color:red' />
+                       <%--  <form:errors path='content' style='color:red' /> --%>
                      </div>
 
                      <div class="form-group">

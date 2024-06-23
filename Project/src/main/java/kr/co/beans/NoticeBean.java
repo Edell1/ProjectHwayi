@@ -16,7 +16,6 @@ public class NoticeBean {
 	private String content;
 	private Date postDate;
 	private int veiwCount;
-	private String setPIN;
 
 	public int getPostID() {
 		return postID;
@@ -64,14 +63,6 @@ public class NoticeBean {
 
 	public void setVeiwCount(int veiwCount) {
 		this.veiwCount = veiwCount;
-	}
-
-	public String getSetPIN() {
-		return setPIN;
-	}
-
-	public void setSetPIN(String setPIN) {
-		this.setPIN = setPIN;
 	}
 
 }
