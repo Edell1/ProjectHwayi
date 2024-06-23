@@ -94,8 +94,19 @@ public class FurnitureDao {
 	}
 
 	public List<FurnitureBean> getFurnitureListfromSeller(String seller_code) {
-		System.out.println("판매자 상품 가져오기 서비스~");
+		System.out.println("판매자 상품 가져오기 다오에용");
 		return furnitureMapper.getFurnitureListfromSeller(seller_code);
+	}
+
+	public FurnitureBean selectProductById(String furnitureid) {
+		System.out.println("판매자별 상품 상세정보 가져오기 다오~!@");
+		return furnitureMapper.selectProductById(furnitureid);
+	}
+
+	public void modifyProduct(FurnitureBean modifyProductBean) {
+		System.out.println("가구 수정하기 다오!");
+		furnitureMapper.modifyProduct(modifyProductBean);
+
 	}
 
 }

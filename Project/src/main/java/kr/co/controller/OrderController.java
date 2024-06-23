@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.beans.OrderBean;
 import kr.co.beans.UserBean;
 import kr.co.service.OrderService;
+import kr.co.service.OrdetailService;
 import kr.co.service.UserbuyerService;
 
 @Controller
@@ -27,6 +28,9 @@ public class OrderController {
 
 	@Autowired
 	UserbuyerService userbuyerService;
+
+	@Autowired
+	OrdetailService ordetailService;
 
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
@@ -63,8 +67,9 @@ public class OrderController {
 
 			}
 		}
-
+		System.out.println("AAAAAAA");
 		if (code != null && !code.isEmpty()) {
+			System.out.println("BBBBBBBBB");
 			List<OrderBean> addLists = orderService.getAllAddList(code);
 			model.addAttribute("code", code);
 			model.addAttribute("addLists", addLists);
@@ -76,6 +81,15 @@ public class OrderController {
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("finalPrice", finalPrice);
 		return "order/order_main";
+	}
+
+	@PostMapping("/submitOrderDetail")
+	public String submitOrderDetail(@RequestParam("furnitureid") List<String> furnitureid,
+			@RequestParam("order_product_stock") List<Integer> order_product_stock) {
+		System.out.println(furnitureid);
+		System.out.println(order_product_stock);
+		ordetailService.submitOrderDetail(furnitureid, order_product_stock);
+		return "order/order_success";
 	}
 
 }

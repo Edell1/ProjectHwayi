@@ -24,9 +24,9 @@
 
 		<div id="layoutSidenav_content">
 			<div class="container-fluid px-4">
-				<h1 class="mt-4">문의 관리</h1>
+				<h1 class="mt-4">공지 관리</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item active">문의 관리</li>
+					<li class="breadcrumb-item active">공지 관리</li>
 				</ol>
 				<hr />
 				<div class="m-3">
@@ -120,8 +120,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- 하단 내비게이션 -->
-			<c:import url="/WEB-INF/views/admin/include/footer.jsp" />
 		</div>
 
 

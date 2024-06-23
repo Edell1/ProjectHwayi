@@ -54,4 +54,64 @@ public class SellerController {
 		return "seller/furniture_management";
 	}
 
+	@RequestMapping("product_info")
+	public String product_info(@RequestParam("furnitureid") String furnitureid, Model model) {
+		FurnitureBean modifyProductBean = furnitureService.selectProductById(furnitureid);
+		model.addAttribute("modifyProductBean", modifyProductBean);
+		System.out.println(modifyProductBean.getFurnitureid());
+		System.out.println(modifyProductBean.getFurniture_type());
+		System.out.println(modifyProductBean.getFurniture_color());
+		System.out.println(modifyProductBean.getFurniture_price());
+		System.out.println(modifyProductBean.getFurniture_mat());
+		System.out.println(modifyProductBean.getFurniture_date());
+		System.out.println(furnitureid);
+
+		return "seller/product_info";
+	}
+
+	@RequestMapping("product_modify")
+	public String product_modify(@ModelAttribute("modifyProductBean") FurnitureBean modifyProductBean,
+			@RequestParam("furnitureid") String furnitureid, Model model) {
+		FurnitureBean modifyProductBean2 = furnitureService.selectProductById(furnitureid);
+
+		System.out.println(furnitureid);
+		modifyProductBean.setFurniture_name(modifyProductBean2.getFurniture_name());
+		modifyProductBean.setFurnitureid(furnitureid);
+		modifyProductBean.setFurniture_color(modifyProductBean2.getFurniture_color());
+		modifyProductBean.setFurniture_mat(modifyProductBean2.getFurniture_mat());
+		modifyProductBean.setFurniture_width(modifyProductBean2.getFurniture_width());
+		modifyProductBean.setFurniture_length(modifyProductBean2.getFurniture_length());
+		modifyProductBean.setFurniture_height(modifyProductBean2.getFurniture_height());
+		modifyProductBean.setFurniture_price(modifyProductBean2.getFurniture_price());
+		modifyProductBean.setFurniture_cnt(modifyProductBean2.getFurniture_cnt());
+		modifyProductBean.setTag(modifyProductBean2.getTag());
+		modifyProductBean.setFurniture_img1(modifyProductBean2.getFurniture_img1());
+
+		System.out.println(modifyProductBean.getFurnitureid());
+		model.addAttribute("furniture_color", modifyProductBean2.getFurniture_color());
+		model.addAttribute("furniture_mat", modifyProductBean2.getFurniture_mat());
+		model.addAttribute("furniture_width", modifyProductBean2.getFurniture_width());
+		model.addAttribute("furniture_length", modifyProductBean2.getFurniture_length());
+		model.addAttribute("furniture_height", modifyProductBean2.getFurniture_height());
+		model.addAttribute("furnitureid", modifyProductBean2.getFurnitureid());
+
+		return "seller/product_modify";
+
+	}
+
+	@PostMapping("product_modify_pro")
+	public String product_modify_pro(@ModelAttribute("modifyProductBean") FurnitureBean modifyProductBean, Model model,
+			BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "seller/product_modify";
+		}
+		System.out.println(modifyProductBean.getFurnitureid());
+		furnitureService.modifyProduct(modifyProductBean);
+		model.addAttribute("code", modifyProductBean.getCode());
+
+		return "seller/product_modify_success";
+
+	}
+
 }

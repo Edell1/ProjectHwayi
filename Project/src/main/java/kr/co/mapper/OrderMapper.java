@@ -10,7 +10,7 @@ import kr.co.beans.OrderBean;
 
 @Mapper
 public interface OrderMapper {
-	
+
 	@Select("select * from Total_orders where code = #{code} order by rownum desc")
 	List<OrderBean> getOrderListByMemberId(String code);
 
@@ -19,9 +19,12 @@ public interface OrderMapper {
 
 	@Select("SELECT furnitureid, furniture_name, furniture_price FROM Furniture WHERE furnitureid = #{furnitureid}")
 	OrderBean getProductInfo(String furnitureid);
-	
+
 	// 배송지 입력 정보
-	@Select("select order_addr, order_name, order_phone, order_req from Total_orders where code = #{code}")
+	@Select("select * from addresses where code = #{code}")
 	List<OrderBean> getAllAddList(@Param("code") String code);
+
+	@Select("select orderID from Total_orders order by orderID desc fetch first 1 row only")
+	int getFirstOrderId();
 
 }

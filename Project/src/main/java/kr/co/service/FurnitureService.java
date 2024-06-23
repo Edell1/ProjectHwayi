@@ -1,17 +1,13 @@
 package kr.co.service;
 
-import java.io.File;
 import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.beans.FurnitureBean;
 import kr.co.beans.UserBean;
@@ -89,6 +85,7 @@ public class FurnitureService {
 		System.out.println(addFurnitureBean.getFurniture_type());
 		System.out.println(addFurnitureBean.getFurniture_color());
 		System.out.println(addFurnitureBean.getCode());
+		System.out.println(addFurnitureBean.getTag());
 		System.out.println(addFurnitureBean.getUpload_file1().getSize());
 		System.out.println(addFurnitureBean.getUpload_file2().getSize());
 //      System.out.println(path_upload1);
@@ -161,7 +158,7 @@ public class FurnitureService {
 			ll += "07" + num;
 		} else if (addFurnitureBean.getFurniture_mat().equals("가죽")) {
 			ll += "08" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("흙,돌")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("흙/돌")) {
 			ll += "09" + num;
 		} else if (addFurnitureBean.getFurniture_mat().equals("아쿠아텍스")) {
 			ll += "10" + num;
@@ -179,7 +176,8 @@ public class FurnitureService {
 
 		addFurnitureBean.setFurnitureid(ll);
 
-		addFurnitureBean.setTag(addFurnitureBean.getFurniture_color() + ", " + addFurnitureBean.getFurniture_mat());
+		addFurnitureBean.setTag(addFurnitureBean.getFurniture_color() + ", " + addFurnitureBean.getFurniture_mat()
+				+ ", " + addFurnitureBean.getTag());
 
 		addFurnitureBean.setCode(loginUserBean.getCode());
 
@@ -227,6 +225,23 @@ public class FurnitureService {
 	public List<FurnitureBean> getFurnitureListfromSeller(String seller_code) {
 		System.out.println("판매자의 상품 가져오기~서비스!");
 		return furnitureDao.getFurnitureListfromSeller(seller_code);
+	}
+
+	public FurnitureBean selectProductById(String furnitureid) {
+		System.out.println("판매자별 상품 상세정보 가져오기 서비스~!@");
+		return furnitureDao.selectProductById(furnitureid);
+	}
+
+	public void modifyProduct(FurnitureBean modifyProductBean) {
+
+		System.out.println("상품 수정 서비스~");
+
+		modifyProductBean.setTag(modifyProductBean.getFurniture_color() + ", " + modifyProductBean.getFurniture_mat()
+				+ ", " + modifyProductBean.getTag());
+		System.out.println(modifyProductBean.getTag());
+		System.out.println(modifyProductBean.getFurnitureid());
+		furnitureDao.modifyProduct(modifyProductBean);
+
 	}
 
 }

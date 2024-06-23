@@ -28,12 +28,14 @@ import kr.co.interceptor.CartInterceptor;
 import kr.co.interceptor.CheckLoginInterceptor;
 import kr.co.interceptor.CheckWriterInterceptor;
 import kr.co.interceptor.TopMenuInterceptor;
+import kr.co.mapper.AddressMapper;
 import kr.co.mapper.AdminMapper;
 import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
 import kr.co.mapper.CartMapper;
 import kr.co.mapper.FurnitureMapper;
 import kr.co.mapper.OrderMapper;
+import kr.co.mapper.OrdetailMapper;
 import kr.co.mapper.SellerMapper;
 import kr.co.mapper.TopMenuMapper;
 import kr.co.service.BoardService;
@@ -70,7 +72,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 
 	@Autowired
 	private TopMenuService topMenuService;
-	
+
 	@Autowired
 	private CartService cartService;
 
@@ -161,13 +163,30 @@ public class ServletAppContext implements WebMvcConfigurer {
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
-	
+
 	@Bean
 	public MapperFactoryBean<OrderMapper> getOrderMapper(SqlSessionFactory factory) throws Exception {
 		MapperFactoryBean<OrderMapper> factoryBean = new MapperFactoryBean<OrderMapper>(OrderMapper.class);
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
+
+	// Ordetail
+	@Bean
+	public MapperFactoryBean<OrdetailMapper> getOrdetailMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<OrdetailMapper> factoryBean = new MapperFactoryBean<OrdetailMapper>(OrdetailMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
+	// Address
+	@Bean
+	public MapperFactoryBean<AddressMapper> getAddressMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<AddressMapper> factoryBean = new MapperFactoryBean<AddressMapper>(AddressMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

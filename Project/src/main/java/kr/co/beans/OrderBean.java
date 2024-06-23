@@ -23,6 +23,11 @@ public class OrderBean {
 	private String order_name;
 	private int order_phone;
 
+	// 상품 정보받기용
+	private String furnitureid;
+	private String furniture_name;
+	private int furniture_price;
+
 	public int getOrderID() {
 		return orderID;
 	}
@@ -109,6 +114,30 @@ public class OrderBean {
 
 	public void setOrder_phone(int order_phone) {
 		this.order_phone = order_phone;
+	}
+
+	public String getFurnitureid() {
+		return furnitureid;
+	}
+
+	public void setFurnitureid(String furnitureid) {
+		this.furnitureid = furnitureid;
+	}
+
+	public String getFurniture_name() {
+		return furniture_name;
+	}
+
+	public void setFurniture_name(String furniture_name) {
+		this.furniture_name = furniture_name;
+	}
+
+	public int getFurniture_price() {
+		return furniture_price;
+	}
+
+	public void setFurniture_price(int furniture_price) {
+		this.furniture_price = furniture_price;
 	}
 
 }

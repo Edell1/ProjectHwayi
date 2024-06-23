@@ -75,7 +75,8 @@ public interface FurnitureMapper {
 	// 판매자의 상품관리 목록 가져오기
 	@Select("select " + "furnitureid, " + "furniture_name, " + "furniture_price, "
 			+ "TO_CHAR(add_date, 'YYYY/MM/DD') as furniture_date, " + "tag, " + "furniture_cnt, "
-			+ "CASE  WHEN checked = 0 THEN 'O' Else 'X' END AS furniture_checked, "
+			+ "CASE  WHEN checked = 0 THEN '승인완료' "
+			+ "when checked= 2  then '승인거부' Else '승인대기' END AS furniture_checked, "
 			+ "CASE WHEN furniture_type = 'bd' THEN '침대' " + "WHEN furniture_type = 'dk' THEN '책상/테이블' "
 			+ "WHEN furniture_type = 'sf' THEN '소파' " + "WHEN furniture_type = 'dr' THEN '서랍장' "
 			+ "WHEN furniture_type = 'ch' THEN '의자' " + "WHEN furniture_type = 'sh' THEN '선반' "
@@ -86,4 +87,16 @@ public interface FurnitureMapper {
 			+ "order by add_date desc")
 	List<FurnitureBean> getFurnitureListfromSeller(String seller_code);
 
+	// 판매자 상품관리용 상품목록 세부정보 가져오기
+	@Select("select furnitureid, " + "code, " + "furniture_type, " + "furniture_name, " + "furniture_width, "
+			+ "furniture_length, " + "furniture_height, " + "furniture_price, " + "furniture_cnt, "
+			+ "SUBSTR(tag, INSTR(tag, ',', 1, 2) + 1) AS tag, " + "TO_CHAR(add_date, 'YYYY/MM/DD') as furniture_date , "
+			+ "furniture_img1, " + "furniture_img2, " + "trim(substr(tag, 1, instr(tag, ',') - 1)) as furniture_color, "
+			+ "trim(SUBSTR(tag, INSTR(tag, ',', 1, 1) + 1, INSTR(tag, ',', 1, 2) - INSTR(tag, ',', 1, 1) - 1)) as furniture_mat "
+			+ "from furniture " + "where furnitureid like #{furnitureid}")
+	FurnitureBean selectProductById(String furnitureid);
+
+	@Update("update furniture set " + "furniture_name = #{furniture_name}, " + "furniture_price=#{furniture_price}, "
+			+ "furniture_cnt=#{furniture_cnt}, " + "tag= #{tag}, " + "checked=1 where furnitureid=#{furnitureid} ")
+	void modifyProduct(FurnitureBean modifyProductBean);
 }

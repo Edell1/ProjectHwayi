@@ -198,5 +198,10 @@ public class AdminController {
 	public String dashboard() {
 		return "admin/dashboard";
 	}
+	
+	@GetMapping("/notice_list")
+	public String notice_list() {
+		return "admin/notice_list";
+	}
 
 }

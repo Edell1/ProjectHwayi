@@ -137,12 +137,11 @@
 							<div class="form-group">
 								<form:label class="label_txt" path="address2">상세주소</form:label>
 								<div class="input-group">
-									<form:input path="address2" class="form-control" placeholder='상세 주소 입력'/>
+									<form:input path="address2" class="form-control"
+										placeholder='상세 주소 입력' />
 								</div>
 								<form:errors class="err_txt" path="address2" style="color:red" />
 							</div>
-
-
 							<div class="form-group">
 								<form:button class='btn btn-primary joinBtn'>회원가입</form:button>
 							</div>

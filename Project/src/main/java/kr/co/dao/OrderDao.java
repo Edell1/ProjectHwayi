@@ -24,12 +24,15 @@ public class OrderDao {
 
 	// OrderList
 	public OrderBean getProductInfo(String furnitureid) {
-        return orderMapper.getProductInfo(furnitureid);
-    }
-	
+		return orderMapper.getProductInfo(furnitureid);
+	}
+
 	public List<OrderBean> getAllAddList(String code) {
 		return orderMapper.getAllAddList(code);
 	}
-	
+
+	public int getFirstOrderId() {
+		return orderMapper.getFirstOrderId();
+	}
 
 }
