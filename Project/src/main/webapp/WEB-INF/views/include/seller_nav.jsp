@@ -16,7 +16,7 @@
       <ul>
          <li>판매통계</li>
          <li class="border"></li>
-         <li><a href="#">통계</a></li>
+          <li><a href="${root}seller/dashboard">통계</a></li>
          <li><a href="#">판매수익</a></li>
       </ul>
       <ul>
@@ -34,8 +34,8 @@
       <ul>
          <li>고객서비스</li>
          <li class="border"></li>
-         <li><a href="#">FAQ</a></li>
-         <li><a href="#">공지사항</a></li>
+         <li><a href="${root}customer_center/customer_center_main">FAQ</a></li>
+         <li><a href="${root }admin/notice_list" class="sch_store">공지사항</a></li>
       </ul>
    </div>
 </nav>

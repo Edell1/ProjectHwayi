@@ -7,27 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>미니 프로젝트</title>
-<!-- Bootstrap CDN -->
+<title>상품 등록 관리</title>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
-<script
-	src="httpsa://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<c:url value='/css/manage_mem.css' />" />
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
 	<div class="admin_wrap">
+	
 		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
-		<!-- 게시글 리스트 -->
-		<div class="container" style="margin-top: 100px">
+		
+		<div class="container mw" style="margin-top: 100px">
 			<div class="card shadow">
 				<div class="card-body">
 					<h4 class="card-title">가구</h4>
@@ -118,8 +114,16 @@
 			</div>
 		</div>
 	</div>
+	
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
+	
 </body>
 
-<script src="${root}js/function.js"></script>
+<!-- script -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </html>

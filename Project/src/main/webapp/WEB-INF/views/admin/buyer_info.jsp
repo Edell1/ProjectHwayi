@@ -21,11 +21,10 @@
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
 	<div class="admin_wrap">
-	
 		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
 
 		<div class="manage_member">
-			<div class="mgMem_inner wauto">
+			<div class="mgMem_inner">
 				<div class="tit pd_30">
 					회원 정보 <span>회원 관리</span>
 				</div>

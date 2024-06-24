@@ -8,37 +8,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>판매자 상품관리</title>
-<!-- Bootstrap CDN -->
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_nav.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/manage_mem.css' />" />
-<script
-	src="httpsa://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
 	<div class="admin_wrap">
 		<c:import url="/WEB-INF/views/include/seller_nav.jsp" />
 		<!-- 게시글 리스트 -->
-		<div class="container" style="margin-top: 100px">
-			<div class="card shadow">
-				<div class="card-body">
-					<h4 class="card-title">가구</h4>
+		<div class="manage_member">
+			<div class="mgMem_inner pd_30">
+				<div class="tit">가구</div>
+				
 					<input type="radio" name="tabmenu" id="tab01" checked /> <label
 						for="tab01">승인 완료</label> <input type="radio" name="tabmenu"
 						id="tab02" /> <label for="tab02">승인 대기 / 거절</label>
 					<div class="cont_wrap">
 						<div class="conbox con1">
 							<h3>[ 승인 완료 ]</h3>
-							<table class="table table-hover" id='furniture_list'>
+							<table class="table table-hover scrollable-table" id='furniture_list'>
 								<thead>
 									<tr>
 										<th class="text-center d-none d-md-table-cell">상품종류</th>
@@ -51,7 +46,7 @@
 										<th class="text-center d-none d-md-table-cell">상세정보</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody class="h600">
 									<c:forEach var='fun' items="${furnitueListfromSeller}">
 										<tr>
 											<c:if test="${fun.furniture_checked == '승인완료'}">
@@ -119,8 +114,16 @@
 			</div>
 		</div>
 	</div>
+
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
+
 </body>
 
 <script src="${root}js/function.js"></script>
+<script
+	src="httpsa://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </html>

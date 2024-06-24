@@ -19,14 +19,24 @@
 
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
 	<div class="admin_wrap">
-		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
-
+			<c:if test="${loginUserBean.userRole == 'admin' }">
+				<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
+			</c:if>
+			<c:if test="${loginUserBean.userRole == 'seller' }">
+				<c:import url="/WEB-INF/views/include/mypage_nav.jsp" />
+			</c:if>
+			<c:if test="${loginUserBean.userRole == 'null' }">
+				<c:import url="/WEB-INF/views/include/mypage_nav.jsp" />
+			</c:if>
+			<c:if test="${loginUserBean.userRole == 'buyer' }">
+				<c:import url="/WEB-INF/views/include/mypage_nav.jsp" />
+			</c:if>
 
 		<div id="layoutSidenav_content">
 			<div class="container-fluid px-4">
-				<h1 class="mt-4">공지 관리</h1>
+				<h1 class="mt-4">공지 사항</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item active">공지 관리</li>
+					<li class="breadcrumb-item active">공지 사항</li>
 				</ol>
 				<hr />
 				<div class="m-3">
@@ -35,15 +45,16 @@
 							<tr>
 								<th width="50%">제목</th>
 								<th>작성일</th>
-								<th>조회수</th>
-								<th>삭제</th>
+								<c:if test="${loginUserBean.code == showNoticeBean.code }">
+									<th>삭제</th>
+								</c:if>
 							</tr>
 						</thead>
 						<c:choose>
 							<c:when test="${empty noticeList}">
 								<tr>
 									<td colspan="6" class="text-center align-middle" height="100">등록된
-										문의가 없습니다.</td>
+										공지가 없습니다.</td>
 								</tr>
 							</c:when>
 							<c:otherwise>
@@ -51,18 +62,24 @@
 									<tr>
 										<td><a
 											href="${root}admin/notice_read?postID=${obj.postID}">${obj.noticeTitle}</a></td>
-										<td>${obj.veiwCount}</td>
-										<td><a href="${root}admin/notice_delete?postID=${postID}"
-											class="btn btn-secondary btn-sm">삭제</a></td>
+										<td>${obj.postDate}</td>
+										<c:if test="${loginUserBean.userRole == 'admin' }">
+											<td><a
+												href="${root}admin/notice_delete?postID=${obj.postID}"
+												class="btn btn-secondary btn-sm">삭제</a></td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
 					</table>
-					<div>
-						<button class="uploadBtn"
-							onclick="location.href='${root}admin/notice_write'">공지 작성</button>
-					</div>
+					<c:if test="${loginUserBean.userRole == 'admin' }">
+						<div>
+							<button class="uploadBtn"
+								onclick="location.href='${root}admin/notice_write'">공지
+								작성</button>
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

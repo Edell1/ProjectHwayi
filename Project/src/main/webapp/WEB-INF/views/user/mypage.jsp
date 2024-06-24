@@ -31,9 +31,8 @@
 				<div class="profile">
 					<div class="memberPhoto">
 						<img src="../image/memberPhoto.png" />
-						<button class="change">변경</button>
 					</div>
-					<div class="nickName">두바이코디맵</div>
+					<div class="nickName">테스트 님!</div>
 				</div>
 
 				<div class="couponBox">
@@ -134,12 +133,3 @@
 <script src="https://kit.fontawesome.com/4cd100a941.js"
 	crossorigin="anonymous"></script>
 </html>
-
-
-
-
-
-
-
-
-
