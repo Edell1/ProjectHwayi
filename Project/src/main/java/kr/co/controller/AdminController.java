@@ -1,11 +1,13 @@
 package kr.co.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +18,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.beans.ContentBean;
 import kr.co.beans.FurnitureBean;
+import kr.co.beans.NoticeBean;
 import kr.co.beans.PageBean;
 import kr.co.beans.UserBean;
 import kr.co.dao.UserDao;
 import kr.co.service.FurnitureService;
+import kr.co.service.NoticeService;
 import kr.co.service.UserAdminService;
 import kr.co.service.UserbuyerService;
 import kr.co.service.UsersellerService;
@@ -34,9 +39,12 @@ public class AdminController {
 
 	@Autowired
 	private UserbuyerService userbuyerService;
-	
+
 	@Autowired
 	private UserAdminService userAdminService;
+
+	@Autowired
+	private NoticeService noticeService;
 
 	@Autowired
 	private FurnitureService furnitureService;
@@ -50,25 +58,25 @@ public class AdminController {
 		model.addAttribute("fail", fail);
 		return "admin/login_admin";
 	}
-	
-    @PostMapping("/login_pro") //pro admin
-    public String login_pro(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result,
-                             Model model) {
-        if (result.hasErrors()) {
-            return "admin/login_admin";
-        }
-        // ¼¼¼Ç ¿µ¿ª¿¡ ÀÖ´Â ·Î±×ÀÎ Á¤º¸ ºÒ·¯¿À±â
-        userAdminService.getLoginAdminInfo(tempLoginBean); //true
-        
-        if (loginUserBean.isUserLogin() ==true) {
-            // ¼¼¼Ç¿¡ ·Î±×ÀÎ »óÅÂ ¹× »ç¿ëÀÚ Á¤º¸ ÀúÀå
-            loginUserBean.setUserRole("admin"); // ¿ªÇÒ ¼³Á¤
-            loginUserBean.setId(tempLoginBean.getId()); // ¿¹½Ã: ·Î±×ÀÎÇÑ »ç¿ëÀÚÀÇ ¾ÆÀÌµğ ÀúÀå
-            return "admin/login_success";
-        } else {
-            return "admin/login_admin";
-        }
-    }
+
+	@PostMapping("/login_pro") // pro admin
+	public String login_pro(@Valid @ModelAttribute("tempLoginBean") UserBean tempLoginBean, BindingResult result,
+			Model model) {
+		if (result.hasErrors()) {
+			return "admin/login_admin";
+		}
+		// ì„¸ì…˜ ì˜ì—­ì— ìˆëŠ” ë¡œê·¸ì¸ ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
+		userAdminService.getLoginAdminInfo(tempLoginBean); // true
+
+		if (loginUserBean.isUserLogin() == true) {
+			// ì„¸ì…˜ì— ë¡œê·¸ì¸ ìƒíƒœ ë° ì‚¬ìš©ì ì •ë³´ ì €ì¥
+			loginUserBean.setUserRole("admin"); // ì—­í•  ì„¤ì •
+			loginUserBean.setId(tempLoginBean.getId()); // ì˜ˆì‹œ: ë¡œê·¸ì¸í•œ ì‚¬ìš©ìì˜ ì•„ì´ë”” ì €ì¥
+			return "admin/login_success";
+		} else {
+			return "admin/login_admin";
+		}
+	}
 
 	@RequestMapping("/main")
 	public String main(Model model) {
@@ -183,20 +191,73 @@ public class AdminController {
 		if (result.hasErrors()) {
 			return "admin/furniture_info";
 		}
-		modifyFurnitureBean.setChecked(0); // °¡±¸ ½ÂÀÎ
+		modifyFurnitureBean.setChecked(0); // ê°€êµ¬ ìŠ¹ì¸
 		furnitureService.grantFurnitureInfoByAdmin(modifyFurnitureBean);
 		System.out.println(modifyFurnitureBean.getChecked());
 		return "admin/furniture_grant";
 	}
 
 	@GetMapping("/furniture_decline")
-	public String furniture_decline() {
+	public String furniture_decline(@ModelAttribute("modifyFurnitureBean") FurnitureBean modifyFurnitureBean,
+			Model model, BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "admin/furniture_info";
+		}
+		modifyFurnitureBean.setChecked(2); // ìŠ¹ì¸ ê±°ì ˆ
+		furnitureService.grantFurnitureInfoByAdmin(modifyFurnitureBean);
+		System.out.println(modifyFurnitureBean.getChecked());
 		return "admin/furniture_decline";
 	}
 
 	@GetMapping("/dashboard")
 	public String dashboard() {
 		return "admin/dashboard";
+	}
+
+	@GetMapping("/notice_list")
+	public String notice_list(Model model) {
+
+		List<NoticeBean> noticeList = noticeService.getNoticeList();
+
+		model.addAttribute("noticeList", noticeList);
+
+		return "admin/notice_list";
+	}
+
+	@GetMapping("/notice_write")
+	public String notice_write(Model model) {
+		model.addAttribute("writeNoticeBean", new NoticeBean());
+		return "admin/notice_write";
+	}
+
+	@PostMapping("/write_pro")
+	public String write_pro(@Valid @ModelAttribute("writeNoticeBean") NoticeBean writeNoticeBean,
+			BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "admin/notice_write";
+		}
+
+		noticeService.addNoticeInfo(writeNoticeBean);
+		System.out.println("control" + writeNoticeBean.getCode());
+
+		return "admin/write_success";
+	}
+
+	@GetMapping("/notice_delete")
+	public String notice_delete(@RequestParam("postID") int postID, Model model) {
+
+		noticeService.deleteNoticeInfo(postID);
+
+		return "admin/notice_delete";
+	}
+
+	@GetMapping("/notice_read")
+	public String notice_read(@RequestParam("postID") int postID, Model model) {
+		NoticeBean showNoticeBean = noticeService.getNoticeInfo(postID);
+		model.addAttribute("showNoticeBean", showNoticeBean);
+		return "admin/notice_read";
 	}
 
 }

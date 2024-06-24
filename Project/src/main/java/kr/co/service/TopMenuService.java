@@ -16,7 +16,7 @@ public class TopMenuService {
 	
 	public  List<BoardInfoBean> getTopMenuList(){
 		List<BoardInfoBean> topMenuList=topMenuDao.getTopMenuList();
-		return topMenuList; //selectÀÇ °á°ú°ªÀÌ ³Ñ¾î¿È
+		return topMenuList; //selectÃ€Ã‡ Â°Ã¡Â°ÃºÂ°ÂªÃ€ÃŒ Â³Ã‘Â¾Ã®Â¿Ãˆ
 	}
 
 }

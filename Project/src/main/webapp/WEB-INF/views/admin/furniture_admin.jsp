@@ -47,7 +47,7 @@
 							<c:forEach var='obj' items="${furniturelist}">
 								<tr>
 									<c:choose>
-										<c:when test="${obj.checked != 0}">
+										<c:when test="${obj.checked == 1}">
 											<td class="text-center d-none d-md-table-cell">${obj.furniture_type }</td>
 											<td class="text-center d-none d-md-table-cell">${obj.furniture_name}</td>
 											<td class="text-center d-none d-md-table-cell">${obj.code}</td>
@@ -123,9 +123,3 @@
 
 <script src="${root}js/function.js"></script>
 </html>
-
-
-
-
-
-

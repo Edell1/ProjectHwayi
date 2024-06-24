@@ -11,7 +11,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>판매통계</title>
+<title>관리자 판매통계</title>
 
 <link href="${root}css/admin_styles.css" rel="stylesheet" />
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />

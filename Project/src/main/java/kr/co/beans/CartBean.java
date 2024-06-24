@@ -10,11 +10,11 @@ public class CartBean {
 
 	private String furnitureName;
 
-	// ±âº» »ı¼ºÀÚ
+	// ê¸°ë³¸ ìƒì„±ì
 	public CartBean() {
 	}
 
-	// ¸ğµç ÇÊµå¸¦ ÃÊ±âÈ­ÇÏ´Â »ı¼ºÀÚ
+	// ëª¨ë“  í•„ë“œë¥¼ ì´ˆê¸°í™”í•˜ëŠ” ìƒì„±ì
 	public CartBean(int cart_id, String code, String furnitureid, int count, int price) {
 		this.cart_id = cart_id;
 		this.code = code;
@@ -23,7 +23,7 @@ public class CartBean {
 		this.price = price;
 	}
 
-	// Getter ¹× Setter ¸Ş¼­µåµé
+	// Getter ë° Setter ë©”ì„œë“œë“¤
 	public int getCart_id() {
 		return cart_id;
 	}
@@ -72,7 +72,7 @@ public class CartBean {
 		this.furnitureName = furnitureName;
 	}
 
-	// toString ¸Ş¼­µå (µğ¹ö±ë ¹× ·Î±ë¿ë)
+	// toString ë©”ì„œë“œ (ë””ë²„ê¹… ë° ë¡œê¹…ìš©)
 	@Override
 	public String toString() {
 		return "CartBean{" + "cart_id=" + cart_id + ", code='" + code + '\'' + ", furnitureid='" + furnitureid + '\''

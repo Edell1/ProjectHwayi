@@ -34,7 +34,7 @@
 					</c:if>
 
 					<c:if test="${loginUserBean.userRole == 'seller'}">
-						<li><a href="${root}seller/main" class="admin">판매자</a></li>
+						<li><a href="${root}seller/furniture_management" class="admin">판매자</a></li>
 					</c:if>
 				</c:when>
 				<c:otherwise>
@@ -49,6 +49,7 @@
 			<li><a href="${root}customer_center/customer_center_main"
 				class="customer">고객센터</a></li>
 			<li><a href="#" class="sch_store">가까운 지점찾기</a></li>
+			<li><a href="${root }chat" class="chat">AI ChatBot</a></li>
 		</ul>
 	</div>
 </div>

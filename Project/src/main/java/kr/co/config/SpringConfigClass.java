@@ -8,28 +8,28 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class SpringConfigClass extends AbstractAnnotationConfigDispatcherServletInitializer{
-   // DispatcherServlet¿¡ ¸ÅÇÎÇÒ ¿äÃ» ÁÖ¼Ò¸¦ ¼ÂÆÃÇÑ´Ù.
+   // DispatcherServletì— ë§¤í•‘í•  ìš”ì²­ ì£¼ì†Œë¥¼ ì…‹íŒ…í•œë‹¤.
    @Override
    protected String[] getServletMappings() {
       // TODO Auto-generated method stub
       return new String[] {"/"};
    }
    
-   // Spring MVC ÇÁ·ÎÁ§Æ® ¼³Á¤À» À§ÇÑ Å¬·¡½º¸¦ ÁöÁ¤ÇÑ´Ù.
+   // Spring MVC í”„ë¡œì íŠ¸ ì„¤ì •ì„ ìœ„í•œ í´ë˜ìŠ¤ë¥¼ ì§€ì •í•œë‹¤.
    @Override
    protected Class<?>[] getServletConfigClasses() {
       // TODO Auto-generated method stub
       return new Class[] {ServletAppContext.class};
    }
    
-   // ÇÁ·ÎÁ§Æ®¿¡¼­ »ç¿ëÇÒ BeanµéÀ» Á¤ÀÇ±â À§ÇÑ Å¬·¡½º¸¦ ÁöÁ¤ÇÑ´Ù.
+   // í”„ë¡œì íŠ¸ì—ì„œ ì‚¬ìš©í•  Beanë“¤ì„ ì •ì˜ê¸° ìœ„í•œ í´ë˜ìŠ¤ë¥¼ ì§€ì •í•œë‹¤.
    @Override
    protected Class<?>[] getRootConfigClasses() {
       // TODO Auto-generated method stub
       return new Class[] {RootAppContext.class};
    }
    
-   // ÆÄ¶ó¹ÌÅÍ ÀÎÄÚµù ÇÊÅÍ ¼³Á¤
+   // íŒŒë¼ë¯¸í„° ì¸ì½”ë”© í•„í„° ì„¤ì •
    @Override
    protected Filter[] getServletFilters() {
       // TODO Auto-generated method stub
@@ -37,11 +37,11 @@ public class SpringConfigClass extends AbstractAnnotationConfigDispatcherServlet
       encodingFilter.setEncoding("UTF-8");
       return new Filter[] {encodingFilter};
    }
-   //Multipart Á¤º¸±¸Çö
-   //null: »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ³»¿ëÀ» ÀÓ½Ã±â¾ïÇÒ ¾ÆÆÄÄ¡ÅèÄÏ¿¡¼­ Á¦°øÇÏ´Â ¼­¹öÀÇ ÀÓ½Ã±â¾ïÀå¼Ò
-   //52428800 :  ¾÷·Îµå µ¥ÀÌÅÍÀÇ ¿ë·® (1024*50) 50M·Î ¼³Á¤
-   //524288000 : ÆÄÀÏµ¥ÀÌÅÍ¸¦ Æ÷ÇÔÇÑ ÀüÃ¼¿ë·® 500M ¼³Á¤
-   //0 : ÆÄÀÏÀÇ ÀÓ°è°ª
+   //Multipart ì •ë³´êµ¬í˜„
+   //null: ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë‚´ìš©ì„ ì„ì‹œê¸°ì–µí•  ì•„íŒŒì¹˜í†°ì¼“ì—ì„œ ì œê³µí•˜ëŠ” ì„œë²„ì˜ ì„ì‹œê¸°ì–µì¥ì†Œ
+   //52428800 :  ì—…ë¡œë“œ ë°ì´í„°ì˜ ìš©ëŸ‰ (1024*50) 50Më¡œ ì„¤ì •
+   //524288000 : íŒŒì¼ë°ì´í„°ë¥¼ í¬í•¨í•œ ì „ì²´ìš©ëŸ‰ 500M ì„¤ì •
+   //0 : íŒŒì¼ì˜ ì„ê³„ê°’
    
    @Override
    protected void customizeRegistration(Dynamic registration) {
@@ -52,14 +52,3 @@ public class SpringConfigClass extends AbstractAnnotationConfigDispatcherServlet
       registration.setMultipartConfig(config1);
    }
 }
-
-
-
-
-
-
-
-
-
-
-

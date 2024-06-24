@@ -7,36 +7,38 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FurnitureBean {
 
-	private int furniture_idx; // ÀÎµ¦½¼
+	private int furniture_idx; // ì¸ë±ìŠ¨
 
-	private String furnitureid; // °¡±¸ »óÇ°ÄÚµå
-	private String code; // ÆÇ¸ÅÀÚÄÚµå
-	private String furniture_type; // Á¾·ù
+	private String furnitureid; // ê°€êµ¬ ìƒí’ˆì½”ë“œ
+	private String code; // íŒë§¤ìì½”ë“œ
+	private String furniture_type; // ì¢…ë¥˜
 
 	@NotBlank
-	private String furniture_name; // ÀÌ¸§
+	private String furniture_name; // ì´ë¦„
 	@NotNull
-	private Integer furniture_price; // °¡°İ
+	private Integer furniture_price; // ê°€ê²©
 	@NotNull
-	private Integer furniture_cnt; // ¼ö·®
+	private Integer furniture_cnt; // ìˆ˜ëŸ‰
 	@NotNull
-	private Integer furniture_width; // °¡·Î
+	private Integer furniture_width; // ê°€ë¡œ
 	@NotNull
-	private Integer furniture_length; // ¼¼·Î
+	private Integer furniture_length; // ì„¸ë¡œ
 	@NotNull
-	private Integer furniture_height; // ³ôÀÌ
-	private String furniture_color; // »ö»ó
-	private String furniture_mat; // ÀçÁú
-	private String tag; // ÅÂ±×
-	private String brand; // ºê·£µå
-	private String furniture_date; // µî·Ï³¯Â¥
-	private String furniture_img1; // ´ëÇ¥»çÁø(ÀÌ¸§¸¸ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀå)
-	private String furniture_img2; // »ó¼¼ÆäÀÌÁö »çÁø(ÀÌ¸§¸¸ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀå)
-	private MultipartFile upload_file1; // ºê¶ó¿ìÀú°¡ º¸³½ ´ëÇ¥ »çÁø µ¥ÀÌÅÍ
-	private MultipartFile upload_file2; // ºê¶ó¿ìÀú°¡ º¸³½ »ó¼¼ÆäÀÌÁö »çÁø µ¥ÀÌÅÍ
+	private Integer furniture_height; // ë†’ì´
+	private String furniture_color; // ìƒ‰ìƒ
+	private String furniture_mat; // ì¬ì§ˆ
+	private String tag; // íƒœê·¸
+	private String brand; // ë¸Œëœë“œ
+	private String furniture_date; // ë“±ë¡ë‚ ì§œ
+	private String furniture_img1; // ëŒ€í‘œì‚¬ì§„(ì´ë¦„ë§Œ ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥)
+	private String furniture_img2; // ìƒì„¸í˜ì´ì§€ ì‚¬ì§„(ì´ë¦„ë§Œ ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥)
+	private MultipartFile upload_file1; // ë¸Œë¼ìš°ì €ê°€ ë³´ë‚¸ ëŒ€í‘œ ì‚¬ì§„ ë°ì´í„°
+	private MultipartFile upload_file2; // ë¸Œë¼ìš°ì €ê°€ ë³´ë‚¸ ìƒì„¸í˜ì´ì§€ ì‚¬ì§„ ë°ì´í„°
 
-	// ¾ÆÁ÷ ÀÛ¾÷¾ÈÇÑ°Å
-	private Integer checked = 1; // ½ÂÀÎ¿©ºÎ
+	private Integer checked = 1; // ìŠ¹ì¸ì—¬ë¶€
+
+	private String furniture_checked; // ìŠ¹ì¸ì—¬ë¶€o,x
+	private String furniture_type_text; // ê°€êµ¬ì¢…ë¥˜ í•œê¸€í…ìŠ¤íŠ¸
 
 	// ---------------------------------- Getter&Setter
 	// -------------------------------------------
@@ -199,6 +201,22 @@ public class FurnitureBean {
 
 	public void setChecked(Integer checked) {
 		this.checked = checked;
+	}
+
+	public String getFurniture_checked() {
+		return furniture_checked;
+	}
+
+	public void setFurniture_checked(String furniture_checked) {
+		this.furniture_checked = furniture_checked;
+	}
+
+	public String getFurniture_type_text() {
+		return furniture_type_text;
+	}
+
+	public void setFurniture_type_text(String furniture_type_text) {
+		this.furniture_type_text = furniture_type_text;
 	}
 
 }

@@ -19,14 +19,14 @@ public class UserbuyerService {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 
-	// ³Ñ°Ü¹ŞÀº ÇØ´ç ¾ÆÀÌµğ¸¦ »ç¿ëÇÏ¿© ¹İÈ¯¹ŞÀº ÀÌ¸§ÀÌ »ç¿ë°¡´ÉÇÑÁö ÆÇ´Ü ¿©ºÎ
+	// ë„˜ê²¨ë°›ì€ í•´ë‹¹ ì•„ì´ë””ë¥¼ ì‚¬ìš©í•˜ì—¬ ë°˜í™˜ë°›ì€ ì´ë¦„ì´ ì‚¬ìš©ê°€ëŠ¥í•œì§€ íŒë‹¨ ì—¬ë¶€
 	public boolean checkUserExist(String id) {
 		String name = userDao.checkBuyerIdExist(id);
 
 		if (name == null) {
-			return true; // »ç¿ë°¡´É
+			return true; // ì‚¬ìš©ê°€ëŠ¥
 		}
-		return false; // ÀÌ¹Ì Á¸ÀçÇÏ´Â user_name
+		return false; // ì´ë¯¸ ì¡´ì¬í•˜ëŠ” user_name
 	}
 
 	public void addUserInfo(UserBean joinUserBean) {
@@ -36,12 +36,12 @@ public class UserbuyerService {
 
 	public UserBean getLoginBuyerInfo(UserBean tempLoginUserBean) {
 		UserBean tempLoginUserBean2 = userDao.getLoginBuyerInfo(tempLoginUserBean);
-		// °¡Á®¿Â µ¥ÀÌÅÍ°¡ ÀÖ´Ù¸é
+		// ê°€ì ¸ì˜¨ ë°ì´í„°ê°€ ìˆë‹¤ë©´
 		if (tempLoginUserBean2 != null) {
 			loginUserBean.setCode(tempLoginUserBean2.getCode());
 			loginUserBean.setName(tempLoginUserBean2.getName());
-			loginUserBean.setUserLogin(true); // ·Î±×ÀÎ »óÅÂ
-			System.out.println("true" + loginUserBean.isUserLogin()); // true // ·Î±×ÀÎ ¼º°øÀ» ³ªÅ¸³»´Â true ¹İÈ¯
+			loginUserBean.setUserLogin(true); // ë¡œê·¸ì¸ ìƒíƒœ
+			System.out.println("true" + loginUserBean.isUserLogin()); // true // ë¡œê·¸ì¸ ì„±ê³µì„ ë‚˜íƒ€ë‚´ëŠ” true ë°˜í™˜
 
 		}
 		return userDao.getLoginBuyerInfo(tempLoginUserBean);

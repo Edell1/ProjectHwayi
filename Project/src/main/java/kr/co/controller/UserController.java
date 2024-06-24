@@ -182,8 +182,9 @@ public class UserController {
     @GetMapping("/logout")
     public String logout() {
         loginUserBean.setUserLogin(false);
-        loginUserBean.setUserRole(null);
+        loginUserBean.setUserRole("null");
         loginUserBean.setId(null); // 예시: 로그아웃 시 사용자 아이디 초기화
+        System.out.println(loginUserBean.getUserRole());
         return "user/logout";
     }
 

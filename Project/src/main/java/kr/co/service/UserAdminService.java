@@ -19,12 +19,12 @@ public class UserAdminService {
 
 	public UserBean getLoginAdminInfo(UserBean tempLoginUserBean) {
 		UserBean tempLoginUserBean2 = userDao.getLoginAdminInfo(tempLoginUserBean);
-		// °¡Á®¿Â µ¥ÀÌÅÍ°¡ ÀÖ´Ù¸é
+		// ê°€ì ¸ì˜¨ ë°ì´í„°ê°€ ìˆë‹¤ë©´
 		if (tempLoginUserBean2 != null) {
 			loginUserBean.setCode(tempLoginUserBean2.getCode());
 			loginUserBean.setName(tempLoginUserBean2.getName());
-			loginUserBean.setUserLogin(true); // ·Î±×ÀÎ »óÅÂ
-			System.out.println("true" + loginUserBean.isUserLogin()); // true // ·Î±×ÀÎ ¼º°øÀ» ³ªÅ¸³»´Â true ¹İÈ¯
+			loginUserBean.setUserLogin(true); // ë¡œê·¸ì¸ ìƒíƒœ
+			System.out.println("true" + loginUserBean.isUserLogin()); // true // ë¡œê·¸ì¸ ì„±ê³µì„ ë‚˜íƒ€ë‚´ëŠ” true ë°˜í™˜
 
 		}
 		return userDao.getLoginAdminInfo(tempLoginUserBean);

@@ -37,19 +37,19 @@ public class FurnitureDao {
 		furnitureMapper.grantFurnitureInfoByAdmin(modifyFurnitureBean);
 	}
 
-	// °¡±¸ Ä«Å×°í¸®¸¦ ¼±ÅÃÇßÀ» ¶§ °¡±¸ °¡Á®¿À±â
+	// ê°€êµ¬ ì¹´í…Œê³ ë¦¬ë¥¼ ì„ íƒí–ˆì„ ë•Œ ê°€êµ¬ ê°€ì ¸ì˜¤ê¸°
 	public List<FurnitureBean> getFurnitureListFromType(String furnitureType) {
 
 		return furnitureMapper.getFurnitureListFromType(furnitureType);
 	}
 
-	// °ü¸®ÀÚ ½ÂÀÎÀÌ µÈ °¡±¸ °¡Á®¿À±â
+	// ê´€ë¦¬ì ìŠ¹ì¸ì´ ëœ ê°€êµ¬ ê°€ì ¸ì˜¤ê¸°
 	public List<FurnitureBean> getCheckedFurnitureList() {
 		System.out.println("checkdao");
 		return furnitureMapper.getCheckedFurnitureList();
 	}
 
-	// °¡±¸ ÇÊÅÍ¸µ ÇÏ±â
+	// ê°€êµ¬ í•„í„°ë§ í•˜ê¸°
 	public List<FurnitureBean> getFurnitureListFromFilterAll(String furnitureType, String color, String brand,
 			int width, int length, int height) {
 		System.out.println(furnitureType);
@@ -62,26 +62,26 @@ public class FurnitureDao {
 //      if(color.equals("noFilter") && brand.equals("noFilter")) {
 //         return furnitureMapper.getFurnitureListFromFilterSize(furnitureType, width, length, height);
 //      }else if(color.equals("noFilter")) {
-//         System.out.println("ºê·£µå¸¸ ¼±ÅÃÇÔ");
+//         System.out.println("ë¸Œëœë“œë§Œ ì„ íƒí•¨");
 //         return furnitureMapper.getFurnitureListFromFilterbrand(furnitureType, brand, width, length, height);
 //      }else if(brand.equals("noFilter")) {
-//         System.out.println("»ö»ó¸¸ ¼±ÅÃÇÔ");
+//         System.out.println("ìƒ‰ìƒë§Œ ì„ íƒí•¨");
 //         return furnitureMapper.getFurnitureListFromFilterColor(furnitureType, color, width, length, height);
 //      }else 
-//         System.out.println("µÑ ´Ù ¼±ÅÃÇÔ");
+//         System.out.println("ë‘˜ ë‹¤ ì„ íƒí•¨");
 //      return furnitureMapper.getFurnitureListFromFilterAll(furnitureType, color, brand, width, length, height);
 //   }
 
 		if (color != "noFilter" && brand != "noFilter") {
-			System.out.println("µÑ ´Ù ¼±ÅÃÇÔ");
+			System.out.println("ë‘˜ ë‹¤ ì„ íƒí•¨");
 			return furnitureMapper.getFurnitureListFromFilterAll(furnitureType, color, brand, width, length, height);
 		}
 		if (brand == "noFilter") {
-			System.out.println("»ö»ó¸¸ ¼±ÅÃÇÔ");
+			System.out.println("ìƒ‰ìƒë§Œ ì„ íƒí•¨");
 			return furnitureMapper.getFurnitureListFromFilterColor(furnitureType, color, width, length, height);
 		}
 		if (color == "noFilter") {
-			System.out.println("ºê·£µå¸¸ ¼±ÅÃÇÔ");
+			System.out.println("ë¸Œëœë“œë§Œ ì„ íƒí•¨");
 			return furnitureMapper.getFurnitureListFromFilterbrand(furnitureType, brand, width, length, height);
 		}
 		return furnitureMapper.getFurnitureListFromFilterSize(furnitureType, width, length, height);
@@ -89,8 +89,24 @@ public class FurnitureDao {
 	}
 
 	public List<FurnitureBean> searchProducts(String keyword) {
-		System.out.println("°Ë»ö dao°¡µ¿~!");
+		System.out.println("ê²€ìƒ‰ daoê°€ë™~!");
 		return furnitureMapper.searchProducts(keyword);
+	}
+
+	public List<FurnitureBean> getFurnitureListfromSeller(String seller_code) {
+		System.out.println("íŒë§¤ì ìƒí’ˆ ê°€ì ¸ì˜¤ê¸° ë‹¤ì˜¤ì—ìš©");
+		return furnitureMapper.getFurnitureListfromSeller(seller_code);
+	}
+
+	public FurnitureBean selectProductById(String furnitureid) {
+		System.out.println("íŒë§¤ìë³„ ìƒí’ˆ ìƒì„¸ì •ë³´ ê°€ì ¸ì˜¤ê¸° ë‹¤ì˜¤~!@");
+		return furnitureMapper.selectProductById(furnitureid);
+	}
+
+	public void modifyProduct(FurnitureBean modifyProductBean) {
+		System.out.println("ê°€êµ¬ ìˆ˜ì •í•˜ê¸° ë‹¤ì˜¤!");
+		furnitureMapper.modifyProduct(modifyProductBean);
+
 	}
 
 }

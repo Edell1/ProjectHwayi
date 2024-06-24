@@ -6,7 +6,7 @@ import kr.co.beans.UserBean;
 
 public interface AdminMapper {
 
-	// ·Î±×ÀÎ½Ã È¸¿ø°¡ÀÔ Á¤º¸ È®ÀÎ
+	// ë¡œê·¸ì¸ì‹œ íšŒì›ê°€ì… ì •ë³´ í™•ì¸
 	@Select("select * from member where id='admin' and pw='admin' and code = 'admin'")
 	UserBean getLoginAdminInfo(UserBean tempLoginUserBean);
 	

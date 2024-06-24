@@ -6,7 +6,7 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import kr.co.beans.UserBean;
 
-//ÇÁ·ÎÁ§Æ® ÀÛ¾÷½Ã »ç¿ëÇÒ ÀÏ¹İ beanµé Á¤ÀÇÇÏ´Â Å¬·¡½º
+//í”„ë¡œì íŠ¸ ì‘ì—…ì‹œ ì‚¬ìš©í•  ì¼ë°˜ beanë“¤ ì •ì˜í•˜ëŠ” í´ë˜ìŠ¤
 @Configuration
 public class RootAppContext {
 	//UserBean loginUserBean=new UserBean();

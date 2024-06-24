@@ -1,21 +1,62 @@
 @charset "UTF-8";
 
 .manage_member {
+	display: flex;
 	width: 100%;
-	padding: 20px;
 	box-sizing: border-box;
+}
+
+.mgMem_inner {
+	width: 100%;
+}
+
+.mgMem_inner.wauto {
+	width: auto;
+}
+
+.mgMem_inner .tit {
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+
+.mgMem_inner .tit span {
+	font-size: 18px;
+	color: gray;
+	margin-left: 10px;
+}
+
+.cont_wrap {
+	width: 100%;
+}
+
+.pd_30 {
+	padding: 30px;
+}
+
+.pd_60 {
+	padding: 60px 0;
+}
+
+.flex {
+	display: flex;
+}
+
+.scrollable-table tbody.h600 {
+	height: 600px;
+}
+
+.container {
+	max-width: 900px;
+}
+
+.container.mw {
+	max-width: 1140px;
 }
 
 .manage_chart {
 	width: 100%;
 	padding: 10px;
 	box-sizing: border-box;
-}
-
-
-.mgMem_inner .tit {
-	font-size: 30px;
-	padding-bottom: 20px;
 }
 
 input[type='radio'] {
@@ -78,6 +119,20 @@ table th, td {
 	border-bottom: 1px solid #22a026;
 }
 
+.table td, .table th {
+	border-top: 1px solid #22a026;
+}
+
+.table thead th {
+	border-top: none;
+	border-bottom: 1px solid #22a026;
+}
+
+.table td img {
+	width: 300px;
+	height: 300px;
+}
+
 .btn_box {
 	display: flex;
 	justify-content: center;
@@ -85,7 +140,22 @@ table th, td {
 	box-sizing: border-box;
 }
 
-.btn_box .updateBtn {
+.btn_box.right {
+	justify-content: right;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #22a026;
+	border-color: #22a026;
+}
+
+.btn-primary:hover {
+	background-color: #18651a;
+	border-color: #18651a;
+}
+
+.btn_box .updateBtn, .cancel {
 	padding: 10px 20px;
 	color: #fff;
 	font-size: 16px;
@@ -97,4 +167,74 @@ table th, td {
 
 .btn_box .updateBtn:hover {
 	background-color: #18651a;
+}
+
+.table-bordered td, .table-bordered th {
+	border: 1px solid #22a026;
+}
+
+.table td, .table th {
+	vertical-align: middle;
+}
+
+.btn.btn-secondary {
+	padding: 10px 20px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #22a026;
+}
+
+.btn.btn-secondary:hover {
+	background-color: #18651a;
+}
+
+.page-link {
+	color: #22a026;
+}
+
+th h2 {
+	margin-bottom: 0;
+}
+
+.scrollable-table {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.scrollable-table thead {
+	display: table;
+	table-layout: fixed;
+}
+
+.scrollable-table tbody {
+	height: 400px; /* Adjust this height as needed */
+	overflow-y: scroll;
+	table-layout: fixed;
+}
+
+.scrollable-table th, .scrollable-table td {
+	text-align: center;
+}
+
+tr td a:visited {
+	color: #fff;
+}
+
+.container-fluid h1 {
+	margin-bottom: 15px;
+	padding-left: 20px;
+}
+
+.btn.btn-primary, .btn.btn-danger {
+	padding: 10px 20px;
+	color: #fff;
+	font-size: 16px;
+	border: none;
+	border-radius: 5px;
 }

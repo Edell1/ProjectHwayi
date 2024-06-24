@@ -6,14 +6,14 @@ public class ProductBean implements Serializable {
 
 	private static final long serialVersionUID = -4274700572038677000L;
 
-	private String productId; //»óÇ°¾ÆÀÌµğ
-	private String pname; //»óÇ°ÀÌ¸§
-	private String desc; //»óÇ°¼³¸í
-	private int pPrice; //»óÇ°°¡°İ
-	private String pBrand; //»óÇ°ºê·£µå
-	private String category; //»óÇ°Ä«Å×°í¸®
-	private int pStock; //»óÇ°Àç°í
-	private String filename; //»óÇ°»çÁø
+	private String productId; //ìƒí’ˆì•„ì´ë””
+	private String pname; //ìƒí’ˆì´ë¦„
+	private String desc; //ìƒí’ˆì„¤ëª…
+	private int pPrice; //ìƒí’ˆê°€ê²©
+	private String pBrand; //ìƒí’ˆë¸Œëœë“œ
+	private String category; //ìƒí’ˆì¹´í…Œê³ ë¦¬
+	private int pStock; //ìƒí’ˆì¬ê³ 
+	private String filename; //ìƒí’ˆì‚¬ì§„
 
 
 	public ProductBean() {

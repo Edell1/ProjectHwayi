@@ -28,24 +28,29 @@ import kr.co.interceptor.CartInterceptor;
 import kr.co.interceptor.CheckLoginInterceptor;
 import kr.co.interceptor.CheckWriterInterceptor;
 import kr.co.interceptor.TopMenuInterceptor;
+import kr.co.mapper.AddressMapper;
 import kr.co.mapper.AdminMapper;
 import kr.co.mapper.BoardMapper;
 import kr.co.mapper.BuyerMapper;
 import kr.co.mapper.CartMapper;
 import kr.co.mapper.FurnitureMapper;
+import kr.co.mapper.NoticeMapper;
+import kr.co.mapper.OrderMapper;
+import kr.co.mapper.OrdetailMapper;
 import kr.co.mapper.SellerMapper;
 import kr.co.mapper.TopMenuMapper;
 import kr.co.service.BoardService;
 import kr.co.service.CartService;
 import kr.co.service.TopMenuService;
 
-@Configuration // Spring MVC ÇÁ·ÎÁ§Æ® ¼³Á¤
-@EnableWebMvc // ¾î³ëÅ×ÀÌ¼Ç ¼ÂÆÃ ¼±¾ğ
+@Configuration // Spring MVC í”„ë¡œì íŠ¸ ì„¤ì •
+@EnableWebMvc // ì–´ë…¸í…Œì´ì…˜ ì…‹íŒ… ì„ ì–¸
 @ComponentScan(basePackages = "kr.co")
 @ComponentScan("kr.co.dao")
 @ComponentScan("kr.co.service")
 @ComponentScan("kr.co.controller")
 @PropertySource("/WEB-INF/properties/db.properties")
+@PropertySource("/WEB-INF/properties/application.properties")
 public class ServletAppContext implements WebMvcConfigurer {
 
 	@Value("${db.classname}")
@@ -60,11 +65,15 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Value("${db.password}")
 	private String db_password;
 
+	@Value("${openai.api.key}")
+	private String apiKey;
+
 	@Autowired
 	private BoardService boardService;
 
 	@Autowired
 	private TopMenuService topMenuService;
+
 	@Autowired
 	private CartService cartService;
 
@@ -78,14 +87,14 @@ public class ServletAppContext implements WebMvcConfigurer {
 		registry.jsp("/WEB-INF/views/", ".jsp");
 	}
 
-	// Á¤Àû ÄÁÅÙÃ÷ ÆÄÀÏÀÇ °æ·Î ¼³Á¤
+	// ì •ì  ì»¨í…ì¸  íŒŒì¼ì˜ ê²½ë¡œ ì„¤ì •
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 		registry.addResourceHandler("/**").addResourceLocations("/resources/");
 	}
 
-	// µ¥ÀÌÅÍº£ÀÌ½º Á¢¼Ó Á¤º¸¸¦ °ü¸®ÇÏ´Â Bean
+	// ë°ì´í„°ë² ì´ìŠ¤ ì ‘ì† ì •ë³´ë¥¼ ê´€ë¦¬í•˜ëŠ” Bean
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource source = new BasicDataSource();
@@ -97,7 +106,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return source;
 	}
 
-	// Äõ¸®¹®°ú Á¢¼Ó Á¤º¸¸¦ °ü¸®ÇÏ´Â °´Ã¼
+	// ì¿¼ë¦¬ë¬¸ê³¼ ì ‘ì† ì •ë³´ë¥¼ ê´€ë¦¬í•˜ëŠ” ê°ì²´
 	@Bean
 	public SqlSessionFactory factory(BasicDataSource source) throws Exception {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
@@ -106,7 +115,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factory;
 	}
 
-	// Äõ¸®¹® ½ÇÇàÀ» À§ÇÑ °´Ã¼(Mapper °ü¸®)
+	// ì¿¼ë¦¬ë¬¸ ì‹¤í–‰ì„ ìœ„í•œ ê°ì²´(Mapper ê´€ë¦¬)
 	@Bean
 	public MapperFactoryBean<BoardMapper> getBoardMapper(SqlSessionFactory factory) throws Exception {
 		MapperFactoryBean<BoardMapper> factoryBean = new MapperFactoryBean<BoardMapper>(BoardMapper.class);
@@ -156,13 +165,44 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 
+	@Bean
+	public MapperFactoryBean<OrderMapper> getOrderMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<OrderMapper> factoryBean = new MapperFactoryBean<OrderMapper>(OrderMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
+	// Ordetail
+	@Bean
+	public MapperFactoryBean<OrdetailMapper> getOrdetailMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<OrdetailMapper> factoryBean = new MapperFactoryBean<OrdetailMapper>(OrdetailMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
+	// Address
+	@Bean
+	public MapperFactoryBean<AddressMapper> getAddressMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<AddressMapper> factoryBean = new MapperFactoryBean<AddressMapper>(AddressMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
+	// Notice
+	@Bean
+	public MapperFactoryBean<NoticeMapper> getNoticeMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<NoticeMapper> factoryBean = new MapperFactoryBean<NoticeMapper>(NoticeMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		WebMvcConfigurer.super.addInterceptors(registry);
 
 		TopMenuInterceptor topMenuInterceptor = new TopMenuInterceptor(topMenuService, loginUserBean);
 		InterceptorRegistration reg1 = registry.addInterceptor(topMenuInterceptor);
-		reg1.addPathPatterns("/**");// ¸ğµç ¿äÃ»ÁÖ¼Ò¿¡ µ¿ÀÛ
+		reg1.addPathPatterns("/**");// ëª¨ë“  ìš”ì²­ì£¼ì†Œì— ë™ì‘
 
 		CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
 		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
@@ -179,13 +219,13 @@ public class ServletAppContext implements WebMvcConfigurer {
 		cartReg.addPathPatterns("/cart/*");
 	}
 
-	// PropertiesÆÄÀÏÀ» BeanÀ¸·Î µî·Ï
+	// PropertiesíŒŒì¼ì„ Beanìœ¼ë¡œ ë“±ë¡
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer PropertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 
-	// Properties MessageÀ§Ä¡ ÁöÁ¤ÇÏ¿© À¯È¿¼º °Ë»ç ¼Ò½º´Â ¸ğµÎ ÀÌ°÷À» ÀĞ°í °¡µµ·Ï
+	// Properties Messageìœ„ì¹˜ ì§€ì •í•˜ì—¬ ìœ íš¨ì„± ê²€ì‚¬ ì†ŒìŠ¤ëŠ” ëª¨ë‘ ì´ê³³ì„ ì½ê³  ê°€ë„ë¡
 	@Bean
 	public ReloadableResourceBundleMessageSource messageSource() {
 		ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
@@ -193,10 +233,10 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return res;
 	}
 
-	// enctype="multipart/form-data" »ç¿ëÇÏ±â À§ÇÑ Å¬·¡½º °´Ã¼ »ı¼º
+	// enctype="multipart/form-data" ì‚¬ìš©í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤ ê°ì²´ ìƒì„±
 	@Bean
 	public StandardServletMultipartResolver multipartResolver() {
-		return new StandardServletMultipartResolver(); // °´Ã¼ »ı¼ºÇÏ¿© ¹İÈ¯
+		return new StandardServletMultipartResolver(); // ê°ì²´ ìƒì„±í•˜ì—¬ ë°˜í™˜
 	}
 
 }

@@ -10,11 +10,11 @@ import kr.co.beans.UserBean;
 
 public interface SellerMapper {
 
-	// ¾ÆÀÌµğ Áßº¹ Ã¼Å©¿¡ »ç¿ëµÈ sql
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬ì— ì‚¬ìš©ëœ sql
 	@Select("select ID " + "from member " + "where ID=#{id}")
 	String checkSellerIdExist(String ID);
 
-	// È¸¿ø°¡ÀÔ DB µî·Ï
+	// íšŒì›ê°€ì… DB ë“±ë¡
 	@Insert("insert all into member(code, id, pw, name, mail, phone, address, address2) "
 			+ "values (('Se' || TO_CHAR(user_seq.nextval)), #{id}, #{pw}, #{name}, #{mail}, #{phone}, #{address}, #{address2})"
 			+ "into store(code, strcode, straddress, straddress2, strtel, brand)"
@@ -22,23 +22,23 @@ public interface SellerMapper {
 			+ "SELECT * FROM DUAL")
 	void addSellerInfo(UserBean joinUserBean);
 
-	// ·Î±×ÀÎ½Ã È¸¿ø°¡ÀÔ Á¤º¸ È®ÀÎ
+	// ë¡œê·¸ì¸ì‹œ íšŒì›ê°€ì… ì •ë³´ í™•ì¸
 	@Select("select member.code, name from member, store where ID=#{id} and PW=#{pw} and store.code = member.code")
 	UserBean getLoginSellerInfo(UserBean tempLoginUserBean);
 
-	// ÀüÃ¼ Seller ¸ñ·Ï ºÒ·¯¿À±â
+	// ì „ì²´ Seller ëª©ë¡ ë¶ˆëŸ¬ì˜¤ê¸°
 	@Select("select m.*, s.* from member m, store s where m.code = s.code")
 	List<UserBean> getSellerList();
 
-	// ¾ÆÀÌµğ·Î È¸¿ø Á¤º¸ È®ÀÎ
+	// ì•„ì´ë””ë¡œ íšŒì› ì •ë³´ í™•ì¸
 	@Select("SELECT m.*, s.* FROM member m, store s WHERE id = #{id} and m.code = s.code")
 	UserBean selectSellerById(String id);
 
-	// È¸¿ø Á¤º¸ ¼öÁ¤
+	// íšŒì› ì •ë³´ ìˆ˜ì •
 	@Update("update member set name=#{name}, pw=#{pw}, mail=#{mail}, phone=#{phone} , address=#{address} where id=#{id}")
 	void modifySellerInfo(UserBean modifySellerBean);
 
-	// °ü¸®ÀÚ±ÇÇÑ È¸¿ø Á¤º¸ ¼öÁ¤
+	// ê´€ë¦¬ìê¶Œí•œ íšŒì› ì •ë³´ ìˆ˜ì •
 	@Update("update member set name=#{name}, mail=#{mail}, phone=#{phone}, address=#{address}, address2=#{address2} where id=#{id}")
 	void modifySellerInfoByAdmin(UserBean modifySellerBean);
 

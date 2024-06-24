@@ -1,50 +1,46 @@
 package kr.co.service;
 
-import java.io.File;
 import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.beans.FurnitureBean;
 import kr.co.beans.UserBean;
 import kr.co.dao.FurnitureDao;
 
 @Service
-@PropertySource("/WEB-INF/properties/option.properties") // propertiesºÒ·¯¿À±â = »çÁøÀúÀåµÇ´Â uploadÆÄÀÏ °æ·Î ¶§¹®¿¡
+@PropertySource("/WEB-INF/properties/option.properties") // propertiesë¶ˆëŸ¬ì˜¤ê¸° = ì‚¬ì§„ì €ì¥ë˜ëŠ” uploadíŒŒì¼ ê²½ë¡œ ë•Œë¬¸ì—
 public class FurnitureService {
 
-//   // ´ëÇ¥»çÁøÀÌ ÀúÀåµÇ´Â °æ·Î ºÒ·¯¿À±â
-//   @Value("${path.upload1}") // properties-option.properties¿¡¼­ ºÒ·¯¿À±â private
+//   // ëŒ€í‘œì‚¬ì§„ì´ ì €ì¥ë˜ëŠ” ê²½ë¡œ ë¶ˆëŸ¬ì˜¤ê¸°
+//   @Value("${path.upload1}") // properties-option.propertiesì—ì„œ ë¶ˆëŸ¬ì˜¤ê¸° private
 //   String path_upload1;
 //
-//   // »ó¼¼ÆäÀÌÁö »çÁøÀÌ ÀúÀåµÇ´Â °æ·Î ºÒ·¯¿À±â
-//   @Value("${path.upload2}") // properties-option.properties¿¡¼­ ºÒ·¯¿À±â private
+//   // ìƒì„¸í˜ì´ì§€ ì‚¬ì§„ì´ ì €ì¥ë˜ëŠ” ê²½ë¡œ ë¶ˆëŸ¬ì˜¤ê¸°
+//   @Value("${path.upload2}") // properties-option.propertiesì—ì„œ ë¶ˆëŸ¬ì˜¤ê¸° private
 //   String path_upload2;
 
 	@Autowired
 	private FurnitureDao furnitureDao;
 
-	// ·Î±×ÀÎµÆ´ÂÁö È®ÀÎÇÏ±â
+	// ë¡œê·¸ì¸ëëŠ”ì§€ í™•ì¸í•˜ê¸°
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 
-//   // ´ëÇ¥»çÁø ÀúÀåÇÏ±â
-//   @SuppressWarnings("unused") //@SuppressWarnings:°æ°í¶ßÁö¸»¶ó°íÇÏ´Â°Í private String
+//   // ëŒ€í‘œì‚¬ì§„ ì €ì¥í•˜ê¸°
+//   @SuppressWarnings("unused") //@SuppressWarnings:ê²½ê³ ëœ¨ì§€ë§ë¼ê³ í•˜ëŠ”ê²ƒ private String
 //    private String saveUploadFile1(MultipartFile upload_file1) {
 //     
 //     String file_name1 = System.currentTimeMillis() + "_" +
 //    FilenameUtils.getBaseName(upload_file1.getOriginalFilename()) + "." +
 //     FilenameUtils.getExtension(upload_file1.getOriginalFilename());
 //     
-//     try { //°æ·Î¿Í ÆÄÀÏ³×ÀÓ
+//     try { //ê²½ë¡œì™€ íŒŒì¼ë„¤ì„
 //      upload_file1.transferTo(new File(path_upload1 + "/" + file_name1));
 //   } catch (Exception e) {
 //      e.printStackTrace();
@@ -55,15 +51,15 @@ public class FurnitureService {
 //   }
 //
 //
-//   // »ó¼¼ÆäÀÌÁö ÀúÀåÇÏ±â
-//   @SuppressWarnings("unused") //@SuppressWarnings:°æ°í¶ßÁö¸»¶ó°íÇÏ´Â°Í private String
+//   // ìƒì„¸í˜ì´ì§€ ì €ì¥í•˜ê¸°
+//   @SuppressWarnings("unused") //@SuppressWarnings:ê²½ê³ ëœ¨ì§€ë§ë¼ê³ í•˜ëŠ”ê²ƒ private String
 //    private String saveUploadFile2(MultipartFile upload_file2) {
 //     
 //     String file_name2 = System.currentTimeMillis() + "_" +
 //    FilenameUtils.getBaseName(upload_file2.getOriginalFilename()) + "." +
 //     FilenameUtils.getExtension(upload_file2.getOriginalFilename());
 //     
-//     try { //°æ·Î¿Í ÆÄÀÏ³×ÀÓ
+//     try { //ê²½ë¡œì™€ íŒŒì¼ë„¤ì„
 //        upload_file2.transferTo(new File(path_upload2 + "/" + file_name2));
 //   } catch (Exception e) {
 //      e.printStackTrace();
@@ -89,6 +85,7 @@ public class FurnitureService {
 		System.out.println(addFurnitureBean.getFurniture_type());
 		System.out.println(addFurnitureBean.getFurniture_color());
 		System.out.println(addFurnitureBean.getCode());
+		System.out.println(addFurnitureBean.getTag());
 		System.out.println(addFurnitureBean.getUpload_file1().getSize());
 		System.out.println(addFurnitureBean.getUpload_file2().getSize());
 //      System.out.println(path_upload1);
@@ -108,70 +105,70 @@ public class FurnitureService {
 //         addFurnitureBean.setFurniture_img2(file_name2);
 //      }
 
-		// »óÇ°ÄÚµå ¸¸µé±â
-		if (addFurnitureBean.getFurniture_color().equals("È­ÀÌÆ®")) {
+		// ìƒí’ˆì½”ë“œ ë§Œë“¤ê¸°
+		if (addFurnitureBean.getFurniture_color().equals("í™”ì´íŠ¸")) {
 			ll = addFurnitureBean.getFurniture_type() + "01";
-		} else if (addFurnitureBean.getFurniture_color().equals("±×·¹ÀÌ")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ê·¸ë ˆì´")) {
 			ll = addFurnitureBean.getFurniture_type() + "02";
-		} else if (addFurnitureBean.getFurniture_color().equals("ºí·¢")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ë¸”ë™")) {
 			ll = addFurnitureBean.getFurniture_type() + "03";
-		} else if (addFurnitureBean.getFurniture_color().equals("º£ÀÌÁö")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ë² ì´ì§€")) {
 			ll = addFurnitureBean.getFurniture_type() + "04";
-		} else if (addFurnitureBean.getFurniture_color().equals("ºê¶ó¿î")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ë¸Œë¼ìš´")) {
 			ll = addFurnitureBean.getFurniture_type() + "05";
-		} else if (addFurnitureBean.getFurniture_color().equals("½Ç¹ö")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ì‹¤ë²„")) {
 			ll = addFurnitureBean.getFurniture_type() + "06";
-		} else if (addFurnitureBean.getFurniture_color().equals("°ñµå")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ê³¨ë“œ")) {
 			ll = addFurnitureBean.getFurniture_type() + "07";
-		} else if (addFurnitureBean.getFurniture_color().equals("·¹µå")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ë ˆë“œ")) {
 			ll = addFurnitureBean.getFurniture_type() + "08";
-		} else if (addFurnitureBean.getFurniture_color().equals("¿»·Î¿ì")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ì˜ë¡œìš°")) {
 			ll = addFurnitureBean.getFurniture_type() + "09";
-		} else if (addFurnitureBean.getFurniture_color().equals("±×¸°")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ê·¸ë¦°")) {
 			ll = addFurnitureBean.getFurniture_type() + "10";
-		} else if (addFurnitureBean.getFurniture_color().equals("¿À·»Áö")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ì˜¤ë Œì§€")) {
 			ll = addFurnitureBean.getFurniture_type() + "11";
-		} else if (addFurnitureBean.getFurniture_color().equals("ºí·ç")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ë¸”ë£¨")) {
 			ll = addFurnitureBean.getFurniture_type() + "12";
-		} else if (addFurnitureBean.getFurniture_color().equals("³×ÀÌºñ")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ë„¤ì´ë¹„")) {
 			ll = addFurnitureBean.getFurniture_type() + "13";
-		} else if (addFurnitureBean.getFurniture_color().equals("ÇÎÅ©")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("í•‘í¬")) {
 			ll = addFurnitureBean.getFurniture_type() + "14";
-		} else if (addFurnitureBean.getFurniture_color().equals("Åõ¸í")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("íˆ¬ëª…")) {
 			ll = addFurnitureBean.getFurniture_type() + "15";
-		} else if (addFurnitureBean.getFurniture_color().equals("±âÅ¸")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ê¸°íƒ€")) {
 			ll = addFurnitureBean.getFurniture_type() + "16";
 		}
 
 		System.out.println(ll);
 
-		if (addFurnitureBean.getFurniture_mat().equals("¿ø¸ñ")) {
+		if (addFurnitureBean.getFurniture_mat().equals("ì›ëª©")) {
 			ll += "01" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("°¡°ø¸ñ")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ê°€ê³µëª©")) {
 			ll += "02" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("´ë¸®¼®")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ëŒ€ë¦¬ì„")) {
 			ll += "03" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("¼¼¶ó¹Í")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ì„¸ë¼ë¯¹")) {
 			ll += "04" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("À¯¸®")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ìœ ë¦¬")) {
 			ll += "05" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("Ã¶Àç")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ì² ì¬")) {
 			ll += "06" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ÇÃ¶ó½ºÆ½")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("í”Œë¼ìŠ¤í‹±")) {
 			ll += "07" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("°¡Á×")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ê°€ì£½")) {
 			ll += "08" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("Èë,µ¹")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("í™/ëŒ")) {
 			ll += "09" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("¾ÆÄí¾ÆÅØ½º")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ì•„ì¿ ì•„í…ìŠ¤")) {
 			ll += "10" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ÆĞºê¸¯")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("íŒ¨ë¸Œë¦­")) {
 			ll += "11" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("¶óÅº")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ë¼íƒ„")) {
 			ll += "12" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("Á¾ÀÌ")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ì¢…ì´")) {
 			ll += "13" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("°Å¿ï")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ê±°ìš¸")) {
 			ll += "14" + num;
 		}
 
@@ -179,7 +176,8 @@ public class FurnitureService {
 
 		addFurnitureBean.setFurnitureid(ll);
 
-		addFurnitureBean.setTag(addFurnitureBean.getFurniture_color() + ", " + addFurnitureBean.getFurniture_mat());
+		addFurnitureBean.setTag(addFurnitureBean.getFurniture_color() + ", " + addFurnitureBean.getFurniture_mat()
+				+ ", " + addFurnitureBean.getTag());
 
 		addFurnitureBean.setCode(loginUserBean.getCode());
 
@@ -205,23 +203,45 @@ public class FurnitureService {
 		furnitureDao.grantFurnitureInfoByAdmin(modifyFurnitureBean);
 	}
 
-	// °¡±¸ Å¸ÀÔ¿¡ µû¸¥ ¸ñ·Ï°¡Á®¿À±â
+	// ê°€êµ¬ íƒ€ì…ì— ë”°ë¥¸ ëª©ë¡ê°€ì ¸ì˜¤ê¸°
 	public List<FurnitureBean> getFurnitureListFromType(String furnitureType) {
 
 		return furnitureDao.getFurnitureListFromType(furnitureType);
 	}
 
-	// °ü¸®ÀÚ°¡ ½ÂÀÎÇÑ °¡±¸µé °¡Á®¿À±â
+	// ê´€ë¦¬ìê°€ ìŠ¹ì¸í•œ ê°€êµ¬ë“¤ ê°€ì ¸ì˜¤ê¸°
 	public List<FurnitureBean> getCheckedFurnitureList() {
 		System.out.println("CheckService");
 		return furnitureDao.getCheckedFurnitureList();
 	}
 
-	// ÇÊÅÍ¸¦ ¸ğµÎ Àû¿ëÇßÀ» ¶§ °¡±¸µé °¡Á®¿À±â
+	// í•„í„°ë¥¼ ëª¨ë‘ ì ìš©í–ˆì„ ë•Œ ê°€êµ¬ë“¤ ê°€ì ¸ì˜¤ê¸°
 	public List<FurnitureBean> getFurnitureListFromFilterAll(String furnitureType, String color, String brand,
 			int width, int length, int height) {
 		System.out.println("FilterService");
 		return furnitureDao.getFurnitureListFromFilterAll(furnitureType, color, brand, width, length, height);
+	}
+
+	public List<FurnitureBean> getFurnitureListfromSeller(String seller_code) {
+		System.out.println("íŒë§¤ìì˜ ìƒí’ˆ ê°€ì ¸ì˜¤ê¸°~ì„œë¹„ìŠ¤!");
+		return furnitureDao.getFurnitureListfromSeller(seller_code);
+	}
+
+	public FurnitureBean selectProductById(String furnitureid) {
+		System.out.println("íŒë§¤ìë³„ ìƒí’ˆ ìƒì„¸ì •ë³´ ê°€ì ¸ì˜¤ê¸° ì„œë¹„ìŠ¤~!@");
+		return furnitureDao.selectProductById(furnitureid);
+	}
+
+	public void modifyProduct(FurnitureBean modifyProductBean) {
+
+		System.out.println("ìƒí’ˆ ìˆ˜ì • ì„œë¹„ìŠ¤~");
+
+		modifyProductBean.setTag(modifyProductBean.getFurniture_color() + ", " + modifyProductBean.getFurniture_mat()
+				+ ", " + modifyProductBean.getTag());
+		System.out.println(modifyProductBean.getTag());
+		System.out.println(modifyProductBean.getFurnitureid());
+		furnitureDao.modifyProduct(modifyProductBean);
+
 	}
 
 }

@@ -31,18 +31,35 @@
 						<th>글번호</th>
 						<th>제목</th>
 						<th>작성자</th>
-						<th>작성날짜</th>
+						<th>작성일자</th>
+						<th>답변일자</th>
+						<th>답변여부</th>
+
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="obj" items="${contentList }">
+					<c:forEach var="qna" items="${qnaList}">
 						<tr>
-							<td class="text-center d-none d-md-table-cell">${obj.content_idx }</td>
-							<td><a
-								href="${root }board/read?board_info_idx=${board_info_idx}&content_idx=${obj.content_idx}&page=${page}">${obj.content_subject }</a>
+							<td class="text-center d-none d-md-table-cell">${qna.content_idx }</td>
+							<td><c:choose>
+									<c:when test="${qna.secret == 1}">
+										<c:if test="${loginUserBean.code == qna.code }">
+											<a href="${root }board/read?content_idx=${qna.content_idx}">${qna.content_subject }</a>
+										</c:if>
+										<c:if test="${loginUserBean.code != qna.code }">
+											<label>**********비밀글입니다**********</label>
+										</c:if>
+									</c:when>
+									<c:otherwise>
+										<a href="${root }board/read?content_idx=${qna.content_idx}">${qna.content_subject }</a>
+									</c:otherwise>
+
+								</c:choose> 
 							</td>
-							<td>${obj.content_writer_name }</td>
-							<td>${obj.content_date }</td>
+							<td>${qna.name}</td>
+							<td>${qna.add_date }</td>
+							<td>${qna.answer_date }</td>
+							<td>${qna.q_checked_text }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

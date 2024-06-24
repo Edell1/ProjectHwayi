@@ -30,7 +30,7 @@
 		<ul>
 			<li>공지등록/답변</li>
 			<li class="border"></li>
-			<li><a href="#">공지사항</a></li>
+			<li><a href="${root}admin/notice_list">공지사항</a></li>
 			<li><a href="#">QnA 답변</a></li>
 		</ul>
 	</div>

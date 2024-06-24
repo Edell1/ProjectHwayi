@@ -10,76 +10,135 @@ import lombok.Setter;
 
 public class ContentBean {
 	
-	private int content_idx;
-	//NOTNULL °ú °°À½
-	@NotBlank
-	private String content_subject;
-	@NotBlank
-	private String content_text;
+	private int content_idx;    //ê¸€ë²ˆí˜¸
 	
-	private String content_writer_name;
+	@NotBlank
+	private String content_title;   //ê¸€ì œëª©
 	
-	private String content_file; //Ã·ºÎÆÄÀÏÀÇ ÀÌ¸§¸¸ µ¥ÀÌÅÍº£ÀÌ½º(¿À¶óÅ¬)¿¡ ÀúÀå
-	private MultipartFile upload_file;  //ºê¶ó¿ìÀú°¡ º¸³½ ÆÄÀÏ µ¥ÀÌÅÍ
-	private int content_writer_idx;
-	private int content_board_idx;
-	private String content_date;
+	@NotBlank
+	private String content_subject;   //ê¸€ë‚´ìš©
+	
+	private String code;     //ê¸€ì“´ì´ ì•„ì´ë””
+	
+	private String name;     //ê¸€ì“´ì´ ì´ë¦„
+	
+	private String sys_code;   //ê´€ë¦¬ì ì•„ì´ë””
+	
+	private String add_date;   //ê¸€ ì“´ ë‚ ì§œ
+	
+	private String answer_date;  //ë‹µë³€ ë‚ ì§œ
+	
+	private int q_checked;      //ë‹µë³€ì—¬ë¶€
+	private String q_checked_text;      //ë‹µë³€ì—¬ë¶€í…ìŠ¤íŠ¸
+	
+	private String acontent;     //ë‹µë³€í…ìŠ¤íŠ¸
+	
+	private int secret=2;
+
+	//--------------------getter & setter ---------------------
+	
+	
 	
 	
 	public int getContent_idx() {
 		return content_idx;
 	}
+
+	public int getSecret() {
+		return secret;
+	}
+
+	public void setSecret(int secret) {
+		this.secret = secret;
+	}
+
+	public String getAcontent() {
+		return acontent;
+	}
+
+	public void setAcontent(String acontent) {
+		this.acontent = acontent;
+	}
+
+	public String getQ_checked_text() {
+		return q_checked_text;
+	}
+
+	public void setQ_checked_text(String q_checked_text) {
+		this.q_checked_text = q_checked_text;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public void setContent_idx(int content_idx) {
 		this.content_idx = content_idx;
 	}
+
+	public String getContent_title() {
+		return content_title;
+	}
+
+	public void setContent_title(String content_title) {
+		this.content_title = content_title;
+	}
+
 	public String getContent_subject() {
 		return content_subject;
 	}
+
 	public void setContent_subject(String content_subject) {
 		this.content_subject = content_subject;
 	}
-	public String getContent_text() {
-		return content_text;
+
+	public String getCode() {
+		return code;
 	}
-	public void setContent_text(String content_text) {
-		this.content_text = content_text;
+
+	public void setCode(String code) {
+		this.code = code;
 	}
-	public String getContent_file() {
-		return content_file;
+
+	public String getSys_code() {
+		return sys_code;
 	}
-	public void setContent_file(String content_file) {
-		this.content_file = content_file;
+
+	public void setSys_code(String sys_code) {
+		this.sys_code = sys_code;
 	}
-	public int getContent_writer_idx() {
-		return content_writer_idx;
+
+	public String getAdd_date() {
+		return add_date;
 	}
-	public void setContent_writer_idx(int content_writer_idx) {
-		this.content_writer_idx = content_writer_idx;
+
+	public void setAdd_date(String add_date) {
+		this.add_date = add_date;
 	}
-	public int getContent_board_idx() {
-		return content_board_idx;
+
+	public String getAnswer_date() {
+		return answer_date;
 	}
-	public void setContent_board_idx(int content_board_idx) {
-		this.content_board_idx = content_board_idx;
+
+	public void setAnswer_date(String answer_date) {
+		this.answer_date = answer_date;
 	}
-	public String getContent_date() {
-		return content_date;
+
+	public int getQ_checked() {
+		return q_checked;
 	}
-	public void setContent_date(String content_date) {
-		this.content_date = content_date;
+
+	public void setQ_checked(int q_checked) {
+		this.q_checked = q_checked;
 	}
-	public MultipartFile getUpload_file() {
-		return upload_file;
-	}
-	public void setUpload_file(MultipartFile upload_file) {
-		this.upload_file = upload_file;
-	}
-	public String getContent_writer_name() {
-		return content_writer_name;
-	}
-	public void setContent_writer_name(String content_writer_name) {
-		this.content_writer_name = content_writer_name;
-	}
+	
+	
+	
+	
 	
 	
 	

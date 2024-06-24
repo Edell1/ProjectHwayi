@@ -79,12 +79,3 @@
 <script src="https://kit.fontawesome.com/4cd100a941.js"
 	crossorigin="anonymous"></script>
 </html>
-
-
-
-
-
-
-
-
-

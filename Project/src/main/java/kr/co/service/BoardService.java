@@ -37,39 +37,14 @@ public class BoardService {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 
-	private String saveUploadFile(MultipartFile upload_file) {
+	public void addContentInfo(ContentBean writeQnABean) {
 
-		String file_name = System.currentTimeMillis() + "_"
-				+ FilenameUtils.getBaseName(upload_file.getOriginalFilename()) + "."
-				+ FilenameUtils.getExtension(upload_file.getOriginalFilename());
+		System.out.println(writeQnABean.getContent_subject());
+		System.out.println(writeQnABean.getContent_title());
 
-		try {// 경로와 파일네임
-			upload_file.transferTo(new File(path_upload + "/" + file_name));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		writeQnABean.setCode(loginUserBean.getCode());
 
-		return file_name;
-
-	}// saveUploadFile
-
-	public void addContentInfo(ContentBean writeContentBean) {
-
-		System.out.println(writeContentBean.getContent_subject());
-		System.out.println(writeContentBean.getContent_text());
-		System.out.println(writeContentBean.getUpload_file().getSize());
-
-		MultipartFile upload_file = writeContentBean.getUpload_file();
-
-		if (upload_file.getSize() > 0) {
-			String file_name = saveUploadFile(upload_file);
-			System.out.println(file_name);
-			writeContentBean.setContent_file(file_name); // 오라클에 파일 이름 저장
-		}
-
-		writeContentBean.setContent_writer_idx(loginUserBean.getUser_idx());
-
-		boardDao.addContentInfo(writeContentBean);
+		boardDao.addContentInfo(writeQnABean);
 
 	}
 
@@ -94,14 +69,6 @@ public class BoardService {
 
 	public void modifyContentInfo(ContentBean modifyContentBean) {
 
-		// 이미지처리
-		MultipartFile upload_file = modifyContentBean.getUpload_file();
-
-		if (upload_file.getSize() > 0) {
-			String file_name = saveUploadFile(upload_file);
-			modifyContentBean.setContent_file(file_name);
-		}
-
 		boardDao.modifyContentInfo(modifyContentBean);
 
 	}
@@ -115,6 +82,21 @@ public class BoardService {
 		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
 		return pageBean;
 
+	}
+
+	public List<ContentBean> getQnAList() {
+		System.out.println("qna게시판 가져오기 다오~");
+		return boardDao.getQnAList();
+	}
+
+	public ContentBean getQnAInfo(int content_idx) {
+
+		return boardDao.getQnAInfo(content_idx);
+	}
+
+	public void deleteQnAInfo(int content_idx) {
+
+		boardDao.deleteQnAInfo(content_idx);
 	}
 
 }

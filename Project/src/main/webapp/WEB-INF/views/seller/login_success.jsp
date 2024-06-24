@@ -3,5 +3,5 @@
 <c:set var='root' value='${pageContext.request.contextPath }/'/>
 <script>
 	alert('로그인 되었습니다')
-	location.href = '${root}seller/main'
+	location.href = '${root}seller/furniture_management?seller_code=${code}'
 </script>

@@ -42,7 +42,7 @@ public class SearchService {
 			String dbPass = db_password;
 
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			// DAO °´Ã¼¸¦ »ı¼º ½Ã Connection Àü´Ş
+			// DAO ê°ì²´ë¥¼ ìƒì„± ì‹œ Connection ì „ë‹¬
 			SearchDao searchDao = new SearchDao(conn);
 			String userid = searchDao.searchBuyerId(name, phone);
 			System.out.println(name);
@@ -67,7 +67,7 @@ public class SearchService {
 			String dbPass = db_password;
 
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			// DAO °´Ã¼¸¦ »ı¼º ½Ã Connection Àü´Ş
+			// DAO ê°ì²´ë¥¼ ìƒì„± ì‹œ Connection ì „ë‹¬
 			SearchDao searchDao = new SearchDao(conn);
 			String userid = searchDao.searchSellerId(name, phone);
 			System.out.println(name);

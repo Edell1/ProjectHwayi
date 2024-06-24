@@ -122,7 +122,8 @@ public class FurnitureController {
 
 	@GetMapping("/addCart_pro")
 	public String cart_add(@ModelAttribute("addCartBean") CartBean addCartBean,
-			@RequestParam("furnitureid") String furnitureid, @RequestParam("cnt") int cnt, @RequestParam("price") int price, @RequestParam("name") String name) {
+			@RequestParam("furnitureid") String furnitureid, @RequestParam("cnt") int cnt,
+			@RequestParam("price") int price, @RequestParam("name") String name) {
 		CartBean existingCartItem = cartService.getCartItemByProductIdAndMemberId(loginUserBean.getCode(), furnitureid);
 
 		if (existingCartItem != null) {
@@ -136,8 +137,10 @@ public class FurnitureController {
 			addCartBean.setFurnitureName(name);
 			cartService.insertCartItem(addCartBean);
 		}
-			
+
 		return "cart/add_cart_success";
 	}
+
+
 
 }

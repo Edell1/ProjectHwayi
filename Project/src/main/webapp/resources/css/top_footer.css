@@ -177,7 +177,7 @@ translateY(
 .top-button {
 	position: fixed;
 	bottom: 20px;
-	right: 30px;
+	right: 20px;
 	z-index: 99;
 	border: none;
 	outline: none;

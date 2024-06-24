@@ -24,7 +24,7 @@
 		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
 
 		<div class="manage_member">
-			<div class="mgMem_inner">
+			<div class="mgMem_inner pd_30">
 				<div class="tit">회원 조회</div>
 
 				<input type="radio" name="tabmenu" id="tab01" checked /> <label
@@ -53,7 +53,8 @@
 										<td>${buyer.phone}</td>
 										<td><div class="btn_box">
 												<button class="updateBtn"
-													onclick="location.href='${root}admin/buyer_info?id=${buyer.id}'">정보 보기</button>
+													onclick="location.href='${root}admin/buyer_info?id=${buyer.id}'">정보
+													보기</button>
 											</div></td>
 									</tr>
 								</c:forEach>
@@ -85,7 +86,8 @@
 										<td>${seller.strtel}</td>
 										<td><div class="btn_box">
 												<button class="updateBtn"
-													onclick="location.href='${root}admin/seller_info?id=${seller.id}'">정보 보기</button>
+													onclick="location.href='${root}admin/seller_info?id=${seller.id}'">정보
+													보기</button>
 											</div></td>
 									</tr>
 								</c:forEach>

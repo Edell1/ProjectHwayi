@@ -15,7 +15,7 @@ public class RestApibuyerController {
 	
 	@GetMapping("/user/checkBuyerExist/{id}")
 	public String checkUserIdExist(@PathVariable String id) {
-		// @PathVariable : ÁÖ¼Ò¿¡ µ¥ÀÌÅÍ ºÙÀÌ±â
+		// @PathVariable : ÃÃ–Â¼Ã’Â¿Â¡ ÂµÂ¥Ã€ÃŒÃ…Ã ÂºÃ™Ã€ÃŒÂ±Ã¢
 		Boolean chk = userService.checkUserExist(id);
 		return chk + "";
 	}

@@ -9,6 +9,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		return "redirect:/main"; //redirect: -> �ּ� ���û
+		return "redirect:/main"; //redirect: -> ÁÖ¼Ò Àç¿äÃ»
 	}
 }

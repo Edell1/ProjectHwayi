@@ -16,6 +16,11 @@
 .admin_wrap nav ul {
 	padding: 5px 10px;
 }
+
+ul{
+	margin-bottom: 0;
+}
+
 .admin_wrap nav ul li {
 	padding: 0 10px;
 	margin-bottom: 5px;
@@ -27,7 +32,7 @@
 .admin_wrap nav ul li:nth-child(2) {
 	width: 10px;
 	margin-bottom: 10px;
-	border-bottom: 3px solid #000;
+	border-bottom: 3px solid #000 !important;
 }
 
 .admin_wrap nav ul li:hover a {
