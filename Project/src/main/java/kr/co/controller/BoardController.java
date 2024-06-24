@@ -86,10 +86,35 @@ public class BoardController {
       
       return "board/write_success";
    }
+   @PostMapping("/answer_write_pro")
+   public String answer_write_pro( @ModelAttribute("writeQnABean") ContentBean writeQnABean) {
+	   System.out.println(writeQnABean.getContent_idx());
+	   System.out.println(writeQnABean.getAcontent());
+	   
+	   
+	   boardService.updateQnAInfo(writeQnABean);
+	   
+	   return "board/write_success";
+   }
    
    @GetMapping("/not_writer")
    public String not_writer() {
       return "board/not_writer";
+   }
+   
+   @GetMapping("/answer_write")
+   public String answer(@RequestParam("content_idx") int content_idx,
+		   @ModelAttribute("writeQnABean") ContentBean writeQnABean,
+		                Model model) {
+	   ContentBean readQnABean=boardService.getQnAInfo(content_idx);
+	   
+	   
+       model.addAttribute("content_idx", content_idx);
+       model.addAttribute("loginUserBean", loginUserBean);
+       
+       model.addAttribute("readQnABean",readQnABean);
+	   
+       return "board/answer_write";
    }
    
    @GetMapping("/modify")

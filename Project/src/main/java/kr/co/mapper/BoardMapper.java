@@ -2,6 +2,8 @@ package kr.co.mapper;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -66,5 +68,10 @@ public interface BoardMapper {
 	// QnA글 삭제하기
 	@Delete("delete qna where content_idx = #{content_idx}")
 	void deleteQnAInfo(int content_idx);
+
+	//Q&A답글 달기
+	@Update("update qna set acontent = #{acontent}, answer_date = sysdate, " +
+	"q_checked = 0 where content_idx = #{content_idx}")
+	void updateQnAInfo( ContentBean writeQnABean);
 
 }

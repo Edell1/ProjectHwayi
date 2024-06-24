@@ -47,7 +47,7 @@
                            accept="upload/*" />
                      </div> --%>
                      <div class="form-group">
-                          <input type="hidden" name="secret" value="1"/>
+
                         <form:checkbox path="secret" value="1" class="form-check-input" />
                         <form:label path="secret" class="form-check-label">비밀글 여부</form:label>
                      </div>

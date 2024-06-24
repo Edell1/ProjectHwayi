@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.session.RowBounds;
@@ -97,6 +98,12 @@ public class BoardService {
 	public void deleteQnAInfo(int content_idx) {
 
 		boardDao.deleteQnAInfo(content_idx);
+	}
+
+	public void updateQnAInfo( ContentBean writeQnABean) {
+		
+		boardDao.updateQnAInfo(writeQnABean);
+		
 	}
 
 }

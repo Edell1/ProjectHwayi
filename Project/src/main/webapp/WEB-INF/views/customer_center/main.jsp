@@ -43,10 +43,10 @@
 							<td class="text-center d-none d-md-table-cell">${qna.content_idx }</td>
 							<td><c:choose>
 									<c:when test="${qna.secret == 1}">
-										<c:if test="${loginUserBean.code == qna.code }">
+										<c:if test="${loginUserBean.code == qna.code || loginUserBean.userRole == 'admin'}">
 											<a href="${root }board/read?content_idx=${qna.content_idx}">${qna.content_subject }</a>
 										</c:if>
-										<c:if test="${loginUserBean.code != qna.code }">
+										<c:if test="${loginUserBean.code != qna.code && loginUserBean.userRole != 'admin' }">
 											<label>**********비밀글입니다**********</label>
 										</c:if>
 									</c:when>

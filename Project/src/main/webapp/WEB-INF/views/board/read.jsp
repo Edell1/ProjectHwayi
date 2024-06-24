@@ -54,6 +54,9 @@
                   
                   <div class="form-group">
                      <div class="text-right">
+                     <c:if test="${loginUserBean.userRole == 'admin'}">
+						<li><a href="${root}board/answer_write?content_idx=${readQnABean.content_idx}" class="btn btn-primary">답변하기</a></li>
+					</c:if>
                         <a
                            href="${root}customer_center/main"
                            class="btn btn-primary">목록보기</a>

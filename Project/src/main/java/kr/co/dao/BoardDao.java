@@ -2,6 +2,8 @@ package kr.co.dao;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -58,4 +60,10 @@ public class BoardDao {
       System.out.println("삭제하기 다오");
       boardMapper.deleteQnAInfo(content_idx);
    }
+
+public void updateQnAInfo( ContentBean writeQnABean) {
+			
+	boardMapper.updateQnAInfo(writeQnABean);
+	
+}
 }
