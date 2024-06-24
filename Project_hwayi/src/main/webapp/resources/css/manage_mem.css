@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+.manage_member {
+	display: flex;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.mgMem_inner {
+	width: 100%;
+}
+
+.cont_wrap {
+	width: 100%;
+}
+
+.pd_30 {
+	padding: 30px;
+}
+
+.pd_60 {
+	padding: 60px 0;
+}
+
+.flex {
+	display: flex;
+}
+
+.container {
+	max-width: 900px;
+}
+
+.container.mw {
+	max-width: 1140px;
+}
+
+.manage_chart {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.mgMem_inner .tit {
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+
+input[type='radio'] {
+	display: none;
+}
+
+label[for*='tab'] {
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 5px 5px 0 0;
+}
+
+input[id='tab01']:checked ~ .cont_wrap .con1, input[id='tab02']:checked 
+	 ~ .cont_wrap .con2, input[id='tab03']:checked ~ .cont_wrap .con3,
+	input[id='tab04']:checked 
+	 ~ .cont_wrap .con4, input[id='tab05']:checked ~ .cont_wrap .con5,
+	input[id='tab06']:checked 
+	 ~ .cont_wrap .con6, input[id='tab07']:checked ~ .cont_wrap .con7,
+	input[id='tab08']:checked 
+	 ~ .cont_wrap .con8, input[id='tab09']:checked ~ .cont_wrap .con9,
+	input[id='tab10']:checked 
+	 ~ .cont_wrap .con10 {
+	display: block;
+}
+
+input[id='tab01']:checked+label[for='tab01'], input[id='tab02']:checked+label[for='tab02'],
+	input[id='tab03']:checked+label[for='tab03'], input[id='tab04']:checked+label[for='tab04'],
+	input[id='tab05']:checked+label[for='tab05'], input[id='tab06']:checked+label[for='tab06'],
+	input[id='tab07']:checked+label[for='tab07'], input[id='tab08']:checked+label[for='tab08'],
+	input[id='tab09']:checked+label[for='tab09'], input[id='tab10']:checked+label[for='tab10']
+	{
+	color: #fff;
+	background: green;
+}
+
+label[for='tab01'] {
+	margin-right: 5px;
+}
+
+.conbox {
+	display: none;
+	max-height: 1000px;
+	padding: 20px;
+	background: rgb(232, 232, 232);
+}
+
+.conbox h1 {
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+}
+
+table th, td {
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	border-bottom: 1px solid #22a026;
+}
+
+.table td, .table th {
+	border-top: 1px solid #22a026;
+}
+
+.table thead th {
+	border-top: none;
+	border-bottom: 1px solid #22a026;
+}
+
+.btn_box {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #22a026;
+	border-color: #22a026;
+}
+
+.btn-primary:hover {
+	background-color: #18651a;
+	border-color: #18651a;
+}
+
+.btn_box .updateBtn, .cancel {
+	padding: 10px 20px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #22a026;
+}
+
+.btn_box .updateBtn:hover {
+	background-color: #18651a;
+}
+
+.table-bordered td, .table-bordered th {
+	border: 1px solid #22a026;
+}
+
+.table td, .table th {
+	vertical-align: middle;
+}
+
+.btn.btn-secondary {
+	padding: 10px 20px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #22a026;
+}
+
+.btn.btn-secondary:hover {
+	background-color: #18651a;
+}
+
+.page-link {
+	color: #22a026;
+}
+
+th h2 {
+	margin-bottom: 0;
+}
+
+.scrollable-table {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.scrollable-table thead {
+	display: table;
+	table-layout: fixed;
+}
+
+.scrollable-table tbody {
+	height: 400px; /* Adjust this height as needed */
+	overflow-y: scroll;
+	table-layout: fixed;
+}
+
+.scrollable-table th, .scrollable-table td {
+	text-align: center;
+}
+
+tr td a:visited {
+	color: #fff;
+}
+
+.container-fluid h1 {
+	margin-bottom: 15px;
+	padding-left: 20px;
+}

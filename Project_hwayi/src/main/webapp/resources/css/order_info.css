@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+.mypage_main {
+	width: 80%;
+	padding: 0 20px;
+	margin-bottom: 20px;
+}
+
+.mypage_main div .tit {
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	font-size: 32px;
+	border-bottom: 1px solid #22a026;
+}
+
+.order_info .tit {
+	font-size: 30px;
+	margin-top: 5px;
+}
+
+.order_info .mid_tit {
+	font-size: 25px;
+	margin-top: 30px;
+}
+
+.order_search{
+	display: flex;
+	align-items: center;
+    gap: 5px;
+}
+
+.order_search input[type="date"] {
+	font-size: 20px;
+	margin-top: 2%;
+	margin: 5px 0;
+}
+
+.order_search .button {
+	padding: 5px 10px;
+	color: #07660a;
+	font-size: 18px;
+    border: 2px solid #22a026;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+	cursor: point;
+}
+
+.order_search .button:hover {
+	color: white;
+	background-color: #22a026;
+}
+
+.order {
+	font-size: 25px;
+	margin-top: 20px;
+}
+
+.order_list {
+	width: 100%;
+	text-align: center;
+}
+
+.order_list tr th {
+	padding: 10px 40px;
+	font-size: 20px;
+	background-color: rgb(240, 238, 238);
+	border-bottom: 1px solid #22a026;
+}
+
