@@ -10,7 +10,7 @@
 
 		<form action="${root}furniture/furniture_list" method="get"
 			class="search" role="search">
-			<input type="text" class="sch_txt" id="sch_str"
+			<input type="text" class="sch_txt" id="sch_str" name="keyword"
 				placeholder="찾으시는 상품을 검색해주세요." />
 			<button type="submit" id="sch_sub">검색</button>
 		</form>

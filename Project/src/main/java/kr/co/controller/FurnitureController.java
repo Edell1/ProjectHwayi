@@ -43,6 +43,7 @@ public class FurnitureController {
 
 		// 상품을 검색했을때
 		if (keyword != null && !keyword.isEmpty()) {
+			System.out.println(keyword);
 			List<FurnitureBean> searchResults = furnitureDao.searchProducts(keyword);
 			System.out.println("검색결과 컨트롤러: " + searchResults);
 			model.addAttribute("checkedfurniturelist", searchResults);
