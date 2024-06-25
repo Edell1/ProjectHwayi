@@ -11,35 +11,35 @@ import kr.co.beans.UserBean;
 
 public interface BuyerMapper {
 
-	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬ì— ì‚¬ìš©ëœ sql
-	@Select("select ID " + "from member " + "where ID=#{id}")
-	String checkBuyerIdExist(String ID);
+   // ¾ÆÀÌµğ Áßº¹ Ã¼Å©¿¡ »ç¿ëµÈ sql
+   @Select("select ID " + "from member " + "where ID=#{id}")
+   String checkBuyerIdExist(String ID);
 
-	// íšŒì›ê°€ì… DB ë“±ë¡
-	@Insert("insert all into member (code, id, pw, name, mail, phone, address, address2) "
-			+ "values (('Cu' || TO_CHAR(user_seq.nextval)), #{id}, #{pw}, #{name}, #{mail}, #{phone}, #{address}, #{address2}) "
-			+ "into customer(code, favarite)" + "values(('Cu' || TO_CHAR(user_seq.nextval)), null) "
-			+ "SELECT * FROM DUAL")
-	void addBuyerInfo(UserBean joinUserBean);
+   // È¸¿ø°¡ÀÔ DB µî·Ï
+   @Insert("insert all into member (code, id, pw, name, mail, phone, address, address2) "
+         + "values (('Cu' || TO_CHAR(user_seq.nextval)), #{id}, #{pw}, #{name}, #{mail}, #{phone}, #{address}, #{address2}) "
+         + "into customer(code, favarite, gender, age)" + "values(('Cu' || TO_CHAR(user_seq.nextval)), null, #{gender}, #{age}) "
+         + "SELECT * FROM DUAL")
+   void addBuyerInfo(UserBean joinUserBean);
 
-	// ë¡œê·¸ì¸ì‹œ íšŒì›ê°€ì… ì •ë³´ í™•ì¸
-	@Select("select m.*, c.favarite from member m, customer c where id=#{id} and pw=#{pw} and c.code = m.code")
-	UserBean getLoginBuyerInfo(UserBean tempLoginUserBean);
+   // ·Î±×ÀÎ½Ã È¸¿ø°¡ÀÔ Á¤º¸ È®ÀÎ
+   @Select("select m.*, c.favarite from member m, customer c where id=#{id} and pw=#{pw} and c.code = m.code")
+   UserBean getLoginBuyerInfo(UserBean tempLoginUserBean);
 
-	// ì „ì²´ Buyer ëª©ë¡ ë¶ˆëŸ¬ì˜¤ê¸°
-	@Select("select m.*, c.favarite " + "from member m, customer c " + "where m.code = c.code")
-	List<UserBean> getBuyerList();
-	
-	// ì•„ì´ë””ë¡œ íšŒì› ì •ë³´ í™•ì¸
-	@Select("SELECT m.*, c.favarite FROM member m, customer c WHERE id = #{id} and m.code = c.code")
-	UserBean selectBuyerById(String id);
+   // ÀüÃ¼ Buyer ¸ñ·Ï ºÒ·¯¿À±â
+   @Select("select m.*, c.favarite " + "from member m, customer c " + "where m.code = c.code")
+   List<UserBean> getBuyerList();
+   
+   // ¾ÆÀÌµğ·Î È¸¿ø Á¤º¸ È®ÀÎ
+   @Select("SELECT m.*, c.favarite FROM member m, customer c WHERE id = #{id} and m.code = c.code")
+   UserBean selectBuyerById(String id);
 
-	// íšŒì› ì •ë³´ ìˆ˜ì •
-	@Update("update member set name=#{name}, pw=#{pw}, mail=#{mail}, phone=#{phone} , address=#{address} where id=#{id}")
-	void modifyBuyerInfo(UserBean modifyBuyerBean);
-	
-	// ê´€ë¦¬ìê¶Œí•œ íšŒì› ì •ë³´ ìˆ˜ì •
-	@Update("update member set name=#{name}, mail=#{mail}, phone=#{phone}, address=#{address}, address2=#{address2} where id=#{id}")
-	void modifyBuyerInfoByAdmin(UserBean modifyBuyerBean);
+   // È¸¿ø Á¤º¸ ¼öÁ¤
+   @Update("update member set name=#{name}, pw=#{pw}, mail=#{mail}, phone=#{phone} , address=#{address} where id=#{id}")
+   void modifyBuyerInfo(UserBean modifyBuyerBean);
+   
+   // °ü¸®ÀÚ±ÇÇÑ È¸¿ø Á¤º¸ ¼öÁ¤
+   @Update("update member set name=#{name}, mail=#{mail}, phone=#{phone}, address=#{address}, address2=#{address2} where id=#{id}")
+   void modifyBuyerInfoByAdmin(UserBean modifyBuyerBean);
 
 }

@@ -67,7 +67,7 @@
 										<td><a href="${root}admin/review?key=id&val=${buyer.id}"
 											class="btn btn-secondary">리뷰</a></td>
 										<td><a href="#" class="btn btn-secondary">문의</a></td>
-										<td><a class="updateBtn"
+										<td><a class="btn btn-secondary"
 											href="${root}admin/buyer_modify?id=${buyer.id}">정보 수정</a></td>
 									</tr>
 
