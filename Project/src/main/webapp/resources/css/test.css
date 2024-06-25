@@ -1,0 +1,132 @@
+/* main.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.top {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.flex_wrap {
+    display: flex;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.order-container {
+    flex-grow: 1;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-container .tit {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.table-order {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-order th,
+.table-order td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.table-order th {
+    background-color: #f9f9f9;
+}
+
+.table-order img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.address-list {
+    margin-bottom: 20px;
+}
+
+.address-list select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.pay {
+    margin-top: 20px;
+}
+
+.pay a#payButton {
+    display: block;
+    text-align: center;
+    background-color: #22a026;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.pay a#payButton:hover {
+    background-color: rgb(0, 128, 0);
+}
+
+.top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.top-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .flex_wrap {
+        flex-direction: column;
+    }
+
+    .order-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .table-order th,
+    .table-order td {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    .pay a#payButton {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
