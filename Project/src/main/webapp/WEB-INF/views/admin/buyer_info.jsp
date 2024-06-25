@@ -24,12 +24,12 @@
 		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
 
 		<div class="manage_member">
-			<div class="mgMem_inner">
+			<div class="mgMem_inner wauto">
 				<div class="tit pd_30">
 					회원 정보 <span>회원 관리</span>
 				</div>
 
-				<div class="container flex mw">
+				<div class="container w0">
 					<div class="justify-content-md-center">
 						<div class="row">
 							<div class="m-auto mb-3 w-50 col">
@@ -67,7 +67,7 @@
 										<td><a href="${root}admin/review?key=id&val=${buyer.id}"
 											class="btn btn-secondary">리뷰</a></td>
 										<td><a href="#" class="btn btn-secondary">문의</a></td>
-										<td><a class="updateBtn"
+										<td><a class="updateBtn btn"
 											href="${root}admin/buyer_modify?id=${buyer.id}">정보 수정</a></td>
 									</tr>
 

@@ -205,15 +205,15 @@
 
 				<div class="furni_cont cont3">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=bd1200080204">
+						href="${root }furniture/furniture_detail?furnitureid=sf1012010618">
 						<div class="furni_img">
-							<img src="${root}image/furniture1/bd1200080204.png" alt="상품이미지" />
+							<img src="${root}image/furniture1/sf1012010618.png" alt="상품이미지" />
 							<div class="overlay"></div>
 						</div>
 						<div class="desc">
 							<p>
-							<p>온열 매트 라꾸라꾸</p>
-							<p>245,000 원</p>
+							<p>1인용 심플 리클라이너</p>
+							<p>818,100 원</p>
 						</div>
 					</a>
 				</div>

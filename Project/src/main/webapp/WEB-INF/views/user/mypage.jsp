@@ -32,7 +32,7 @@
 					<div class="memberPhoto">
 						<img src="../image/memberPhoto.png" />
 					</div>
-					<div class="nickName">솔데스크 님!</div>
+					<div class="nickName">${loginUserBean.name} 님!</div>
 				</div>
 
 				<div class="couponBox">

@@ -41,6 +41,7 @@
 	display: flex;
 }
 
+
 .scrollable-table tbody.h600 {
 	height: 600px;
 }
@@ -159,7 +160,7 @@ table th, td {
 	border-color: #18651a;
 }
 
-.btn_box .updateBtn, .cancel {
+ .updateBtn, .cancel {
 	padding: 10px 20px;
 	color: #fff;
 	font-size: 16px;
@@ -169,7 +170,7 @@ table th, td {
 	background-color: #22a026;
 }
 
-.btn_box .updateBtn:hover {
+ .updateBtn:hover {
 	background-color: #18651a;
 }
 

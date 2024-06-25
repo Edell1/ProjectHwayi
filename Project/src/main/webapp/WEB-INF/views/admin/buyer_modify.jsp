@@ -22,7 +22,7 @@
 	<div class="admin_wrap">
 		<c:import url="/WEB-INF/views/include/manage_nav.jsp" />
 		<!-- 게시글 리스트 -->
-		<div class="container" style="margin-top: 100px">
+		<div class="container mw" style="margin-top: 100px">
 			<div class="card shadow">
 				<div class="card-body">
 					<h4 class="card-title">가구</h4>
