@@ -32,18 +32,14 @@
 				<c:import url="/WEB-INF/views/include/mypage_nav.jsp" />
 			</c:if>
 
-		<div id="layoutSidenav_content">
-			<div class="container-fluid px-4">
-				<h1 class="mt-4">공지 사항</h1>
-				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item active">공지 사항</li>
-				</ol>
-				<hr />
-				<div class="m-3">
-					<table class="table table-hover text-center align-middle">
+		<div class="manage_member">
+			<div class="mgMem_inner pd_30">
+				<div class="tit">공지사항</div>
+
+				<table class="table table-hover text-center align-middle">
 						<thead>
 							<tr>
-								<th width="50%">제목</th>
+								<th class="notice_tit">제목</th>
 								<th>작성일</th>
 								<c:if test="${loginUserBean.code == showNoticeBean.code }">
 									<th>삭제</th>
@@ -84,9 +80,8 @@
 			</div>
 		</div>
 
-
-	</div>
 	<button id="topBtn" class="top-button" title="Go to top">Top</button>
+
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
 
 </body>

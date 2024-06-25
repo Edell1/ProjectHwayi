@@ -92,11 +92,6 @@ public class FurnitureController {
 		return "/furniture/furniture_list";
 	}
 
-	@GetMapping("/furniture_brand")
-	public String furniture_brand() {
-		return "/furniture/furniture_brand";
-	}
-
 	@GetMapping("/furniture_detail")
 	public String furniture_detail(@RequestParam("furnitureid") String furnitureid,
 			@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
@@ -142,6 +137,14 @@ public class FurnitureController {
 		return "cart/add_cart_success";
 	}
 
-
+	@GetMapping("/furniture_brand")
+	public String furniture_brand() {
+		return "/furniture/furniture_brand";
+	}
+	
+	@GetMapping("/furniture_recomm")
+	public String furniture_recomm() {
+		return "/furniture/furniture_recomm";
+	}
 
 }

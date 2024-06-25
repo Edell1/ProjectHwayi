@@ -4,9 +4,18 @@
 
 .brand_wrap {
 	display: flex;
-	justify-content: center;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 	padding-top: 20px;
 }
+
+.brand_wrap h2{
+	width: 90%;
+	margin-bottom: 20px;
+}
+
+
 .brand_wrap .brand_box {
 	display: flex;
 	flex-flow: wrap;
@@ -45,6 +54,7 @@
 	background-color: rgba(0, 0, 0, 0); /* 초기에는 투명하게 설정 */
 	transition: background-color 0.3s ease, opacity 0.3s ease; /* 부드러운 전환 효과 설정 */
 	display: flex;
+	flex-flow: column;
 	justify-content: center;
 	align-items: center;
 	opacity: 0; /* 초기에는 투명하게 설정 */
@@ -54,6 +64,11 @@
 	font-size: 38px;
 	opacity: 0; /* 초기에는 투명하게 설정 */
 	transition: opacity 0.3s ease; /* 부드러운 전환 효과 설정 */
+}
+
+.brand_wrap .brand_box .img_box .overlay div:nth-child(2){
+	font-size: 16px;
+	text-align: center;
 }
 
 .brand_wrap .brand_box .img_box:hover .overlay {

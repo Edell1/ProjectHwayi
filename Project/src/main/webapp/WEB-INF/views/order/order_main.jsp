@@ -10,9 +10,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>주문페이지</title>
+
 <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/top_footer.css' />" />
-<link rel="stylesheet" href="<c:url value='/css/cart.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/order.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/mypage_nav.css' />" />
 <!-- jQuery -->
 <script type="text/javascript"
@@ -99,6 +100,7 @@
 
 	<div class="flex_wrap">
 		<c:import url="/WEB-INF/views/include/mypage_nav.jsp" />
+		
 		<div class="order-container">
 			<div class="tit">주문 / 결제</div>
 

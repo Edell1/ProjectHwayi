@@ -44,14 +44,14 @@
 							<td><c:choose>
 									<c:when test="${qna.secret == 1}">
 										<c:if test="${loginUserBean.code == qna.code || loginUserBean.userRole == 'admin'}">
-											<a href="${root }board/read?content_idx=${qna.content_idx}">${qna.content_subject }</a>
+											<a href="${root }board/read?content_idx=${qna.content_idx}">${qna.content_title }</a>
 										</c:if>
 										<c:if test="${loginUserBean.code != qna.code && loginUserBean.userRole != 'admin' }">
 											<label>**********비밀글입니다**********</label>
 										</c:if>
 									</c:when>
 									<c:otherwise>
-										<a href="${root }board/read?content_idx=${qna.content_idx}">${qna.content_subject }</a>
+										<a href="${root }board/read?content_idx=${qna.content_idx}">${qna.content_title }</a>
 									</c:otherwise>
 
 								</c:choose> 

@@ -32,7 +32,7 @@
 					<div class="memberPhoto">
 						<img src="../image/memberPhoto.png" />
 					</div>
-					<div class="nickName">테스트 님!</div>
+					<div class="nickName">솔데스크 님!</div>
 				</div>
 
 				<div class="couponBox">
@@ -58,58 +58,21 @@
 				</div>
 			</div>
 
-			<div class="order-shipping">
-				<div class="tit">주문/배송조회</div>
-
-				<div class="cont">
-					<div>
-						<div class="order_img_box">
-							<div class="circle gray">
-								<i class="fa-regular fa-credit-card fa-2x"></i>
-							</div>
-							<div class="line"></div>
-							<div class="circle">
-								<i class="fa-solid fa-cart-flatbed fa-3x"></i>
-							</div>
-							<div class="line"></div>
-							<div class="circle gray">
-								<i class="fa-solid fa-truck fa-2x"></i>
-							</div>
-							<div class="line"></div>
-							<div class="circle gray">
-								<i class="fa-solid fa-house-user fa-2x"></i>
-							</div>
-						</div>
-
-						<div class="delivery">
-							<p>입금대기</p>
-							<p>배송준비중</p>
-							<p>배송중</p>
-							<p>배송완료</p>
-						</div>
-					</div>
-
-					<ul class="cancel">
-						<li>취소 : 0건</li>
-						<li>교환 : 0건</li>
-						<li>반품 : 0건</li>
-					</ul>
-				</div>
-			</div>
-
 			<div class="orderInfo">
 				<div class="tit">최근 주문 정보</div>
 
 				<table class="order_table">
 					<tr>
-						<th>날짜/주문번호</th>
+						<th>주문번호</th>
+						<th>날짜</th>
 						<th>상품명</th>
 						<th>주문금액</th>
 					</tr>
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+						<td>od01062601</td>
+						<td>2024-06-26</td>
+						<td>상품이름</td>
+						<td>가격</td>
 					</tr>
 				</table>
 			</div>

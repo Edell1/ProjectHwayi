@@ -38,23 +38,23 @@
 				</div>
 
 				<div class="order">
-					주문내역/배송조회 내역 총 0건
+					주문내역/배송조회 내역 총 01건
 					<table class="order_list">
 						<tr>
-							<th>날짜/주문번호</th>
+							<th>주문번호</th>
+							<th>날짜</th>
 							<th>상품명</th>
 							<th>수량</th>
 							<th>상품구매금액</th>
 							<th>주문처리상태</th>
-							<th>취소/교환/반품</th>
 						</tr>
 						<tr>
-							<td>1</td>
-							<td>2</td>
+							<td>od01062601</td>
+							<td>2024-06-26</td>
 							<td>3</td>
-							<td>4</td>
+							<td>2</td>
 							<td>5</td>
-							<td>6</td>
+							<td>상품준비중</td>
 						</tr>
 					</table>
 				</div>

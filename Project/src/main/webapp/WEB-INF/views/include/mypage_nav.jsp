@@ -15,7 +15,6 @@
 			<li class="border"></li>
 			<li><a href="${root}user/mypage">마이페이지</a></li>
 			<li><a href="${root}shop/order_info">주문목록/배송조회</a></li>
-			<li><a href="#">취소/반품/교환 내역</a></li>
 			<li><a href="${root}cart/cart_main">장바구니</a></li>
 		</ul>
 		<ul>

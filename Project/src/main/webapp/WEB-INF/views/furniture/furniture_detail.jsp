@@ -20,6 +20,7 @@
 </head>
 
 <script>
+
 	function decrease() {
 		let quantityElement = document.getElementById('count');
 		let currentQuantity = parseInt(quantityElement.textContent);

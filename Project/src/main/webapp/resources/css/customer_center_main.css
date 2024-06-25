@@ -33,6 +33,10 @@ input[id*='answer']:checked + label + div {
 	margin-bottom: 10px;
 }
 
+.qna_table tr td:nth-child(2){
+	text-align: left;
+}
+
 .fa-solid {
 	color: #22a026;
 	margin: 0 5px;

@@ -110,60 +110,125 @@
 			<div class="furni_box">
 				<div class="furni_cont cont1">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=mi0007000110">
 						<div class="furni_img">
-							<img src="${root}image/furniture1/bs1402020224.png" alt="상품이미지" />
+							<img src="${root}image/furniture1/mi0007000110.png" alt="상품이미지" />
 							<div class="overlay"></div>
 						</div>
 						<div class="desc">
 							<p>
-							<p>파스텔 선반 아치형 수납장</p>
-							<p>159000</p>
+							<p>물방울 간접조명 벽거울</p>
+							<p>179,000 원</p>
 						</div>
 					</a>
 				</div>
 
 				<div class="furni_cont cont2">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=pa0501000104">
 						<div class="furni_img">
-							<img src="${root}image/furniture1/ch0204000520.png" alt="상품이미지" />
+							<img src="${root}image/furniture1/pa0501000104.png" alt="상품이미지" />
 							<div class="overlay"></div>
 						</div>
 						<div class="desc">
 							<p>
-							<p>좌식의자 리클라이너 생활방수</p>
-							<p>36800</p>
+							<p>라탄 파티션</p>
+							<p>612,000 원</p>
 						</div>
 					</a>
 				</div>
 
 				<div class="furni_cont cont3">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=bs0806020312">
 						<div class="furni_img">
-							<img src="${root}image/furniture1/bs0402020722.png" alt="상품이미지" />
+							<img src="${root}image/furniture1/bs0806020312.png" alt="상품이미지" />
 							<div class="overlay"></div>
 						</div>
 						<div class="desc">
 							<p>
-							<p>주방 거실 오브제 진열장 홈카페</p>
-							<p>284900</p>
+							<p>버터컬러 크림 미니 매거진랙</p>
+							<p>21,900 원</p>
 						</div>
 					</a>
 				</div>
 
 				<div class="furni_cont cont4">
 					<a
-						href="${root }furniture/furniture_detail?furnitureid=${obj.furnitureid}">
+						href="${root }furniture/furniture_detail?furnitureid=ch1204000522">
 						<div class="furni_img">
-							<img src="${root}image/furniture1/dk0102020316.png" alt="상품이미지" />
+							<img src="${root}image/furniture1/ch1204000522.png" alt="상품이미지" />
 							<div class="overlay"></div>
 						</div>
 						<div class="desc">
 							<p>
-							<p>제로 게이밍 컴퓨터 책상</p>
-							<p>97000</p>
+							<p>발받침 세트 빈백 소파</p>
+							<p>245,000 원</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="main_cont mcont3">
+			<h2>갓생 인테리어 라쓰고</h2>
+
+			<div class="furni_box">
+				<div class="furni_cont cont1">
+					<a
+						href="${root }furniture/furniture_detail?furnitureid=dk0501020821">
+						<div class="furni_img">
+							<img src="${root}image/furniture1/dk0501020821.png" alt="상품이미지" />
+							<div class="overlay"></div>
+						</div>
+						<div class="desc">
+							<p>
+							<p>모션 데스크 3단 프레임 듀얼 전동모터</p>
+							<p>188,900 원</p>
+						</div>
+					</a>
+				</div>
+
+				<div class="furni_cont cont2">
+					<a
+						href="${root }furniture/furniture_detail?furnitureid=bs0201040208">
+						<div class="furni_img">
+							<img src="${root}image/furniture1/bs0201040208.png" alt="상품이미지" />
+							<div class="overlay"></div>
+						</div>
+						<div class="desc">
+							<p>
+							<p>스터디 5단 도어형 책장 책꽂이</p>
+							<p>109,900 원</p>
+						</div>
+					</a>
+				</div>
+
+				<div class="furni_cont cont3">
+					<a
+						href="${root }furniture/furniture_detail?furnitureid=bd1200080204">
+						<div class="furni_img">
+							<img src="${root}image/furniture1/bd1200080204.png" alt="상품이미지" />
+							<div class="overlay"></div>
+						</div>
+						<div class="desc">
+							<p>
+							<p>온열 매트 라꾸라꾸</p>
+							<p>245,000 원</p>
+						</div>
+					</a>
+				</div>
+
+				<div class="furni_cont cont4">
+					<a
+						href="${root }furniture/furniture_detail?furnitureid=ch0408000330">
+						<div class="furni_img">
+							<img src="${root}image/furniture1/ch0408000330.png" alt="상품이미지" />
+							<div class="overlay"></div>
+						</div>
+						<div class="desc">
+							<p>
+							<p>리 침대형 리클라이너 게이밍의자</p>
+							<p>109,000 원</p>
 						</div>
 					</a>
 				</div>

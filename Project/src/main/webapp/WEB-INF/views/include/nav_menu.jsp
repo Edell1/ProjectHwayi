@@ -8,7 +8,7 @@
 <nav class="nav_bar">
 	<ul class="nav_menu">
 		<li><a href="${root}main" class="home">홈</a></li>
-		<li><a href="#" class="home">추천</a></li>
+		<li><a href="${root}furniture/furniture_recomm" class="recomm">추천</a></li>
 		<li><a href="${root}furniture/furniture_list" class="furniture">가구</a></li>
 		<li><a href="${root}furniture/furniture_brand" class="brand">브랜드관</a></li>
 	</ul>

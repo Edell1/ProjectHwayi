@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/* comm */
+
+.brand_wrap {
+	display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+	padding-top: 20px;
+}
+
+.brand_wrap .comm_tit{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 200px;
+	margin-bottom: 20px;
+	background-color: RGB(255, 255, 204);
+	
+}
+.brand_wrap .comm_tit i{
+	margin: 0 20px;
+}
+
+.brand_wrap h3{
+	width: 90%;
+	padding: 10px 0;
+}
+
