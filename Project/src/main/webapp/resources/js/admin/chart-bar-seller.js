@@ -21,8 +21,8 @@ function createBarChart(ctx, labels, label, data) {
       labels: labels,
       datasets: [{
         label: label,
-        backgroundColor: '#4E79A7', // Deep blue
-        borderColor: '#4E79A7',
+        backgroundColor: "rgba(2,117,216,1)",
+        borderColor: "rgba(2,117,216,1)",
         data: data,
       }],
     },
@@ -43,10 +43,7 @@ function createBarChart(ctx, labels, label, data) {
           ticks: {
             min: 0,
             max: maxSales,
-            maxTicksLimit: 12,
-            callback: function(value) {
-              return value / 1000000 + 'M'; // Format y-axis values as millions
-            }
+            maxTicksLimit: 12
           },
           gridLines: {
             display: true

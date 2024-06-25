@@ -20,28 +20,28 @@ public interface FurnitureMapper {
 			+ "values(#{code}, #{furnitureid}, #{furniture_type}, #{furniture_name}, #{furniture_width}, #{furniture_length}, #{furniture_height}, #{furniture_price}, #{furniture_cnt}, #{tag}, sysdate)")
 	void addFurnitureInfo(FurnitureBean addFurnitureBean);
 
-	// ì•„ì´ë””ë¡œ ìƒí’ˆ ì •ë³´ í™•ì¸
+	// ¾ÆÀÌµğ·Î »óÇ° Á¤º¸ È®ÀÎ
 	@Select("SELECT f.*, s.* from furniture f join store s on f.code = s.code WHERE furnitureid = #{furnitureid}")
 	FurnitureBean selectFurnitureById(String furnitureid);
 
-	// ìƒí’ˆ ì •ë³´ ìˆ˜ì •
+	// »óÇ° Á¤º¸ ¼öÁ¤
 	@Update("update furniture set furniture_name=#{furniture_name}, furniture_price=#{furniture_price}, furniture_cnt=#{furniture_cnt}, tag=#{tag}"
 			+ "where furnitureid=#{furnitureid}")
 	void modifyFurnitureInfo(FurnitureBean modifyFurnitureBean);
 
-	// ê´€ë¦¬ìê¶Œí•œ ìƒí’ˆ ìŠ¹ì¸
+	// °ü¸®ÀÚ±ÇÇÑ »óÇ° ½ÂÀÎ
 	@Update("update furniture set checked=#{checked} where furnitureid=#{furnitureid}")
 	void grantFurnitureInfoByAdmin(FurnitureBean modifyFurnitureBean);
 
-	// ê°€êµ¬ íƒ€ì…ì— ë”°ë¥¸ ê°€êµ¬ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ê¸°
+	// °¡±¸ Å¸ÀÔ¿¡ µû¸¥ °¡±¸ ¸®½ºÆ® °¡Á®¿À±â
 	@Select("select * from furniture where checked = 0 and furniture_type = #{furnitureType}")
 	List<FurnitureBean> getFurnitureListFromType(String furnitureType);
 
-	// ê´€ë¦¬ìê°€ ìŠ¹ì¸í•œ ê°€êµ¬ë“¤ ê°€ì ¸ì˜¤ê¸°
+	// °ü¸®ÀÚ°¡ ½ÂÀÎÇÑ °¡±¸µé °¡Á®¿À±â
 	@Select("select * from furniture where checked = 0 ")
 	List<FurnitureBean> getCheckedFurnitureList();
 
-	// ì¹´í…Œê³ ë¦¬ ë° í•„í„°í–ˆì„ë•Œ ê°€êµ¬ë“¤ ê°€ì ¸ì˜¤ê¸°
+	// Ä«Å×°í¸® ¹× ÇÊÅÍÇßÀ»¶§ °¡±¸µé °¡Á®¿À±â
 	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
 			+ "and furniture_length < #{length} " + "and furniture_height < #{height} " + "and code like #{brand} "
 			+ "and trim(substr(tag, 1, instr(tag, ',') - 1)) like #{color}")
@@ -49,45 +49,45 @@ public interface FurnitureMapper {
 			@Param("color") String color, @Param("brand") String brand, @Param("width") int width,
 			@Param("length") int length, @Param("height") int height);
 
-	// ìƒ‰ìƒí•„í„°ë§
+	// »ö»óÇÊÅÍ¸µ
 	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
 			+ "and furniture_length < #{length} " + "and furniture_height < #{height} "
 			+ "and trim(substr(tag, 1, instr(tag, ',') - 1)) like #{color}")
 	List<FurnitureBean> getFurnitureListFromFilterColor(String furnitureType, String color, @Param("width") int width,
 			@Param("length") int length, @Param("height") int height);
 
-	// ë¸Œëœë“œí•„í„°ë§
+	// ºê·£µåÇÊÅÍ¸µ
 	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
 			+ "and furniture_length < #{length} " + "and furniture_height < #{height} " + "and code like #{brand} ")
 	List<FurnitureBean> getFurnitureListFromFilterbrand(String furnitureType, String brand, @Param("width") int width,
 			@Param("length") int length, @Param("height") int height);
 
-	// ì‚¬ì´ì¦ˆ í•„í„°ë§
+	// »çÀÌÁî ÇÊÅÍ¸µ
 	@Select("select * from furniture where " + "checked = 0 " + "and furniture_width < #{width} "
 			+ "and furniture_length < #{length} " + "and furniture_height < #{height} ")
 	List<FurnitureBean> getFurnitureListFromFilterSize(String furnitureType, @Param("width") int width,
 			@Param("length") int length, @Param("height") int height);
 
-	// ìƒí’ˆê²€ìƒ‰ ê²°ê³¼
+	// »óÇ°°Ë»ö °á°ú
 	@Select("select * from furniture where " + "checked = 0 " + "and furniture_name like '%' || #{keyword} || '%'")
 	List<FurnitureBean> searchProducts(String keyword);
 
-	// íŒë§¤ìì˜ ìƒí’ˆê´€ë¦¬ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
+	// ÆÇ¸ÅÀÚÀÇ »óÇ°°ü¸® ¸ñ·Ï °¡Á®¿À±â
 	@Select("select " + "furnitureid, " + "furniture_name, " + "furniture_price, "
 			+ "TO_CHAR(add_date, 'YYYY/MM/DD') as furniture_date, " + "tag, " + "furniture_cnt, "
-			+ "CASE  WHEN checked = 0 THEN 'ìŠ¹ì¸ì™„ë£Œ' "
-			+ "when checked= 2  then 'ìŠ¹ì¸ê±°ë¶€' Else 'ìŠ¹ì¸ëŒ€ê¸°' END AS furniture_checked, "
-			+ "CASE WHEN furniture_type = 'bd' THEN 'ì¹¨ëŒ€' " + "WHEN furniture_type = 'dk' THEN 'ì±…ìƒ/í…Œì´ë¸”' "
-			+ "WHEN furniture_type = 'sf' THEN 'ì†ŒíŒŒ' " + "WHEN furniture_type = 'dr' THEN 'ì„œëì¥' "
-			+ "WHEN furniture_type = 'ch' THEN 'ì˜ì' " + "WHEN furniture_type = 'sh' THEN 'ì„ ë°˜' "
-			+ "WHEN furniture_type = 'ca' THEN 'TVì¥/ê±°ì‹¤ì¥' " + "WHEN furniture_type = 'bs' THEN 'ì±…ì¥' "
-			+ "WHEN furniture_type = 'cl' THEN 'ì˜·ì¥' " + "WHEN furniture_type = 'hg' THEN 'í–‰ê±°' "
-			+ "WHEN furniture_type = 'pa' THEN 'íŒŒí‹°ì…˜' " + "WHEN furniture_type = 'mi' THEN 'ê±°ìš¸' "
-			+ "ELSE 'ê¸°íƒ€' END AS furniture_type_text " + "FROM furniture " + "where code like #{seller_code} "
+			+ "CASE  WHEN checked = 0 THEN '½ÂÀÎ¿Ï·á' "
+			+ "when checked= 2  then '½ÂÀÎ°ÅºÎ' Else '½ÂÀÎ´ë±â' END AS furniture_checked, "
+			+ "CASE WHEN furniture_type = 'bd' THEN 'Ä§´ë' " + "WHEN furniture_type = 'dk' THEN 'Ã¥»ó/Å×ÀÌºí' "
+			+ "WHEN furniture_type = 'sf' THEN '¼ÒÆÄ' " + "WHEN furniture_type = 'dr' THEN '¼­¶øÀå' "
+			+ "WHEN furniture_type = 'ch' THEN 'ÀÇÀÚ' " + "WHEN furniture_type = 'sh' THEN '¼±¹İ' "
+			+ "WHEN furniture_type = 'ca' THEN 'TVÀå/°Å½ÇÀå' " + "WHEN furniture_type = 'bs' THEN 'Ã¥Àå' "
+			+ "WHEN furniture_type = 'cl' THEN '¿ÊÀå' " + "WHEN furniture_type = 'hg' THEN 'Çà°Å' "
+			+ "WHEN furniture_type = 'pa' THEN 'ÆÄÆ¼¼Ç' " + "WHEN furniture_type = 'mi' THEN '°Å¿ï' "
+			+ "ELSE '±âÅ¸' END AS furniture_type_text " + "FROM furniture " + "where code like #{seller_code} "
 			+ "order by add_date desc")
 	List<FurnitureBean> getFurnitureListfromSeller(String seller_code);
 
-	// íŒë§¤ì ìƒí’ˆê´€ë¦¬ìš© ìƒí’ˆëª©ë¡ ì„¸ë¶€ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+	// ÆÇ¸ÅÀÚ »óÇ°°ü¸®¿ë »óÇ°¸ñ·Ï ¼¼ºÎÁ¤º¸ °¡Á®¿À±â
 	@Select("select furnitureid, " + "code, " + "furniture_type, " + "furniture_name, " + "furniture_width, "
 			+ "furniture_length, " + "furniture_height, " + "furniture_price, " + "furniture_cnt, "
 			+ "SUBSTR(tag, INSTR(tag, ',', 1, 2) + 1) AS tag, " + "TO_CHAR(add_date, 'YYYY/MM/DD') as furniture_date , "

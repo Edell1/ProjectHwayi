@@ -12,19 +12,19 @@ import kr.co.beans.NoticeBean;
 
 public interface NoticeMapper {
 
-	// Í∏ÄÏì∞Í∏∞
+	// ±€æ≤±‚
 	@Insert("insert into notice " + "values (notice_seq.nextval, 'admin', #{noticeTitle}, #{content}, sysdate, 0)")
 	void addNoticeInfo(NoticeBean writeNoticeBean);
 
-	// Í∏ÄÎ™©Î°ù
+	// ±€∏Ò∑œ
 	@Select("select * " + "from notice " + "order by postID desc")
 	List<NoticeBean> getNoticeList();
 
-	// ÏÇ≠Ï†úÌïòÍ∏∞
+	// ªË¡¶«œ±‚
 	@Delete("delete from notice where postID = #{postID}")
 	void deleteNoticeInfo(int postID);
 
-	// ÏÉÅÏÑ∏Ï†ïÎ≥¥
+	// ªÛºº¡§∫∏
 	@Select("select * from notice where postID = #{postID}")
 	NoticeBean getNoticeInfo(int postID);
 

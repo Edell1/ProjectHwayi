@@ -14,33 +14,33 @@ import kr.co.beans.UserBean;
 import kr.co.dao.FurnitureDao;
 
 @Service
-@PropertySource("/WEB-INF/properties/option.properties") // propertiesë¶ˆëŸ¬ì˜¤ê¸° = ì‚¬ì§„ì €ì¥ë˜ëŠ” uploadíŒŒì¼ ê²½ë¡œ ë•Œë¬¸ì—
+@PropertySource("/WEB-INF/properties/option.properties") // propertiesºÒ·¯¿À±â = »çÁøÀúÀåµÇ´Â uploadÆÄÀÏ °æ·Î ¶§¹®¿¡
 public class FurnitureService {
 
-//   // ëŒ€í‘œì‚¬ì§„ì´ ì €ì¥ë˜ëŠ” ê²½ë¡œ ë¶ˆëŸ¬ì˜¤ê¸°
-//   @Value("${path.upload1}") // properties-option.propertiesì—ì„œ ë¶ˆëŸ¬ì˜¤ê¸° private
+//   // ´ëÇ¥»çÁøÀÌ ÀúÀåµÇ´Â °æ·Î ºÒ·¯¿À±â
+//   @Value("${path.upload1}") // properties-option.properties¿¡¼­ ºÒ·¯¿À±â private
 //   String path_upload1;
 //
-//   // ìƒì„¸í˜ì´ì§€ ì‚¬ì§„ì´ ì €ì¥ë˜ëŠ” ê²½ë¡œ ë¶ˆëŸ¬ì˜¤ê¸°
-//   @Value("${path.upload2}") // properties-option.propertiesì—ì„œ ë¶ˆëŸ¬ì˜¤ê¸° private
+//   // »ó¼¼ÆäÀÌÁö »çÁøÀÌ ÀúÀåµÇ´Â °æ·Î ºÒ·¯¿À±â
+//   @Value("${path.upload2}") // properties-option.properties¿¡¼­ ºÒ·¯¿À±â private
 //   String path_upload2;
 
 	@Autowired
 	private FurnitureDao furnitureDao;
 
-	// ë¡œê·¸ì¸ëëŠ”ì§€ í™•ì¸í•˜ê¸°
+	// ·Î±×ÀÎµÆ´ÂÁö È®ÀÎÇÏ±â
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 
-//   // ëŒ€í‘œì‚¬ì§„ ì €ì¥í•˜ê¸°
-//   @SuppressWarnings("unused") //@SuppressWarnings:ê²½ê³ ëœ¨ì§€ë§ë¼ê³ í•˜ëŠ”ê²ƒ private String
+//   // ´ëÇ¥»çÁø ÀúÀåÇÏ±â
+//   @SuppressWarnings("unused") //@SuppressWarnings:°æ°í¶ßÁö¸»¶ó°íÇÏ´Â°Í private String
 //    private String saveUploadFile1(MultipartFile upload_file1) {
 //     
 //     String file_name1 = System.currentTimeMillis() + "_" +
 //    FilenameUtils.getBaseName(upload_file1.getOriginalFilename()) + "." +
 //     FilenameUtils.getExtension(upload_file1.getOriginalFilename());
 //     
-//     try { //ê²½ë¡œì™€ íŒŒì¼ë„¤ì„
+//     try { //°æ·Î¿Í ÆÄÀÏ³×ÀÓ
 //      upload_file1.transferTo(new File(path_upload1 + "/" + file_name1));
 //   } catch (Exception e) {
 //      e.printStackTrace();
@@ -51,15 +51,15 @@ public class FurnitureService {
 //   }
 //
 //
-//   // ìƒì„¸í˜ì´ì§€ ì €ì¥í•˜ê¸°
-//   @SuppressWarnings("unused") //@SuppressWarnings:ê²½ê³ ëœ¨ì§€ë§ë¼ê³ í•˜ëŠ”ê²ƒ private String
+//   // »ó¼¼ÆäÀÌÁö ÀúÀåÇÏ±â
+//   @SuppressWarnings("unused") //@SuppressWarnings:°æ°í¶ßÁö¸»¶ó°íÇÏ´Â°Í private String
 //    private String saveUploadFile2(MultipartFile upload_file2) {
 //     
 //     String file_name2 = System.currentTimeMillis() + "_" +
 //    FilenameUtils.getBaseName(upload_file2.getOriginalFilename()) + "." +
 //     FilenameUtils.getExtension(upload_file2.getOriginalFilename());
 //     
-//     try { //ê²½ë¡œì™€ íŒŒì¼ë„¤ì„
+//     try { //°æ·Î¿Í ÆÄÀÏ³×ÀÓ
 //        upload_file2.transferTo(new File(path_upload2 + "/" + file_name2));
 //   } catch (Exception e) {
 //      e.printStackTrace();
@@ -105,70 +105,70 @@ public class FurnitureService {
 //         addFurnitureBean.setFurniture_img2(file_name2);
 //      }
 
-		// ìƒí’ˆì½”ë“œ ë§Œë“¤ê¸°
-		if (addFurnitureBean.getFurniture_color().equals("í™”ì´íŠ¸")) {
+		// »óÇ°ÄÚµå ¸¸µé±â
+		if (addFurnitureBean.getFurniture_color().equals("È­ÀÌÆ®")) {
 			ll = addFurnitureBean.getFurniture_type() + "01";
-		} else if (addFurnitureBean.getFurniture_color().equals("ê·¸ë ˆì´")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("±×·¹ÀÌ")) {
 			ll = addFurnitureBean.getFurniture_type() + "02";
-		} else if (addFurnitureBean.getFurniture_color().equals("ë¸”ë™")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ºí·¢")) {
 			ll = addFurnitureBean.getFurniture_type() + "03";
-		} else if (addFurnitureBean.getFurniture_color().equals("ë² ì´ì§€")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("º£ÀÌÁö")) {
 			ll = addFurnitureBean.getFurniture_type() + "04";
-		} else if (addFurnitureBean.getFurniture_color().equals("ë¸Œë¼ìš´")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ºê¶ó¿î")) {
 			ll = addFurnitureBean.getFurniture_type() + "05";
-		} else if (addFurnitureBean.getFurniture_color().equals("ì‹¤ë²„")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("½Ç¹ö")) {
 			ll = addFurnitureBean.getFurniture_type() + "06";
-		} else if (addFurnitureBean.getFurniture_color().equals("ê³¨ë“œ")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("°ñµå")) {
 			ll = addFurnitureBean.getFurniture_type() + "07";
-		} else if (addFurnitureBean.getFurniture_color().equals("ë ˆë“œ")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("·¹µå")) {
 			ll = addFurnitureBean.getFurniture_type() + "08";
-		} else if (addFurnitureBean.getFurniture_color().equals("ì˜ë¡œìš°")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("¿»·Î¿ì")) {
 			ll = addFurnitureBean.getFurniture_type() + "09";
-		} else if (addFurnitureBean.getFurniture_color().equals("ê·¸ë¦°")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("±×¸°")) {
 			ll = addFurnitureBean.getFurniture_type() + "10";
-		} else if (addFurnitureBean.getFurniture_color().equals("ì˜¤ë Œì§€")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("¿À·»Áö")) {
 			ll = addFurnitureBean.getFurniture_type() + "11";
-		} else if (addFurnitureBean.getFurniture_color().equals("ë¸”ë£¨")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ºí·ç")) {
 			ll = addFurnitureBean.getFurniture_type() + "12";
-		} else if (addFurnitureBean.getFurniture_color().equals("ë„¤ì´ë¹„")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("³×ÀÌºñ")) {
 			ll = addFurnitureBean.getFurniture_type() + "13";
-		} else if (addFurnitureBean.getFurniture_color().equals("í•‘í¬")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("ÇÎÅ©")) {
 			ll = addFurnitureBean.getFurniture_type() + "14";
-		} else if (addFurnitureBean.getFurniture_color().equals("íˆ¬ëª…")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("Åõ¸í")) {
 			ll = addFurnitureBean.getFurniture_type() + "15";
-		} else if (addFurnitureBean.getFurniture_color().equals("ê¸°íƒ€")) {
+		} else if (addFurnitureBean.getFurniture_color().equals("±âÅ¸")) {
 			ll = addFurnitureBean.getFurniture_type() + "16";
 		}
 
 		System.out.println(ll);
 
-		if (addFurnitureBean.getFurniture_mat().equals("ì›ëª©")) {
+		if (addFurnitureBean.getFurniture_mat().equals("¿ø¸ñ")) {
 			ll += "01" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ê°€ê³µëª©")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("°¡°ø¸ñ")) {
 			ll += "02" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ëŒ€ë¦¬ì„")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("´ë¸®¼®")) {
 			ll += "03" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ì„¸ë¼ë¯¹")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("¼¼¶ó¹Í")) {
 			ll += "04" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ìœ ë¦¬")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("À¯¸®")) {
 			ll += "05" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ì² ì¬")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("Ã¶Àç")) {
 			ll += "06" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("í”Œë¼ìŠ¤í‹±")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ÇÃ¶ó½ºÆ½")) {
 			ll += "07" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ê°€ì£½")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("°¡Á×")) {
 			ll += "08" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("í™/ëŒ")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("Èë/µ¹")) {
 			ll += "09" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ì•„ì¿ ì•„í…ìŠ¤")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("¾ÆÄí¾ÆÅØ½º")) {
 			ll += "10" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("íŒ¨ë¸Œë¦­")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("ÆĞºê¸¯")) {
 			ll += "11" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ë¼íƒ„")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("¶óÅº")) {
 			ll += "12" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ì¢…ì´")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("Á¾ÀÌ")) {
 			ll += "13" + num;
-		} else if (addFurnitureBean.getFurniture_mat().equals("ê±°ìš¸")) {
+		} else if (addFurnitureBean.getFurniture_mat().equals("°Å¿ï")) {
 			ll += "14" + num;
 		}
 
@@ -203,19 +203,19 @@ public class FurnitureService {
 		furnitureDao.grantFurnitureInfoByAdmin(modifyFurnitureBean);
 	}
 
-	// ê°€êµ¬ íƒ€ì…ì— ë”°ë¥¸ ëª©ë¡ê°€ì ¸ì˜¤ê¸°
+	// °¡±¸ Å¸ÀÔ¿¡ µû¸¥ ¸ñ·Ï°¡Á®¿À±â
 	public List<FurnitureBean> getFurnitureListFromType(String furnitureType) {
 
 		return furnitureDao.getFurnitureListFromType(furnitureType);
 	}
 
-	// ê´€ë¦¬ìê°€ ìŠ¹ì¸í•œ ê°€êµ¬ë“¤ ê°€ì ¸ì˜¤ê¸°
+	// °ü¸®ÀÚ°¡ ½ÂÀÎÇÑ °¡±¸µé °¡Á®¿À±â
 	public List<FurnitureBean> getCheckedFurnitureList() {
 		System.out.println("CheckService");
 		return furnitureDao.getCheckedFurnitureList();
 	}
 
-	// í•„í„°ë¥¼ ëª¨ë‘ ì ìš©í–ˆì„ ë•Œ ê°€êµ¬ë“¤ ê°€ì ¸ì˜¤ê¸°
+	// ÇÊÅÍ¸¦ ¸ğµÎ Àû¿ëÇßÀ» ¶§ °¡±¸µé °¡Á®¿À±â
 	public List<FurnitureBean> getFurnitureListFromFilterAll(String furnitureType, String color, String brand,
 			int width, int length, int height) {
 		System.out.println("FilterService");
@@ -223,18 +223,18 @@ public class FurnitureService {
 	}
 
 	public List<FurnitureBean> getFurnitureListfromSeller(String seller_code) {
-		System.out.println("íŒë§¤ìì˜ ìƒí’ˆ ê°€ì ¸ì˜¤ê¸°~ì„œë¹„ìŠ¤!");
+		System.out.println("ÆÇ¸ÅÀÚÀÇ »óÇ° °¡Á®¿À±â~¼­ºñ½º!");
 		return furnitureDao.getFurnitureListfromSeller(seller_code);
 	}
 
 	public FurnitureBean selectProductById(String furnitureid) {
-		System.out.println("íŒë§¤ìë³„ ìƒí’ˆ ìƒì„¸ì •ë³´ ê°€ì ¸ì˜¤ê¸° ì„œë¹„ìŠ¤~!@");
+		System.out.println("ÆÇ¸ÅÀÚº° »óÇ° »ó¼¼Á¤º¸ °¡Á®¿À±â ¼­ºñ½º~!@");
 		return furnitureDao.selectProductById(furnitureid);
 	}
 
 	public void modifyProduct(FurnitureBean modifyProductBean) {
 
-		System.out.println("ìƒí’ˆ ìˆ˜ì • ì„œë¹„ìŠ¤~");
+		System.out.println("»óÇ° ¼öÁ¤ ¼­ºñ½º~");
 
 		modifyProductBean.setTag(modifyProductBean.getFurniture_color() + ", " + modifyProductBean.getFurniture_mat()
 				+ ", " + modifyProductBean.getTag());

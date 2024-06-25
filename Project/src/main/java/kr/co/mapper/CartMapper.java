@@ -7,27 +7,27 @@ import java.util.List;
 
 public interface CartMapper {
 
-	// ì‚¬ìš©ì codeë¡œ ì¹´íŠ¸ì˜ ìƒí’ˆ ì •ë³´ ì½ê¸°
+	// »ç¿ëÀÚ code·Î Ä«Æ®ÀÇ »óÇ° Á¤º¸ ÀĞ±â
 	@Select("select c.*, f.* from cart c join furniture f on c.furnitureid = f.furnitureid where c.code = #{code}")
 	List<CartBean> getCartItemByMemberId(@Param("code") String code);
 
-	// ì‚¬ìš©ìì˜ cartì—ì„œ íŠ¹ì • ìƒí’ˆ ì‚­ì œ
+	// »ç¿ëÀÚÀÇ cart¿¡¼­ Æ¯Á¤ »óÇ° »èÁ¦
 	@Delete("delete from cart where code=#{code} and furnitureid=#{furnitureid} ")
 	int deleteCartItem(@Param("code") String code, @Param("furnitureid") String furnitureid);
 
-	// ì¹´íŠ¸ì— ìƒí’ˆì•„ì´ë””, ìˆ˜ëŸ‰ ì €ì¥
+	// Ä«Æ®¿¡ »óÇ°¾ÆÀÌµğ, ¼ö·® ÀúÀå
 	@Insert("INSERT INTO cart (cart_id, code, furnitureid, count, price, furnitureName) VALUES (cart_seq.nextval, #{code}, #{furnitureid}, #{count}, #{price}, #{furnitureName})")
 	void insertCartItem(CartBean addCartBean);
 
-	// ìˆ˜ëŸ‰ë³€ê²½
+	// ¼ö·®º¯°æ
 	@Update("UPDATE cart SET count = #{count} WHERE code = #{code} AND furnitureid = #{furnitureid}")
 	void updateCartItem(CartBean cartBean);
 
-	// íŠ¹ì • ì‚¬ìš©ìì˜ ì¹´íŠ¸ì— íŠ¹ì • ìƒí’ˆì´ ë‹´ê²¨ìˆëŠ”ì§€ í™•ì¸
+	// Æ¯Á¤ »ç¿ëÀÚÀÇ Ä«Æ®¿¡ Æ¯Á¤ »óÇ°ÀÌ ´ã°ÜÀÖ´ÂÁö È®ÀÎ
 	@Select("SELECT * FROM cart WHERE code = #{code} AND furnitureid = #{furnitureid}")
 	CartBean getCartItemByProductIdAndMemberId(@Param("code") String code, @Param("furnitureid") String furnitureid);
 
-	// ì‚¬ìš©ì ì¹´íŠ¸ ê°œìˆ˜ ì¶œë ¥
+	// »ç¿ëÀÚ Ä«Æ® °³¼ö Ãâ·Â
 	@Select("select * from cart where code = #{code}")
 	List<CartBean> getCntCart(String code);
 
